@@ -91,7 +91,7 @@ li {
 }
 
 .css-main-panel-button.active {
-  background: #0050DC;
+  background: #0050dc;
 }
 
 #css-yellow-button {
@@ -215,3 +215,26 @@ li {
   font-size: var(--text-size-secondary);
 }
 
+.css-left-panel-button button {
+  opacity: 0;
+}
+
+@media (max-width: 600px) {
+  header {
+    height: 60px;
+    min-height: 60px;
+    max-height: 60px;
+  }
+
+  .css-left-panel-button button {
+    border: none;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  .css-work-quest-back span {
+    opacity: 0;
+  }
+}

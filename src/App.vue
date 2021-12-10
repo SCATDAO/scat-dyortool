@@ -11,10 +11,7 @@
       </template>
     </header>
     <div class="css-main-flex-wrap">
-      <template v-if="currentSection">
-        <WorkProject></WorkProject>
-        <WorkQuest></WorkQuest>
-      </template>
+      <WorkQuest></WorkQuest>
     </div>
   </div>
 </template>

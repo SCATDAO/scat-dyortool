@@ -3,7 +3,7 @@ export default {
     data() {
       return {
         data: true,
-        workspace: false,
+        workspace: true,
         currentSection: "home",
         login: false,
       }
