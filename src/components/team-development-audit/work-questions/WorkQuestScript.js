@@ -200,6 +200,28 @@ export default {
       ],
       isExpand: false,
       workspace: true,
+      developmentTeam: [
+        "Anonymous",
+        "Real persons",
+        "Team history",
+        "Experience",
+        "Whitepaper",
+      ],
+      tokenomics: [
+        "Token Held",
+        "Public supply",
+        "Exchanges",
+        "Progresive minting",
+        "Initial offering",
+        "Stake pool",
+        "Minting policy",
+        "Token use cases",
+        "Business model",
+        "Market cap",
+      ],
+      community: ["Subreddit", "Twitter", "Telegram", "Discord"],
+      metrics: ["Initial Offering", "Market Cap", "Volume", "Discord"],
+      isRetrayed: [0, 1, 1, 1],
       currentQuestion: [],
       answeredQuestion: [],
     };
@@ -213,8 +235,8 @@ export default {
     addCurrentQuestion() {
       this.currentQuestion.push(this.questionList[this.numberQuestion[0]]);
     },
-    addAnswerQuestion(option) {
-      this.currentQuestion[0].answer = option;
+    addAnswerQuestion(x) {
+      this.currentQuestion[0].answer = x;
     },
     nextAnswerQuestion() {
       if (this.currentQuestion != null) {
@@ -223,14 +245,27 @@ export default {
         this.numberQuestion[0] += 1;
         this.addCurrentQuestion();
       } else {
-        this.currentQuestion = [];
+        this.cleanCurrentQuetion();
         this.currentQuestion.push(this.questionList[this.numberQuestion[0]]);
       }
     },
-    backAnswerQuestion() {
+    cleanCurrentQuetion() {
       this.currentQuestion = [];
+    },
+    backAnswerQuestion() {
+      this.cleanCurrentQuetion();
       this.numberQuestion[0] -= 1;
       this.currentQuestion.push(this.answeredQuestion[this.numberQuestion[0]]);
+    },
+    transCurrentQuestion(x) {
+      this.cleanCurrentQuetion();
+      this.currentQuestion.push(this.answeredQuestion[x]);
+    },
+    isAnsweredQuestion(x) {
+      console.log(x)
+      for (x in this.answeredQuestion) {
+        return x.name === x ? true : false;
+      }
     },
   },
 };

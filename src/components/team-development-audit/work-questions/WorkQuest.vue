@@ -3,11 +3,10 @@
     <div class="css-left-panel-button">
       <button @click="workspace = !workspace">
         <svg
-          class="css-svg-icon"
+          class=".css-menu-svg-icon"
           focusable="false"
           width="24"
           viewBox="0 0 24 24"
-          fill="#ffffff"
         >
           <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
         </svg>
@@ -19,18 +18,7 @@
           <b>Audit progress</b>
         </div>
         <div class="css-work-project-avatar-wrap">
-          <div class="css-work-project-avatar-img">
-            <div class="css-work-project-upl">
-              <img with="40" height="40" src="./upload.svg" alt="" />
-              <input
-                class="css-work-project-upli"
-                type="file"
-                id="myFile"
-                name="filename"
-              />
-            </div>
-            <span>Upload logo screenshot</span>
-          </div>
+          <div class="css-work-project-avatar-img"></div>
         </div>
         <div class="css-work-project-legend">
           <div class="css-work-project-name">
@@ -43,53 +31,121 @@
             <span>www.example.com</span>
           </div>
         </div>
-        <div class="css-work-project-subtitle">
+        <div
+          class="css-work-project-subtitle"
+          @click="isRetrayed[0] = !isRetrayed[0]"
+        >
+          <svg
+            class="css-work-project-dar"
+            :class="{ active: !isRetrayed[0] }"
+            isRetrayed
+            viewBox="0 0 1024 1024"
+            xmlns="http://www.w3.org/2000/svg"
+            data-v-365b8594=""
+          >
+            <path
+              fill="currentColor"
+              d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
+            ></path>
+          </svg>
+
           <b>Development Team</b>
-          <span>0/10</span>
+          <span>0 / {{ developmentTeam.length }} </span>
         </div>
-        <ol>
-          <li>Anonymous?</li>
-          <li>Real persons</li>
-          <li>Team history</li>
-          <li>Experience</li>
-          <li>Whitepaper</li>
-        </ol>
-        <div class="css-work-project-subtitle">
+        <ul class="css-work-project-ul" :class="{ active: isRetrayed[0] }">
+          <li
+            v-for="category in developmentTeam"
+            :key="category"
+            class="css-work-project-uli"
+            :class="{ active: isAnsweredQuestion(category) }"
+            @click="transCurrentQuestion(category)"
+          >
+            {{ category }}
+          </li>
+        </ul>
+        <div
+          class="css-work-project-subtitle"
+          @click="isRetrayed[1] = !isRetrayed[1]"
+        >
+          <svg
+            class="css-work-project-dar"
+            :class="{ active: !isRetrayed[1] }"
+            isRetrayed
+            viewBox="0 0 1024 1024"
+            xmlns="http://www.w3.org/2000/svg"
+            data-v-365b8594=""
+          >
+            <path
+              fill="currentColor"
+              d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
+            ></path>
+          </svg>
           <b>Tokenomics</b>
-          <span>0/10</span>
+          <span>0 / {{ tokenomics.length }}</span>
         </div>
-        <ol>
-          <li>Token held</li>
-          <li>Public supply</li>
-          <li>Exchanges</li>
-          <li>Progresive minting</li>
-          <li>Initial offering</li>
-          <li>Stake pool</li>
-          <li>Minting policy</li>
-          <li>Token use cases</li>
-          <li>Business model</li>
-          <li>Market cap</li>
-        </ol>
-        <div class="css-work-project-subtitle">
+        <ul class="css-work-project-ul" :class="{ active: isRetrayed[1] }">
+          <li v-for="item in tokenomics" :key="item">{{ item }}</li>
+        </ul>
+        <div
+          class="css-work-project-subtitle"
+          @click="isRetrayed[2] = !isRetrayed[2]"
+        >
+          <svg
+            class="css-work-project-dar"
+            :class="{ active: !isRetrayed[2] }"
+            isRetrayed
+            viewBox="0 0 1024 1024"
+            xmlns="http://www.w3.org/2000/svg"
+            data-v-365b8594=""
+          >
+            <path
+              fill="currentColor"
+              d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
+            ></path>
+          </svg>
           <b>Community</b>
-          <span>0/10</span>
+          <span>0 / {{ community.length }}</span>
         </div>
-        <ol>
-          <li>Subreddit</li>
-          <li>Twitter</li>
-          <li>Telegram</li>
-          <li>Discord</li>
-        </ol>
-        <div class="css-work-project-subtitle">
+        <ul class="css-work-project-ul" :class="{ active: isRetrayed[2] }">
+          <li
+            class="css-work-project-uli"
+            :class="{ active: true }"
+            v-for="item in community"
+            :key="item"
+          >
+            {{ item }}
+          </li>
+        </ul>
+        <div
+          class="css-work-project-subtitle"
+          @click="isRetrayed[3] = !isRetrayed[3]"
+        >
+          <svg
+            class="css-work-project-dar"
+            :class="{ active: !isRetrayed[3] }"
+            isRetrayed
+            viewBox="0 0 1024 1024"
+            xmlns="http://www.w3.org/2000/svg"
+            data-v-365b8594=""
+          >
+            <path
+              fill="currentColor"
+              d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
+            ></path>
+          </svg>
           <b>ICO Trading Metrics</b>
-          <span>0/10</span>
+          <span>0 / {{ metrics.length }}</span>
         </div>
-        <ol>
-          <li>Initial Offering</li>
-          <li>Market Cap</li>
-          <li>Volume</li>
-          <li>Discord</li>
-        </ol>
+        <ul class="css-work-project-ul" :class="{ active: isRetrayed[3] }">
+          <li
+            class="css-work-project-uli"
+            :class="{ active: true }"
+            v-for="item in metrics"
+            :key="item"
+          >
+            {{ item }}
+          </li>
+        </ul>
       </div>
     </template>
     <div class="css-work-quest-wrap">
@@ -207,8 +263,18 @@
                 ></path>
               </svg>
             </button>
-            <button class="css-work-quest-evaluate" @click="item.answer = 0">
-              Evaluate
+            <button class="css-work-quest-panel-b" @click="item.answer = 0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1024 1024"
+                data-v-066465b6=""
+                width="16"
+              >
+                <path
+                  fill="currentColor"
+                  d="M704 768V256H128v512h576zm64-416 192-96v512l-192-96v128a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V224a32 32 0 0 1 32-32h640a32 32 0 0 1 32 32v128zm0 71.552v176.896l128 64V359.552l-128 64zM192 320h192v64H192v-64z"
+                ></path>
+              </svg>
             </button>
           </div>
         </template>

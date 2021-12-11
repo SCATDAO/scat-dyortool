@@ -273,8 +273,7 @@ textarea:focus-within {
   border-radius: 4px;
   color: var(--complementary-color-blue);
   display: block;
-  font-size: var(--text-size-secondary);
-  line-height: 1.5rem;
+  line-height: 1.75;
   overflow-y: auto;
   cursor: url;
   animation-name: deploy;
@@ -351,28 +350,55 @@ textarea:focus-within {
   width: 331px;
   max-width: 331px;
   min-width: 331px;
-  overflow-y: hidden;
   caret-color: transparent;
-  box-shadow: inset -1px 0 0 var(--border-primary);
+  background: var(--complementary-color-blue);
+  color: #ffffff;
+  line-height: 1.75;
+  height: 100vh;
+  background: linear-gradient(
+    22.58deg,
+    rgba(0, 80, 220, 1) 0%,
+    rgba(0, 105, 245, 1) 100%
+  );
 }
 
-.css-work-project-wrap.active {
+.css-menu-svg-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
 }
 
 .css-work-project-title {
   font-weight: bold;
-  color: var(--text-color-primary);
   font-size: var(--text-size-title);
   padding: 0 2rem;
   margin-top: 1rem;
 }
 
+.css-work-project-ul.active {
+  height: 0;
+  overflow: hidden;
+}
+
+.css-work-project-dar {
+  margin-right: 5px;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.css-work-project-dar.active {
+  transform: rotate(90deg);
+}
+
 .css-work-project-subtitle {
   font-weight: bold;
-  color: var(--text-color-primary);
   padding: 0 2rem;
   margin-top: 1rem;
   display: flex;
+  cursor: pointer;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: var(--text-size-secondary);
 }
 
 .css-work-project-subtitle span {
@@ -387,21 +413,16 @@ textarea:focus-within {
 }
 
 .css-work-project-avatar-img {
-  height: 80px;
-  width: 240px;
-  background: var(--color-soft-blue);
+  height: 100px;
+  width: 100px;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
-}
-
-.css-work-project-avatar-img span {
-  font-size: var(--text-size-secondary);
-  color: var(--complementary-color-blue);
-  opacity: 0.5;
-  z-index: -1;
+  background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/6117f6e0e7b15bf233e802e7_ErgoDex.png");
+  background-size: contain;
 }
 
 .css-work-project-upl {
@@ -409,7 +430,7 @@ textarea:focus-within {
   margin-top: 10px;
   width: 40px;
   height: 40px;
-  border: 1px dashed var(--complementary-color-blue);
+  border: 1.1px dashed var(--complementary-color-blue);
   border-radius: 4px;
 }
 
@@ -438,7 +459,27 @@ textarea:focus-within {
 
 .css-work-project-name {
   text-align: center;
-  color: var(--text-color-primary);
+}
+
+.css-work-project-ul {
+  padding-left: 4rem;
+  cursor: pointer;
+}
+
+.css-work-project-uli {
+  list-style-type: circle;
+}
+
+.css-work-project-uli.active {
+  list-style-type: none;
+}
+.css-work-project-uli.active::before {
+  list-style-type: none;
+  color: rgb(0, 255, 149);
+  display: inline-block;
+  content: "\2713";
+  width: 1.5em;
+  margin-left: -1em;
 }
 
 .css-work-project-avatar-des {
