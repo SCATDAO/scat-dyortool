@@ -161,16 +161,20 @@ textarea:focus-within {
   align-items: center;
   margin-top: 1rem;
   box-shadow: 1px 1px 20px var(--border-primary);
+  border: 1px solid transparent;
+}
+
+.css-work-quest-answer-item.active{
+  background: var(--color-soft-blue);
+  border: 1px solid rgba(48, 99, 238, 0.5);
 }
 
 .css-work-quest-item-label {
-  margin-left: 50px;
   color: var(--text-color-primary);
   font-weight: bold;
 }
 
 .control {
-  font-size: 18px;
   position: relative;
   display: block;
   cursor: pointer;
@@ -178,6 +182,7 @@ textarea:focus-within {
   align-items: center;
   width: 100%;
   height: 100%;
+  justify-content: center;
 }
 
 .control input {
@@ -399,6 +404,7 @@ textarea:focus-within {
   align-items: center;
   text-transform: uppercase;
   font-size: var(--text-size-secondary);
+  letter-spacing: 0.03rem;
 }
 
 .css-work-project-subtitle span {

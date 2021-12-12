@@ -15,14 +15,10 @@ export default {
             "B. List each member listed in box below.",
           ],
           example: "example",
-          options: {
-            1: "Yes",
-            2: "No",
-          },
-          value: {
-            1: 4,
-            2: 0,
-          },
+          options: [
+            { id: 1, name: "Yes", value: 4 },
+            { id: 2, name: "No", value: 0 },
+          ],
           answer: null,
           textarea: null,
           files: [],
@@ -47,14 +43,10 @@ export default {
             "G. Save links to supporting information in this workstep to support your review.",
           ],
           example: "example",
-          options: {
-            1: "Yes",
-            2: "No",
-          },
-          value: {
-            1: 2,
-            2: 0,
-          },
+          options: [
+            { id: 1, name: "Yes", value: 4 },
+            { id: 2, name: "No", value: 0 },
+          ],
           answer: null,
           textarea: null,
           files: [],
@@ -74,14 +66,10 @@ export default {
             "B. If other projects are found perform a comprehensive review of any news or information available about them. If anything negative is listed, list it in the workstep",
           ],
           example: "example",
-          options: {
-            1: "Yes",
-            2: "No",
-          },
-          value: {
-            1: 0.5,
-            2: 0,
-          },
+          options: [
+            { id: 1, name: "Yes", value: 4 },
+            { id: 2, name: "No", value: 0 },
+          ],
           answer: null,
           textarea: null,
           files: [],
@@ -101,14 +89,10 @@ export default {
             "B. For each position, check if education and work experience is relevant to role in project. If they have Education, work experience, or Code repositories to demonstrate their experience in their field, that is adequate for this question.",
           ],
           example: "example",
-          options: {
-            1: "Yes",
-            2: "No",
-          },
-          value: {
-            1: 0.5,
-            2: 0,
-          },
+          options: [
+            { id: 1, name: "Yes", value: 4 },
+            { id: 2, name: "No", value: 0 },
+          ],
           answer: null,
           textarea: null,
           files: [],
@@ -127,14 +111,10 @@ export default {
             "B. Include a copy of the results into the box below.",
           ],
           example: "example",
-          options: {
-            1: "Yes",
-            2: "No",
-          },
-          value: {
-            1: 0,
-            2: 1.5,
-          },
+          options: [
+            { id: 1, name: "Yes", value: 4 },
+            { id: 2, name: "No", value: 0 },
+          ],
           answer: null,
           textarea: null,
           files: [],
@@ -155,14 +135,10 @@ export default {
             "C. In general a few small errors are OK. If there are large numbers of grammer spelling and punctuation errors, then answer this question No.",
           ],
           example: "example",
-          options: {
-            1: "Yes",
-            2: "No",
-          },
-          value: {
-            1: 0,
-            2: 1,
-          },
+          options: [
+            { id: 1, name: "Yes", value: 4 },
+            { id: 2, name: "No", value: 0 },
+          ],
           answer: null,
           textarea: null,
           files: [],
@@ -181,16 +157,10 @@ export default {
             "B. Note number of pages in box below",
           ],
           example: "example",
-          options: {
-            1: "1 to 2 pages",
-            2: "2 to 10 pages",
-            3: "10+ pages",
-          },
-          value: {
-            1: 0,
-            2: 2,
-            3: 5,
-          },
+          options: [
+            { id: 1, name: "Yes", value: 4 },
+            { id: 2, name: "No", value: 0 },
+          ],
           answer: null,
           textarea: null,
           files: [],
@@ -198,14 +168,13 @@ export default {
           video: [],
         },
       ],
-      isExpand: false,
       workspace: true,
       developmentTeam: [
-        "Anonymous",
-        "Real persons",
-        "Team history",
-        "Team experience",
-        "Whitepaper",
+        { id: 1, name: "Anonymous" },
+        { id: 2, name: "Real persons" },
+        { id: 3, name: "Team history" },
+        { id: 4, name: "Team experience" },
+        { id: 5, name: "Whitepaper" },
       ],
       tokenomics: [
         "Token Held",
@@ -219,12 +188,18 @@ export default {
         "Business model",
         "Market cap",
       ],
-      community: ["Subreddit", "Twitter", "Telegram", "Discord"],
+      community: [
+        { id: 1, name: "Subreddit" },
+        { id: 2, name: "Twitter" },
+        { id: 3, name: "Telegram" },
+        { id: 4, name: "Discord" },
+      ],
       metrics: ["Initial Offering", "Market Cap", "Volume", "Discord"],
       progressWorkData: [],
       isRetrayed: [0, 1, 1, 1],
       currentQuestion: [],
       answeredQuestion: [],
+      checkedOption: "",
     };
   },
   created() {
@@ -236,32 +211,53 @@ export default {
     addCurrentQuestion() {
       this.currentQuestion.push(this.questionList[this.numberQuestion[0]]);
     },
-    addAnswerQuestion(x) {
-      this.currentQuestion[0].answer = x;
+    addAnswerQuestion(answer) {
+      this.currentQuestion[0].answer = answer;
+    },
+    backToWorksteps(answer) {
+      this.currentQuestion[0].answer = answer;
+      this.progressWorkData.pop(this.currentQuestion[0].name)
     },
     cleanCurrentQuestion() {
       this.currentQuestion = [];
     },
     nextAnswerQuestion() {
-      if (this.currentQuestion != []) {
+      if (
+        this.currentQuestion[0].answer &&
+        this.currentQuestion[0].textarea.length > 100
+      ) {
         this.progressWorkData.push(this.currentQuestion[0].name);
         this.answeredQuestion[this.numberQuestion[0]] =
           this.currentQuestion.pop();
         this.numberQuestion[0] += 1;
         this.addCurrentQuestion();
       } else {
-        this.cleanCurrentQuestion();
-        this.currentQuestion.push(this.questionList[this.numberQuestion[0]]);
+        if (this.currentQuestion === []) {
+          this.cleanCurrentQuestion();
+          this.currentQuestion.push(this.questionList[this.numberQuestion[0]]);
+        }
       }
     },
+
     backAnswerQuestion() {
       this.cleanCurrentQuestion();
       this.numberQuestion[0] -= 1;
       this.currentQuestion.push(this.answeredQuestion[this.numberQuestion[0]]);
     },
-    toCurrentQuestion(x) {
-      this.cleanCurrentQuestion();
-      this.currentQuestion.push(this.answeredQuestion[x]);
+    clickCurrentQuestion(num) {
+      let number = num - 1;
+      for (const n of this.answeredQuestion) {
+        if (n.number === number) {
+          this.cleanCurrentQuestion();
+          this.currentQuestion.push(this.answeredQuestion[number]);
+          this.numberQuestion[0] = this.currentQuestion[0].number - 1;
+        }
+        if (n.number != number) {
+          this.cleanCurrentQuestion();
+          this.currentQuestion.push(this.questionList[number]);
+          this.numberQuestion[0] = this.currentQuestion[0].number - 1;
+        }
+      }
     },
   },
 };

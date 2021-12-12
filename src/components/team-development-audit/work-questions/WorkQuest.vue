@@ -56,7 +56,7 @@
             </svg>
 
             <b>Development Team</b>
-            <span>0 / {{ developmentTeam.length }} </span>
+            <span>{{ progressWorkData.length }}/ {{ developmentTeam.length }} </span>
           </div>
           <ul class="css-work-project-ul" :class="{ active: isRetrayed[0] }">
             <li
@@ -64,11 +64,11 @@
               :key="category"
               class="css-work-project-uli"
               :class="{
-                active: progressWorkData.includes(category),
+                active: progressWorkData.includes(category.name),
               }"
-              @click="toCurrentQuestion(category)"
+              @click="clickCurrentQuestion(category.id)"
             >
-              {{ category }}
+              {{ category.name }}
             </li>
           </ul>
           <div
@@ -163,7 +163,7 @@
             v-for="item in currentQuestion"
             :key="item"
             :class="{ active: item.answer != null }"
-            @click="addAnswerQuestion(null)"
+            @click="backToWorksteps(null)"
           >
             <div>
               <svg
@@ -216,16 +216,26 @@
           <template v-if="item.answer != null">
             <div class="css-work-quest-suggest">Select an option</div>
           </template>
-          <div
-            class="css-work-quest-note"
-            :class="{ active: isExpand }"
-            @click="isExpand = !isExpand"
-          >
-            <b>Worksteps:</b>
-            <div v-for="step in item.worksteps" :key="step">
-              {{ step }}
+          <template v-if="item.answer === null">
+            <div
+              class="css-work-quest-note"
+            >
+              <b>Worksteps:</b>
+              <div v-for="step in item.worksteps" :key="step">
+                {{ step }}
+              </div>
             </div>
-          </div>
+          </template>
+          <template v-if="item.answer != null">
+            <div
+              class="css-work-quest-note"
+            >
+              <b>Last step:</b>
+              <div>
+               Select an option according to the information collected
+              </div>
+            </div>
+          </template>
           <template v-if="item.answer === null">
             <div class="css-work-quest-panel">
               <div>
@@ -265,19 +275,16 @@
           </template>
 
           <template v-for="option in item.options" :key="option">
-            <div class="css-work-quest-answer-item" v-if="item.answer != null">
+            <div
+              class="css-work-quest-answer-item"
+              :class="{ active: item.answer === option.name }"
+              v-if="item.answer != null"
+            >
               <label
                 class="control control--checkbox"
-                @click="addAnswerQuestion(option)"
+                @click="addAnswerQuestion(option.name)"
               >
-                <input
-                  type="checkbox"
-                  v-model="item.selected"
-                  :id="option"
-                  :value="option"
-                />
-                <span class="control__indicator"></span>
-                <span class="css-work-quest-item-label">{{ option }}</span>
+                <div class="css-work-quest-item-label">{{ option.name }}</div>
               </label>
             </div>
           </template>
