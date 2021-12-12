@@ -5,7 +5,6 @@ export default {
         data: true,
         workspace: true,
         currentSection: "home",
-        login: false,
       }
     }
   };

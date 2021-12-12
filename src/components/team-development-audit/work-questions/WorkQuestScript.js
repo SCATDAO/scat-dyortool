@@ -33,7 +33,7 @@ export default {
           number: 2,
           id: "TD2",
           category: "Team Development",
-          name: "Real Persons",
+          name: "Real persons",
           type: "Open",
           question:
             "Can you verify that each member of the Development team is a real person?",
@@ -65,7 +65,7 @@ export default {
           number: 3,
           id: "TD3",
           category: "Team Development",
-          name: "Team History",
+          name: "Team history",
           type: "Open",
           question:
             "Has the Dev team worked on any other projects in the past?",
@@ -92,7 +92,7 @@ export default {
           number: 4,
           id: "TD4",
           category: "Team Development",
-          name: "Team Experience",
+          name: "Team experience",
           type: "Open",
           question:
             "Does the Dev team have the proper experience to bring this project to market?",
@@ -204,7 +204,7 @@ export default {
         "Anonymous",
         "Real persons",
         "Team history",
-        "Experience",
+        "Team experience",
         "Whitepaper",
       ],
       tokenomics: [
@@ -221,6 +221,7 @@ export default {
       ],
       community: ["Subreddit", "Twitter", "Telegram", "Discord"],
       metrics: ["Initial Offering", "Market Cap", "Volume", "Discord"],
+      progressWorkData: [],
       isRetrayed: [0, 1, 1, 1],
       currentQuestion: [],
       answeredQuestion: [],
@@ -238,34 +239,29 @@ export default {
     addAnswerQuestion(x) {
       this.currentQuestion[0].answer = x;
     },
+    cleanCurrentQuestion() {
+      this.currentQuestion = [];
+    },
     nextAnswerQuestion() {
-      if (this.currentQuestion != null) {
+      if (this.currentQuestion != []) {
+        this.progressWorkData.push(this.currentQuestion[0].name);
         this.answeredQuestion[this.numberQuestion[0]] =
           this.currentQuestion.pop();
         this.numberQuestion[0] += 1;
         this.addCurrentQuestion();
       } else {
-        this.cleanCurrentQuetion();
+        this.cleanCurrentQuestion();
         this.currentQuestion.push(this.questionList[this.numberQuestion[0]]);
       }
     },
-    cleanCurrentQuetion() {
-      this.currentQuestion = [];
-    },
     backAnswerQuestion() {
-      this.cleanCurrentQuetion();
+      this.cleanCurrentQuestion();
       this.numberQuestion[0] -= 1;
       this.currentQuestion.push(this.answeredQuestion[this.numberQuestion[0]]);
     },
-    transCurrentQuestion(x) {
-      this.cleanCurrentQuetion();
+    toCurrentQuestion(x) {
+      this.cleanCurrentQuestion();
       this.currentQuestion.push(this.answeredQuestion[x]);
-    },
-    isAnsweredQuestion(x) {
-      console.log(x)
-      for (x in this.answeredQuestion) {
-        return x.name === x ? true : false;
-      }
     },
   },
 };
