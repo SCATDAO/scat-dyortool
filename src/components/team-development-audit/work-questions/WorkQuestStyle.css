@@ -1,0 +1,515 @@
+textarea {
+  width: 100%;
+  max-width: 100%;
+  height: 230px;
+  line-height: 1.5;
+  outline: none;
+  border: none;
+  resize: none;
+  font-family: "Nunito", sans-serif;
+  color: var(--text-color-secondary);
+  caret-color: transparent;
+}
+
+textarea:focus-within {
+  caret-color: black;
+}
+
+.css-work-quest-panel-textarea {
+  border: 1px solid var(--border-primary);
+  border-radius: 4px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  padding: 10px 14px;
+  background: #fff;
+  border-top: none;
+}
+
+.css-work-quest-wrap {
+  width: 100vw;
+  overflow-y: scroll;
+  background: var(--base-color-white-secondary);
+  caret-color: transparent;
+  padding-bottom: 20%;
+}
+
+.textarea {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.css-work-quest-top {
+  padding: 0 15%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.css-work-quest-back {
+  display: flex;
+  width: 200px;
+  align-items: center;
+  opacity: 0;
+  caret-color: none;
+  border: none;
+  color: transparent;
+  cursor: default;
+}
+
+.css-work-quest-panel {
+  background: var(--base-color-white-primary);
+  height: 3rem;
+  padding: 0 1rem;
+  border-radius: 4px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  margin-top: 1rem;
+  display: flex;
+  border: 1px solid var(--border-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.css-work-quest-panel-b {
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: none;
+  cursor: copy;
+}
+
+.css-work-quest-panel-b:hover {
+  background: var(--color-soft-blue);
+}
+
+.css-work-quest-back.active {
+  opacity: 1;
+  cursor: pointer;
+  color: var(--complementary-color-blue);
+}
+
+.css-work-quest-back div {
+  width: 40px;
+  height: 40px;
+  background: var(--color-soft-blue);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+}
+
+.css-work-quest-back span {
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+.css-work-quest-header {
+  width: auto;
+  height: 50vh;
+}
+
+.css-work-quest-page {
+  justify-content: center;
+  display: flex;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.css-work-quest-evaluate {
+  background: var(--complementary-color-blue) !important;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 14px;
+  height: 40px;
+  color: white;
+  cursor: pointer;
+  margin-left: auto !important;
+  margin-right: 1rem !important;
+}
+
+.css-work-quest-legend {
+  font-weight: bold;
+  padding: 0 20%;
+  line-height: 2rem;
+  text-align: center;
+  color: var(--text-color-primary);
+  font-size: var(--text-size-title);
+  margin-top: 1rem;
+}
+
+.css-work-quest-pag {
+  color: var(--complementary-color-blue);
+}
+
+.css-work-quest-div {
+  margin: 0 0.5rem;
+}
+
+.css-work-quest-answer {
+  padding: 0 15%;
+}
+
+.css-work-quest-answer-item {
+  background: #ffffff;
+  height: 72px;
+  min-height: 72px;
+  max-height: 72px;
+  border-radius: 4px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  box-shadow: 1px 1px 20px var(--border-primary);
+  border: 1px solid transparent;
+}
+
+.css-work-quest-answer-item.active{
+  background: var(--color-soft-blue);
+  border: 1px solid rgba(48, 99, 238, 0.5);
+}
+
+.css-work-quest-item-label {
+  color: var(--text-color-primary);
+  font-weight: bold;
+}
+
+.control {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.control input {
+  z-index: -1;
+  opacity: 0;
+}
+
+.control__indicator {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border-primary);
+  border-radius: 4px;
+}
+
+.control--radio .control__indicator {
+  border-radius: 50%;
+}
+
+/* Hover and focus states */
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+}
+
+/* Checked state */
+.control input:checked ~ .control__indicator {
+  background: var(--complementary-color-blue);
+}
+
+/* Hover state whilst checked */
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+  background: var(--complementary-color-blue);
+}
+
+/* Disabled state */
+.control input:disabled ~ .control__indicator {
+  pointer-events: none;
+  opacity: 0.6;
+  background: #e6e6e6;
+}
+
+/* Check mark */
+.control__indicator:after {
+  position: absolute;
+  display: none;
+  content: "";
+}
+
+/* Show check mark */
+.control input:checked ~ .control__indicator:after {
+  display: block;
+}
+
+/* Checkbox tick */
+.control--checkbox .control__indicator:after {
+  top: 8px;
+  left: 14px;
+  width: 8px;
+  height: 16px;
+  transform: rotate(45deg);
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+}
+
+/* Disabled tick colour */
+.control--checkbox input:disabled ~ .control__indicator:after {
+  border-color: #7b7b7b;
+}
+
+/* Radio button inner circle */
+.control--radio .control__indicator:after {
+  top: 7px;
+  left: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* Disabled circle colour */
+.control--radio input:disabled ~ .control__indicator:after {
+  background: #7b7b7b;
+}
+
+.css-work-quest-suggest {
+  text-align: center;
+  line-height: 4rem;
+}
+
+.css-work-quest-note {
+  padding: 1rem;
+  margin-top: 1rem;
+  background: var(--color-soft-blue);
+  border-radius: 4px;
+  color: var(--complementary-color-blue);
+  display: block;
+  line-height: 1.75;
+  overflow-y: auto;
+  cursor: url;
+  animation-name: deploy;
+  animation-duration: 1s;
+}
+
+.css-work-quest-note:hover {
+  background: rgba(48, 99, 238, 0.2);
+}
+
+@keyframes deploy {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.css-work-quest-note span {
+  cursor: pointer;
+}
+
+.css-work-quest-id {
+  padding: 5px;
+  background: var(--color-soft-blue);
+  border-radius: 4px;
+  color: var(--complementary-color-blue);
+}
+
+.css-work-quest-bpf {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.css-work-quest-nav {
+  display: flex;
+  width: 600px;
+  justify-content: space-around;
+}
+
+.css-work-quest-arrow {
+  display: flex;
+  padding: 1rem;
+  background: white;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 1px 1px 20px var(--border-primary);
+}
+
+#right-arrow {
+  background: linear-gradient(
+    22.58deg,
+    rgba(0, 80, 220, 1) 0%,
+    rgba(0, 105, 245, 1) 100%
+  );
+}
+
+#right-arrow span {
+  color: #ffffff;
+  font-weight: bold;
+  margin-right: 50px;
+}
+
+#left-arrow span {
+  color: var(--text-color-primary);
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.css-work-project-wrap {
+  width: 331px;
+  max-width: 331px;
+  min-width: 331px;
+  caret-color: transparent;
+  color: #ffffff;
+  line-height: 1.75;
+  height: 100vh;
+  background: linear-gradient(
+    22.58deg,
+    rgba(0, 80, 220, 1) 0%,
+    rgba(0, 105, 245, 1) 100%
+  );
+}
+
+.css-menu-svg-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.css-work-project-title {
+  padding: 0 2rem;
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
+
+.css-work-project-ul.active {
+  height: 0;
+  overflow: hidden;
+}
+
+.css-work-project-dar {
+  margin-right: 5px;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.css-work-project-dar.active {
+  transform: rotate(90deg);
+}
+
+.css-work-project-subtitle {
+  font-weight: bold;
+  padding: 0 2rem;
+  margin-top: 1rem;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: var(--text-size-secondary);
+  letter-spacing: 0.03rem;
+}
+
+.css-work-project-subtitle span {
+  margin-left: 30px;
+  margin-left: auto;
+}
+
+.css-work-project-avatar-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.css-work-project-avatar-img {
+  height: 100px;
+  width: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/6117f6e0e7b15bf233e802e7_ErgoDex.png");
+  background-size: contain;
+}
+
+.css-work-project-upl {
+  opacity: 0.5;
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  border: 1.1px dashed var(--complementary-color-blue);
+  border-radius: 4px;
+}
+
+.css-work-project-upl:hover {
+  opacity: 0.7;
+}
+
+.css-work-project-upli {
+  width: 200px;
+  height: 80px;
+  z-index: 15;
+  cursor: pointer;
+  position: relative;
+  left: 5px;
+  left: -80px;
+  top: -60px;
+  opacity: 0;
+}
+
+.css-work-project-legend {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.css-work-project-name {
+  text-align: center;
+}
+
+.css-work-project-ul {
+  padding-left: 4rem;
+  cursor: pointer;
+}
+
+.css-work-project-uli {
+  list-style-type: circle;
+}
+
+.css-work-project-uli.active {
+  list-style-type: none;
+}
+.css-work-project-uli.active::before {
+  list-style-type: none;
+  color: rgb(0, 255, 149);
+  display: inline-block;
+  content: "\2713";
+  width: 1.5em;
+  margin-left: -1em;
+}
+
+.css-work-project-avatar-des {
+  display: block;
+  text-align: center;
+}
+
+.css-work-project-project {
+  display: flex;
+  color: var(--base-color-black-primary);
+}
+
+.css-work-project-tag {
+  display: flex;
+  justify-content: center;
+}
+
+.css-work-tool-wrap {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.css-left-panel-button {
+  top: 1rem;
+  left: 1rem;
+}
