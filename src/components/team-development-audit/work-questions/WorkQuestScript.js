@@ -169,34 +169,41 @@ export default {
         },
       ],
       workspace: true,
-      developmentTeam: [
-        { id: 1, name: "Anonymous" },
-        { id: 2, name: "Real persons" },
-        { id: 3, name: "Team history" },
-        { id: 4, name: "Team experience" },
-        { id: 5, name: "Whitepaper" },
-      ],
-      tokenomics: [
-        "Token Held",
-        "Public supply",
-        "Exchanges",
-        "Progresive minting",
-        "Initial offering",
-        "Stake pool",
-        "Minting policy",
-        "Token use cases",
-        "Business model",
-        "Market cap",
-      ],
-      community: [
-        { id: 1, name: "Subreddit" },
-        { id: 2, name: "Twitter" },
-        { id: 3, name: "Telegram" },
-        { id: 4, name: "Discord" },
-      ],
-      metrics: ["Initial Offering", "Market Cap", "Volume", "Discord"],
+      workProgramCategory: {
+        developmentTeam: [
+          { id: 1, name: "Anonymous" },
+          { id: 2, name: "Real persons" },
+          { id: 3, name: "Team history" },
+          { id: 4, name: "Team experience" },
+          { id: 5, name: "Whitepaper" },
+        ],
+        tokenomics: [
+          { id: 6, name: "Token Held" },
+          { id: 7, name: "Public supply" },
+          { id: 8, name: "Exchanges" },
+          { id: 9, name: "Progresive minting" },
+          { id: 10, name: "Initial offering" },
+          { id: 11, name: "Stake pool" },
+          { id: 12, name: "Minting policy" },
+          { id: 13, name: "Token use cases" },
+          { id: 14, name: "Business model" },
+          { id: 15, name: "Market cap" },
+        ],
+        community: [
+          { id: 1, name: "Subreddit" },
+          { id: 2, name: "Twitter" },
+          { id: 3, name: "Telegram" },
+          { id: 4, name: "Discord" },
+        ],
+        metrics: [
+          { id: 1, name: "Subreddit" },
+          { id: 2, name: "Initial Offering" },
+          { id: 3, name: "Market Cap" },
+          { id: 4, name: "Volume" },
+        ],
+      },
       progressWorkData: [],
-      isRetrayed: [0, 1, 1, 1],
+      isRetrayed: [0, 0, 1, 1],
       currentQuestion: [],
       answeredQuestion: [],
       checkedOption: "",
@@ -205,18 +212,14 @@ export default {
   created() {
     this.numberQuestion[1] = this.questionList.length;
     this.answeredQuestion = this.questionList;
-    this.addCurrentQuestion();
+    this.changeCurrentQuestion();
   },
   methods: {
-    addCurrentQuestion() {
+    changeCurrentQuestion() {
       this.currentQuestion.push(this.questionList[this.numberQuestion[0]]);
     },
-    addAnswerQuestion(answer) {
+    changeAnswerQuestion(answer) {
       this.currentQuestion[0].answer = answer;
-    },
-    backToWorksteps(answer) {
-      this.currentQuestion[0].answer = answer;
-      this.progressWorkData.pop(this.currentQuestion[0].name)
     },
     cleanCurrentQuestion() {
       this.currentQuestion = [];
@@ -226,11 +229,11 @@ export default {
         this.currentQuestion[0].answer &&
         this.currentQuestion[0].textarea.length > 100
       ) {
-        this.progressWorkData.push(this.currentQuestion[0].name);
+        this.progressWorkData.push(this.currentQuestion[0].number);
         this.answeredQuestion[this.numberQuestion[0]] =
           this.currentQuestion.pop();
         this.numberQuestion[0] += 1;
-        this.addCurrentQuestion();
+        this.changeCurrentQuestion();
       } else {
         if (this.currentQuestion === []) {
           this.cleanCurrentQuestion();
@@ -238,7 +241,6 @@ export default {
         }
       }
     },
-
     backAnswerQuestion() {
       this.cleanCurrentQuestion();
       this.numberQuestion[0] -= 1;
@@ -248,16 +250,30 @@ export default {
       let number = num - 1;
       for (const n of this.answeredQuestion) {
         if (n.number === number) {
+          console.log("YES")
           this.cleanCurrentQuestion();
           this.currentQuestion.push(this.answeredQuestion[number]);
           this.numberQuestion[0] = this.currentQuestion[0].number - 1;
         }
         if (n.number != number) {
+          console.log("NO")
           this.cleanCurrentQuestion();
           this.currentQuestion.push(this.questionList[number]);
           this.numberQuestion[0] = this.currentQuestion[0].number - 1;
         }
       }
+    },
+    backToWorksteps(answer) {
+      this.currentQuestion[0].answer = answer;
+      console.log(this.currentQuestion[0].number)
+      this.progressWorkData.pop(this.currentQuestion[0].number + 1 );
+    },
+    knowWorkProgress(step) {
+      let acc = 0;
+      this.workProgramCategory[step].forEach((s) => {
+        this.progressWorkData.includes(s.id) ? (acc += 1) : false;
+      });
+      return acc;
     },
   },
 };
