@@ -15,6 +15,20 @@ textarea:focus-within {
   caret-color: black;
 }
 
+#css-work-quest-panel-bl {
+  display: flex;
+  align-items: flex-start;
+}
+
+.dot {
+  background: rgba(242, 36, 73, 0.5);
+  height: 6px;
+  width: 6px;
+  margin-left: 2.5px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 .css-work-quest-panel-textarea {
   border: 1px solid var(--border-primary);
   border-radius: 4px;
@@ -427,8 +441,9 @@ textarea:focus-within {
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
-  background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/619d25148370e2456ff22790_DOEX.png");
+  background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/61333bd8d439e03947e2689a_SoMee.png");
   background-size: contain;
+  border: 1px dashed #e9f1fc60;
 }
 
 .css-work-project-upl {
@@ -474,15 +489,12 @@ textarea:focus-within {
 .css-work-project-uli {
   padding-left: 4rem;
   border-left: 5px solid rgba(255, 255, 255, 0);
-
+  transition: ease 0.3s;
 }
 
 .css-work-project-uli:hover {
   border-left: 5px solid rgba(255, 255, 255, 0.3);
-}
-
-.css-work-project-uli.active {
-  list-style-type: none;
+  font-weight: bold;
 }
 
 .css-work-project-uli.active::before {
