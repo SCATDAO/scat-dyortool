@@ -279,10 +279,11 @@
               </div>
               <button
                 class="css-work-quest-panel-b"
-                style="background: var(--color-soft-blue)"
+                id="css-work-quest-panel-bl"
                 @click="item.answer = 0"
               >
                 <img src="./dart.svg" alt="" />
+                <span class="dot"></span>
               </button>
             </div>
           </template>
@@ -302,12 +303,12 @@
           <template v-for="option in item.options" :key="option">
             <div
               class="css-work-quest-answer-item"
-              :class="{ active: item.answer === option.name }"
+              :class="{ active: item.answer === option.id }"
               v-if="item.answer != null"
             >
               <label
                 class="control control--checkbox"
-                @click="changeAnswerQuestion(option.name)"
+                @click="changeAnswerQuestion(option.id)"
               >
                 <div class="css-work-quest-item-label">{{ option.name }}</div>
               </label>
@@ -336,28 +337,50 @@
               </svg>
               <span>Back</span>
             </div>
-            <div
-              class="css-work-quest-arrow"
-              id="right-arrow"
-              @click="
-                numberQuestion[0] < numberQuestion[1] - 1
-                  ? nextAnswerQuestion()
-                  : false
-              "
-            >
-              <span>Next</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1024 1024"
-                data-v-066465b6=""
-                width="24"
+            <template v-if="currentQuestion[0].id < questionList.length">
+              <div
+                class="css-work-quest-arrow"
+                id="right-arrow"
+                @click="
+                  numberQuestion[0] < numberQuestion[1] - 1
+                    ? nextAnswerQuestion()
+                    : false
+                "
               >
-                <path
-                  fill="#fff"
-                  d="M754.752 480H160a32 32 0 1 0 0 64h594.752L521.344 777.344a32 32 0 0 0 45.312 45.312l288-288a32 32 0 0 0 0-45.312l-288-288a32 32 0 1 0-45.312 45.312L754.752 480z"
-                ></path>
-              </svg>
-            </div>
+                <span>Next</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 1024 1024"
+                  data-v-066465b6=""
+                  width="24"
+                >
+                  <path
+                    fill="#fff"
+                    d="M754.752 480H160a32 32 0 1 0 0 64h594.752L521.344 777.344a32 32 0 0 0 45.312 45.312l288-288a32 32 0 0 0 0-45.312l-288-288a32 32 0 1 0-45.312 45.312L754.752 480z"
+                  ></path>
+                </svg>
+              </div>
+            </template>
+            <template v-if="currentQuestion[0].id === questionList.length">
+              <div
+                class="css-work-quest-arrow"
+                id="right-arrow"
+                @click="createNewReport()"
+              >
+                <span>Next</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 1024 1024"
+                  data-v-066465b6=""
+                  width="24"
+                >
+                  <path
+                    fill="#fff"
+                    d="M754.752 480H160a32 32 0 1 0 0 64h594.752L521.344 777.344a32 32 0 0 0 45.312 45.312l288-288a32 32 0 0 0 0-45.312l-288-288a32 32 0 1 0-45.312 45.312L754.752 480z"
+                  ></path>
+                </svg>
+              </div>
+            </template>
           </div>
         </div>
       </div>

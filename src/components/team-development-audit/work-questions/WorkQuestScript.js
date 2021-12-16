@@ -703,6 +703,83 @@ export default {
     changeCurrentQuestion() {
       this.currentQuestion.push(this.questionList[this.numberQuestion[0]]);
     },
+    changeAnswerQuestion(answer) {
+      this.currentQuestion[0].answer = answer;
+    },
+    cleanCurrentQuestion() {
+      this.currentQuestion = [];
+    },
+    nextAnswerQuestion() {
+      if (this.checkCorrectQuestion()) {
+        this.progressWorkData.push(this.currentQuestion[0].id);
+        this.answeredQuestion[this.numberQuestion[0]] =
+          this.currentQuestion.pop();
+        this.numberQuestion[0] += 1;
+        this.changeCurrentQuestion();
+      }
+    },
+    backAnswerQuestion() {
+      this.cleanCurrentQuestion();
+      this.numberQuestion[0] -= 1;
+      this.currentQuestion.push(this.answeredQuestion[this.numberQuestion[0]]);
+    },
+    clickCurrentQuestion(num) {
+      let number = num - 1;
+      for (const n in this.answeredQuestion) {
+        if (n.id === number) {
+          this.cleanCurrentQuestion();
+          this.currentQuestion.push(this.answeredQuestion[number]);
+          this.numberQuestion[0] = this.currentQuestion[0].id - 1;
+        }
+        if (n.id != number) {
+          this.cleanCurrentQuestion();
+          this.currentQuestion.push(this.questionList[number]);
+          this.numberQuestion[0] = this.currentQuestion[0].id - 1;
+        }
+      }
+    },
+    createNewReport() {
+      if (this.checkCorrectQuestion()) {
+        this.progressWorkData.push(this.currentQuestion[0].id);
+        this.answeredQuestion[this.numberQuestion[0]] = this.currentQuestion[0];
+        this.evaluateQuestions();
+      }
+    },
+    checkCorrectQuestion() {
+      return this.currentQuestion[0].answer &&
+        this.currentQuestion[0].textarea.length > 100
+        ? true
+        : false;
+    },
+    evaluateQuestions() {
+      let acc = 0;
+      for (const answer of this.answeredQuestion) {
+        for (const option of answer.options) {
+          if (option.id === answer.answer) {
+            acc += option.value;
+          }
+        }
+      }
+      console.log(acc);
+    },
+    removeItemFromArr(arr, item) {
+      var i = arr.indexOf(item);
+
+      if (i !== -1) {
+        arr.splice(i, 1);
+      }
+    },
+    backToWorksteps() {
+      this.currentQuestion[0].answer = null;
+      this.removeItemFromArr(this.progressWorkData, this.currentQuestion[0].id);
+    },
+    knowWorkProgress(step) {
+      let acc = 0;
+      this.workProgramCategory[step].forEach((s) => {
+        this.progressWorkData.includes(s.id) ? (acc += 1) : false;
+      });
+      return acc;
+    },
     chargeListQuestion() {
       for (const element of this.questionList) {
         switch (element.category) {
@@ -735,67 +812,6 @@ export default {
             break;
         }
       }
-    },
-    changeAnswerQuestion(answer) {
-      this.currentQuestion[0].answer = answer;
-    },
-    cleanCurrentQuestion() {
-      this.currentQuestion = [];
-    },
-    nextAnswerQuestion() {
-      if (
-        this.currentQuestion[0].answer &&
-        this.currentQuestion[0].textarea.length > 100
-      ) {
-        this.progressWorkData.push(this.currentQuestion[0].id);
-        this.answeredQuestion[this.numberQuestion[0]] =
-          this.currentQuestion.pop();
-        this.numberQuestion[0] += 1;
-        this.changeCurrentQuestion();
-      } else {
-        if (this.currentQuestion === []) {
-          this.cleanCurrentQuestion();
-          this.currentQuestion.push(this.questionList[this.numberQuestion[0]]);
-        }
-      }
-    },
-    backAnswerQuestion() {
-      this.cleanCurrentQuestion();
-      this.numberQuestion[0] -= 1;
-      this.currentQuestion.push(this.answeredQuestion[this.numberQuestion[0]]);
-    },
-    clickCurrentQuestion(num) {
-      let number = num - 1;
-      for (const n in this.answeredQuestion) {
-        if (n.id === number) {
-          this.cleanCurrentQuestion();
-          this.currentQuestion.push(this.answeredQuestion[number]);
-          this.numberQuestion[0] = this.currentQuestion[0].id - 1;
-        }
-        if (n.id != number) {
-          this.cleanCurrentQuestion();
-          this.currentQuestion.push(this.questionList[number]);
-          this.numberQuestion[0] = this.currentQuestion[0].id - 1;
-        }
-      }
-    },
-    removeItemFromArr(arr, item) {
-      var i = arr.indexOf(item);
-
-      if (i !== -1) {
-        arr.splice(i, 1);
-      }
-    },
-    backToWorksteps() {
-      this.currentQuestion[0].answer = null;
-      this.removeItemFromArr(this.progressWorkData, this.currentQuestion[0].id);
-    },
-    knowWorkProgress(step) {
-      let acc = 0;
-      this.workProgramCategory[step].forEach((s) => {
-        this.progressWorkData.includes(s.id) ? (acc += 1) : false;
-      });
-      return acc;
     },
   },
 };
