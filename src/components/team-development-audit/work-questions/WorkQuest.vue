@@ -128,16 +128,22 @@
               ></path>
             </svg>
             <b>Community</b>
-            <span>0 / {{ workProgramCategory["community"].length }}</span>
+            <span
+              >{{ knowWorkProgress("community") }} /
+              {{ workProgramCategory["community"].length }}</span
+            >
           </div>
           <ul class="css-work-project-ul" :class="{ active: isRetrayed[2] }">
             <li
+              v-for="category in workProgramCategory['community']"
+              :key="category"
               class="css-work-project-uli"
-              :class="{ active: true }"
-              v-for="item in workProgramCategory['community']"
-              :key="item"
+              :class="{
+                active: progressWorkData.includes(category.id),
+              }"
+              @click="clickCurrentQuestion(category.id)"
             >
-              {{ item }}
+              {{ category.name }}
             </li>
           </ul>
           <div
@@ -158,16 +164,22 @@
               ></path>
             </svg>
             <b>ICO Trading Metrics</b>
-            <span>0 / {{ workProgramCategory["metrics"].length }}</span>
+            <span
+              >{{ knowWorkProgress("metrics") }} /
+              {{ workProgramCategory["metrics"].length }}</span
+            >
           </div>
           <ul class="css-work-project-ul" :class="{ active: isRetrayed[3] }">
             <li
+              v-for="category in workProgramCategory['metrics']"
+              :key="category"
               class="css-work-project-uli"
-              :class="{ active: true }"
-              v-for="item in workProgramCategory['metrics']"
-              :key="item"
+              :class="{
+                active: progressWorkData.includes(category.id),
+              }"
+              @click="clickCurrentQuestion(category.id)"
             >
-              {{ item }}
+              {{ category.name }}
             </li>
           </ul>
         </div>
@@ -179,7 +191,7 @@
             v-for="item in currentQuestion"
             :key="item"
             :class="{ active: item.answer != null }"
-            @click="backToWorksteps(null)"
+            @click="backToWorksteps()"
           >
             <div>
               <svg
@@ -202,7 +214,7 @@
             v-for="item in currentQuestion"
             :key="item"
           >
-            #{{ item.id }}
+            #{{ item.tag }}
           </div>
         </div>
 
@@ -212,7 +224,7 @@
               class="css-work-quest-pag"
               v-for="item in currentQuestion"
               :key="item"
-              >{{ item.number }}</span
+              >{{ item.id }}</span
             ><span class="css-work-quest-div">/</span>{{ numberQuestion[1] }}
           </div>
         </div>
@@ -249,7 +261,10 @@
           <template v-if="item.answer === null">
             <div class="css-work-quest-panel">
               <div>
-                <button class="css-work-quest-panel-b">
+                <button
+                  class="css-work-quest-panel-b"
+                  style="cursor: not-allowed"
+                >
                   <img src="./file.svg" alt="" />
                 </button>
                 <button class="css-work-quest-panel-b">

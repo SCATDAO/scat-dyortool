@@ -164,7 +164,7 @@ textarea:focus-within {
   border: 1px solid transparent;
 }
 
-.css-work-quest-answer-item.active{
+.css-work-quest-answer-item.active {
   background: var(--color-soft-blue);
   border: 1px solid rgba(48, 99, 238, 0.5);
 }
@@ -275,7 +275,7 @@ textarea:focus-within {
 
 .css-work-quest-note {
   padding: 1rem;
-  margin-top: 1rem;
+  margin-top: 3rem;
   background: var(--color-soft-blue);
   border-radius: 4px;
   color: var(--complementary-color-blue);
@@ -427,7 +427,7 @@ textarea:focus-within {
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
-  background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/6117f6e0e7b15bf233e802e7_ErgoDex.png");
+  background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/619d25148370e2456ff22790_DOEX.png");
   background-size: contain;
 }
 
@@ -468,17 +468,23 @@ textarea:focus-within {
 }
 
 .css-work-project-ul {
-  padding-left: 4rem;
   cursor: pointer;
 }
 
 .css-work-project-uli {
-  list-style-type: circle;
+  padding-left: 4rem;
+  border-left: 5px solid rgba(255, 255, 255, 0);
+
+}
+
+.css-work-project-uli:hover {
+  border-left: 5px solid rgba(255, 255, 255, 0.3);
 }
 
 .css-work-project-uli.active {
   list-style-type: none;
 }
+
 .css-work-project-uli.active::before {
   list-style-type: none;
   color: rgb(0, 255, 149);
