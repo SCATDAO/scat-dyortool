@@ -56,15 +56,18 @@
             </svg>
 
             <b>Development Team</b>
-            <span>{{ progressWorkData.length }}/ {{ developmentTeam.length }} </span>
+            <span
+              >{{ knowWorkProgress("developmentTeam") }} /
+              {{ workProgramCategory["developmentTeam"].length }}
+            </span>
           </div>
           <ul class="css-work-project-ul" :class="{ active: isRetrayed[0] }">
             <li
-              v-for="category in developmentTeam"
+              v-for="category in workProgramCategory['developmentTeam']"
               :key="category"
               class="css-work-project-uli"
               :class="{
-                active: progressWorkData.includes(category.name),
+                active: progressWorkData.includes(category.id),
               }"
               @click="clickCurrentQuestion(category.id)"
             >
@@ -89,10 +92,23 @@
               ></path>
             </svg>
             <b>Tokenomics</b>
-            <span>0 / {{ tokenomics.length }}</span>
+            <span
+              >{{ knowWorkProgress("tokenomics") }} /
+              {{ workProgramCategory["tokenomics"].length }}</span
+            >
           </div>
           <ul class="css-work-project-ul" :class="{ active: isRetrayed[1] }">
-            <li v-for="item in tokenomics" :key="item">{{ item }}</li>
+            <li
+              v-for="category in workProgramCategory['tokenomics']"
+              :key="category"
+              class="css-work-project-uli"
+              :class="{
+                active: progressWorkData.includes(category.id),
+              }"
+              @click="clickCurrentQuestion(category.id)"
+            >
+              {{ category.name }}
+            </li>
           </ul>
           <div
             class="css-work-project-subtitle"
@@ -112,16 +128,22 @@
               ></path>
             </svg>
             <b>Community</b>
-            <span>0 / {{ community.length }}</span>
+            <span
+              >{{ knowWorkProgress("community") }} /
+              {{ workProgramCategory["community"].length }}</span
+            >
           </div>
           <ul class="css-work-project-ul" :class="{ active: isRetrayed[2] }">
             <li
+              v-for="category in workProgramCategory['community']"
+              :key="category"
               class="css-work-project-uli"
-              :class="{ active: true }"
-              v-for="item in community"
-              :key="item"
+              :class="{
+                active: progressWorkData.includes(category.id),
+              }"
+              @click="clickCurrentQuestion(category.id)"
             >
-              {{ item }}
+              {{ category.name }}
             </li>
           </ul>
           <div
@@ -142,16 +164,22 @@
               ></path>
             </svg>
             <b>ICO Trading Metrics</b>
-            <span>0 / {{ metrics.length }}</span>
+            <span
+              >{{ knowWorkProgress("metrics") }} /
+              {{ workProgramCategory["metrics"].length }}</span
+            >
           </div>
           <ul class="css-work-project-ul" :class="{ active: isRetrayed[3] }">
             <li
+              v-for="category in workProgramCategory['metrics']"
+              :key="category"
               class="css-work-project-uli"
-              :class="{ active: true }"
-              v-for="item in metrics"
-              :key="item"
+              :class="{
+                active: progressWorkData.includes(category.id),
+              }"
+              @click="clickCurrentQuestion(category.id)"
             >
-              {{ item }}
+              {{ category.name }}
             </li>
           </ul>
         </div>
@@ -163,7 +191,7 @@
             v-for="item in currentQuestion"
             :key="item"
             :class="{ active: item.answer != null }"
-            @click="backToWorksteps(null)"
+            @click="backToWorksteps()"
           >
             <div>
               <svg
@@ -186,7 +214,7 @@
             v-for="item in currentQuestion"
             :key="item"
           >
-            #{{ item.id }}
+            #{{ item.tag }}
           </div>
         </div>
 
@@ -196,7 +224,7 @@
               class="css-work-quest-pag"
               v-for="item in currentQuestion"
               :key="item"
-              >{{ item.number }}</span
+              >{{ item.id }}</span
             ><span class="css-work-quest-div">/</span>{{ numberQuestion[1] }}
           </div>
         </div>
@@ -217,9 +245,7 @@
             <div class="css-work-quest-suggest">Select an option</div>
           </template>
           <template v-if="item.answer === null">
-            <div
-              class="css-work-quest-note"
-            >
+            <div class="css-work-quest-note">
               <b>Worksteps:</b>
               <div v-for="step in item.worksteps" :key="step">
                 {{ step }}
@@ -227,19 +253,18 @@
             </div>
           </template>
           <template v-if="item.answer != null">
-            <div
-              class="css-work-quest-note"
-            >
+            <div class="css-work-quest-note">
               <b>Last step:</b>
-              <div>
-               Select an option according to the information collected
-              </div>
+              <div>Select an option according to the information collected</div>
             </div>
           </template>
           <template v-if="item.answer === null">
             <div class="css-work-quest-panel">
               <div>
-                <button class="css-work-quest-panel-b">
+                <button
+                  class="css-work-quest-panel-b"
+                  style="cursor: not-allowed"
+                >
                   <img src="./file.svg" alt="" />
                 </button>
                 <button class="css-work-quest-panel-b">
@@ -282,7 +307,7 @@
             >
               <label
                 class="control control--checkbox"
-                @click="addAnswerQuestion(option.name)"
+                @click="changeAnswerQuestion(option.name)"
               >
                 <div class="css-work-quest-item-label">{{ option.name }}</div>
               </label>
