@@ -21,15 +21,28 @@ textarea:focus-within {
 }
 
 .dot {
-  background: rgba(242, 36, 73, 0.5);
+  background: var(--complementary-color-blue);
   height: 6px;
   width: 6px;
-  margin-left: 2.5px;
+  margin-left: 5px;
   border-radius: 50%;
   display: inline-block;
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  transition: ease 0.3s;
 }
 
-.css-work-quest-panel-textarea {
+@keyframes pulse {
+  0% {
+    box-shadow: 0px 0px 1px 0px var(--color-soft-blue);
+  }
+  100% {
+    box-shadow: 0px 0px 1px 5px var(--color-soft-blue);
+  }
+}
+
+.css-work-quest-panel-ta {
   border: 1px solid var(--border-primary);
   border-radius: 4px;
   border-top-left-radius: 0px;
@@ -37,14 +50,25 @@ textarea:focus-within {
   padding: 10px 14px;
   background: #fff;
   border-top: none;
+  position: relative;
 }
 
-.css-work-quest-wrap {
-  width: 100vw;
-  overflow-y: scroll;
-  background: var(--base-color-white-secondary);
-  caret-color: transparent;
-  padding-bottom: 20%;
+.css-length-counter.active {
+  color: rgba(242, 36, 73, 0.8);
+}
+
+.css-work-quest-panel-ta div {
+  right: 0%;
+  bottom: 0%;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  position: absolute;
+  font-size: var(--text-size-secondary);
+  display: flex;
+}
+
+.css-work-quest-panel-ta span {
+  margin-left: 2px;
 }
 
 .textarea {
@@ -54,7 +78,7 @@ textarea:focus-within {
 
 .css-work-quest-top {
   padding: 0 15%;
-  margin-top: 2rem;
+  margin-top: 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -329,6 +353,7 @@ textarea:focus-within {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+  margin-bottom: 20%;
 }
 
 .css-work-quest-nav {
@@ -367,21 +392,6 @@ textarea:focus-within {
   margin-left: 50px;
 }
 
-.css-work-project-wrap {
-  width: 331px;
-  max-width: 331px;
-  min-width: 331px;
-  caret-color: transparent;
-  color: #ffffff;
-  line-height: 1.75;
-  height: 100vh;
-  background: linear-gradient(
-    22.58deg,
-    rgba(0, 80, 220, 1) 0%,
-    rgba(0, 105, 245, 1) 100%
-  );
-}
-
 .css-menu-svg-icon {
   width: 24px;
   height: 24px;
@@ -391,7 +401,8 @@ textarea:focus-within {
 .css-work-project-title {
   padding: 0 2rem;
   margin-top: 1rem;
-  text-transform: uppercase;
+  font-size: var(--text-size-title);
+  opacity: 0;
 }
 
 .css-work-project-ul.active {
@@ -410,15 +421,13 @@ textarea:focus-within {
 }
 
 .css-work-project-subtitle {
-  font-weight: bold;
   padding: 0 2rem;
   margin-top: 1rem;
   display: flex;
   cursor: pointer;
   align-items: center;
-  text-transform: uppercase;
   font-size: var(--text-size-secondary);
-  letter-spacing: 0.03rem;
+  text-transform: uppercase;
 }
 
 .css-work-project-subtitle span {
@@ -441,9 +450,9 @@ textarea:focus-within {
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
-  background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/61333bd8d439e03947e2689a_SoMee.png");
+  background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/6138a95131b6f827e26e07aa_Ray.png");
   background-size: contain;
-  border: 1px dashed #e9f1fc60;
+  box-shadow: var(--shadow-blue);
 }
 
 .css-work-project-upl {
@@ -492,14 +501,22 @@ textarea:focus-within {
   transition: ease 0.3s;
 }
 
+.css-work-project-ul:active{
+background: transparent;
+}
+
+.css-work-project-uli:active{
+  background: transparent;
+  }
+
 .css-work-project-uli:hover {
-  border-left: 5px solid rgba(255, 255, 255, 0.3);
+  border-left: 5px solid rgba(0, 0, 0, 0.3);
   font-weight: bold;
 }
 
 .css-work-project-uli.active::before {
   list-style-type: none;
-  color: rgb(0, 255, 149);
+  color: #00f569;
   display: inline-block;
   content: "\2713";
   width: 1.5em;
@@ -523,8 +540,7 @@ textarea:focus-within {
 
 .css-work-tool-wrap {
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  padding-bottom: 10%;
 }
 
 .css-left-panel-button {

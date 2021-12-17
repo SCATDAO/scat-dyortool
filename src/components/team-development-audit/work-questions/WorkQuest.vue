@@ -1,6 +1,6 @@
 <template>
   <div class="css-main-flex-wrap">
-    <header>
+    <header class="css-header" :class="{ active : workspace }">
       <div class="css-left-panel-button">
         <button @click="workspace = !workspace">
           <svg
@@ -19,8 +19,9 @@
     </header>
     <div class="css-work-tool-wrap">
       <template v-if="workspace">
+        <div class="css-work-project-wrapper">
         <div class="css-work-project-wrap" :class="{ active: workspace }">
-          <div class="css-work-project-title">
+          <div class="css-work-project-title" @click="workspace = !workspace">
             <b>Audit progress</b>
           </div>
           <div class="css-work-project-avatar-wrap">
@@ -183,6 +184,7 @@
             </li>
           </ul>
         </div>
+        </div>
       </template>
       <div class="css-work-quest-wrap">
         <div class="css-work-quest-top">
@@ -288,7 +290,7 @@
             </div>
           </template>
           <template v-if="item.answer === null">
-            <div class="css-work-quest-panel-textarea">
+            <div class="css-work-quest-panel-ta">
               <textarea
                 id="story"
                 name="story"
@@ -297,6 +299,17 @@
                 cols="33"
                 placeholder="Write here"
               ></textarea>
+              <div>
+                <span
+                  class="css-length-counter"
+                  :class="{ active: knowTextareaLength() }"
+                >
+                  {{ (currentQuestion[0].textarea).length }} 
+                </span>
+                  <span>/</span>
+
+                 <span>100</span>
+              </div>
             </div>
           </template>
 
