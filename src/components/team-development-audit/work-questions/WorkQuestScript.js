@@ -1,5 +1,6 @@
 import * as CBOR from "cbor";
 
+import * as QRious from "qrious";
 
 export default {
   data() {
@@ -696,6 +697,9 @@ export default {
       checkedOption: "",
       isFinished: false,
       beforeEncodeProcess: [],
+      afterEncodeProcess: [],
+      result: "",
+      error: "",
     };
   },
   created() {
@@ -788,12 +792,12 @@ export default {
     knowTextareaLength() {
       return this.currentQuestion[0].textarea.length <= 100 ? true : false;
     },
-    cbort() {
+    generateCborHex() {
       let result = "";
       let characters =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
       let charactersLength = characters.length;
-      for (let i = 0; i < 500; i++) {
+      for (let i = 0; i < 800; i++) {
         result += characters.charAt(
           Math.floor(Math.random() * charactersLength)
         );
@@ -804,8 +808,28 @@ export default {
       }
 
       let deco = CBOR.encode(this.beforeEncodeProcess);
-  
-      console.log(deco);
+
+      const pako = require("pako");
+
+      const output = pako.deflate(deco);
+
+      const cborHex = Buffer.from(output).toString("hex");
+
+      this.afterEncodeProcess.push(cborHex);
+    },
+    generateNewQr() {
+      this.generateCborHex();
+      console.log(this.afterEncodeProcess[0])
+      let qr = new QRious({
+        element: document.getElementById("qr"),
+        value: this.afterEncodeProcess[0]
+      });
+      qr.background = "transparent";
+      qr.foregroundAlpha = 0.8;
+      qr.backgroundAlpha = 0.8;
+      qr.foreground = "#000000";
+      qr.level = "L";
+      qr.size = 300;
     },
     chargeListQuestion() {
       for (const element of this.questionList) {

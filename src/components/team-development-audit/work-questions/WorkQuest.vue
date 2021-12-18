@@ -408,13 +408,15 @@
                 <div class="css-work-finished-ttw">
                   <div class="css-work-finished-stw">
                     <div class="css-work-finished-stt">Dyor report summary</div>
-                    <div class="css-work-finished-sta">
-
-                    </div>
+                    <div class="css-work-finished-sta"></div>
                   </div>
-                  <div class="css-work-finished-sr" @click="cbort()">28.00</div>
+                  <div class="css-work-finished-sr">
+                    28.00
+                    <div @click="generateNewQr()">NEW</div>
+                    <canvas id="qr"></canvas>
+                  </div>
                 </div>
-                <div class="css-work-finished-ttt">x</div>
+                <div class="css-work-finished-ttt"></div>
               </div>
             </div>
           </div>
