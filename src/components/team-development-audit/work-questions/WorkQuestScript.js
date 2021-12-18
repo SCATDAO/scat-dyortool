@@ -1,3 +1,6 @@
+import * as CBOR from "cbor";
+
+
 export default {
   data() {
     return {
@@ -691,6 +694,8 @@ export default {
       currentQuestion: [],
       answeredQuestion: [],
       checkedOption: "",
+      isFinished: false,
+      beforeEncodeProcess: [],
     };
   },
   created() {
@@ -782,6 +787,25 @@ export default {
     },
     knowTextareaLength() {
       return this.currentQuestion[0].textarea.length <= 100 ? true : false;
+    },
+    cbort() {
+      let result = "";
+      let characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      let charactersLength = characters.length;
+      for (let i = 0; i < 500; i++) {
+        result += characters.charAt(
+          Math.floor(Math.random() * charactersLength)
+        );
+      }
+
+      for (let d = 0; d < 28; d++) {
+        this.beforeEncodeProcess.push({ answer: 5, textarea: result });
+      }
+
+      let deco = CBOR.encode(this.beforeEncodeProcess);
+  
+      console.log(deco);
     },
     chargeListQuestion() {
       for (const element of this.questionList) {
