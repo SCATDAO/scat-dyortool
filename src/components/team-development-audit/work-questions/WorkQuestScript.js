@@ -1,6 +1,4 @@
-import * as CBOR from "cbor";
-
-import * as QRious from "qrious";
+import { Blackhole } from "blackhole-qr";
 
 export default {
   data() {
@@ -792,7 +790,7 @@ export default {
     knowTextareaLength() {
       return this.currentQuestion[0].textarea.length <= 100 ? true : false;
     },
-    generateCborHex() {
+    fully() {
       let result = "";
       let characters =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -806,30 +804,17 @@ export default {
       for (let d = 0; d < 28; d++) {
         this.beforeEncodeProcess.push({ answer: 5, textarea: result });
       }
-
-      let deco = CBOR.encode(this.beforeEncodeProcess);
-
-      const pako = require("pako");
-
-      const output = pako.deflate(deco);
-
-      const cborHex = Buffer.from(output).toString("hex");
-
-      this.afterEncodeProcess.push(cborHex);
     },
     generateNewQr() {
-      this.generateCborHex();
-      console.log(this.afterEncodeProcess[0])
-      let qr = new QRious({
-        element: document.getElementById("qr"),
-        value: this.afterEncodeProcess[0]
-      });
-      qr.background = "transparent";
-      qr.foregroundAlpha = 0.8;
-      qr.backgroundAlpha = 0.8;
-      qr.foreground = "#000000";
-      qr.level = "L";
-      qr.size = 300;
+      this.fully();
+
+      const QR = new Blackhole();
+      QR.newQr("qr", this.beforeEncodeProcess, 300);
+      QR.set.background = '#ffffff'
+
+      const canvas = document.getElementById('qr')
+      const context = canvas.getContext("2d");
+      context.scale(1.33, 2);
     },
     chargeListQuestion() {
       for (const element of this.questionList) {

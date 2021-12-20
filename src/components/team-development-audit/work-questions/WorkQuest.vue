@@ -407,13 +407,42 @@
               <div class="css-work-finished-tw">
                 <div class="css-work-finished-ttw">
                   <div class="css-work-finished-stw">
-                    <div class="css-work-finished-stt">Dyor report summary</div>
-                    <div class="css-work-finished-sta"></div>
+                    <div class="css-work-finished-stt" @click="generateNewQr()">
+                      SUNDAESWAP - DYOR REPORT
+                    </div>
+                    <div class="css-work-finished-sfw">
+                      <div class="css-work-finished-sta"></div>
+                      <div class="css-work-finished-std">
+                        <div>Total Score</div>
+                        <div class="css-work-finished-stx">50.00</div>
+                        <div class="css-work-finished-stm">Made by Holder3289</div>
+                      </div>
+                    </div>
+                    <div class="css-work-finished-sfw">
+                      <div class="css-work-finished-sha">
+                        <div class="css-work-finished-shai">x</div>
+                        <div class="css-work-finished-shai">
+                          Generate full report
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="css-work-finished-sts">
+                    <div class="css-work-finished-sti">
+                      Development Team <span>10.0</span>
+                    </div>
+                    <div class="css-work-finished-sti">
+                      Tokenomics<span>20.0</span>
+                    </div>
+                    <div class="css-work-finished-sti">
+                      Community<span>40.0</span>
+                    </div>
+                    <div class="css-work-finished-sti">
+                      Trading Metrics<span>50.0</span>
+                    </div>
                   </div>
                   <div class="css-work-finished-sr">
-                    28.00
-                    <div @click="generateNewQr()">NEW</div>
-                    <canvas id="qr"></canvas>
+                    <canvas id="qr" style="image-rendering: pixelated"></canvas>
                   </div>
                 </div>
                 <div class="css-work-finished-ttt"></div>

@@ -1,5 +1,5 @@
 {
-  "name": "scat-worktoolx",
+  "name": "DYOR",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,7 @@
     "lint": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
   },
   "dependencies": {
+    "blackhole-qr": "^1.2.0",
     "cbor": "^8.1.0",
     "core-js": "^3.6.5",
     "pako": "^2.0.4",

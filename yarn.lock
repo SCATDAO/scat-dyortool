@@ -1657,7 +1657,7 @@
 
 "@zxing/library@^0.18.4":
   version "0.18.6"
-  resolved "https://registry.yarnpkg.com/@zxing/library/-/library-0.18.6.tgz#717af8c6c1fd982865e21051afdd7b470ae6674c"
+  resolved "https://registry.npmjs.org/@zxing/library/-/library-0.18.6.tgz"
   integrity sha512-bulZ9JHoLFd9W36pi+7e7DnEYNJhljYjZ1UTsKPOoLMU3qtC+REHITeCRNx40zTRJZx18W5TBRXt5pq2Uopjsw==
   dependencies:
     ts-custom-error "^3.0.0"
@@ -1666,7 +1666,7 @@
 
 "@zxing/text-encoding@~0.9.0":
   version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@zxing/text-encoding/-/text-encoding-0.9.0.tgz#fb50ffabc6c7c66a0c96b4c03e3d9be74864b70b"
+  resolved "https://registry.npmjs.org/@zxing/text-encoding/-/text-encoding-0.9.0.tgz"
   integrity sha512-U/4aVJ2mxI0aDNI8Uq0wEhMgY+u4CNtEb0om3+y3+niDAsoTCOB33UF0sxpzqzdqXLqmvc+vZyAt4O8pPdfkwA==
 
 accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.7:
@@ -2003,7 +2003,7 @@ balanced-match@^1.0.0:
 
 barcode-detector@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/barcode-detector/-/barcode-detector-1.0.0.tgz#e5c590affd4150c5b5b3fdd929075a7228d9bf8b"
+  resolved "https://registry.npmjs.org/barcode-detector/-/barcode-detector-1.0.0.tgz"
   integrity sha512-LZSyqjumoq2WmMOeQZ2BiYYAqwnTlkXgqKOTcJlathpFS6IejsdSb6aIGmoSyOCjBgFNATzLgMJ9shNfklnz6A==
   dependencies:
     "@zxing/library" "^0.18.4"
@@ -2075,6 +2075,15 @@ bindings@^1.5.0:
   integrity sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==
   dependencies:
     file-uri-to-path "1.0.0"
+
+blackhole-qr@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/blackhole-qr/-/blackhole-qr-1.2.0.tgz#7dc9a1f0a8ca5e51f5fd3e33bc4f6f390a98eae6"
+  integrity sha512-EqkeTpdOaHDAr2o6kEFElnfb5MRtkPJowJ0CHt8nc5W08ty6v9Dc5cPJybJQdz4kiY6QaUX4xrvcu+eQlYDKHg==
+  dependencies:
+    cbor "^8.1.0"
+    pako "^2.0.4"
+    qrious "^4.0.2"
 
 bluebird@^3.1.1, bluebird@^3.5.5:
   version "3.7.2"
@@ -2353,7 +2362,7 @@ caller-path@^2.0.0:
 
 callforth@^0.3.1:
   version "0.3.1"
-  resolved "https://registry.yarnpkg.com/callforth/-/callforth-0.3.1.tgz#d40f610c7dd47d0011fd84bac32b3fe11cff1785"
+  resolved "https://registry.npmjs.org/callforth/-/callforth-0.3.1.tgz"
   integrity sha512-Q2zPfqnwoKsb1DTVCr4lmhe49wKNBsMmNlbudjleu3/co+Nw1pOqFHYJHrW3VZ253ou9AAr+xauQR0C55NPdzA==
 
 callsites@^2.0.0:
@@ -5236,7 +5245,7 @@ jsprim@^1.2.2:
 
 jsqr@^1.3.1:
   version "1.4.0"
-  resolved "https://registry.yarnpkg.com/jsqr/-/jsqr-1.4.0.tgz#8efb8d0a7cc6863cb6d95116b9069123ce9eb2d1"
+  resolved "https://registry.npmjs.org/jsqr/-/jsqr-1.4.0.tgz"
   integrity sha512-dxLob7q65Xg2DvstYkRpkYtmKm2sPJ9oFhrhmudT1dZvNFFTlroai3AWSpLey/w5vMcLBXRgOJsbXpdN9HzU/A==
 
 killable@^1.0.1:
@@ -6140,7 +6149,7 @@ p-try@^2.0.0:
 
 pako@^2.0.4:
   version "2.0.4"
-  resolved "https://registry.yarnpkg.com/pako/-/pako-2.0.4.tgz#6cebc4bbb0b6c73b0d5b8d7e8476e2b2fbea576d"
+  resolved "https://registry.npmjs.org/pako/-/pako-2.0.4.tgz"
   integrity sha512-v8tweI900AUkZN6heMU/4Uy4cXRc2AYNRggVmTR+dEncawDJgCdLMximOVA2p4qO57WMynangsfGRb5WD6L1Bg==
 
 pako@~1.0.5:
@@ -6857,7 +6866,7 @@ q@^1.1.2:
 
 qrious@^4.0.2:
   version "4.0.2"
-  resolved "https://registry.yarnpkg.com/qrious/-/qrious-4.0.2.tgz#09c4d4079d2b961617f62c69cff3b9bb66a39693"
+  resolved "https://registry.npmjs.org/qrious/-/qrious-4.0.2.tgz"
   integrity sha512-xWPJIrK1zu5Ypn898fBp8RHkT/9ibquV2Kv24S/JY9VYEhMBMKur1gHVsOiNUh7PHP9uCgejjpZUHUIXXKoU/g==
 
 qs@6.7.0:
@@ -7202,7 +7211,7 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
 
 rtcpeerconnection-shim@^1.2.15:
   version "1.2.15"
-  resolved "https://registry.yarnpkg.com/rtcpeerconnection-shim/-/rtcpeerconnection-shim-1.2.15.tgz#e7cc189a81b435324c4949aa3dfb51888684b243"
+  resolved "https://registry.npmjs.org/rtcpeerconnection-shim/-/rtcpeerconnection-shim-1.2.15.tgz"
   integrity sha512-C6DxhXt7bssQ1nHb154lqeL0SXz5Dx4RczXZu2Aa/L1NJFnEVDxFwCBo3fqtuljhHIGceg5JKBV4XJ0gW5JKyw==
   dependencies:
     sdp "^2.6.0"
@@ -7273,7 +7282,7 @@ schema-utils@^2.0.0, schema-utils@^2.5.0, schema-utils@^2.6.5, schema-utils@^2.7
 
 sdp@^2.12.0, sdp@^2.6.0:
   version "2.12.0"
-  resolved "https://registry.yarnpkg.com/sdp/-/sdp-2.12.0.tgz#338a106af7560c86e4523f858349680350d53b22"
+  resolved "https://registry.npmjs.org/sdp/-/sdp-2.12.0.tgz"
   integrity sha512-jhXqQAQVM+8Xj5EjJGVweuEzgtGWb3tmEEpl3CLP3cStInSbVHSg0QWOGQzNq8pSID4JkpeV2mPqlMDLrm0/Vw==
 
 select-hose@^2.0.0:
@@ -8035,7 +8044,7 @@ tryer@^1.0.1:
 
 ts-custom-error@^3.0.0:
   version "3.2.0"
-  resolved "https://registry.yarnpkg.com/ts-custom-error/-/ts-custom-error-3.2.0.tgz#ff8f80a3812bab9dc448536312da52dce1b720fb"
+  resolved "https://registry.npmjs.org/ts-custom-error/-/ts-custom-error-3.2.0.tgz"
   integrity sha512-cBvC2QjtvJ9JfWLvstVnI45Y46Y5dMxIaG1TDMGAD/R87hpvqFL+7LhvUDhnRCfOnx/xitollFWWvUKKKhbN0A==
 
 ts-pnp@^1.1.6:
@@ -8384,7 +8393,7 @@ vue-loader@^15.9.2:
 
 vue-qrcode-reader@^3.1.0:
   version "3.1.0"
-  resolved "https://registry.yarnpkg.com/vue-qrcode-reader/-/vue-qrcode-reader-3.1.0.tgz#0f4dfa029fcacd28f0b50b2fe5e157af0201b0ec"
+  resolved "https://registry.npmjs.org/vue-qrcode-reader/-/vue-qrcode-reader-3.1.0.tgz"
   integrity sha512-k2uoUjibxzdHJPfmsL1T9KVNzKPG/xIzKWMgBTXExoJlvZ5VKrBIFpP3P+rXNylfL3yw5AftE3K1yf4CoTkfkQ==
   dependencies:
     barcode-detector "^1.0.0"
@@ -8408,7 +8417,7 @@ vue-template-es2015-compiler@^1.9.0:
 
 vue@^2.6.11:
   version "2.6.14"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"
+  resolved "https://registry.npmjs.org/vue/-/vue-2.6.14.tgz"
   integrity sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==
 
 vue@^3.0.0:
@@ -8585,7 +8594,7 @@ webpack@^4.0.0:
 
 webrtc-adapter@7.7.0:
   version "7.7.0"
-  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-7.7.0.tgz#e56ff25f925177ac553a7c49323ca4108d2b5f4d"
+  resolved "https://registry.npmjs.org/webrtc-adapter/-/webrtc-adapter-7.7.0.tgz"
   integrity sha512-7Bp9OBnx642oJRkom1tNAbeJjUadAq2rh5xLL9YXPw5hVyt2h4hHr5bcoPYDs1stp/mZHSPSQA34YISdnr0DBQ==
   dependencies:
     rtcpeerconnection-shim "^1.2.15"
