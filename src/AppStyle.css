@@ -46,7 +46,6 @@ header {
   box-sizing: border-box;
   padding: 0 1.5rem;
   box-shadow: var(--shadow-blue);
-  background: var(--complementary-color-blue);
   z-index: 20;
 }
 
@@ -74,6 +73,17 @@ li {
   overflow-x: hidden;
   overflow-y: hidden;
   line-height: 1.5;
+  animation-name: deploy;
+  animation-duration: 1s;
+}
+
+@keyframes deploy {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 #code-layout {

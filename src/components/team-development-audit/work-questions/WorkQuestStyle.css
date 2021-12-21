@@ -20,6 +20,10 @@ textarea:focus-within {
   align-items: flex-start;
 }
 
+#css-work-quest-panel-bl:hover {
+  background: initial;
+}
+
 .dot {
   background: var(--complementary-color-blue);
   height: 6px;
@@ -54,7 +58,6 @@ textarea:focus-within {
 }
 
 .css-length-counter.active {
-  color: rgba(242, 36, 73, 0.8);
 }
 
 .css-work-quest-panel-ta div {
@@ -174,6 +177,8 @@ textarea:focus-within {
   margin-right: 1rem;
   border: 1px solid var(--complementary-color-blue);
   border-radius: 4px;
+  display: flex;
+  cursor: pointer;
 }
 
 .css-work-finished-sti {
@@ -243,7 +248,7 @@ textarea:focus-within {
   padding: 0.5rem 1rem;
   border-radius: 4px;
   border: none;
-  cursor: copy;
+  cursor: pointer;
 }
 
 .css-work-quest-panel-b:hover {
@@ -449,21 +454,6 @@ textarea:focus-within {
   line-height: 1.75;
   overflow-y: auto;
   cursor: url;
-  animation-name: deploy;
-  animation-duration: 1s;
-}
-
-.css-work-quest-note:hover {
-  background: rgba(48, 99, 238, 0.2);
-}
-
-@keyframes deploy {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 .css-work-quest-note span {
@@ -625,7 +615,7 @@ textarea:focus-within {
 
 .css-work-project-uli {
   padding-left: 4rem;
-  border-left: 5px solid rgba(255, 255, 255, 0);
+  border-left: 2px solid rgba(255, 255, 255, 0);
   transition: ease 0.3s;
 }
 
@@ -638,8 +628,8 @@ textarea:focus-within {
 }
 
 .css-work-project-uli:hover {
-  border-left: 5px solid rgba(0, 0, 0, 0.3);
   font-weight: bold;
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .css-work-project-uli.active::before {
