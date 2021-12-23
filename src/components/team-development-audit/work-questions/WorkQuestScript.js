@@ -1,4 +1,4 @@
-import { Blackhole } from "blackhole-qr";
+
 
 export default {
   data() {
@@ -694,9 +694,6 @@ export default {
       answeredQuestion: [],
       checkedOption: "",
       isFinished: false,
-      totalScore: 0,
-      beforeEncodeProcess: [],
-      afterEncodeProcess: [],
       result: "",
       error: "",
     };
@@ -752,8 +749,6 @@ export default {
         this.answeredQuestion[this.numberQuestion[0]] = this.currentQuestion[0];
         this.isFinished = !this.isFinished;
         this.workspace = !this.workspace;
-        this.evaluateQuestions();
-        this.createNewCanvas();
       }
     },
     checkCorrectQuestion() {
@@ -775,17 +770,7 @@ export default {
       console.log(checkAnswers);
       return isComplete;
     },
-    evaluateQuestions() {
-      let acc = 0;
-      for (const answer of this.answeredQuestion) {
-        for (const option of answer.options) {
-          if (option.id === answer.answer) {
-            acc += option.value;
-          }
-        }
-      }
-      this.totalScore = acc.toFixed(2);
-    },
+  
     removeItemFromArr(array, item) {
       let e = array.indexOf(item);
 
@@ -806,17 +791,6 @@ export default {
     },
     knowTextareaLength() {
       return this.currentQuestion[0].textarea.length <= 100 ? true : false;
-    },
-    createNewCanvas() {
-      this.answeredQuestion.forEach((e) =>
-        this.beforeEncodeProcess.push({
-          id: e.id,
-          an: e.answer,
-          ta: e.textarea,
-        })
-      );
-      const QR = new Blackhole();
-      QR.newQr('qr', this.beforeEncodeProcess, 300);
     },
     chargeListQuestion() {
       for (const element of this.questionList) {
