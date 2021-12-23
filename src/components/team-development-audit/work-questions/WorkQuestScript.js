@@ -1,3 +1,5 @@
+
+
 export default {
   data() {
     return {
@@ -16,11 +18,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -44,11 +46,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -67,11 +69,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -91,11 +93,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -113,11 +115,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -137,11 +139,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -159,12 +161,12 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "1 to 2 pages", value: 1 },
-            { id: 2, name: "2 to 10 pages", value: 1 },
-            { id: 3, name: "10+ Pages", value: 1 },
+            { id: 1, name: "1 to 2 pages", value: 1.0 },
+            { id: 2, name: "2 to 10 pages", value: 2.0 },
+            { id: 3, name: "10+ Pages", value: 3.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -183,13 +185,13 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "0% to 5%", value: 1 },
-            { id: 2, name: "6% to 15%", value: 1 },
-            { id: 3, name: "25%+", value: 1 },
-            { id: 4, name: "Not Available", value: 1 },
+            { id: 1, name: "0% to 5%", value: 1.0 },
+            { id: 2, name: "6% to 15%", value: 2.0 },
+            { id: 3, name: "25%+", value: 3.0 },
+            { id: 4, name: "Not Available", value: 4.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -208,14 +210,14 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "0% to 29%", value: 1 },
-            { id: 2, name: "30% to 49%", value: 1 },
-            { id: 3, name: "50% to 74%", value: 1 },
-            { id: 4, name: "75%+", value: 1 },
-            { id: 5, name: "Not Available", value: 1 },
+            { id: 1, name: "0% to 29%", value: 1.0 },
+            { id: 2, name: "30% to 49%", value: 2.0 },
+            { id: 3, name: "50% to 74%", value: 3.0 },
+            { id: 4, name: "75%+", value: 4.0 },
+            { id: 5, name: "Not Available", value: 5.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -235,11 +237,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -259,11 +261,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -283,11 +285,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -307,11 +309,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "0%", value: 1 },
-            { id: 2, name: ">0%", value: 1 },
+            { id: 1, name: "0%", value: 1.0 },
+            { id: 2, name: ">0%", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -331,11 +333,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Existing", value: 1 },
-            { id: 2, name: "New", value: 1 },
+            { id: 1, name: "Existing", value: 1.0 },
+            { id: 2, name: "New", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -355,13 +357,13 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "<1000", value: 1 },
-            { id: 2, name: "1000 to 5000", value: 1 },
-            { id: 3, name: "5000 to 10,000", value: 1 },
-            { id: 4, name: "10K+", value: 1 },
+            { id: 1, name: "<1000", value: 1.0 },
+            { id: 2, name: "1000 to 5000", value: 2.0 },
+            { id: 3, name: "5000 to 10,000", value: 3.0 },
+            { id: 4, name: "10K+", value: 4.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -381,11 +383,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Bots", value: 1 },
-            { id: 2, name: "Real", value: 1 },
+            { id: 1, name: "Bots", value: 1.0 },
+            { id: 2, name: "Real", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -405,13 +407,13 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "<1000", value: 1 },
-            { id: 2, name: "1000 to 5000", value: 1 },
-            { id: 3, name: "5000 to 10,000", value: 1 },
-            { id: 4, name: "10K+", value: 1 },
+            { id: 1, name: "<1000", value: 1.0 },
+            { id: 2, name: "1000 to 5000", value: 2.0 },
+            { id: 3, name: "5000 to 10,000", value: 3.0 },
+            { id: 4, name: "10K+", value: 4.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -431,11 +433,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -455,13 +457,13 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "<1000", value: 1 },
-            { id: 2, name: "1000 to 5000", value: 1 },
-            { id: 3, name: "5000 to 10,000", value: 1 },
-            { id: 4, name: "10K+", value: 1 },
+            { id: 1, name: "<1000", value: 1.0 },
+            { id: 2, name: "1000 to 5000", value: 2.0 },
+            { id: 3, name: "5000 to 10,000", value: 3.0 },
+            { id: 4, name: "10K+", value: 4.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -479,11 +481,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -502,12 +504,12 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "<1000", value: 1 },
-            { id: 2, name: "1000 to 10K", value: 1 },
-            { id: 3, name: "10K+", value: 1 },
+            { id: 1, name: "<1000", value: 1.0 },
+            { id: 2, name: "1000 to 10K", value: 2.0 },
+            { id: 3, name: "10K+", value: 3.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -527,11 +529,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -552,12 +554,12 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "<50 million", value: 1 },
-            { id: 2, name: "50 to 100 million", value: 1 },
-            { id: 3, name: "100 million +", value: 1 },
+            { id: 1, name: "<50 million", value: 1.0 },
+            { id: 2, name: "50 to 100 million", value: 2.0 },
+            { id: 3, name: "100 million +", value: 3.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -576,12 +578,12 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "<1 million", value: 1 },
-            { id: 2, name: "1 million to 5 million", value: 1 },
-            { id: 3, name: "5 million +", value: 1 },
+            { id: 1, name: "<1 million", value: 1.0 },
+            { id: 2, name: "1 million to 5 million", value: 2.0 },
+            { id: 3, name: "5 million +", value: 3.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -601,11 +603,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -624,11 +626,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -645,12 +647,12 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "<10K ", value: 1 },
-            { id: 2, name: "10K to 100K", value: 1 },
-            { id: 3, name: "100K+", value: 1 },
+            { id: 1, name: "<10K ", value: 1.0 },
+            { id: 2, name: "10K to 100K", value: 2.0 },
+            { id: 3, name: "100K+", value: 3.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -669,11 +671,11 @@ export default {
           ],
           example: "example",
           options: [
-            { id: 1, name: "Yes", value: 1 },
-            { id: 2, name: "No", value: 1 },
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 2.0 },
           ],
           answer: null,
-          textarea: null,
+          textarea: "",
           files: [],
           images: [],
           video: [],
@@ -691,6 +693,9 @@ export default {
       currentQuestion: [],
       answeredQuestion: [],
       checkedOption: "",
+      isFinished: false,
+      result: "",
+      error: "",
     };
   },
   created() {
@@ -742,7 +747,8 @@ export default {
       if (this.checkCorrectQuestion()) {
         this.progressWorkData.push(this.currentQuestion[0].id);
         this.answeredQuestion[this.numberQuestion[0]] = this.currentQuestion[0];
-        this.evaluateQuestions();
+        this.isFinished = !this.isFinished;
+        this.workspace = !this.workspace;
       }
     },
     checkCorrectQuestion() {
@@ -751,22 +757,25 @@ export default {
         ? true
         : false;
     },
-    evaluateQuestions() {
-      let acc = 0;
-      for (const answer of this.answeredQuestion) {
-        for (const option of answer.options) {
-          if (option.id === answer.answer) {
-            acc += option.value;
-          }
-        }
+    knowCompleteness() {
+      let isComplete = false;
+      let checkAnswers = [];
+      this.answeredQuestion.forEach((e) => checkAnswers.push(e.answer));
+      if (checkAnswers.includes(null)) {
+        isComplete = false;
       }
-      console.log(acc);
+      if (!checkAnswers.includes(null)) {
+        isComplete = true;
+      }
+      console.log(checkAnswers);
+      return isComplete;
     },
-    removeItemFromArr(arr, item) {
-      var i = arr.indexOf(item);
+  
+    removeItemFromArr(array, item) {
+      let e = array.indexOf(item);
 
-      if (i !== -1) {
-        arr.splice(i, 1);
+      if (e !== -1) {
+        array.splice(e, 1);
       }
     },
     backToWorksteps() {
@@ -779,6 +788,9 @@ export default {
         this.progressWorkData.includes(s.id) ? (acc += 1) : false;
       });
       return acc;
+    },
+    knowTextareaLength() {
+      return this.currentQuestion[0].textarea.length <= 100 ? true : false;
     },
     chargeListQuestion() {
       for (const element of this.questionList) {
