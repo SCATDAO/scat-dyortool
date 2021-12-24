@@ -312,7 +312,7 @@
                   </span>
                   <span>/</span>
 
-                  <span>100</span>
+                  <span>1000</span>
                 </div>
               </div>
             </template>

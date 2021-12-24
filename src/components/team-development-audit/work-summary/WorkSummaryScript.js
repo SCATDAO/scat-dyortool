@@ -30,6 +30,19 @@ export default {
       }
       this.totalScore = acc.toFixed(2);
     },
+    evaluateCategory(e) {
+      let acc = 0;
+      for (const element of this.answeredQuestion) {
+        if (element.category === e) {
+          for (const option of element.options) {
+            if (option.id === element.answer) {
+              acc += option.value;
+            }
+          }
+        }
+      }
+      return acc.toFixed(2);
+    },
     createBeforeProcess() {
       this.answeredQuestion.forEach((e) =>
         this.beforeEncodeProcess.push({
