@@ -1,5 +1,3 @@
-
-
 export default {
   data() {
     return {
@@ -744,7 +742,7 @@ export default {
       }
     },
     createNewReport() {
-      if (this.checkCorrectQuestion()) {
+      if (this.checkCorrectQuestion() && this.knowCompleteness()) {
         this.progressWorkData.push(this.currentQuestion[0].id);
         this.answeredQuestion[this.numberQuestion[0]] = this.currentQuestion[0];
         this.isFinished = !this.isFinished;
@@ -770,7 +768,7 @@ export default {
       console.log(checkAnswers);
       return isComplete;
     },
-  
+
     removeItemFromArr(array, item) {
       let e = array.indexOf(item);
 
