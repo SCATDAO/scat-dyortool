@@ -1,10 +1,17 @@
 <template>
   <div class="css-work-finished-wrap">
+<div class="custom-shape-divider-top-1640324069">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M1200 0L0 0 598.97 114.72 1200 0z" class="shape-fill"></path>
+    </svg>
+</div>
     <div class="css-work-finished">
       <div class="css-work-finished-tw">
         <div class="css-work-finished-ttw">
           <div class="css-work-finished-stw">
-            <div class="css-work-finished-stt" @click="createNewCanvas()">SUNDAESWAP - DYOR REPORT</div>
+            <div class="css-work-finished-stt" @click="createNewCanvas()">
+              SUNDAESWAP - DYOR REPORT
+            </div>
             <div class="css-work-finished-sfw">
               <div class="css-work-finished-sta"></div>
               <div class="css-work-finished-std">
@@ -34,22 +41,45 @@
                     />
                   </svg>
                 </div>
+                <div class="css-work-finished-shai">
+                  <svg
+                    id="SVGRoot"
+                    width="20px"
+                    height="20px"
+                    version="1.1"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m1.7473 17.601h16.505a0.75024 0.75024 0 1 1 0 1.5005h-16.505a0.75024 0.75024 0 1 1 0-1.5005zm9.0028-5.9479 5.5397-5.5412 1.0608 1.0608-7.4258 7.4273-7.4273-7.4273 1.0608-1.0608 5.6913 5.6913v-10.707h1.5005z"
+                      fill="#0069f5"
+                      stroke-width=".023445"
+                    />
+                  </svg>
+                </div>
                 <div class="css-work-finished-shai">Generate Report</div>
               </div>
             </div>
           </div>
           <div class="css-work-finished-sts">
             <div class="css-work-finished-sti">
-              Development Team <span>10.0</span>
+              Development Team
+              <span>{{ evaluateCategory("Team Development") }}</span>
             </div>
-            <div class="css-work-finished-sti">Tokenomics<span>20.0</span></div>
-            <div class="css-work-finished-sti">Community<span>40.0</span></div>
             <div class="css-work-finished-sti">
-              Trading Metrics<span>50.0</span>
+              Tokenomics<span>{{ evaluateCategory("Tokenomics") }}</span>
+            </div>
+            <div class="css-work-finished-sti">
+              Community<span>{{ evaluateCategory("Community") }}</span>
+            </div>
+            <div class="css-work-finished-sti">
+              Trading Metrics<span>{{ evaluateCategory("Metrics") }}</span>
             </div>
           </div>
           <div class="css-work-finished-sr">
-            <canvas class="camva" id="qr" style="image-rendering: pixelated">x</canvas>
+            <canvas class="camva" id="qr" style="image-rendering: pixelated"
+              >x</canvas
+            >
           </div>
         </div>
         <div class="css-work-finished-ttt"></div>
