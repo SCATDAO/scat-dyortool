@@ -742,7 +742,7 @@ export default {
       }
     },
     createNewReport() {
-      if (this.checkCorrectQuestion() && this.knowCompleteness()) {
+      if (this.checkCorrectQuestion()) {
         this.progressWorkData.push(this.currentQuestion[0].id);
         this.answeredQuestion[this.numberQuestion[0]] = this.currentQuestion[0];
         this.isFinished = !this.isFinished;
