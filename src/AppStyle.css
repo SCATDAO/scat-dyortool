@@ -232,6 +232,24 @@ li {
   justify-content: space-between;
 }
 
+@media (-webkit-device-pixel-ratio: 1.10) {
+  :root {
+    zoom: 0.9999;
+  }
+}
+
+@media (-webkit-device-pixel-ratio: 1.14) {
+  :root {
+    zoom: 0.8;
+  }
+}
+
+@media (-webkit-device-pixel-ratio: 1.25) {
+  :root {
+    zoom: 0.8;
+  }
+}
+
 @media (max-width: 600px) {
   header {
     height: 50px;
