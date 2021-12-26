@@ -6,7 +6,7 @@
         --gradient-color-1: #0069f5;
         --gradient-color-2: #339cff;
         --gradient-color-3: #0069f5;
-        --gradient-color-4: #0069f5;
+        --gradient-color-4: #0050dc;
       "
       id="gradient-canvas"
       data-transition-in
@@ -23,9 +23,27 @@
       </div>
 
       <div class="css-work-main-gte">
-        <div class="css-work-main-gtw">x</div>
+        <div class="css-work-main-gtw">
+          <div class="css-work-main-qrw">
+            <img src="./book.svg" alt="" />
+          </div>
 
-        <div class="css-work-main-gtw">x</div>
+          <div class="css-work-main-qrt">CREATE NEW REPORT</div>
+        </div>
+        <div class="css-work-main-gtw">
+          <div class="css-work-main-qrw">
+            <canvas id="qrd"></canvas>
+          </div>
+
+          <div class="css-work-main-qrt">SCAN QR CODE REPORT</div>
+        </div>
+      </div>
+    </div>
+    <div class="css-work-main-ses">
+      <div class="css-work-main-sss">
+        <div class="css-work-main-slc">
+          <h2>Knowing your Dapp before investing in it is the first step.</h2>
+        </div>
       </div>
     </div>
   </div>

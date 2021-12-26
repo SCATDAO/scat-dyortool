@@ -722,7 +722,11 @@ initGradientColors() {
 }
 }
 
+import { Blackhole }from 'blackhole-qr'
 
 export default {
-
+    mounted() {
+        const QR = new Blackhole()
+        QR.newQr('qrd', '1234567890', 150)
+      },
 }
