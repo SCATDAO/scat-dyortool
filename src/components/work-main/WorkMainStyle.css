@@ -11,6 +11,7 @@
   position: absolute;
   z-index: -1;
 }
+
 .css-work-main-banner {
   width: 100%;
   height: 800px;
@@ -51,9 +52,15 @@
 }
 
 .css-work-main-slc {
-  width: 600px;
-  padding-top: 4rem;
-  font-size: var(--text-size-sec);
+  width: 100%;
+  padding: 2rem 0;
+  padding-right: 3rem;
+}
+
+.css-work-main-slr {
+  width: 100%;
+  padding: 4rem 0;
+  display: flex;
 }
 
 .css-work-main-bnt {
@@ -81,6 +88,10 @@
   padding: 1rem 0;
 }
 
+.css-work-main-sli {
+  background: rgba(0, 128, 0, 0.068);
+}
+
 .css-work-main-qrt {
   color: var(--text-color-primary);
   margin-top: 1rem;
@@ -103,6 +114,10 @@
   transform: rotate(180deg);
 }
 
+.custom-shape-divider-bottom-1640461385 .shape-fill {
+  fill: #ffffff;
+}
+
 .custom-shape-divider-bottom-1640461385 svg {
   position: relative;
   display: block;
@@ -111,6 +126,6 @@
   transform: rotateY(180deg);
 }
 
-.custom-shape-divider-bottom-1640461385 .shape-fill {
-  fill: #ffffff;
+.css-work-main-slc h2 {
+  margin-top: 2rem;
 }
