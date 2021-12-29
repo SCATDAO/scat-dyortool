@@ -7,6 +7,7 @@
         --gradient-color-2: #339cff;
         --gradient-color-3: #0069f5;
         --gradient-color-4: #0050dc;
+        height:initial;
       "
       id="gradient-canvas"
       data-transition-in
@@ -17,7 +18,7 @@
     <div class="css-work-main-banner">
       <div class="css-work-main-bnt">
         <h1>
-          Do Your Own Research is a tool for evaluating Dapps in the Cardano
+          Do Your Own Research is a tool for evaluating Dapps in the crypto
           ecosystem
         </h1>
       </div>
@@ -47,7 +48,7 @@
             evaluate a Dapp before investing in it.
           </h2>
           <h2>
-            Useful for more experienced investors who to methodically research a
+            Useful for all investors who to methodically research a
             project and share the results with others.
           </h2>
           <h2>
@@ -57,10 +58,26 @@
         </div>
         <div class="css-work-main-slr">
           <div class="css-work-main-sli">
-            <h2>1. Select a project you want to research.</h2>
+            <div class="css-work-main-sii">
+              <div class="css-work-main-ssi">1.</div>
+              <span>Select a project you want to research.</span>
+            </div>
+            <div class="css-work-main-sii">
+              <div class="css-work-main-ssi">3.</div>
+              <span>
+                Generate a report and share the results with the crypto
+                community.</span
+              >
+            </div>
           </div>
           <div class="css-work-main-sli">
-            <h2>1. Select a project you want to research.</h2>
+            <div class="css-work-main-sii">
+              <div class="css-work-main-ssi">2.</div>
+              <span>
+                Perform all steps with each explanation to understand what you
+                are assessing.</span
+              >
+            </div>
           </div>
         </div>
       </div>
