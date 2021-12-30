@@ -4,7 +4,9 @@
   caret-color: transparent;
   display: flex;
   justify-content: center;
-  background: linear-gradient( 22.58deg, rgba(0, 80, 220, 1) 0%, rgba(0, 105, 245, 1) 100% );
+  background: var(--base-color-white-secondary);
+  box-shadow: 1px 1px 20px var(--border-primary);
+
 }
 
 .css-work-finished {
@@ -25,13 +27,25 @@
 }
 
 .css-work-finished-ttt {
-  height: 100px;
-  margin: 0 3rem;
-  margin-top: 3rem;
-  border: 1px solid var(--border-primary);
+  margin: 3rem;
   color: var(--text-color-primary);
   border-radius: 4px;
   display: flex;
+  flex-direction: column;
+  box-sizing: content-box;
+}
+
+.css-work-finished-qai {
+  margin-top: 1rem;
+  font-weight: bold;
+  display: flex;
+  padding: 2rem 2rem;
+  align-items: center;
+
+  border: 1px solid var(--border-primary);
+  box-shadow: 1px 1px 20px var(--border-primary);
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .css-work-finished-stw {
@@ -143,7 +157,6 @@
   display: block;
   width: calc(173% + 1.3px);
   height: 259px;
-  
 }
 
 .custom-shape-divider-top-1640324069 .shape-fill {

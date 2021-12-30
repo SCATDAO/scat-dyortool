@@ -1,10 +1,15 @@
 <template>
   <div class="css-work-finished-wrap">
-<div class="custom-shape-divider-top-1640324069">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+    <div class="custom-shape-divider-top-1640324069">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
         <path d="M1200 0L0 0 598.97 114.72 1200 0z" class="shape-fill"></path>
-    </svg>
-</div>
+      </svg>
+    </div>
     <div class="css-work-finished">
       <div class="css-work-finished-tw">
         <div class="css-work-finished-ttw">
@@ -77,12 +82,19 @@
             </div>
           </div>
           <div class="css-work-finished-sr">
-            <canvas class="camva" id="qr" style="image-rendering: pixelated"
-              >x</canvas
-            >
+            <canvas
+              class="camva"
+              id="qr"
+              style="image-rendering: pixelated"
+            ></canvas>
           </div>
         </div>
-        <div class="css-work-finished-ttt"></div>
+        <div class="css-work-finished-ttt">
+          <div class="css-work-finished-qai">Development Team</div>
+          <div class="css-work-finished-qai">Tokenomics</div>
+          <div class="css-work-finished-qai">Community</div>
+          <div class="css-work-finished-qai">Trading Metrics</div>
+        </div>
       </div>
     </div>
   </div>
