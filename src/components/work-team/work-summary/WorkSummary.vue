@@ -20,7 +20,7 @@
             <div class="css-work-finished-sfw">
               <div class="css-work-finished-sta"></div>
               <div class="css-work-finished-std">
-                <div>Total Score</div>
+                <div>Total Percentage</div>
                 <div class="css-work-finished-stx">
                   {{ totalScore }}
                 </div>
@@ -41,8 +41,8 @@
                     <path
                       d="m13.918 6.2987-7.0549 4.4096a2.9881 2.9881 0 0 1 0.1197 1.2195l6.5447 2.4539a2.9925 2.9926 0 1 1-0.52519 1.4005l-6.5432-2.4539a2.9925 2.9926 0 1 1-0.38903-3.8873l7.0534-4.4096a2.9925 2.9926 0 1 1 0.79302 1.2688z"
                       fill="#0069f5"
-                      stroke="#0069f5"
-                      stroke-width=".023379"
+                      stroke="#ffffff"
+                      stroke-width=".001"
                     />
                   </svg>
                 </div>
@@ -58,11 +58,12 @@
                     <path
                       d="m1.7473 17.601h16.505a0.75024 0.75024 0 1 1 0 1.5005h-16.505a0.75024 0.75024 0 1 1 0-1.5005zm9.0028-5.9479 5.5397-5.5412 1.0608 1.0608-7.4258 7.4273-7.4273-7.4273 1.0608-1.0608 5.6913 5.6913v-10.707h1.5005z"
                       fill="#0069f5"
-                      stroke-width=".023445"
+                      stroke="#0069f5"
+                      stroke-width="0.3"
                     />
                   </svg>
                 </div>
-                <div class="css-work-finished-shai">Generate Report</div>
+                <div class="css-work-finished-shai">Show Full Report</div>
               </div>
             </div>
           </div>
@@ -90,7 +91,44 @@
           </div>
         </div>
         <div class="css-work-finished-ttt">
-          <div class="css-work-finished-qai">Development Team</div>
+          <div
+            class="css-work-finished-qai"
+            @click="openDownCategory[0] = !openDownCategory[0]"
+          >
+            Development Team
+            <button>
+              <svg
+                class="css-work-finished-arrow"
+                :class="{ active: openDownCategory[0] === true }"
+                width="20"
+                height="20"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
+                data-v-365b8594=""
+              >
+                <path
+                  fill="currentColor"
+                  d="M104.704 338.752a64 64 0 0190.496 0l316.8 316.8 316.8-316.8a64 64 0 0190.496 90.496L557.248 791.296a64 64 0 01-90.496 0L104.704 429.248a64 64 0 010-90.496z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <template v-if="openDownCategory[0] === true">
+            <div class="css-work-finished-qao">
+              <div class="css-work-finished-qah">
+                <div style="font-weight: bold">Total Questions: 7</div>
+                <div style="font-weight: bold">Total Score: 17/20</div>
+                <div style="font-weight: bold">Total Percentage: 78%</div>
+              </div>
+              <div
+                class="css-work-finished-qah"
+                v-for="element in filterByCategory('Team Development')"
+                :key="element"
+              >
+                {{ element.question }}
+              </div>
+            </div>
+          </template>
           <div class="css-work-finished-qai">Tokenomics</div>
           <div class="css-work-finished-qai">Community</div>
           <div class="css-work-finished-qai">Trading Metrics</div>
