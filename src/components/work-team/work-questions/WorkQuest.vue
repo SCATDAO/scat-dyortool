@@ -183,6 +183,8 @@
                 {{ category.name }}
               </li>
             </ul>
+
+            <div class="css-work-project-scc"></div>
           </div>
         </div>
       </template>
@@ -288,7 +290,7 @@
                   id="css-work-quest-panel-bl"
                   @click="item.answer = 0"
                 >
-                  <img src="./dart.svg" alt="" />
+                  <img width="20" src="./dart.svg" alt="" />
                   <span class="dot"></span>
                 </button>
               </div>

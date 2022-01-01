@@ -16,6 +16,7 @@ export default {
       totalScore: 0,
       beforeEncodeProcess: [],
       afterEncodeProcess: [],
+      openDownCategory: [0, 0, 0, 0],
     };
   },
   methods: {
@@ -42,6 +43,23 @@ export default {
         }
       }
       return acc.toFixed(2);
+    },
+    showAnswerData(e) {
+      for (let o of e.options) {
+        console.log(o.id)
+        if (o.id === e.answer) {
+          return o.value.toFixed(2);
+        }
+      }
+    },
+    filterByCategory(category) {
+      let byCategory = [];
+      for (let e of this.answeredQuestion) {
+        if (e.category === category) {
+          byCategory.push(e);
+        }
+      }
+      return byCategory;
     },
     createBeforeProcess() {
       this.answeredQuestion.forEach((e) =>

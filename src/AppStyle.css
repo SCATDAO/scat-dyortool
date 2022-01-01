@@ -10,7 +10,8 @@
   --text-size-third: 1.563rem;
   --text-size-fourth: 1.953rem;
   --text-size-fifth: 2.441rem;
-  --text-size-sixth: 2.441rem;
+  --text-size-sixth: 3.052rem;
+  --text-size-seventh: 3.815rem;
 
   --base-color-black-primary: #070a0e;
   --base-color-black-secondary: #86898d;
@@ -56,6 +57,7 @@ ol {
 li {
   margin-top: 0.5rem;
 }
+
 
 #app {
   font-family: "Nunito", sans-serif;

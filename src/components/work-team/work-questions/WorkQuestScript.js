@@ -713,13 +713,11 @@ export default {
       this.currentQuestion = [];
     },
     nextAnswerQuestion() {
-      if (this.checkCorrectQuestion()) {
-        this.progressWorkData.push(this.currentQuestion[0].id);
-        this.answeredQuestion[this.numberQuestion[0]] =
-          this.currentQuestion.pop();
-        this.numberQuestion[0] += 1;
-        this.changeCurrentQuestion();
-      }
+      this.checkCorrectQuestion();
+      this.answeredQuestion[this.numberQuestion[0]] =
+        this.currentQuestion.pop();
+      this.numberQuestion[0] += 1;
+      this.changeCurrentQuestion();
     },
     backAnswerQuestion() {
       this.cleanCurrentQuestion();
@@ -750,9 +748,8 @@ export default {
       }
     },
     checkCorrectQuestion() {
-      return this.currentQuestion[0].answer &&
-        this.currentQuestion[0].textarea.length > 100
-        ? true
+      return this.currentQuestion[0].answer
+        ? this.progressWorkData.push(this.currentQuestion[0].id)
         : false;
     },
     knowCompleteness() {

@@ -476,6 +476,9 @@ textarea:focus-within {
   margin-bottom: 2rem;
 }
 
+.css-work-project-scc{
+  height: 200px;
+}
 .css-work-project-name {
   text-align: center;
 }
