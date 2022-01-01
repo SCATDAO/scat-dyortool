@@ -45,25 +45,20 @@ export default {
       return acc.toFixed(2);
     },
     showAnswerData(e) {
-      for (const element of this.answeredQuestion) {
-        if (element.category === e) {
-          for (const option of element.options) {
-            if (option.id === element.answer) {
-              console.log();
-            }
-          }
+      for (let o of e.options) {
+        console.log(o.id)
+        if (o.id === e.answer) {
+          return o.value.toFixed(2);
         }
       }
     },
     filterByCategory(category) {
       let byCategory = [];
       for (let e of this.answeredQuestion) {
-        console.log(e.category)
         if (e.category === category) {
           byCategory.push(e);
         }
       }
-      console.log(byCategory)
       return byCategory;
     },
     createBeforeProcess() {
