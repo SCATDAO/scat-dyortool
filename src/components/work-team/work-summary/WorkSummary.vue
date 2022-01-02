@@ -116,8 +116,8 @@
           <template v-if="openDownCategory[0] === true">
             <div class="css-work-finished-qao">
               <div class="css-work-finished-qah">
-                <div>Total Questions: 7</div>
-                <div>Total Score: {{ evaluateCategory("Development Team") }} / 7.00</div>
+                <div style="font-weight: bold">Total Score:</div>
+                <div>{{ evaluateCategory("Development Team") }} / 7.00</div>
               </div>
               <div
                 class="css-work-finished-qah"
@@ -126,16 +126,18 @@
               >
                 {{ element.question }}
 
-                <div>{{ showAnswerData(element) }}</div>
+                <div>
+                  {{ showAnswerData(element) }} / {{ knowMaxValue(element) }}
+                </div>
               </div>
             </div>
           </template>
 
-         <div
+          <div
             class="css-work-finished-qai"
             @click="openDownCategory[1] = !openDownCategory[1]"
           >
-           Tokenomics
+            Tokenomics
             <button>
               <svg
                 class="css-work-finished-arrow"
@@ -156,8 +158,8 @@
           <template v-if="openDownCategory[1] === true">
             <div class="css-work-finished-qao">
               <div class="css-work-finished-qah">
-                <div >Total Questions: 7</div>
-                <div >Total Score: {{ evaluateCategory("Tokenomics") }} / 7.00</div>
+                <div style="font-weight: bold">Total Score:</div>
+                <div>{{ evaluateCategory("Tokenomics") }} / 7.00</div>
               </div>
               <div
                 class="css-work-finished-qah"
@@ -166,16 +168,13 @@
               >
                 {{ element.question }}
 
-                <div>{{ showAnswerData(element) }}</div>
+                <div>
+                  {{ showAnswerData(element) }} / {{ knowMaxValue(element) }}
+                </div>
               </div>
             </div>
           </template>
-
-
-          
-          <div class="css-work-finished-qac">
-
-          </div>
+          <div class="css-work-finished-qac"></div>
         </div>
       </div>
     </div>
