@@ -52,6 +52,13 @@ export default {
         }
       }
     },
+    knowMaxValue(e) {
+      let acc = [];
+      for (let o of e.options) {
+        acc.push(o.value)
+      }
+      return (Math.max(...acc).toFixed(2))
+    },
     filterByCategory(category) {
       let byCategory = [];
       for (let e of this.answeredQuestion) {
