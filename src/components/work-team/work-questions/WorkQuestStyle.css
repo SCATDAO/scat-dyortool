@@ -57,9 +57,6 @@ textarea:focus-within {
   position: relative;
 }
 
-.css-length-counter.active {
-}
-
 .css-work-quest-panel-ta div {
   right: 0%;
   bottom: 0%;
@@ -98,6 +95,61 @@ textarea:focus-within {
   cursor: default;
 }
 
+.css-work-quest-gtt {
+  color: var(--complementary-color-blue);
+  font-size: var(--text-size-secondary);
+}
+.css-work-quest-got {
+  width: 200px;
+  height: 100px;
+  max-width: 200px;
+  max-height: 100px;
+  padding: 1%;
+  box-sizing: border-box;
+  z-index: 10;
+  right: -222px;
+  position: absolute;
+  background: var(--base-color-white-primary);
+  border: 1px solid rgba(0, 105, 245, 0.1);
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.css-work-quest-got button {
+  padding: 5px 10px;
+  border: none;
+  background: var(--complementary-color-blue);
+  border-radius: 4px;
+  color: #ffffff;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.css-work-quest-got::before {
+  content: "";
+  position: absolute;
+  transition: all 0s ease-in;
+}
+
+.css-work-quest-got::before {
+  left: -21px;
+  bottom: 40px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-right: 10px solid rgba(0, 105, 245, 0.1);
+}
+
+.css-work-quest-got:hover::before {
+  border-right: 10px solid rgba(0, 105, 245, 0.2);
+}
+.css-work-quest-got:hover {
+  border: 1px solid rgba(0, 105, 245, 0.2);
+}
+
 .css-work-quest-panel {
   background: var(--base-color-white-primary);
   height: 3rem;
@@ -111,8 +163,8 @@ textarea:focus-within {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
-
 
 .css-work-quest-panel-b {
   background: transparent;
@@ -476,7 +528,7 @@ textarea:focus-within {
   margin-bottom: 2rem;
 }
 
-.css-work-project-scc{
+.css-work-project-scc {
   height: 200px;
 }
 .css-work-project-name {

@@ -174,6 +174,91 @@
               </div>
             </div>
           </template>
+
+          <div
+            class="css-work-finished-qai"
+            @click="openDownCategory[2] = !openDownCategory[2]"
+          >
+            Community
+            <button>
+              <svg
+                class="css-work-finished-arrow"
+                :class="{ active: openDownCategory[2] === true }"
+                width="20"
+                height="20"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
+                data-v-365b8594=""
+              >
+                <path
+                  fill="currentColor"
+                  d="M104.704 338.752a64 64 0 0190.496 0l316.8 316.8 316.8-316.8a64 64 0 0190.496 90.496L557.248 791.296a64 64 0 01-90.496 0L104.704 429.248a64 64 0 010-90.496z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <template v-if="openDownCategory[2] === true">
+            <div class="css-work-finished-qao">
+              <div class="css-work-finished-qah">
+                <div style="font-weight: bold">Total Score:</div>
+                <div>{{ evaluateCategory("Community") }} / 7.00</div>
+              </div>
+              <div
+                class="css-work-finished-qah"
+                v-for="element in filterByCategory('Community')"
+                :key="element"
+              >
+                {{ element.question }}
+
+                <div>
+                  {{ showAnswerData(element) }} / {{ knowMaxValue(element) }}
+                </div>
+              </div>
+            </div>
+          </template>
+
+          <div
+            class="css-work-finished-qai"
+            @click="openDownCategory[3] = !openDownCategory[3]"
+          >
+            Metrics
+            <button>
+              <svg
+                class="css-work-finished-arrow"
+                :class="{ active: openDownCategory[3] === true }"
+                width="20"
+                height="20"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
+                data-v-365b8594=""
+              >
+                <path
+                  fill="currentColor"
+                  d="M104.704 338.752a64 64 0 0190.496 0l316.8 316.8 316.8-316.8a64 64 0 0190.496 90.496L557.248 791.296a64 64 0 01-90.496 0L104.704 429.248a64 64 0 010-90.496z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <template v-if="openDownCategory[3] === true">
+            <div class="css-work-finished-qao">
+              <div class="css-work-finished-qah">
+                <div style="font-weight: bold">Total Score:</div>
+                <div>{{ evaluateCategory("Metrics") }} / 7.00</div>
+              </div>
+              <div
+                class="css-work-finished-qah"
+                v-for="element in filterByCategory('Metrics')"
+                :key="element"
+              >
+                {{ element.question }}
+
+                <div>
+                  {{ showAnswerData(element) }} / {{ knowMaxValue(element) }}
+                </div>
+              </div>
+            </div>
+          </template>
+
           <div class="css-work-finished-qac"></div>
         </div>
       </div>
