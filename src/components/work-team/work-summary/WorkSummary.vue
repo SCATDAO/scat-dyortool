@@ -70,7 +70,7 @@
           <div class="css-work-finished-sts">
             <div class="css-work-finished-sti">
               Development Team
-              <span>{{ evaluateCategory("Team Development") }}</span>
+              <span>{{ evaluateCategory("Development Team") }}</span>
             </div>
             <div class="css-work-finished-sti">
               Tokenomics<span>{{ evaluateCategory("Tokenomics") }}</span>
@@ -117,11 +117,11 @@
             <div class="css-work-finished-qao">
               <div class="css-work-finished-qah">
                 <div>Total Questions: 7</div>
-                <div>Total Score: {{ evaluateCategory("Team Development") }} / 7.00</div>
+                <div>Total Score: {{ evaluateCategory("Development Team") }} / 7.00</div>
               </div>
               <div
                 class="css-work-finished-qah"
-                v-for="element in filterByCategory('Team Development')"
+                v-for="element in filterByCategory('Development Team')"
                 :key="element"
               >
                 {{ element.question }}
