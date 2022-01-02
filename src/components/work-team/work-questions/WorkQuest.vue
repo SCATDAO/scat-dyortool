@@ -293,6 +293,21 @@
                   <img width="20" src="./dart.svg" alt="" />
                   <span class="dot"></span>
                 </button>
+                <template v-if="visualHelper['evaluate'] === 0">
+                  <div class="css-work-quest-got">
+                    <div class="box box--left"></div>
+                    <div class="css-work-quest-gtt">
+                      Click on the magnifying glass to evaluate this question.
+                    </div>
+                    <button
+                      @click="
+                        visualHelper['evaluate'] = !visualHelper['evaluate']
+                      "
+                    >
+                      I got it
+                    </button>
+                  </div>
+                </template>
               </div>
             </template>
             <template v-if="item.answer === null">

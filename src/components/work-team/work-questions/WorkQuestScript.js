@@ -653,6 +653,11 @@ export default {
       currentQuestion: [],
       answeredQuestion: [],
       checkedOption: "",
+      visualHelper: {
+        purpose: 0,
+        evaluate: 0,
+        example: 0
+      },
       isFinished: false,
       result: "",
       error: "",
@@ -709,12 +714,11 @@ export default {
       }
     },
     createNewReport() {
-      if (this.checkCorrectQuestion()) {
-        this.progressWorkData.push(this.currentQuestion[0].id);
-        this.answeredQuestion[this.numberQuestion[0]] = this.currentQuestion[0];
-        this.isFinished = !this.isFinished;
-        this.workspace = !this.workspace;
-      }
+      this.checkCorrectQuestion();
+      this.progressWorkData.push(this.currentQuestion[0].id);
+      this.answeredQuestion[this.numberQuestion[0]] = this.currentQuestion[0];
+      this.isFinished = !this.isFinished;
+      this.workspace = !this.workspace;
     },
     checkCorrectQuestion() {
       return this.currentQuestion[0].answer
