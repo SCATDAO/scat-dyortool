@@ -1,5 +1,5 @@
 <template>
-  <WorkMain></WorkMain>
+  <WorkQuest></WorkQuest>
 </template>
 <script src="./AppScript.js"></script>
 
