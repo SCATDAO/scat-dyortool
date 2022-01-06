@@ -607,17 +607,17 @@
               <span>Select a project you want to research.</span>
             </div>
             <div class="css-work-main-sii">
-              <div class="css-work-main-ssi">3.</div>
-              <span> Perform all steps.</span>
-            </div>
-          </div>
-          <div class="css-work-main-sli">
-            <div class="css-work-main-sii">
               <div class="css-work-main-ssi">2.</div>
               <span>
                 Read each explanation to understand what you are
                 assessing.</span
               >
+            </div>
+          </div>
+          <div class="css-work-main-sli">
+            <div class="css-work-main-sii">
+              <div class="css-work-main-ssi">3.</div>
+              <span> Perform all steps.</span>
             </div>
             <div class="css-work-main-sii">
               <div class="css-work-main-ssi">4.</div>
@@ -1462,10 +1462,12 @@ export default {
 .css-work-main-sii {
   border: var(--border-primary);
   margin-top: 2rem;
+  width: 100%;
   height: 6rem;
   display: flex;
   padding: 0 2rem;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .css-work-main-ssi {
@@ -1505,6 +1507,7 @@ export default {
   width: 100%;
   padding: 1rem 0;
   display: flex;
+  flex-direction: column;
 }
 
 .css-work-main-bnt {
@@ -1539,12 +1542,11 @@ export default {
 
 .css-work-main-sli {
   display: flex;
-  flex-direction: column;
 }
 
 .css-work-main-qrt {
   color: var(--text-color-primary);
-  padding: 0 1rem;
+  padding: 0 2rem;
   font-weight: bold;
   margin-top: 1rem;
   width: 100%;
@@ -1724,8 +1726,17 @@ export default {
     font-size: var(--text-size-third);
   }
 
+  .css-work-main-sli {
+    flex-direction: column;
+  }
+
   .css-work-main-slr {
+    flex-direction: column;
     background: var(--base-color-white-primary);
+  }
+
+  .css-work-main-sii {
+    padding: 0 10%;
   }
 }
 </style>
