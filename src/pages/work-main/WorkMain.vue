@@ -525,38 +525,80 @@
             </svg>
           </div>
 
-          <div class="css-work-main-qrt">CREATE NEW REPORT</div>
+          <div class="css-work-main-qrt">
+            <div>NEW REPORT</div>
+            <div class="css-work-main-qrd">
+              <svg
+                id="SVGRoot"
+                width="16px"
+                height="16px"
+                version="1.1"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m6.8679 1.1232a0.56049 0.56049 0 0 1 0.80316 0.00124l6.3834 6.5497a0.61592 0.61592 0 0 1 0 0.85983l-6.3834 6.5497a0.56049 0.56049 0 0 1-0.80316 0 0.58882 0.58882 0 0 1 0-0.82287l6.0028-6.1567-6.0028-6.1592a0.58882 0.58882 0 0 1 0-0.82164zm-4.9274 0a0.56049 0.56049 0 0 1 0.80316 0.00124l6.3834 6.5497a0.61592 0.61592 0 0 1 0 0.85983l-6.3834 6.5497a0.56049 0.56049 0 0 1-0.80316 0 0.58882 0.58882 0 0 1 0-0.82287l6.0028-6.1567-6.0028-6.1592a0.58882 0.58882 0 0 1 0-0.82164z"
+                  fill="#001737"
+                  fill-opacity=".99961"
+                  stroke-width=".019247"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
         <div class="css-work-main-gtw">
           <div class="css-work-main-qrw">
             <canvas id="mini-qr"></canvas>
           </div>
 
-          <div class="css-work-main-qrt">SCAN QR CODE</div>
+          <div class="css-work-main-qrt">
+            <div>SCAN QR CODE</div>
+            <svg
+              id="SVGRoot"
+              width="16px"
+              height="16px"
+              version="1.1"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m6.8679 1.1232a0.56049 0.56049 0 0 1 0.80316 0.00124l6.3834 6.5497a0.61592 0.61592 0 0 1 0 0.85983l-6.3834 6.5497a0.56049 0.56049 0 0 1-0.80316 0 0.58882 0.58882 0 0 1 0-0.82287l6.0028-6.1567-6.0028-6.1592a0.58882 0.58882 0 0 1 0-0.82164zm-4.9274 0a0.56049 0.56049 0 0 1 0.80316 0.00124l6.3834 6.5497a0.61592 0.61592 0 0 1 0 0.85983l-6.3834 6.5497a0.56049 0.56049 0 0 1-0.80316 0 0.58882 0.58882 0 0 1 0-0.82287l6.0028-6.1567-6.0028-6.1592a0.58882 0.58882 0 0 1 0-0.82164z"
+                fill="#001737"
+                fill-opacity=".99961"
+                stroke-width=".019247"
+              />
+            </svg>
+          </div>
         </div>
       </div>
     </div>
     <div class="css-work-main-ses">
       <div class="css-work-main-sss">
         <div class="css-work-main-slc">
-          <h2>
-            <span
-              >Designed to give you the knowledge and resources to properly
-              assess a project before investing in it.</span
-            >
-          </h2>
-          <h2>
-            <span>
-              Useful for all investors who want to methodically research a
-              project and share the results with others.</span
-            >
-          </h2>
-          <h2>
-            <span>
-              $7.7 billion was stolen in crypto scams in 2021. Do Your Own
-              Research so this doesn’t happen to you.</span
-            >
-          </h2>
+          <div class="css-work-main-slw" id="slide-left1">
+            <h2>
+              <span
+                >Designed to give you the knowledge and resources to properly
+                assess a project before investing in it.</span
+              >
+            </h2>
+          </div>
+          <div class="css-work-main-slw" id="slide-left2">
+            <h2>
+              <span>
+                Useful for all investors who want to methodically research a
+                project and share the results with others.</span
+              >
+            </h2>
+          </div>
+          <div class="css-work-main-slw" id="slide-left3">
+            <h2>
+              <span>
+                $7.7 billion was stolen in crypto scams in 2021. Do Your Own
+                Research so this doesn’t happen to you.</span
+              >
+            </h2>
+          </div>
         </div>
         <div class="css-work-main-slr">
           <div class="css-work-main-sli">
@@ -1405,7 +1447,6 @@ export default {
 }
 
 .css-work-main-qrw {
-  cursor: pointer;
   border: 1px solid var(--border-primary);
   border-radius: 8px;
   width: fit-content;
@@ -1414,6 +1455,10 @@ export default {
   box-shadow: 1px 1px 1px 20px var(--shadow-blue);
 }
 
+.css-work-main-slw {
+  border: none;
+  margin-top: 2rem;
+}
 .css-work-main-sii {
   border: var(--border-primary);
   margin-top: 2rem;
@@ -1485,6 +1530,7 @@ export default {
   box-shadow: 1px 1px 1px 1px rgba(7, 10, 14, 0.2);
   box-sizing: border-box;
   display: flex;
+  cursor: pointer;
   flex-direction: column;
   align-items: center;
   padding: 1rem 0;
@@ -1500,6 +1546,12 @@ export default {
   color: var(--text-color-primary);
   padding: 0 1rem;
   font-weight: bold;
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .css-work-main-header {
@@ -1529,12 +1581,55 @@ export default {
   transform: rotateY(180deg);
 }
 
-.css-work-main-slc h2 {
-  margin-top: 2rem;
+.css-work-main-qrd {
+  right: 0;
+  display: flex;
 }
 
 .css-work-main-slc span {
   font-size: var(--text-size-third);
+}
+
+#slide-left1 {
+  animation-name: slideLeft1;
+  animation-duration: 1s;
+}
+
+#slide-left2 {
+  animation-name: slideLeft2;
+  animation-duration: 1s;
+}
+
+#slide-left3 {
+  animation-name: slideLeft3;
+  animation-duration: 1s;
+}
+
+@keyframes slideLeft1 {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideLeft2 {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideLeft3 {
+  0% {
+    transform: translateX(-300px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: 600px) {
@@ -1558,6 +1653,11 @@ export default {
     padding: 0;
   }
 
+  .css-work-main-slw {
+    border-top: 1px solid var(--base-color-white-secondary);
+    padding: 2rem 10%;
+  }
+
   .css-work-main-bnt {
     width: 100%;
     padding: 0 10%;
@@ -1573,10 +1673,14 @@ export default {
     width: 100%;
     flex-direction: column;
     background: var(--base-color-white-primary);
-    border-top-right-radius: 40px;
-    border-top-left-radius: 40px;
+    border-top-right-radius: 32px;
+    border-top-left-radius: 32px;
     box-sizing: border-box;
     padding: 10%;
+  }
+
+  .css-work-main-sss {
+    border: none;
   }
 
   .css-work-main-gtw {
@@ -1588,13 +1692,26 @@ export default {
     box-shadow: 1px 1px 20px var(--border-primary);
   }
 
+  .css-work-main-qrt {
+    width: 100%;
+    margin: initial;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
+  .css-work-main-qrd {
+    right: 0;
+    display: flex;
+  }
+
   .css-work-main-sss {
     flex-direction: column;
   }
 
   .css-work-main-slc {
     background: var(--base-color-white-primary);
-    padding: 0 10%;
+    padding: 0;
     box-sizing: border-box;
   }
 
@@ -1605,6 +1722,10 @@ export default {
 
   .css-work-main-slc span {
     font-size: var(--text-size-third);
+  }
+
+  .css-work-main-slr {
+    background: var(--base-color-white-primary);
   }
 }
 </style>
