@@ -1,29 +1,29 @@
 {
-  "name": "DYOR",
+  "name": "scat-dyor",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
-    "build": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
-    "lint": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "blackhole-qr": "^1.2.0",
-    "cbor": "^8.1.0",
     "core-js": "^3.6.5",
-    "pako": "^2.0.4",
-    "qrious": "^4.0.2",
+    "node-polyfill-webpack-plugin": "^1.1.4",
     "vue": "^3.0.0",
-    "vue-qrcode-reader": "^3.1.0"
+    "vue-router": "^4.0.12",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0-rc.1",
+    "@vue/cli-plugin-eslint": "~5.0.0-rc.1",
+    "@vue/cli-service": "~5.0.0-rc.1",
     "@vue/compiler-sfc": "^3.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3"
   },
   "eslintConfig": {
     "root": true,
@@ -35,7 +35,7 @@
       "eslint:recommended"
     ],
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@babel/eslint-parser"
     },
     "rules": {}
   },

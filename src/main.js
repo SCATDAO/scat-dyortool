@@ -1,18 +1,13 @@
-import { createApp } from "vue";
-import App from "./App.vue";
+import { createApp } from 'vue'
+import router from './router'
+import store from './router'
 
-import WorkMain from "./components/work-main/WorkMain";
-import WorkQuest from "./components/work-team/work-questions/WorkQuest";
-import WorkSummary from "./components/work-team/work-summary/WorkSummary";
-
-import VueQrcodeReader from "vue-qrcode-reader";
+import App from './App.vue'
 
 const app = createApp(App);
 
-app.component("WorkMain", WorkMain);
-app.component("WorkQuest", WorkQuest);
-app.component("WorkSummary", WorkSummary);
+app.use(router)
+app.use(store)
 
-app.mount("#app");
+app.mount('#app')
 
-app.use(VueQrcodeReader);
