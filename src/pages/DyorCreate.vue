@@ -2,11 +2,12 @@
   <div class="css-dyor-create-wrap">
     <header class="css-dyor-create-header">
       <svg
-        id="logo"
+        class="css-logo"
         width="120px"
         height="24px"
         version="1.1"
         viewBox="0 0 120 24"
+        @click="navToPath('/main')"
       >
         <g transform="matrix(.10159 0 0 .10159 -5.4495 -4.4501)" fill="#0069f5">
           <g fill="#0069f5">
@@ -297,32 +298,61 @@
     </header>
     <div class="css-dyor-create-ndw">
       <div class="css-dyor-create-ndf">
-        <div class="css-dyor-create-ndt">Dapp details</div>
+        <div class="css-dyor-create-ndt">
+          Knowing your project is the first step to invest.
+        </div>
         <form action="">
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">Project Name</div>
-            <input type="text" />
+            <input v-model="currentAudit.pn" type="text" />
           </div>
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">Website</div>
-            <input type="text" />
+            <input v-model="currentAudit.pw" type="text" />
           </div>
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">Category</div>
-            <input type="text" />
+            <input v-model="currentAudit.pc" type="text" />
+          </div>
+          <div class="css-dyor-create-nsi">
+            <div class="css-dyor-create-nst">Your Name</div>
+            <input v-model="currentAudit.an" type="text" />
           </div>
           <div class="css-dyor-create-nsl">
             <div class="css-dyor-create-nst">Dapp/Token logo</div>
             <div class="css-dyor-create-nti"></div>
           </div>
         </form>
+        <button class="css-dyor-create-asa" @click="modifyState()">
+          Create New Report
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      currentAudit: {
+        an: "",
+        pn: "",
+        pw: "",
+        pc: "",
+        pl: [],
+      },
+    };
+  },
+  methods: {
+    modifyState() {
+      this.$store.commit("modifyState", this.currentAudit);
+    },
+    navToPath(path) {
+      this.$router.push(path);
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -340,15 +370,28 @@ export default {};
 .css-dyor-create-header {
   background: var(--base-color-white-primary);
   height: 64px;
-  padding: 0 10%;
 }
 
 .css-dyor-create-ndw {
   width: 100%;
   height: 100vh;
   display: flex;
-  padding: 3rem 30rem;
+  padding: 3rem 40rem;
   box-sizing: border-box;
+}
+
+.css-logo {
+  cursor: pointer;
+}
+.css-dyor-create-asa {
+  height: 3rem;
+  background: var(--complementary-color-blue);
+  border: var(--complementary-color-blue);
+  border-radius: 8px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 2rem;
 }
 
 .css-dyor-create-ndf {
@@ -376,7 +419,7 @@ export default {};
 }
 
 .css-dyor-create-nsi {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 .css-dyor-create-nsl {

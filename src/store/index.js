@@ -2,14 +2,22 @@ import { createStore } from 'vuex'
 
 
 const store = createStore({
-  state () {
+  state() {
     return {
-      count: 0
+      count: 0,
+      currentAudit: {
+        an: '',
+        pn: '',
+        pw: '',
+        pc: '',
+        pl: [],
+      }
     }
   },
   mutations: {
-    increment (state) {
-      state.count++
+    modifyState(state, payload) {
+      state.currentAudit = payload;
+      console.log(state.currentAudit);
     }
   }
 })

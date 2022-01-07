@@ -638,6 +638,9 @@ import { Blackhole } from "blackhole-qr";
 import CanvasGradient from "../components/CanvasGradient";
 
 export default {
+  components: {
+    CanvasGradient,
+  },
   data() {
     return {
       isMainPath: false,
@@ -645,18 +648,14 @@ export default {
   },
   mounted() {
     this.isMainPath = true;
-    const QR = new Blackhole();
-    QR.newQr("mini-qr", "1234567890", 150);
-  },
-  components: {
-    "canvas-gradient": CanvasGradient,
+    const qr = new Blackhole();
+    qr.newQr("mini-qr", "1234567890", 150);
   },
   methods: {
     navToPath(path) {
       this.$router.push(path);
     },
   },
-  unmounted() {},
 };
 </script>
 
