@@ -297,10 +297,10 @@
     </header>
     <div class="css-dyor-create-ndw">
       <div class="css-dyor-create-ndf">
-        <div class="css-dyor-create-ndt">Dapp settings</div>
+        <div class="css-dyor-create-ndt">Dapp details</div>
         <form action="">
           <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">Name</div>
+            <div class="css-dyor-create-nst">Project Name</div>
             <input type="text" />
           </div>
           <div class="css-dyor-create-nsi">
