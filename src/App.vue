@@ -60,6 +60,7 @@ header {
   box-sizing: border-box;
   padding: 0 1.5rem;
   z-index: 20;
+  padding: 0 10%;
 }
 
 ol {

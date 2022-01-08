@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name:"canvas-gradient",
   mounted() {
     this.showGradient();
   },
