@@ -298,32 +298,62 @@
     </header>
     <div class="css-dyor-create-ndw">
       <div class="css-dyor-create-ndf">
-        <div class="css-dyor-create-ndt">
-          Knowing your project is the first step to invest.
+        <div class="css-dyor-create-ndt">Setting your project</div>
+        <div class="css-dyor-create-sdt">
+          Fill out the following form with details of the project
         </div>
-        <form action="">
+        <div class="css-dyor-create-faw">
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">Project Name</div>
-            <input v-model="currentAudit.pn" type="text" />
+            <input
+              class="css-dyor-create-nii"
+              v-model="currentAudit.pn"
+              type="text"
+              placeholder="Project name..."
+            />
           </div>
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">Website</div>
-            <input v-model="currentAudit.pw" type="text" />
+            <input
+              class="css-dyor-create-nii"
+              v-model="currentAudit.pw"
+              type="text"
+              placeholder="www.example.com"
+            />
           </div>
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">Category</div>
-            <input v-model="currentAudit.pc" type="text" />
+            <input
+              class="css-dyor-create-nii"
+              v-model="currentAudit.pc"
+              type="text"
+              placeholder="DEX, NFT, stablecoin, etc..."
+            />
           </div>
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">Your Name</div>
-            <input v-model="currentAudit.an" type="text" />
+            <input
+              class="css-dyor-create-nii"
+              v-model="currentAudit.an"
+              type="text"
+              placeholder="Your name ..."
+            />
           </div>
           <div class="css-dyor-create-nsl">
-            <div class="css-dyor-create-nst">Dapp/Token logo</div>
-            <div class="css-dyor-create-nti"></div>
+            <div class="css-dyor-create-nst">Project logo</div>
+            <div class="css-dyor-create-nti">
+              <div class="css-dyor-create-arw">
+                <div class="css-dyor-create-ari"></div>
+              </div>
+
+              <div class="css-dyor-create-abf">
+                <button class="css-dyor-create-abu">Upload image</button>
+                <button class="css-dyor-create-abr">Remove</button>
+              </div>
+            </div>
           </div>
-        </form>
-        <button class="css-dyor-create-asa" @click="modifyState()">
+        </div>
+        <button class="css-dyor-create-asa" @click="nextResearch()">
           Create New Report
         </button>
       </div>
@@ -345,17 +375,41 @@ export default {
     };
   },
   methods: {
-    modifyState() {
-      this.$store.commit("modifyState", this.currentAudit);
+    navToPath(path){
+         this.$router.push(path);
     },
-    navToPath(path) {
-      this.$router.push(path);
+    nextResearch() {
+      this.$store.commit("modifyState", this.currentAudit);
+      this.$router.push("/research");
     },
   },
 };
 </script>
 
 <style scoped>
+.css-dyor-create-arw {
+  display: flex;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.css-dyor-create-abf {
+  width: 100%;
+  display: flex;
+  padding: 0 2rem;
+  justify-content: space-around;
+}
+
+.css-dyor-create-ari {
+  height: 100px;
+  width: 100px;
+  border-radius: 8px;
+  display: flex;
+  background-size: contain;
+  border: 1px solid var(--border-primary);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='100' height='100' preserveAspectRatio='none' viewBox='0 0 100 100'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1016%26quot%3b)' fill='none'%3e%3crect width='100' height='100' x='0' y='0' fill='rgba(21%2c 187%2c 158%2c 1)'%3e%3c/rect%3e%3cpath d='M-19.66 32.4 a27.5 27.5 0 1 0 55 0 a27.5 27.5 0 1 0 -55 0z' fill='rgba(255%2c 255%2c 255%2c 0.5)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M24.252593627202344 90.44586612987354L25.4201868445695 73.74850520470522 8.722825919401181 72.58091198733806 7.555232702034026 89.27827291250638z' fill='rgba(255%2c 255%2c 255%2c 0.5)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M51.78839486829652 39.466397762934925L67.4339009211523 50.42149904025018 78.38900219846755 34.7759929873944 62.74349614561178 23.820891710079145z' fill='rgba(255%2c 255%2c 255%2c 0.5)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M75.44024735286892 55.7430479406882L49.442094776302596 64.19035977848289 57.88940661409728 90.1885123550492 83.88755919066361 81.74120051725453z' fill='rgba(255%2c 255%2c 255%2c 0.5)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M77.42 3.39 a19.13 19.13 0 1 0 38.26 0 a19.13 19.13 0 1 0 -38.26 0z' fill='rgba(255%2c 255%2c 255%2c 0.5)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M80.00700514007487 55.353690283616274L70.2673378428783 83.639737993078 98.55338555234003 93.37940529027456 108.2930528495366 65.09335758081284z' fill='rgba(255%2c 255%2c 255%2c 0.5)' class='triangle-float3'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1016'%3e%3crect width='100' height='100' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+}
+
 .css-dyor-create-wrap {
   width: 100%;
   max-width: 100vw;
@@ -367,16 +421,41 @@ export default {
   background: var(--base-color-white-secondary);
 }
 
+.css-dyor-create-abu {
+  background: var(--complementary-color-blue);
+  height: 3rem;
+  border: inherit;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+
+.css-dyor-create-abr {
+  background: var(--color-soft-blue);
+  height: 3rem;
+  border: inherit;
+  border-radius: 8px;
+  color: var(--complementary-color-blue);
+  border: 1px solid var(--complementary-color-blue);
+  padding: 0 1rem;
+  cursor: pointer;
+}
+
 .css-dyor-create-header {
   background: var(--base-color-white-primary);
+  box-shadow: 1px 1px 20px var(--border-primary);
   height: 64px;
+  display: flex;
+  align-items: center;
 }
 
 .css-dyor-create-ndw {
   width: 100%;
   height: 100vh;
   display: flex;
-  padding: 3rem 40rem;
+  padding: 2rem 40rem;
   box-sizing: border-box;
 }
 
@@ -385,11 +464,14 @@ export default {
 }
 .css-dyor-create-asa {
   height: 3rem;
+  min-height: 3rem;
+  max-height: 3rem;
   background: var(--complementary-color-blue);
   border: var(--complementary-color-blue);
   border-radius: 8px;
   color: #ffffff;
   font-weight: 600;
+  font-size: var(--text-size-primary);
   cursor: pointer;
   margin-top: 2rem;
 }
@@ -404,11 +486,16 @@ export default {
   box-sizing: border-box;
   padding: 3rem;
   border: 1px solid var(--border-primary);
-  box-shadow: 1px 1px 20px var(--shadow-blue);
+  box-shadow: 1px 1px 20px var(--border-primary);
+}
+
+.css-dyor-create-sdt {
+  margin-top: 0.5rem;
+  font-size: var(--text-size-title);
 }
 
 .css-dyor-create-nst {
-  color: var(--text-color-secondary);
+  color: var(--text-color-primary);
   font-weight: 600;
 }
 
@@ -420,25 +507,53 @@ export default {
 
 .css-dyor-create-nsi {
   margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .css-dyor-create-nsl {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
-.css-dyor-create-nsi input {
-  width: 100%;
+.css-dyor-create-faw {
+  margin-top: 1rem;
+}
+
+.css-dyor-create-nii {
+  width: auto;
   height: 3rem;
-  background: var(--base-color-white-secondary);
+  padding: 0 1rem;
+
   border: 1px solid var(--border-primary);
   border-radius: 8px;
   margin-top: 0.5rem;
 }
 
+.css-dyor-create-nii::placeholder {
+  opacity: 0.5;
+  letter-spacing: 0.01em;
+  font-size: var(--text-size-secondary);
+}
+
+.css-dyor-create-nii::-moz-placeholder {
+  opacity: 0.5;
+  font-size: var(--text-size-secondary);
+}
+.css-dyor-create-nii::-webkit-input-placeholder {
+  opacity: 0.5;
+  font-size: var(--text-size-secondary);
+}
+
+.css-dyor-create-nii:focus-within::placeholder {
+  opacity: 0;
+}
+
 .css-dyor-create-nti {
-  height: 6rem;
+  height: 8rem;
   border-radius: 8px;
   margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
   border: 1px solid var(--border-primary);
 }
 

@@ -296,15 +296,16 @@
         </g>
       </svg>
       <div class="css-work-main-hai">
-        <span>Become an auditor</span> <span>Learn</span><span>About</span>
+        <button>Become an auditor</button> <button>Learn</button
+        ><button>About</button>
       </div>
     </header>
     <div class="css-work-main-banner">
       <div class="css-work-main-bnt">
         <h1>
           <span>
-            Do Your Own Research is a tool for evaluating Dapps in the crypto
-            ecosystem</span
+            Do Your Own Research is a tool for evaluating Dapps, Tokens and
+            Blockchain projects</span
           >
         </h1>
       </div>
@@ -648,12 +649,15 @@ export default {
   },
   mounted() {
     this.isMainPath = true;
-    const qr = new Blackhole();
-    qr.newQr("mini-qr", "1234567890", 150);
+    this.generateQr();
   },
   methods: {
     navToPath(path) {
       this.$router.push(path);
+    },
+    generateQr() {
+      const code = new Blackhole();
+      code.newQr("mini-qr", "1234567890", 150);
     },
   },
 };
@@ -680,7 +684,6 @@ export default {
   padding: 0 10%;
   box-sizing: border-box;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.1);
   justify-content: space-between;
 }
 
@@ -703,7 +706,7 @@ export default {
   width: 100%;
   height: 6rem;
   display: flex;
-  padding: 0 2rem;
+
   align-items: center;
   box-sizing: border-box;
 }
@@ -716,7 +719,7 @@ export default {
 }
 
 .css-work-main-sii span {
-  font-size: var(--text-size-primary);
+  font-size: var(--text-size-title);
 }
 
 .css-work-main-ses {
@@ -725,6 +728,8 @@ export default {
   z-index: 1;
   padding: 0 10%;
   box-sizing: border-box;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   background: var(--base-color-white-primary);
 }
 
@@ -802,14 +807,18 @@ export default {
 }
 
 .css-work-main-hai {
-  color: white;
-  font-weight: 800;
   box-sizing: border-box;
 }
 
-.css-work-main-hai span {
+.css-work-main-hai button {
   padding: 0.5rem 1rem;
   background: rgba(255, 255, 255, 0.1);
+  border: inherit;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
   margin-left: 2rem;
   border-radius: 8px;
 }
