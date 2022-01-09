@@ -17,7 +17,11 @@ const store = createStore({
   mutations: {
     modifyState(state, payload) {
       state.currentAudit = payload;
-      console.log(state.currentAudit);
+    }
+  },
+  getters: {
+    sendMeAtribute(state) {
+      return state.currentAudit
     }
   }
 })
