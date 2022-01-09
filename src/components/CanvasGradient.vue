@@ -822,7 +822,7 @@ export default {
 <style scoped>
 #gradient-canvas {
   --gradient-color-1: #0069f5;
-  --gradient-color-2: #339cff;
+  --gradient-color-2: #0069f5;
   --gradient-color-3: #0069f5;
   --gradient-color-4: #0050dc;
   width: 100%;

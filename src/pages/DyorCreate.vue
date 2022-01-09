@@ -366,21 +366,32 @@ export default {
   data() {
     return {
       currentAudit: {
-        an: "",
-        pn: "",
-        pw: "",
-        pc: "",
+        an: null,
+        pn: null,
+        pw: null,
+        pc: null,
         pl: [],
       },
     };
   },
   methods: {
-    navToPath(path){
-         this.$router.push(path);
+    navToPath(path) {
+      this.$router.push(path);
     },
     nextResearch() {
-      this.$store.commit("modifyState", this.currentAudit);
-      this.$router.push("/research");
+      if (this.checkData()) {
+        this.$store.commit("modifyState", this.currentAudit);
+        this.$router.push("/research");
+      }
+    },
+    checkData() {
+      if (
+        this.currentAudit.pn != null &&
+        this.currentAudit.pw != null &&
+        this.currentAudit.pc != null
+      ) {
+        return true;
+      }
     },
   },
 };
@@ -523,7 +534,7 @@ export default {
   width: auto;
   height: 3rem;
   padding: 0 1rem;
-
+  color: var(--text-color-secondary);
   border: 1px solid var(--border-primary);
   border-radius: 8px;
   margin-top: 0.5rem;
