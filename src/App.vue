@@ -169,12 +169,6 @@ li {
   display: flex;
 }
 
-.css-header-logo {
-  color: var(--text-color-primary);
-  font-weight: bold;
-  margin-top: 19px;
-}
-
 .css-header-avatar-wrap {
   width: 10vw;
   height: 2.1vw;
@@ -302,11 +296,6 @@ li {
     border: none;
   }
 
-  .css-header-logo {
-    margin-right: auto;
-    margin-left: 3%;
-  }
-
   .css-work-quest-wrap {
     margin-left: 0;
   }
@@ -319,11 +308,6 @@ li {
     position: fixed;
     background: var(--base-color-white-primary);
     color: var(--text-color-primary);
-  }
-
-  .css-header-logo img {
-    height: 24px;
-    margin-bottom: 9px;
   }
 
   .css-work-quest-note {

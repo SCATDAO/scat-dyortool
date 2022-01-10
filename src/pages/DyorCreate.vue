@@ -466,7 +466,7 @@ export default {
   width: 100%;
   height: 100vh;
   display: flex;
-  padding: 2rem 40rem;
+  padding: 2rem 33%;
   box-sizing: border-box;
 }
 
