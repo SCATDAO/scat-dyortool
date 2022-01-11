@@ -384,10 +384,12 @@
                 </router-link>
               </li>
             </ul>
+            <div class="css-work-main-swp" @click="touchZone()"></div>
           </div>
         </template>
       </div>
     </header>
+
     <div class="css-work-main-banner">
       <div class="css-work-main-bnt">
         <h1>
@@ -744,7 +746,9 @@ export default {
     showMiniPanel() {
       this.miniPanel = !this.miniPanel;
     },
-
+    touchZone() {
+      this.miniPanel = false;
+    },
     navToPath(path) {
       this.$router.push(path);
     },
@@ -793,6 +797,7 @@ export default {
   border: none;
   margin-top: 2rem;
 }
+
 .css-work-main-sii {
   border: var(--border-primary);
   margin-top: 2rem;
@@ -994,7 +999,7 @@ export default {
 
 @keyframes slideTop {
   0% {
-    transform: translateY(-100px);
+    transform: translateY(-50px);
     opacity: 0;
   }
   100% {
@@ -1019,6 +1024,18 @@ export default {
     image-rendering: pixelated;
   }
 
+  .css-work-main-swp {
+    width: 1000%;
+    height: 1000%;
+    background: transparent;
+    position: absolute;
+    z-index: -1;
+    left: auto;
+    bottom: 0;
+    top: 0;
+    right: 0;
+  }
+
   .css-work-main-banner {
     flex-direction: column;
     padding: 0;
@@ -1035,8 +1052,8 @@ export default {
   .css-work-main-hth {
     background: var(--text-color-primary);
     width: 200px;
-    height: 200px;
-    border-radius: 4px;
+    height: 150px;
+    border-radius: 8px;
     position: absolute;
     top: 40px;
     display: flex;
@@ -1044,7 +1061,7 @@ export default {
     right: 0;
     box-sizing: border-box;
     animation-name: slideTop;
-    animation-duration: 0.3s;
+    animation-duration: 0.5s;
   }
 
   .css-work-main-hth ul {
@@ -1055,6 +1072,11 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    box-sizing: border-box;
+  }
+
+  .css-work-main-hth li {
+    -webkit-tap-highlight-color: transparent;
   }
 
   .css-work-main-hth a {
