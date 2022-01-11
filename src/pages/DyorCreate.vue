@@ -407,7 +407,6 @@ export default {
 <style scoped>
 .css-dyor-create-arw {
   display: flex;
-  padding: 0 1rem;
   box-sizing: border-box;
 }
 
@@ -435,7 +434,7 @@ export default {
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
   background: var(--base-color-white-secondary);
 }
 
@@ -467,14 +466,15 @@ export default {
   height: 64px;
   display: flex;
   align-items: center;
+  padding: 0 3rem !important;
 }
 
 .css-dyor-create-ndw {
   width: 100%;
-  height: 100vh;
   display: flex;
-  padding: 2rem 33%;
+  justify-content: center;
   box-sizing: border-box;
+  padding: 2rem 0;
 }
 
 .css-logo {
@@ -495,14 +495,16 @@ export default {
 }
 
 .css-dyor-create-ndf {
-  width: 100%;
+  width: 640px;
+  min-width: 500px;
+  max-width: 640px;
   height: 100%;
   display: flex;
   flex-direction: column;
   background: var(--base-color-white-primary);
   border-radius: 8px;
   box-sizing: border-box;
-  padding: 3rem;
+  padding: 3rem 3rem;
   border: 1px solid var(--border-primary);
   box-shadow: 1px 1px 20px var(--border-primary);
 }
@@ -571,6 +573,7 @@ export default {
   border-radius: 8px;
   margin-top: 0.5rem;
   display: flex;
+  padding: 0 1rem;
   align-items: center;
   border: 1px solid var(--border-primary);
 }
@@ -580,8 +583,32 @@ export default {
     width: 100%;
     height: 100vh;
     display: flex;
-    padding: 3rem 2rem;
+    background: var(--complementary-color-blue);
+    padding: 0;
     box-sizing: border-box;
+  }
+
+  .css-dyor-create-ndf {
+    min-width: 300px;
+    box-sizing: content-box;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+    box-shadow: none;
+  }
+
+  .css-dyor-create-abf {
+    padding: 0;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 1rem;
+  }
+  .css-dyor-create-abr {
+    margin-top: 0.5rem;
+  }
+
+  .css-dyor-create-header {
+    background: var(--complementary-color-blue);
+    box-shadow: none;
   }
 }
 </style>

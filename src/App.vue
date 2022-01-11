@@ -59,7 +59,7 @@ header {
   align-items: center;
   box-sizing: border-box;
   padding: 0 1.5rem;
-  z-index: 20;
+  z-index: 10;
   padding: 0 10%;
 }
 
@@ -239,9 +239,7 @@ li {
 
 @media (max-width: 600px) {
   header {
-    height: 50px;
-    min-height: 50px;
-    max-height: 50px;
+ 
   }
   .css-header.active {
     display: none;
