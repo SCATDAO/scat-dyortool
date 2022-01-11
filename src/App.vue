@@ -143,6 +143,10 @@ li {
   height: 100%;
 }
 
+.css-logo {
+  cursor: pointer;
+}
+
 .css-header-become {
   color: #ffffff;
   background: var(--complementary-color-blue);
@@ -205,31 +209,6 @@ li {
   opacity: 0;
 }
 
-.css-work-quest-wrap {
-  width: 100%;
-  height: 100vh;
-  background: var(--base-color-white-secondary);
-  caret-color: transparent;
-  padding-bottom: 10%;
-  overflow-y: scroll;
-}
-
-.css-work-project-wrap {
-  width: 331px;
-  max-width: 331px;
-  min-width: 331px;
-  caret-color: transparent;
-  color: #ffffff;
-  line-height: 1.75;
-  height: 100vh;
-  background: linear-gradient(
-    22.58deg,
-    rgba(0, 80, 220, 1) 0%,
-    rgba(0, 105, 245, 1) 100%
-  );
-  overflow-y: auto;
-}
-
 .css-work-finished-ttw {
   margin: 0 3rem;
   margin-top: 3rem;
@@ -264,16 +243,6 @@ li {
     min-height: 50px;
     max-height: 50px;
   }
-
-  .css-work-project-wrapper {
-    background: rgba(0, 0, 0, 0.4);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    position: fixed;
-    z-index: 40;
-  }
-
   .css-header.active {
     display: none;
   }
@@ -284,34 +253,6 @@ li {
     outline: none;
     cursor: pointer;
     opacity: 1;
-  }
-
-  .css-work-quest-back span {
-    opacity: 0;
-  }
-
-  .css-work-finished-ttw {
-    flex-direction: column;
-    margin: initial;
-    border: none;
-  }
-
-  .css-work-quest-wrap {
-    margin-left: 0;
-  }
-
-  .css-work-project-wrap {
-    width: 280px;
-    min-width: 280px;
-    z-index: 20;
-    padding-top: 0px;
-    position: fixed;
-    background: var(--base-color-white-primary);
-    color: var(--text-color-primary);
-  }
-
-  .css-work-quest-note {
-    font-size: var(--text-size-secondary);
   }
 }
 </style>
