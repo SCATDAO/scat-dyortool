@@ -1048,7 +1048,7 @@ export default {
   }
 
   .css-work-main-hth ul {
-    padding: 14px;
+    padding: 5px 14px;
     width: inherit;
     height: inherit;
     list-style: none;
@@ -1158,6 +1158,7 @@ export default {
 
   .css-work-main-ses {
     padding: 0;
+    border-radius: 0;
     background: var(--base-color-white-primary);
   }
 
