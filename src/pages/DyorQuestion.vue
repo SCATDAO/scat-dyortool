@@ -1,32 +1,17 @@
 <template>
   <div class="css-main-flex-wrap">
     <header class="css-work-project-her" :class="{ active: workspace }">
-      <div class="css-left-panel-button">
-        <button @click="workspace = !workspace">
-          <svg
-            class=".css-menu-svg-icon"
-            focusable="false"
-            width="24"
-            viewBox="0 0 24 24"
-          >
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-          </svg>
-        </button>
-      </div>
-      <router-link to="/main"
-        >
+      <router-link to="/main">
         <svg
-          class="css-logo"
+          id="logo-blue"
           width="120px"
           height="24px"
           version="1.1"
           viewBox="0 0 120 24"
+          fill="#070a0e"
         >
-          <g
-            transform="matrix(.10159 0 0 .10159 -5.4495 -4.4501)"
-            fill="#0069f5"
-          >
-            <g fill="#0069f5">
+          <g transform="matrix(.10159 0 0 .10159 -5.4495 -4.4501)">
+            <g>
               <path
                 class="st2"
                 d="m120.1 266.5h-62.5v-139.7h62.5c9.7 0 18.8 1.8 27.4 5.5 8.5 3.7 16 8.6 22.3 14.9 6.4 6.3 11.4 13.7 15 22.2 3.7 8.5 5.5 17.6 5.5 27.2s-1.8 18.7-5.5 27.2-8.7 15.9-15 22.2c-6.4 6.3-13.8 11.3-22.3 14.9-8.6 3.8-17.7 5.6-27.4 5.6zm-4.4-105.7h-21.4v71.6h21.4c5 0 9.7-0.9 14.1-2.8s8.2-4.4 11.4-7.7c3.2-3.2 5.8-7 7.6-11.4 1.9-4.4 2.8-9 2.8-14 0-4.9-0.9-9.6-2.8-14s-4.4-8.2-7.6-11.4-7.1-5.8-11.4-7.7c-4.3-1.6-9-2.6-14.1-2.6z"
@@ -59,7 +44,7 @@
                 class="st4"
                 d="m884.1 143.1c6.9 0 13.4 1.3 19.4 3.9 6.2 2.7 11.7 6.3 16.3 10.8 4.5 4.5 8.1 9.9 10.8 16 2.6 5.9 3.9 12.4 3.9 19.3s-1.3 13.3-3.9 19.3c-2.7 6.1-6.3 11.5-10.8 16s-9.9 8.1-16.1 10.7c-6 2.6-12.6 3.9-19.5 3.9-7 0-13.6-1.3-19.6-3.8-6.2-2.6-11.6-6.2-16.1-10.7s-8.1-9.9-10.8-16c-2.6-5.9-3.9-12.4-3.9-19.3 0-6.8 1.3-13.3 3.9-19.3 2.7-6.1 6.3-11.5 10.8-16 4.6-4.5 10-8.2 16.2-10.9 5.9-2.6 12.4-3.9 19.4-3.9m0-12c-8.6 0-16.8 1.6-24.2 4.9-7.6 3.3-14.3 7.8-19.9 13.3-5.6 5.6-10.1 12.2-13.4 19.7-3.2 7.4-4.9 15.5-4.9 24s1.6 16.6 4.9 24c3.3 7.6 7.8 14.2 13.4 19.7 5.6 5.6 12.3 10 19.8 13.2s15.6 4.8 24.3 4.8c8.5 0 16.7-1.6 24.2-4.8 7.6-3.2 14.3-7.7 19.9-13.2 5.6-5.6 10.1-12.2 13.4-19.7 3.2-7.4 4.9-15.5 4.9-24s-1.6-16.6-4.9-24c-3.3-7.6-7.8-14.2-13.4-19.7-5.6-5.6-12.3-10.1-20-13.3-7.5-3.3-15.6-4.9-24.1-4.9z"
               />
-              <g fill="#0069f5">
+              <g>
                 <path
                   class="st5"
                   d="m882.5 183.8c-0.1-2.5-2-4.6-4.6-4.6-2.4 0-4.7 2.1-4.6 4.6s2 4.6 4.6 4.6c2.5-0.1 4.8-2.2 4.6-4.6z"
@@ -189,7 +174,7 @@
                 class="st6"
                 d="m1035.9 143.1c7 0 13.5 1.3 19.4 3.9 6.2 2.7 11.7 6.3 16.2 10.9 4.5 4.5 8.1 9.8 10.8 16 2.6 5.9 3.9 12.4 3.9 19.3 0 6.8-1.3 13.3-3.9 19.3-2.7 6.1-6.3 11.5-10.8 16s-9.9 8.1-16.1 10.7c-6 2.5-12.5 3.8-19.6 3.8-6.9 0-13.5-1.3-19.5-3.9-6.2-2.6-11.6-6.2-16.1-10.7s-8.1-9.9-10.8-16c-2.6-5.9-3.9-12.4-3.9-19.3s1.3-13.3 3.9-19.3c2.7-6.1 6.3-11.5 10.8-16s10-8.2 16.3-10.8c6-2.6 12.5-3.9 19.4-3.9m0-12c-8.5 0-16.6 1.6-24.1 4.9-7.6 3.3-14.4 7.8-20 13.3-5.6 5.6-10.1 12.2-13.4 19.7-3.2 7.4-4.9 15.5-4.9 24s1.6 16.6 4.9 24c3.3 7.6 7.8 14.2 13.4 19.7s12.3 10 19.9 13.2c7.5 3.2 15.7 4.8 24.2 4.8 8.6 0 16.8-1.6 24.3-4.8 7.6-3.2 14.2-7.7 19.8-13.2 5.6-5.6 10.1-12.2 13.4-19.7 3.2-7.4 4.9-15.5 4.9-24s-1.6-16.6-4.9-24c-3.3-7.5-7.8-14.2-13.4-19.7-5.6-5.6-12.3-10.1-19.9-13.3-7.4-3.3-15.6-4.9-24.2-4.9z"
               />
-              <g fill="#0069f5">
+              <g>
                 <path
                   class="st5"
                   d="m1037.4 183.8c0.1-2.5 2-4.6 4.6-4.6 2.4 0 4.7 2.1 4.6 4.6s-2 4.6-4.6 4.6c-2.4-0.1-4.7-2.2-4.6-4.6z"
@@ -317,180 +302,174 @@
       </router-link>
     </header>
     <div class="css-work-tool-wrap">
-      <template v-if="workspace">
-        <div class="css-work-project-wpr">
-          <div class="css-work-project-wrap" :class="{ active: workspace }">
-            <div class="css-work-project-title" @click="workspace = !workspace">
-              <b>Audit progress</b>
-            </div>
-            <div class="css-work-project-arw">
-              <div class="css-work-project-ari"></div>
-            </div>
-            <div class="css-work-project-legend">
-              <div class="css-work-project-name">
-                <b>{{ currentAudit.pn }}</b>
-              </div>
-              <div
-                class="css-work-project-tag"
-                style="text-transform: lowercase"
-              >
-                <span>{{ currentAudit.pw }}</span>
-              </div>
-              <div class="css-work-project-tag">
-                <span>{{ currentAudit.pc }}</span>
-              </div>
-            </div>
-            <div
-              class="css-work-project-sbe"
-              @click="isRetrayed[0] = !isRetrayed[0]"
-            >
-              <svg
-                class="css-work-project-dar"
-                :class="{ active: !isRetrayed[0] }"
-                isRetrayed
-                viewBox="0 0 1024 1024"
-                xmlns="http://www.w3.org/2000/svg"
-                data-v-365b8594=""
-              >
-                <path
-                  fill="currentColor"
-                  d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
-                ></path>
-              </svg>
-
-              <b>Development Team</b>
-              <span
-                >{{ knowWorkProgress("developmentTeam") }} /
-                {{ workProgramCategory["developmentTeam"].length }}
-              </span>
-            </div>
-            <ul class="css-work-project-ul" :class="{ active: isRetrayed[0] }">
-              <li
-                v-for="category in workProgramCategory['developmentTeam']"
-                :key="category"
-                class="css-work-project-uli"
-                :class="{
-                  active: progressWorkData.includes(category.id),
-                }"
-                @click="clickCurrentQuestion(category.id)"
-              >
-                {{ category.name }}
-              </li>
-            </ul>
-            <div
-              class="css-work-project-sbe"
-              @click="isRetrayed[1] = !isRetrayed[1]"
-            >
-              <svg
-                class="css-work-project-dar"
-                :class="{ active: !isRetrayed[1] }"
-                isRetrayed
-                viewBox="0 0 1024 1024"
-                xmlns="http://www.w3.org/2000/svg"
-                data-v-365b8594=""
-              >
-                <path
-                  fill="currentColor"
-                  d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
-                ></path>
-              </svg>
-              <b>Tokenomics</b>
-              <span
-                >{{ knowWorkProgress("tokenomics") }} /
-                {{ workProgramCategory["tokenomics"].length }}</span
-              >
-            </div>
-            <ul class="css-work-project-ul" :class="{ active: isRetrayed[1] }">
-              <li
-                v-for="category in workProgramCategory['tokenomics']"
-                :key="category"
-                class="css-work-project-uli"
-                :class="{
-                  active: progressWorkData.includes(category.id),
-                }"
-                @click="clickCurrentQuestion(category.id)"
-              >
-                {{ category.name }}
-              </li>
-            </ul>
-            <div
-              class="css-work-project-sbe"
-              @click="isRetrayed[2] = !isRetrayed[2]"
-            >
-              <svg
-                class="css-work-project-dar"
-                :class="{ active: !isRetrayed[2] }"
-                isRetrayed
-                viewBox="0 0 1024 1024"
-                xmlns="http://www.w3.org/2000/svg"
-                data-v-365b8594=""
-              >
-                <path
-                  fill="currentColor"
-                  d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
-                ></path>
-              </svg>
-              <b>Community</b>
-              <span
-                >{{ knowWorkProgress("community") }} /
-                {{ workProgramCategory["community"].length }}</span
-              >
-            </div>
-            <ul class="css-work-project-ul" :class="{ active: isRetrayed[2] }">
-              <li
-                v-for="category in workProgramCategory['community']"
-                :key="category"
-                class="css-work-project-uli"
-                :class="{
-                  active: progressWorkData.includes(category.id),
-                }"
-                @click="clickCurrentQuestion(category.id)"
-              >
-                {{ category.name }}
-              </li>
-            </ul>
-            <div
-              class="css-work-project-sbe"
-              @click="isRetrayed[3] = !isRetrayed[3]"
-            >
-              <svg
-                class="css-work-project-dar"
-                :class="{ active: !isRetrayed[3] }"
-                isRetrayed
-                viewBox="0 0 1024 1024"
-                xmlns="http://www.w3.org/2000/svg"
-                data-v-365b8594=""
-              >
-                <path
-                  fill="currentColor"
-                  d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
-                ></path>
-              </svg>
-              <b>ICO Trading Metrics</b>
-              <span
-                >{{ knowWorkProgress("metrics") }} /
-                {{ workProgramCategory["metrics"].length }}</span
-              >
-            </div>
-            <ul class="css-work-project-ul" :class="{ active: isRetrayed[3] }">
-              <li
-                v-for="category in workProgramCategory['metrics']"
-                :key="category"
-                class="css-work-project-uli"
-                :class="{
-                  active: progressWorkData.includes(category.id),
-                }"
-                @click="clickCurrentQuestion(category.id)"
-              >
-                {{ category.name }}
-              </li>
-            </ul>
-
-            <div class="css-work-project-scc"></div>
+      <div class="css-work-project-wpr">
+        <div class="css-work-project-wrap" :class="{ active: workspace }">
+          <div class="css-work-project-title" @click="workspace = !workspace">
+            <b>Audit progress</b>
           </div>
-        </div>
-      </template>
+          <div class="css-work-project-arw">
+            <div class="css-work-project-ari"></div>
+          </div>
+          <div class="css-work-project-legend">
+            <div class="css-work-project-name">
+              <b>{{ currentAudit.pn }}</b>
+            </div>
+            <div class="css-work-project-tag" style="text-transform: lowercase">
+              <span>{{ currentAudit.pw }}</span>
+            </div>
+            <div class="css-work-project-tag">
+              <span>{{ currentAudit.pc }}</span>
+            </div>
+          </div>
+          <div
+            class="css-work-project-sbe"
+            @click="isRetrayed[0] = !isRetrayed[0]"
+          >
+            <svg
+              class="css-work-project-dar"
+              :class="{ active: !isRetrayed[0] }"
+              isRetrayed
+              viewBox="0 0 1024 1024"
+              xmlns="http://www.w3.org/2000/svg"
+              data-v-365b8594=""
+            >
+              <path
+                fill="currentColor"
+                d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
+              ></path>
+            </svg>
 
+            <b>Development Team</b>
+            <span
+              >{{ knowWorkProgress("developmentTeam") }} /
+              {{ workProgramCategory["developmentTeam"].length }}
+            </span>
+          </div>
+          <ul class="css-work-project-ul" :class="{ active: isRetrayed[0] }">
+            <li
+              v-for="category in workProgramCategory['developmentTeam']"
+              :key="category"
+              class="css-work-project-uli"
+              :class="{
+                active: progressWorkData.includes(category.id),
+              }"
+              @click="clickCurrentQuestion(category.id)"
+            >
+              {{ category.name }}
+            </li>
+          </ul>
+          <div
+            class="css-work-project-sbe"
+            @click="isRetrayed[1] = !isRetrayed[1]"
+          >
+            <svg
+              class="css-work-project-dar"
+              :class="{ active: !isRetrayed[1] }"
+              isRetrayed
+              viewBox="0 0 1024 1024"
+              xmlns="http://www.w3.org/2000/svg"
+              data-v-365b8594=""
+            >
+              <path
+                fill="currentColor"
+                d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
+              ></path>
+            </svg>
+            <b>Tokenomics</b>
+            <span
+              >{{ knowWorkProgress("tokenomics") }} /
+              {{ workProgramCategory["tokenomics"].length }}</span
+            >
+          </div>
+          <ul class="css-work-project-ul" :class="{ active: isRetrayed[1] }">
+            <li
+              v-for="category in workProgramCategory['tokenomics']"
+              :key="category"
+              class="css-work-project-uli"
+              :class="{
+                active: progressWorkData.includes(category.id),
+              }"
+              @click="clickCurrentQuestion(category.id)"
+            >
+              {{ category.name }}
+            </li>
+          </ul>
+          <div
+            class="css-work-project-sbe"
+            @click="isRetrayed[2] = !isRetrayed[2]"
+          >
+            <svg
+              class="css-work-project-dar"
+              :class="{ active: !isRetrayed[2] }"
+              isRetrayed
+              viewBox="0 0 1024 1024"
+              xmlns="http://www.w3.org/2000/svg"
+              data-v-365b8594=""
+            >
+              <path
+                fill="currentColor"
+                d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
+              ></path>
+            </svg>
+            <b>Community</b>
+            <span
+              >{{ knowWorkProgress("community") }} /
+              {{ workProgramCategory["community"].length }}</span
+            >
+          </div>
+          <ul class="css-work-project-ul" :class="{ active: isRetrayed[2] }">
+            <li
+              v-for="category in workProgramCategory['community']"
+              :key="category"
+              class="css-work-project-uli"
+              :class="{
+                active: progressWorkData.includes(category.id),
+              }"
+              @click="clickCurrentQuestion(category.id)"
+            >
+              {{ category.name }}
+            </li>
+          </ul>
+          <div
+            class="css-work-project-sbe"
+            @click="isRetrayed[3] = !isRetrayed[3]"
+          >
+            <svg
+              class="css-work-project-dar"
+              :class="{ active: !isRetrayed[3] }"
+              isRetrayed
+              viewBox="0 0 1024 1024"
+              xmlns="http://www.w3.org/2000/svg"
+              data-v-365b8594=""
+            >
+              <path
+                fill="currentColor"
+                d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
+              ></path>
+            </svg>
+            <b>ICO Trading Metrics</b>
+            <span
+              >{{ knowWorkProgress("metrics") }} /
+              {{ workProgramCategory["metrics"].length }}</span
+            >
+          </div>
+          <ul class="css-work-project-ul" :class="{ active: isRetrayed[3] }">
+            <li
+              v-for="category in workProgramCategory['metrics']"
+              :key="category"
+              class="css-work-project-uli"
+              :class="{
+                active: progressWorkData.includes(category.id),
+              }"
+              @click="clickCurrentQuestion(category.id)"
+            >
+              {{ category.name }}
+            </li>
+          </ul>
+
+          <div class="css-work-project-scc"></div>
+        </div>
+      </div>
       <div class="css-work-quest-wrap">
         <template v-if="!isFinished">
           <div class="css-work-quest-top">
@@ -868,6 +847,7 @@
               </template>
             </div>
           </div>
+          <div class="css-work-quest-nac"></div>
         </template>
         <template v-if="isFinished">
           <DyorSummary :answeredQuestion="answeredQuestion"></DyorSummary>
@@ -1595,7 +1575,7 @@ export default {
           video: [],
         },
       ],
-      workspace: true,
+      workspace: false,
       workProgramCategory: {
         developmentTeam: [],
         tokenomics: [],
@@ -1781,6 +1761,30 @@ textarea:focus-within {
   background: initial;
 }
 
+#logo-blue {
+  fill: #fff;
+}
+
+#right-arrow {
+  background: linear-gradient(
+    22.58deg,
+    rgba(0, 80, 220, 1) 0%,
+    rgba(0, 105, 245, 1) 100%
+  );
+}
+
+#right-arrow span {
+  color: #ffffff;
+  font-weight: bold;
+  margin-right: 50px;
+}
+
+#left-arrow span {
+  color: var(--text-color-primary);
+  font-weight: bold;
+  margin-left: 50px;
+}
+
 .dot {
   background: var(--complementary-color-blue);
   height: 6px;
@@ -1820,9 +1824,11 @@ textarea:focus-within {
   background: var(--base-color-white-secondary);
   caret-color: transparent;
   padding-bottom: 10%;
-  overflow-y: scroll;
 }
 
+.css-work-quest-nac {
+  height: 100px;
+}
 .css-work-quest-panel-ta div {
   right: 0%;
   bottom: 0%;
@@ -1843,7 +1849,7 @@ textarea:focus-within {
 }
 
 .css-work-quest-top {
-  padding: 0 15%;
+  padding: 0 10%;
   margin-top: 3rem;
   display: flex;
   justify-content: space-between;
@@ -2192,32 +2198,6 @@ textarea:focus-within {
   box-shadow: 1px 1px 20px var(--border-primary);
 }
 
-#right-arrow {
-  background: linear-gradient(
-    22.58deg,
-    rgba(0, 80, 220, 1) 0%,
-    rgba(0, 105, 245, 1) 100%
-  );
-}
-
-#right-arrow span {
-  color: #ffffff;
-  font-weight: bold;
-  margin-right: 50px;
-}
-
-#left-arrow span {
-  color: var(--text-color-primary);
-  font-weight: bold;
-  margin-left: 50px;
-}
-
-.css-menu-svg-icon {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
-}
-
 .css-work-project-title {
   padding: 0 2rem;
   margin-top: 1rem;
@@ -2364,17 +2344,19 @@ textarea:focus-within {
 
 .css-work-tool-wrap {
   display: flex;
-  padding-bottom: 10%;
-}
-
-.css-left-panel-button {
-  top: 1rem;
-  left: 1rem;
 }
 
 @media (max-width: 600px) {
   .css-work-quest-back span {
     opacity: 0;
+  }
+
+  .css-work-project-wpr {
+    display: none;
+  }
+
+  .css-work-tool-wrap {
+    background: var(--complementary-color-blue);
   }
 
   .css-work-finished-ttw {
@@ -2385,6 +2367,28 @@ textarea:focus-within {
 
   .css-work-quest-wrap {
     margin-left: 0;
+    border-top-right-radius: 32px;
+    border-top-left-radius: 32px;
+    background: var(--base-color-white-primary);
+  }
+
+  .css-main-flex-wrap {
+    overflow-y: auto;
+  }
+
+  .css-work-quest-got {
+    right: 0;
+    top: 50px;
+  }
+
+  .css-work-quest-got::before {
+    bottom: 92px;
+    left: calc(77% - 10px);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid var(--text-color-primary);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-radius: 2px;
   }
 
   .css-work-project-wrapper {
@@ -2404,6 +2408,15 @@ textarea:focus-within {
     position: fixed;
     background: var(--base-color-white-primary);
     color: var(--text-color-primary);
+  }
+
+  .css-work-quest-answer {
+    padding: 0 10%;
+  }
+
+  .css-work-project-her {
+    background: var(--complementary-color-blue);
+    border: none;
   }
 
   .css-work-quest-note {
