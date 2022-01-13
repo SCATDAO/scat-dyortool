@@ -312,7 +312,7 @@
             <div class="css-dyor-create-nst">Project Name</div>
             <input
               class="css-dyor-create-nii"
-              v-model="currentAudit.pn"
+              v-model="newAudit.pn"
               type="text"
               placeholder="Project name..."
             />
@@ -321,7 +321,7 @@
             <div class="css-dyor-create-nst">Website</div>
             <input
               class="css-dyor-create-nii"
-              v-model="currentAudit.pw"
+              v-model="newAudit.pw"
               type="text"
               placeholder="www.example.com"
             />
@@ -330,7 +330,7 @@
             <div class="css-dyor-create-nst">Category</div>
             <input
               class="css-dyor-create-nii"
-              v-model="currentAudit.pc"
+              v-model="newAudit.pc"
               type="text"
               placeholder="DEX, NFT, stablecoin, etc..."
             />
@@ -339,7 +339,7 @@
             <div class="css-dyor-create-nst">Your Name</div>
             <input
               class="css-dyor-create-nii"
-              v-model="currentAudit.an"
+              v-model="newAudit.an"
               type="text"
               placeholder="Your name ..."
             />
@@ -370,7 +370,7 @@
 export default {
   data() {
     return {
-      currentAudit: {
+      newAudit: {
         an: null,
         pn: null,
         pw: null,
@@ -380,20 +380,17 @@ export default {
     };
   },
   methods: {
-    navToPath(path) {
-      this.$router.push(path);
-    },
     nextResearch() {
       if (this.checkData()) {
-        this.$store.commit("modifyState", this.currentAudit);
+        this.$store.commit("modifyAuditData", this.newAudit);
         this.$router.push("/research");
       }
     },
     checkData() {
       if (
-        this.currentAudit.pn != null &&
-        this.currentAudit.pw != null &&
-        this.currentAudit.pc != null
+        this.newAudit.pn != null &&
+        this.newAudit.pw != null &&
+        this.newAudit.pc != null
       ) {
         return true;
       }
@@ -434,6 +431,7 @@ export default {
   max-width: 100vw;
   height: 100vh;
   display: flex;
+  overflow-x: hidden;
   box-sizing: border-box;
   flex-direction: column;
   overflow-y: auto;

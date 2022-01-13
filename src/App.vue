@@ -209,15 +209,6 @@ li {
   opacity: 0;
 }
 
-.css-work-finished-ttw {
-  margin: 0 3rem;
-  margin-top: 3rem;
-  border: 1px solid var(--border-primary);
-  color: var(--text-color-primary);
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-}
 
 @media (-webkit-device-pixel-ratio: 1.1) {
   :root {
