@@ -5,23 +5,30 @@ const store = createStore({
   state() {
     return {
       count: 0,
-      currentAudit: {
-        an: '',
-        pn: '',
-        pw: '',
-        pc: '',
+      newAudit: {
+        an: "Eric",
+        pn: "Name",
+        pw: "Category",
+        pc: "www.example.com",
         pl: [],
-      }
+      },
+      answeredQuestion: null,
     }
   },
   mutations: {
-    modifyState(state, payload) {
-      state.currentAudit = payload;
+    modifyAuditData(state, payload) {
+      state.newAudit = payload;
+    },
+    newQuestData(state, payload) {
+      state.answeredQuestion = payload;
     }
   },
   getters: {
     sendMeAtribute(state) {
-      return state.currentAudit
+      return state.newAudit
+    },
+    sendMeAnswered(state) {
+      return state.answeredQuestion
     }
   }
 })
