@@ -338,8 +338,23 @@
                       />
                     </svg>
                   </div>
-                  <div class="css-work-finished-shai">Download</div>
-                  <div class="css-work-finished-shai">Show</div>
+                  <div class="css-work-finished-shai">
+                    <button>
+                      <a
+                        v-bind:href="createMachineURL('download')"
+                        target="_blank"
+                      >
+                        Download</a
+                      >
+                    </button>
+                  </div>
+                  <div class="css-work-finished-shai">
+                    <button>
+                      <a v-bind:href="createMachineURL('show')" target="_blank">
+                        Show</a
+                      >
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -361,7 +376,7 @@
             <div class="css-work-finished-sr">
               <canvas
                 class="camva"
-                id="qr"
+                id="quickResponse"
                 style="image-rendering: pixelated"
               ></canvas>
             </div>
@@ -400,7 +415,7 @@
                 </div>
                 <div
                   class="css-work-finished-qah"
-                  v-for="element in filterByCategory('Development Team')"
+                  v-for="element in searchByCategory('Development Team')"
                   :key="element"
                 >
                   {{ element.question }}
@@ -446,7 +461,7 @@
                 </div>
                 <div
                   class="css-work-finished-qah"
-                  v-for="element in filterByCategory('Tokenomics')"
+                  v-for="element in searchByCategory('Tokenomics')"
                   :key="element"
                 >
                   {{ element.question }}
@@ -492,7 +507,7 @@
                 </div>
                 <div
                   class="css-work-finished-qah"
-                  v-for="element in filterByCategory('Community')"
+                  v-for="element in searchByCategory('Community')"
                   :key="element"
                 >
                   {{ element.question }}
@@ -538,7 +553,7 @@
                 </div>
                 <div
                   class="css-work-finished-qah"
-                  v-for="element in filterByCategory('Metrics')"
+                  v-for="element in searchByCategory('Metrics')"
                   :key="element"
                 >
                   {{ element.question }}
@@ -563,9 +578,6 @@
 import { Blackhole } from "blackhole-qr";
 
 export default {
-  mounted() {
-    this.createNewCanvas();
-  },
   created() {
     this.knowStateAtribute();
     this.evaluateQuestions();
@@ -576,67 +588,79 @@ export default {
       answeredQuestion: null,
       totalScore: 0,
       beforeEncodeProcess: [],
-      afterEncodeProcess: [],
       openDownCategory: [0, 0, 0, 0],
+      machineURL: String,
     };
   },
+  mounted() {
+    this.createNewCanvas();
+  },
   methods: {
+    createMachineURL(route) {
+      const machineURL = {
+        base: "http://192.168.1.3:8080",
+        download: "/download/",
+        show: "/show/",
+      };
+
+      return machineURL["base"] + machineURL[route] + this.machineURL;
+    },
     knowStateAtribute() {
       this.answeredQuestion = this.$store.getters.sendMeAnswered;
     },
     evaluateQuestions() {
-      let acc = 0;
+      let counter = 0;
       for (const answer of this.answeredQuestion) {
         for (const option of answer.options) {
           if (option.id === answer.answer) {
-            acc += option.value;
+            counter += option.value;
           }
         }
       }
-      this.totalScore = acc.toFixed(2);
+      this.totalScore = counter.toFixed(2);
     },
-    evaluateCategory(e) {
-      let acc = 0;
+    evaluateCategory(cty) {
+      let counter = 0;
       for (const element of this.answeredQuestion) {
-        if (element.category === e) {
+        if (element.category === cty) {
           for (const option of element.options) {
             if (option.id === element.answer) {
-              acc += option.value;
+              counter += option.value;
             }
           }
         }
       }
-      return acc.toFixed(2);
+      return counter.toFixed(2);
     },
-    showAnswerData(e) {
-      for (let o of e.options) {
-        if (o.id === e.answer) {
-          return o.value.toFixed(2);
+    showAnswerData(question) {
+      for (const option of question.options) {
+        if (option.id === question.answer) {
+          return option.value.toFixed(2);
         }
         return (0.0).toFixed(2);
       }
     },
-    knowMaxValue(e) {
-      let acc = [];
-      for (let o of e.options) {
-        acc.push(o.value);
+    knowMaxValue(question) {
+      let counter = [];
+      for (const option of question.options) {
+        counter.push(option.value);
       }
-      return Math.max(...acc);
+      return Math.max(...counter);
     },
     KnowMaxCategory(e) {
-      let acc = 0.0;
+      let counter = 0.0;
       for (const element of this.answeredQuestion) {
         if (element.category === e) {
-          acc += this.knowMaxValue(element);
+          counter += this.knowMaxValue(element);
         }
       }
-      return acc.toFixed(2);
+      return counter.toFixed(2);
     },
-    filterByCategory(category) {
+    searchByCategory(category) {
       let byCategory = [];
-      for (let e of this.answeredQuestion) {
-        if (e.category === category) {
-          byCategory.push(e);
+      for (const question of this.answeredQuestion) {
+        if (question.category === category) {
+          byCategory.push(question);
         }
       }
       return byCategory;
@@ -651,8 +675,10 @@ export default {
       );
     },
     createNewCanvas() {
-      const QR = new Blackhole();
-      QR.newQr("qr", this.beforeEncodeProcess, 300);
+      const quickResponse = new Blackhole();
+      quickResponse.generate("quickResponse", this.beforeEncodeProcess, 300);
+      this.machineURL = quickResponse.cborHex;
+      console.log(this.machineURL, quickResponse.decode());
     },
   },
 };
@@ -677,9 +703,6 @@ export default {
 
 .css-work-finished-cri {
   height: 100px;
-}
-
-.css-work-finished-stb {
 }
 
 .css-work-finished-srp {
