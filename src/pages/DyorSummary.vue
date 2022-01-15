@@ -324,8 +324,8 @@
                   <div class="css-work-finished-shai">
                     <svg
                       id="SVGRoot"
-                      width="20px"
-                      height="20px"
+                      width="23px"
+                      height="23px"
                       version="1.1"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -338,23 +338,22 @@
                       />
                     </svg>
                   </div>
-                  <div class="css-work-finished-shai">
-                    <button>
-                      <a
-                        v-bind:href="createMachineURL('download')"
-                        target="_blank"
-                      >
-                        Download</a
-                      >
-                    </button>
-                  </div>
-                  <div class="css-work-finished-shai">
-                    <button>
-                      <a v-bind:href="createMachineURL('show')" target="_blank">
-                        Show</a
-                      >
-                    </button>
-                  </div>
+
+                  <a
+                    class="css-work-finished-shai"
+                    :href="createMachineURL('download')"
+                    target="_blank"
+                  >
+                    Download
+                  </a>
+
+                  <a
+                    class="css-work-finished-shai"
+                    :href="createMachineURL('show')"
+                    target="_blank"
+                  >
+                    Show
+                  </a>
                 </div>
               </div>
             </div>
@@ -598,7 +597,7 @@ export default {
   methods: {
     createMachineURL(route) {
       const machineURL = {
-        base: "http://192.168.1.3:8080",
+        base: "http://192.168.1.3:8081",
         download: "/download/",
         show: "/show/",
       };
@@ -666,6 +665,8 @@ export default {
       return byCategory;
     },
     createBeforeProcess() {
+      const projectData = this.$store.getters.sendMeAtribute;
+      this.beforeEncodeProcess.push(projectData);
       this.answeredQuestion.forEach((e) =>
         this.beforeEncodeProcess.push({
           id: e.id,
@@ -685,6 +686,11 @@ export default {
 </script>
 
 <style escoped>
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 #logo-blue {
   fill: var(--complementary-color-blue);
 }
@@ -799,11 +805,14 @@ export default {
 
 .css-work-finished-shai {
   padding: 1rem;
+  max-height: 58px;
   margin-right: 1rem;
   border: 1px solid var(--complementary-color-blue);
   border-radius: 4px;
   display: flex;
   cursor: pointer;
+  font-weight: 600;
+  color: var(--complementary-color-blue);
 }
 
 .css-work-finished-qao {

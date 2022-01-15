@@ -754,7 +754,7 @@ export default {
     },
     generateQr() {
       const code = new Blackhole();
-      code.newQr("mini-qr", "1234567890", 150);
+      code.generate("mini-qr", "1234567890", 150);
     },
   },
 };
