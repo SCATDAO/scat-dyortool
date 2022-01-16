@@ -1153,7 +1153,6 @@ export default {
           tag: "TK4",
           category: "Tokenomics",
           name: "Locked Policy",
-
           question:
             "Is the token minting policy locked so that no changes can be made?",
           worksteps: [
@@ -1162,7 +1161,6 @@ export default {
             "C. Under policy, ensure there is a lock symbol which signifies that policy is locked and cannot be changed (closed lock icon signifies locked policy).",
             "D. Copy in policy ID and note if policy is locked in box below.",
           ],
-
           options: [
             { id: 1, name: "Yes", value: 1.5 },
             { id: 2, name: "No", value: 0.0 },
@@ -2242,6 +2240,7 @@ textarea:focus-within {
   flex-direction: column;
   background-size: contain;
   box-shadow: var(--shadow-blue);
+  background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/6117f689ce4c7529d5850b8a_sundae.png");
 }
 
 .css-work-project-upl {
