@@ -676,6 +676,7 @@ export default {
       );
     },
     createNewCanvas() {
+      console.log(JSON.stringify(this.beforeEncodeProcess).length)
       const quickResponse = new Blackhole();
       quickResponse.generate("quickResponse", this.beforeEncodeProcess, 300);
       this.machineURL = quickResponse.cborHex;
