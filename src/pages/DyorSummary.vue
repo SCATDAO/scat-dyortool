@@ -597,7 +597,7 @@ export default {
   methods: {
     createMachineURL(route) {
       const machineURL = {
-        base: "http://192.168.1.3:8081",
+        base: "159.65.175.217:8081",
         download: "/download/",
         show: "/show/",
       };
@@ -636,8 +636,8 @@ export default {
         if (option.id === question.answer) {
           return option.value.toFixed(2);
         }
-        return (0.0).toFixed(2);
       }
+      return (0.0).toFixed(2);
     },
     knowMaxValue(question) {
       let counter = [];
@@ -676,7 +676,7 @@ export default {
       );
     },
     createNewCanvas() {
-      console.log(JSON.stringify(this.beforeEncodeProcess).length)
+      console.log(JSON.stringify(this.beforeEncodeProcess).length);
       const quickResponse = new Blackhole();
       quickResponse.generate("quickResponse", this.beforeEncodeProcess, 300);
       this.machineURL = quickResponse.cborHex;
@@ -880,7 +880,6 @@ a {
   flex-direction: column;
   background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/6117f689ce4c7529d5850b8a_sundae.png");
   background-size: contain;
-  box-shadow: var(--shadow-blue);
   border: 1px solid var(--border-primary);
 }
 
