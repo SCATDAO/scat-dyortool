@@ -597,7 +597,7 @@ export default {
   methods: {
     createMachineURL(route) {
       const machineURL = {
-        base: "http://192.168.1.3:8081",
+        base: "159.65.175.217:8081",
         download: "/download/",
         show: "/show/",
       };
