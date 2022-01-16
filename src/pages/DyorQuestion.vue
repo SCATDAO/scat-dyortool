@@ -1925,7 +1925,7 @@ textarea:focus-within {
 .css-work-quest-panel {
   background: var(--base-color-white-primary);
   height: 3rem;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   border-radius: 4px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
