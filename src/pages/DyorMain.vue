@@ -826,15 +826,13 @@ export default {
   z-index: 1;
   padding: 0 10%;
   box-sizing: border-box;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
   background: var(--base-color-white-primary);
 }
 
 .css-work-main-sss {
   height: 400px;
-  border-top: 1px solid var(--border-primary);
-  border-bottom: 1px solid var(--border-primary);
+  border-top: 1px dashed var(--border-primary);
+  border-bottom: 1px dashed var(--border-primary);
   margin: 2rem 0;
   display: flex;
 }
@@ -914,12 +912,12 @@ export default {
 
 .css-work-main-hai button {
   padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: hsla(0,0%,100%,0.2);
   border: inherit;
   outline: none;
   cursor: pointer;
   color: #fff;
-  font-weight: 600;
+  font-weight:500;
   font-size: 1rem;
   margin-left: 2rem;
   border-radius: 8px;

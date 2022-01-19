@@ -745,9 +745,9 @@
                 v-model="item.textarea"
                 rows="5"
                 cols="33"
-                placeholder="Edit here"
+                placeholder="Write in this space"
               ></textarea>
-              <div>
+              <div class="css-work-quest-panel-tac">
                 <span
                   class="css-length-counter"
                   :class="{ active: knowTextareaLength() }"
@@ -758,6 +758,22 @@
 
                 <span>1000</span>
               </div>
+              <template v-if="item.id === 9">
+                <div class="css-work-quest-thl">
+                  <div class="css-work-quest-ths">
+                    <input
+                      class="css-work-quest-tss"
+                      type="text"
+                      placeholder="E.g. Team development"
+                    />
+                    <input
+                      class="css-work-quest-tss"
+                      type="number"
+                      placeholder="%"
+                    />
+                  </div>
+                </div>
+              </template>
             </div>
           </template>
 
@@ -1733,6 +1749,7 @@ textarea {
   font-family: "Nunito", sans-serif;
   color: var(--text-color-secondary);
   caret-color: transparent;
+  box-sizing: border-box;
 }
 
 textarea:focus-within {
@@ -1805,6 +1822,43 @@ textarea:focus-within {
   position: relative;
 }
 
+.css-work-quest-thl {
+  width: 600px;
+  height: 230px;
+  background: var(--base-color-white-primary);
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  padding: 1 2rem;
+  box-sizing: border-box;
+}
+
+.css-work-quest-tss {
+  border: 1px solid var(--border-primary);
+  height: 40px;
+  display: flex;
+  border-radius: 4px;
+  padding: 0 1rem;
+}
+
+.css-work-quest-tss::placeholder {
+  color: var(--text-color-secondary);
+}
+
+.css-work-quest-ths {
+  display: flex;
+  height: 50px;
+  padding: 0 0.5rem;
+  margin: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+  border: 1px solid var(--border-primary);
+}
+
 .css-work-quest-wrap {
   width: 100%;
   height: 100vh;
@@ -1817,7 +1871,7 @@ textarea:focus-within {
 .css-work-quest-nac {
   height: 100px;
 }
-.css-work-quest-panel-ta div {
+.css-work-quest-panel-tac {
   right: 0%;
   bottom: 0%;
   margin-bottom: 1rem;
@@ -1827,7 +1881,7 @@ textarea:focus-within {
   display: flex;
 }
 
-.css-work-quest-panel-ta span {
+.css-work-quest-panel-tac span {
   margin-left: 2px;
 }
 
@@ -1923,7 +1977,7 @@ textarea:focus-within {
 .css-work-quest-panel {
   background: var(--base-color-white-primary);
   height: 3rem;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   border-radius: 4px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -1997,6 +2051,7 @@ textarea:focus-within {
   height: 64px;
   display: flex;
   align-items: center;
+  padding: 0 2rem;
   border: 1px solid var(--border-primary);
 }
 
@@ -2214,8 +2269,6 @@ textarea:focus-within {
   display: flex;
   cursor: pointer;
   align-items: center;
-  font-size: var(--text-size-secondary);
-  text-transform: uppercase;
 }
 
 .css-work-project-sbe span {
@@ -2276,7 +2329,7 @@ textarea:focus-within {
 }
 
 .css-work-project-scc {
-  height: 200px;
+  height: 150px;
 }
 .css-work-project-name {
   text-align: center;
@@ -2288,13 +2341,9 @@ textarea:focus-within {
 }
 
 .css-work-project-uli {
-  padding-left: 4rem;
-  border-left: 2px solid rgba(255, 255, 255, 0);
-  transition: ease 0.3s;
-}
-
-.css-work-project-ul:active {
-  background: transparent;
+  padding-left: 3.5rem;
+  border-left: 4px solid rgba(255, 255, 255, 0);
+  transition: 0.1s;
 }
 
 .css-work-project-uli:active {
@@ -2302,8 +2351,7 @@ textarea:focus-within {
 }
 
 .css-work-project-uli:hover {
-  font-weight: bold;
-  border-left: 2px solid rgba(255, 255, 255, 0.3);
+  border-left: 4px solid rgba(255, 255, 255, 0.3);
 }
 
 .css-work-project-uli.active::before {
