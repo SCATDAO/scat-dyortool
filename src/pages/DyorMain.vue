@@ -912,12 +912,12 @@ export default {
 
 .css-work-main-hai button {
   padding: 0.5rem 1rem;
-  background: hsla(0,0%,100%,0.2);
+  background: transparent;
   border: inherit;
   outline: none;
   cursor: pointer;
   color: #fff;
-  font-weight:500;
+  font-weight: 500;
   font-size: 1rem;
   margin-left: 2rem;
   border-radius: 8px;

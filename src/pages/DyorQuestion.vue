@@ -300,6 +300,29 @@
           </g>
         </svg>
       </router-link>
+
+      <div class="css-work-tool-haw">
+        <svg
+          id="SVGRoot"
+          width="16px"
+          height="16px"
+          version="1.1"
+          viewBox="0 0 16 16"
+        >
+          <g fill="#0069f5" stroke-width=".87352">
+            <path
+              id="Mask"
+              d="m7.9926 7.2145c-1.9297 0-3.4941-1.5644-3.4941-3.4941 0-1.9297 1.5644-3.4941 3.4941-3.4941s3.4941 1.5644 3.4941 3.4941c0 1.9297-1.5644 3.4941-3.4941 3.4941z"
+              opacity=".3"
+            />
+            <path
+              id="Mask-Copy"
+              d="m0.13147 15.25c0.33858-4.169 3.7223-6.2886 7.8465-6.2886 4.1823 0 7.6184 2.0031 7.8744 6.2893 0.01023 0.17075 0 0.69882-0.6562 0.69882h-14.43c-0.21907 0-0.65336-0.47242-0.63492-0.69951z"
+            />
+          </g>
+        </svg>
+        <span>Nick1232</span>
+      </div>
     </header>
     <div class="css-work-tool-wrap">
       <div class="css-work-project-wpr">
@@ -547,25 +570,6 @@
           <template v-if="item.answer === null">
             <div class="css-work-quest-panel">
               <div>
-                <button
-                  class="css-work-quest-panel-b"
-                  style="cursor: not-allowed"
-                >
-                  <svg
-                    id="SVGRoot"
-                    width="16px"
-                    height="16px"
-                    version="1.1"
-                    viewBox="0 0 16 16"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="m9.2897 4.3515a3.0003 3.0003 0 1 1 4.243 4.243l-4.95 4.95a4.0001 4.0001 0 0 1-5.657-5.657l6.364-6.364 0.707 0.707-6.364 6.364a3.0003 3.0003 0 0 0 4.243 4.243l4.95-4.95a2.0004 2.0004 0 1 0-2.829-2.829l-4.596 4.597a0.5 0.5 0 1 0 0.707 0.707l4.596-4.596 0.708 0.707-4.597 4.596a1.5 1.5 0 1 1-2.121-2.121z"
-                      fill="#001737"
-                      stroke-width=".015625"
-                    />
-                  </svg>
-                </button>
                 <button class="css-work-quest-panel-b">
                   <svg
                     id="SVGRoot"
@@ -573,35 +577,31 @@
                     height="16px"
                     version="1.1"
                     viewBox="0 0 16 16"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <g fill="#001737" stroke-width=".015625">
-                      <path
-                        d="m8.0592 2.0047a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0-1a7 7 0 1 1 0 14 7 7 0 0 1 0-14z"
-                      />
-                      <path
-                        d="m10.059 4.5047q1 0 1 1t-1 1q-1 0-1-1t1-1zm-6.646 7.854-0.708-0.708 2.901-2.9a1.5 1.5 0 0 1 1.933-0.16l2.16 1.542a0.5 0.5 0 0 0 0.623-0.034l3.904-3.494 0.666 0.746-3.903 3.493a1.5 1.5 0 0 1-1.872 0.103l-2.16-1.543a0.5 0.5 0 0 0-0.643 0.054l-2.901 2.9z"
-                      />
+                    <g
+                      transform="matrix(.66381 0 0 .66381 .08614 .093233)"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <rect id="bound" width="24" height="24" />
+                      <g fill="#0069f5">
+                        <path
+                          id="Combined-Shape"
+                          d="m3.5 21h17c0.82843 0 1.5-0.67157 1.5-1.5v-11c0-0.82843-0.67157-1.5-1.5-1.5h-10.5l-2.5607-2.5607c-0.2813-0.2813-0.66284-0.43934-1.0607-0.43934h-2.8787c-0.82843 0-1.5 0.67157-1.5 1.5v14c0 0.82843 0.67157 1.5 1.5 1.5z"
+                          opacity=".3"
+                        />
+                        <polygon
+                          id="Path"
+                          points="4 19 10 11 16 19"
+                          opacity=".3"
+                        />
+                        <polygon id="Path-Copy" points="11 19 15 14 19 19" />
+                        <path
+                          d="m18 12c0.82843 0 1.5-0.67157 1.5-1.5 0-0.82843-0.67157-1.5-1.5-1.5s-1.5 0.67157-1.5 1.5c0 0.82843 0.67157 1.5 1.5 1.5z"
+                          opacity=".3"
+                        />
+                      </g>
                     </g>
-                  </svg>
-                </button>
-                <button
-                  class="css-work-quest-panel-b"
-                  style="cursor: not-allowed"
-                >
-                  <svg
-                    id="SVGRoot"
-                    width="16px"
-                    height="16px"
-                    version="1.1"
-                    viewBox="0 0 16 16"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="m11.124 12.199v-8h-9v8zm1-6.5 3-1.5v8l-3-1.5v2a0.5 0.5 0 0 1-0.5 0.5h-10a0.5 0.5 0 0 1-0.5-0.5v-9a0.5 0.5 0 0 1 0.5-0.5h10a0.5 0.5 0 0 1 0.5 0.5zm0 1.118v2.764l2 1v-4.764zm-9-1.618h3v1h-3z"
-                      fill="#001737"
-                      stroke-width=".015625"
-                    />
                   </svg>
                 </button>
               </div>
@@ -764,7 +764,7 @@
                     <input
                       class="css-work-quest-tss"
                       type="text"
-                      placeholder="E.g. Team development"
+                      placeholder="E.g. Development team"
                     />
                     <input
                       class="css-work-quest-tss"
@@ -1823,8 +1823,8 @@ textarea:focus-within {
 }
 
 .css-work-quest-thl {
-  width: 600px;
-  height: 230px;
+  width: 100%;
+  height: 100%;
   background: var(--base-color-white-primary);
   top: 0;
   left: 0;
@@ -1832,16 +1832,19 @@ textarea:focus-within {
   display: flex;
   flex-direction: column;
   z-index: 100;
+  overflow-y: auto;
   padding: 1 2rem;
   box-sizing: border-box;
 }
 
 .css-work-quest-tss {
   border: 1px solid var(--border-primary);
+  width: 100%;
   height: 40px;
   display: flex;
   border-radius: 4px;
   padding: 0 1rem;
+  margin: 0 1rem;
 }
 
 .css-work-quest-tss::placeholder {
@@ -1850,13 +1853,11 @@ textarea:focus-within {
 
 .css-work-quest-ths {
   display: flex;
-  height: 50px;
-  padding: 0 0.5rem;
-  margin: 1rem;
+  padding: 0 1rem;
+  margin: 1rem 10%;
   align-items: center;
   justify-content: space-between;
   border-radius: 4px;
-  border: 1px solid var(--border-primary);
 }
 
 .css-work-quest-wrap {
@@ -1891,7 +1892,7 @@ textarea:focus-within {
 }
 
 .css-work-quest-top {
-  padding: 0 10%;
+  padding: 0 15%;
   margin-top: 3rem;
   display: flex;
   justify-content: space-between;
@@ -1914,6 +1915,18 @@ textarea:focus-within {
   font-weight: 500;
   font-size: var(--text-size-secondary);
 }
+
+.css-work-tool-haw {
+  display: flex;
+  align-items: baseline;
+}
+
+.css-work-tool-haw span {
+  margin-left: 10px;
+  font-weight: 600;
+  color: var(--text-color-primary);
+}
+
 .css-work-quest-got {
   width: 200px;
   height: 100px;
@@ -1986,7 +1999,7 @@ textarea:focus-within {
   border: 1px solid var(--border-primary);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: relative;
 }
 
@@ -2051,6 +2064,7 @@ textarea:focus-within {
   height: 64px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 2rem;
   border: 1px solid var(--border-primary);
 }
@@ -2410,6 +2424,19 @@ textarea:focus-within {
 
   .css-main-flex-wrap {
     overflow-y: auto;
+  }
+
+  .css-work-quest-ths {
+    flex-direction: column;
+  }
+
+  .css-work-quest-tss {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+
+  .css-work-quest-thl {
+    width: 100%;
   }
 
   .css-work-quest-got {
