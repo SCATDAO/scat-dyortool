@@ -597,7 +597,7 @@ export default {
   methods: {
     createMachineURL(route) {
       const machineURL = {
-        base: "http://159.65.175.217:8081",
+        base: "http://134.209.163.124:8081",
         download: "/download/",
         show: "/show/",
       };
@@ -672,6 +672,7 @@ export default {
           id: e.id,
           an: e.answer,
           ta: e.textarea,
+          ed: e.input
         })
       );
     },
@@ -705,7 +706,6 @@ a {
   box-sizing: border-box;
   flex-direction: column;
   overflow-y: auto;
-  background: var(--base-color-white-secondary);
 }
 
 .css-work-finished-cri {
@@ -719,7 +719,6 @@ a {
   flex-direction: column;
   box-sizing: border-box;
   justify-content: center;
-  background: var(--base-color-white-secondary);
   box-shadow: 1px 1px 20px var(--border-primary);
 }
 
@@ -827,6 +826,7 @@ a {
   height: 64px;
   display: flex;
   align-items: center;
+  padding: 0 2rem !important;
   box-shadow: 1px 1px 20px var(--border-primary);
 }
 

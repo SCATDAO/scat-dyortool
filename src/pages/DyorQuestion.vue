@@ -300,6 +300,29 @@
           </g>
         </svg>
       </router-link>
+
+      <div class="css-work-tool-haw">
+        <svg
+          id="SVGRoot"
+          width="16px"
+          height="16px"
+          version="1.1"
+          viewBox="0 0 16 16"
+        >
+          <g fill="#0069f5" stroke-width=".87352">
+            <path
+              id="Mask"
+              d="m7.9926 7.2145c-1.9297 0-3.4941-1.5644-3.4941-3.4941 0-1.9297 1.5644-3.4941 3.4941-3.4941s3.4941 1.5644 3.4941 3.4941c0 1.9297-1.5644 3.4941-3.4941 3.4941z"
+              opacity=".3"
+            />
+            <path
+              id="Mask-Copy"
+              d="m0.13147 15.25c0.33858-4.169 3.7223-6.2886 7.8465-6.2886 4.1823 0 7.6184 2.0031 7.8744 6.2893 0.01023 0.17075 0 0.69882-0.6562 0.69882h-14.43c-0.21907 0-0.65336-0.47242-0.63492-0.69951z"
+            />
+          </g>
+        </svg>
+        <span>{{ newAudit.an }}</span>
+      </div>
     </header>
     <div class="css-work-tool-wrap">
       <div class="css-work-project-wpr">
@@ -547,25 +570,6 @@
           <template v-if="item.answer === null">
             <div class="css-work-quest-panel">
               <div>
-                <button
-                  class="css-work-quest-panel-b"
-                  style="cursor: not-allowed"
-                >
-                  <svg
-                    id="SVGRoot"
-                    width="16px"
-                    height="16px"
-                    version="1.1"
-                    viewBox="0 0 16 16"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="m9.2897 4.3515a3.0003 3.0003 0 1 1 4.243 4.243l-4.95 4.95a4.0001 4.0001 0 0 1-5.657-5.657l6.364-6.364 0.707 0.707-6.364 6.364a3.0003 3.0003 0 0 0 4.243 4.243l4.95-4.95a2.0004 2.0004 0 1 0-2.829-2.829l-4.596 4.597a0.5 0.5 0 1 0 0.707 0.707l4.596-4.596 0.708 0.707-4.597 4.596a1.5 1.5 0 1 1-2.121-2.121z"
-                      fill="#001737"
-                      stroke-width=".015625"
-                    />
-                  </svg>
-                </button>
                 <button class="css-work-quest-panel-b">
                   <svg
                     id="SVGRoot"
@@ -573,35 +577,31 @@
                     height="16px"
                     version="1.1"
                     viewBox="0 0 16 16"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <g fill="#001737" stroke-width=".015625">
-                      <path
-                        d="m8.0592 2.0047a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0-1a7 7 0 1 1 0 14 7 7 0 0 1 0-14z"
-                      />
-                      <path
-                        d="m10.059 4.5047q1 0 1 1t-1 1q-1 0-1-1t1-1zm-6.646 7.854-0.708-0.708 2.901-2.9a1.5 1.5 0 0 1 1.933-0.16l2.16 1.542a0.5 0.5 0 0 0 0.623-0.034l3.904-3.494 0.666 0.746-3.903 3.493a1.5 1.5 0 0 1-1.872 0.103l-2.16-1.543a0.5 0.5 0 0 0-0.643 0.054l-2.901 2.9z"
-                      />
+                    <g
+                      transform="matrix(.66381 0 0 .66381 .08614 .093233)"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <rect id="bound" width="24" height="24" />
+                      <g fill="#0069f5">
+                        <path
+                          id="Combined-Shape"
+                          d="m3.5 21h17c0.82843 0 1.5-0.67157 1.5-1.5v-11c0-0.82843-0.67157-1.5-1.5-1.5h-10.5l-2.5607-2.5607c-0.2813-0.2813-0.66284-0.43934-1.0607-0.43934h-2.8787c-0.82843 0-1.5 0.67157-1.5 1.5v14c0 0.82843 0.67157 1.5 1.5 1.5z"
+                          opacity=".3"
+                        />
+                        <polygon
+                          id="Path"
+                          points="4 19 10 11 16 19"
+                          opacity=".3"
+                        />
+                        <polygon id="Path-Copy" points="11 19 15 14 19 19" />
+                        <path
+                          d="m18 12c0.82843 0 1.5-0.67157 1.5-1.5 0-0.82843-0.67157-1.5-1.5-1.5s-1.5 0.67157-1.5 1.5c0 0.82843 0.67157 1.5 1.5 1.5z"
+                          opacity=".3"
+                        />
+                      </g>
                     </g>
-                  </svg>
-                </button>
-                <button
-                  class="css-work-quest-panel-b"
-                  style="cursor: not-allowed"
-                >
-                  <svg
-                    id="SVGRoot"
-                    width="16px"
-                    height="16px"
-                    version="1.1"
-                    viewBox="0 0 16 16"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="m11.124 12.199v-8h-9v8zm1-6.5 3-1.5v8l-3-1.5v2a0.5 0.5 0 0 1-0.5 0.5h-10a0.5 0.5 0 0 1-0.5-0.5v-9a0.5 0.5 0 0 1 0.5-0.5h10a0.5 0.5 0 0 1 0.5 0.5zm0 1.118v2.764l2 1v-4.764zm-9-1.618h3v1h-3z"
-                      fill="#001737"
-                      stroke-width=".015625"
-                    />
                   </svg>
                 </button>
               </div>
@@ -724,7 +724,7 @@
                 <div class="css-work-quest-got">
                   <div class="box box--left"></div>
                   <div class="css-work-quest-gtt">
-                    Click on the magnifying glass to evaluate this question.
+                    Click on the magnifying glass to evaluate each question
                   </div>
                   <button
                     @click="
@@ -745,9 +745,9 @@
                 v-model="item.textarea"
                 rows="5"
                 cols="33"
-                placeholder="Edit here"
+                placeholder="Write in this space"
               ></textarea>
-              <div>
+              <div class="css-work-quest-panel-tac">
                 <span
                   class="css-length-counter"
                   :class="{ active: knowTextareaLength() }"
@@ -758,6 +758,90 @@
 
                 <span>1000</span>
               </div>
+              <template v-if="item.id === 9">
+                <div class="css-work-quest-thl">
+                  <div
+                    class="css-work-quest-ths"
+                    v-for="element in item.input"
+                    :key="element"
+                    :class="{
+                      active: knowInputDelete(element.id),
+                    }"
+                  >
+                    <input
+                      v-model="currentQuestion[0].input[element.id].name"
+                      class="css-work-quest-tss"
+                      type="text"
+                      placeholder="E.g. Development team"
+                    />
+                    <input
+                      v-model="currentQuestion[0].input[element.id].per"
+                      class="css-work-quest-tss"
+                      style="width: 50%"
+                      type="number"
+                      placeholder="%"
+                    />
+
+                    <template v-if="!inputPhases[element.id]">
+                      <button
+                        class="css-work-quest-bta"
+                        @click="createNewInput(element.id)"
+                      >
+                        <svg
+                          id="SVGRoot"
+                          width="8px"
+                          height="8px"
+                          version="1.1"
+                          viewBox="0 0 8 8"
+                        >
+                          <g
+                            id="Stockholm-icons-/-Navigation-/-Plus"
+                            transform="matrix(.49767 0 0 .49767 -1.9907 -1.9639)"
+                            fill="#727384"
+                            fill-rule="evenodd"
+                          >
+                            <rect x="4" y="11" width="16" height="2" rx="1" />
+                            <rect
+                              id="Rectangle-185-Copy"
+                              transform="rotate(90,12,12)"
+                              x="4"
+                              y="11"
+                              width="16"
+                              height="2"
+                              rx="1"
+                            />
+                          </g>
+                        </svg>
+                      </button>
+                    </template>
+
+                    <template v-if="inputPhases[element.id]">
+                      <button
+                        class="css-work-quest-bta"
+                        @click="removeAddedInput(element.id)"
+                      >
+                        <svg
+                          id="SVGRoot"
+                          width="8px"
+                          height="8px"
+                          version="1.1"
+                          viewBox="0 0 8 8"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g
+                            id="Stockholm-icons-/-Navigation-/-Plus"
+                            transform="matrix(.49767 0 0 .49767 -1.9907 -1.9639)"
+                            fill="#727384"
+                            fill-rule="evenodd"
+                          >
+                            <rect x="4" y="11" width="16" height="2" rx="1" />
+                          </g>
+                        </svg>
+                      </button>
+                    </template>
+                  </div>
+                </div>
+              </template>
             </div>
           </template>
 
@@ -785,16 +869,28 @@
               @click="numberQuestion[0] > 0 ? backAnswerQuestion() : false"
             >
               <svg
+                id="SVGRoot"
+                width="24px"
+                height="24px"
+                version="1.1"
+                viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1024 1024"
-                data-v-066465b6=""
-                width="24"
-                style="transform: rotate(180deg)"
               >
-                <path
-                  fill="var(--base-color-black-primary)"
-                  d="M754.752 480H160a32 32 0 1 0 0 64h594.752L521.344 777.344a32 32 0 0 0 45.312 45.312l288-288a32 32 0 0 0 0-45.312l-288-288a32 32 0 1 0-45.312 45.312L754.752 480z"
-                ></path>
+                <g fill="#001737" stroke-width="1.0666">
+                  <rect
+                    id="Rectangle"
+                    transform="matrix(0,-1,-1,0,0,0)"
+                    x="-13.15"
+                    y="-20.188"
+                    width="2.1334"
+                    height="9.6"
+                    rx="1.0666"
+                    opacity=".3"
+                  />
+                  <path
+                    d="m12.409 17.73c0.41656 0.41656 0.41656 1.092 0 1.5085-0.41656 0.41656-1.092 0.41656-1.5085 0l-6.4-6.4c-0.40382-0.40382-0.41795-1.0541-0.03206-1.475l5.8667-6.4c0.39808-0.43426 1.0729-0.4636 1.5071-0.065525 0.43426 0.39807 0.4636 1.0728 0.06552 1.5071l-5.1766 5.6472z"
+                  />
+                </g>
               </svg>
               <span>Back</span>
             </div>
@@ -810,15 +906,27 @@
               >
                 <span>Next</span>
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 1024 1024"
-                  data-v-066465b6=""
-                  width="24"
+                  id="SVGRoot"
+                  width="24px"
+                  height="24px"
+                  version="1.1"
+                  viewBox="0 0 24 24"
                 >
-                  <path
-                    fill="#ffffff"
-                    d="M754.752 480H160a32 32 0 1 0 0 64h594.752L521.344 777.344a32 32 0 0 0 45.312 45.312l288-288a32 32 0 0 0 0-45.312l-288-288a32 32 0 1 0-45.312 45.312L754.752 480z"
-                  ></path>
+                  <g fill="#fff" stroke-width="1.0666">
+                    <rect
+                      id="Rectangle"
+                      transform="rotate(-90)"
+                      x="-13.15"
+                      y="4.188"
+                      width="2.1334"
+                      height="9.6"
+                      rx="1.0666"
+                      opacity=".3"
+                    />
+                    <path
+                      d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
+                    />
+                  </g>
                 </svg>
               </div>
             </template>
@@ -826,19 +934,31 @@
               <div
                 class="css-work-quest-arrow"
                 id="right-arrow"
-                @click="nextSummary()"
+                @click="createNewReport()"
               >
                 <span>Next</span>
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 1024 1024"
-                  data-v-066465b6=""
-                  width="24"
+                  id="SVGRoot"
+                  width="24px"
+                  height="24px"
+                  version="1.1"
+                  viewBox="0 0 24 24"
                 >
-                  <path
-                    fill="#ffffff"
-                    d="M754.752 480H160a32 32 0 1 0 0 64h594.752L521.344 777.344a32 32 0 0 0 45.312 45.312l288-288a32 32 0 0 0 0-45.312l-288-288a32 32 0 1 0-45.312 45.312L754.752 480z"
-                  ></path>
+                  <g fill="#fff" stroke-width="1.0666">
+                    <rect
+                      id="Rectangle"
+                      transform="rotate(-90)"
+                      x="-13.15"
+                      y="4.188"
+                      width="2.1334"
+                      height="9.6"
+                      rx="1.0666"
+                      opacity=".3"
+                    />
+                    <path
+                      d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
+                    />
+                  </g>
                 </svg>
               </div>
             </template>
@@ -855,7 +975,7 @@ export default {
   data() {
     return {
       newAudit: {
-        an: "Eric",
+        an: "DyorUser",
         pn: "Name",
         pw: "Category",
         pc: "www.example.com",
@@ -1088,6 +1208,13 @@ export default {
           ],
           answer: null,
           textarea: "",
+          input: [
+            {
+              id: 0,
+              name: "",
+              per: "",
+            },
+          ],
           purpose:
             "Having huge portions of the token supply held by a small number of insiders is usually undesireable due to the selling pressure it can put on the token which can harm you as an inestor. Team members or venture capitalists who got in extremely early and were able to aquire tokens for 1/1000 of the price you are able to aquire them for are going to want to sell at some point and lock in thier gains. In order to sell these tokens, they will need sufficient liquidty from other people who are buying the token. Many projects can have large market caps, but if there is not a large amount of liquidity, any purchase or sale of the token can cause large fluctuations in price. In instances where teams and insiders want to exit thier positions and cash out, this can cause the price to crash on the smaller investors who purchased the tokens at higher prices.  // Having large portions of tokens held by the team and insiders is also undesireable due to the centralized control that it means for the project. Decentralization is an important concept in blockchain and there are many different layers and aspects of decentralization to consider. One of those aspects is having this control over a large amount of supply held by a small number of people. Many project have governance features where 1 token = 1 vote and holders can propose changes, vote on those changes, and essentially control the project going forward. If you have large numbers of tokens concentrated in a few hands, they will essentially be able to control the project going forward, which is the antithesis of what most crpyto projects are hoping to achieve. ",
           files: [],
@@ -1561,6 +1688,8 @@ export default {
           video: [],
         },
       ],
+      inputPhases: [0],
+      inputDelete: [],
       workspace: false,
       workProgramCategory: {
         developmentTeam: [],
@@ -1605,7 +1734,7 @@ export default {
     },
     nextAnswerQuestion() {
       if (this.currentQuestion[0].answer === 404) {
-        this.nextSummary();
+        this.createNewReport();
       }
 
       this.checkCorrectQuestion();
@@ -1634,13 +1763,35 @@ export default {
         }
       }
     },
-    nextSummary() {
+    createNewReport() {
       this.checkCorrectQuestion();
       this.progressWorkData.push(this.currentQuestion[0].id);
       this.answeredQuestion[this.numberQuestion[0]] = this.currentQuestion[0];
-      this.stateUpdate();
+      this.updateDataState();
     },
-    stateUpdate() {
+    createNewInput(element) {
+      this.inputPhases[element] = !this.inputPhases[element];
+      this.inputPhases.push(0);
+      this.currentQuestion[0].input.push({
+        id: element + 1,
+        name: "",
+        per: "",
+      });
+      console.log(JSON.stringify(this.currentQuestion[0].input));
+    },
+    knowInputDelete(element) {
+      return this.inputDelete.includes(element);
+    },
+    removeAddedInput(element) {
+      this.inputDelete.push(element);
+      this.currentQuestion[0].input[element] = {
+        id: element,
+        name: "",
+        per: "",
+      };
+      console.log(this.currentQuestion[0].input);
+    },
+    updateDataState() {
       this.$store.commit("newQuestData", this.answeredQuestion);
       this.$router.push("/summary");
     },
@@ -1733,6 +1884,7 @@ textarea {
   font-family: "Nunito", sans-serif;
   color: var(--text-color-secondary);
   caret-color: transparent;
+  box-sizing: border-box;
 }
 
 textarea:focus-within {
@@ -1805,6 +1957,60 @@ textarea:focus-within {
   position: relative;
 }
 
+.css-work-quest-thl {
+  width: 100%;
+  height: 100%;
+  background: var(--base-color-white-primary);
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  overflow-y: auto;
+  padding: 1 2rem;
+  box-sizing: border-box;
+}
+
+.css-work-quest-bta {
+  padding: 0 1rem;
+  background: transparent;
+  border: 1px solid var(--border-primary);
+  border-radius: 4px;
+  height: 40px;
+  cursor: pointer;
+  opacity: 0.9;
+  margin: 0 1rem;
+}
+
+.css-work-quest-ths.active {
+  background: red;
+}
+
+.css-work-quest-tss {
+  border: 1px solid var(--border-primary);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  border-radius: 4px;
+  padding: 0 1rem;
+  margin: 0 1rem;
+  color: var(--text-color-secondary);
+}
+
+.css-work-quest-tss::placeholder {
+  color: var(--text-color-secondary);
+}
+
+.css-work-quest-ths {
+  display: flex;
+  padding: 0 1rem;
+  margin: 1rem 20%;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+}
+
 .css-work-quest-wrap {
   width: 100%;
   height: 100vh;
@@ -1817,7 +2023,7 @@ textarea:focus-within {
 .css-work-quest-nac {
   height: 100px;
 }
-.css-work-quest-panel-ta div {
+.css-work-quest-panel-tac {
   right: 0%;
   bottom: 0%;
   margin-bottom: 1rem;
@@ -1827,7 +2033,7 @@ textarea:focus-within {
   display: flex;
 }
 
-.css-work-quest-panel-ta span {
+.css-work-quest-panel-tac span {
   margin-left: 2px;
 }
 
@@ -1837,7 +2043,7 @@ textarea:focus-within {
 }
 
 .css-work-quest-top {
-  padding: 0 10%;
+  padding: 0 15%;
   margin-top: 3rem;
   display: flex;
   justify-content: space-between;
@@ -1860,6 +2066,18 @@ textarea:focus-within {
   font-weight: 500;
   font-size: var(--text-size-secondary);
 }
+
+.css-work-tool-haw {
+  display: flex;
+  align-items: baseline;
+}
+
+.css-work-tool-haw span {
+  margin-left: 10px;
+  font-weight: 600;
+  color: var(--text-color-primary);
+}
+
 .css-work-quest-got {
   width: 200px;
   height: 100px;
@@ -1923,7 +2141,7 @@ textarea:focus-within {
 .css-work-quest-panel {
   background: var(--base-color-white-primary);
   height: 3rem;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   border-radius: 4px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -1997,6 +2215,8 @@ textarea:focus-within {
   height: 64px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
   border: 1px solid var(--border-primary);
 }
 
@@ -2214,8 +2434,6 @@ textarea:focus-within {
   display: flex;
   cursor: pointer;
   align-items: center;
-  font-size: var(--text-size-secondary);
-  text-transform: uppercase;
 }
 
 .css-work-project-sbe span {
@@ -2240,7 +2458,7 @@ textarea:focus-within {
   flex-direction: column;
   background-size: contain;
   box-shadow: var(--shadow-blue);
-  background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/6117f689ce4c7529d5850b8a_sundae.png");
+  background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/6138a6ca75afa04605a749af_GADA.png");
 }
 
 .css-work-project-upl {
@@ -2276,7 +2494,7 @@ textarea:focus-within {
 }
 
 .css-work-project-scc {
-  height: 200px;
+  height: 150px;
 }
 .css-work-project-name {
   text-align: center;
@@ -2288,13 +2506,9 @@ textarea:focus-within {
 }
 
 .css-work-project-uli {
-  padding-left: 4rem;
-  border-left: 2px solid rgba(255, 255, 255, 0);
-  transition: ease 0.3s;
-}
-
-.css-work-project-ul:active {
-  background: transparent;
+  padding-left: 3.5rem;
+  border-left: 4px solid rgba(255, 255, 255, 0);
+  transition: 0.1s;
 }
 
 .css-work-project-uli:active {
@@ -2302,15 +2516,14 @@ textarea:focus-within {
 }
 
 .css-work-project-uli:hover {
-  font-weight: bold;
-  border-left: 2px solid rgba(255, 255, 255, 0.3);
+  border-left: 4px solid rgba(255, 255, 255, 0.3);
 }
 
 .css-work-project-uli.active::before {
   list-style-type: none;
   color: #00f569;
   display: inline-block;
-  content: "\2713";
+  content: url("data:image/svg+xml,%3Csvg id='SVGRoot' width='16px' height='16px' version='1.1' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m12.43 6.0664c0.27037-0.31809 0.74741-0.35677 1.0655-0.086392 0.31809 0.27037 0.35677 0.74741 0.08639 1.0655l-6.4251 7.5589c-0.27462 0.32308-0.76122 0.35711-1.0781 0.07541l-3.4015-3.0236c-0.31202-0.27735-0.34012-0.75513-0.062777-1.0672 0.27735-0.31202 0.75513-0.34012 1.0672-0.06277l2.8239 2.5101z' fill='%2300f569' stroke-width='.7559'/%3E%3C/svg%3E ");
   width: 1.5em;
   margin-left: -1em;
 }
@@ -2354,14 +2567,23 @@ textarea:focus-within {
 
   .css-work-quest-wrap {
     margin-left: 0;
-    border-top-right-radius: 32px;
-    border-top-left-radius: 32px;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
     overflow: unset;
     background: var(--base-color-white-primary);
   }
 
   .css-main-flex-wrap {
     overflow-y: auto;
+  }
+
+  .css-work-quest-tss {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+
+  .css-work-quest-thl {
+    width: 100%;
   }
 
   .css-work-quest-got {

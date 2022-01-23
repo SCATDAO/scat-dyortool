@@ -465,6 +465,7 @@ export default {
   box-shadow: 1px 1px 20px var(--border-primary);
   height: 64px;
   display: flex;
+  padding: 0 2rem;
   align-items: center;
 }
 
@@ -594,8 +595,8 @@ export default {
   .css-dyor-create-ndf {
     min-width: 300px;
     box-sizing: content-box;
-    border-top-left-radius: 32px;
-    border-top-right-radius: 32px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
     box-shadow: none;
     padding: 10%;
   }

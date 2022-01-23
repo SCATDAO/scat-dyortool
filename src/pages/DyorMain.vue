@@ -833,8 +833,8 @@ export default {
 
 .css-work-main-sss {
   height: 400px;
-  border-top: 1px solid var(--border-primary);
-  border-bottom: 1px solid var(--border-primary);
+  border-top: 1px dashed var(--border-primary);
+  border-bottom: 1px dashed var(--border-primary);
   margin: 2rem 0;
   display: flex;
 }
@@ -914,12 +914,12 @@ export default {
 
 .css-work-main-hai button {
   padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   border: inherit;
   outline: none;
   cursor: pointer;
   color: #fff;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1rem;
   margin-left: 2rem;
   border-radius: 8px;
@@ -1121,8 +1121,8 @@ export default {
     width: 100%;
     flex-direction: column;
     background: var(--base-color-white-primary);
-    border-top-right-radius: 32px;
-    border-top-left-radius: 32px;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
     box-sizing: border-box;
     padding: 10%;
   }
