@@ -1789,7 +1789,7 @@ export default {
         name: "",
         per: "",
       };
-      console.log(this.currentQuestion[0].input)
+      console.log(this.currentQuestion[0].input);
     },
     updateDataState() {
       this.$store.commit("newQuestData", this.answeredQuestion);
