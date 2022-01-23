@@ -1984,7 +1984,7 @@ textarea:focus-within {
 }
 
 .css-work-quest-ths.active {
-  background: red;
+  display: none;
 }
 
 .css-work-quest-tss {
