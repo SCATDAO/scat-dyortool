@@ -826,6 +826,8 @@ export default {
   z-index: 1;
   padding: 0 10%;
   box-sizing: border-box;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   background: var(--base-color-white-primary);
 }
 
@@ -1119,8 +1121,8 @@ export default {
     width: 100%;
     flex-direction: column;
     background: var(--base-color-white-primary);
-    border-top-right-radius: 32px;
-    border-top-left-radius: 32px;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
     box-sizing: border-box;
     padding: 10%;
   }

@@ -672,6 +672,7 @@ export default {
           id: e.id,
           an: e.answer,
           ta: e.textarea,
+          ed: e.input
         })
       );
     },
