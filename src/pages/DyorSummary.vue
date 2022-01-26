@@ -597,7 +597,7 @@ export default {
   methods: {
     createMachineURL(route) {
       const machineURL = {
-        base: "http://134.209.163.124:8081",
+        base: "http:///134.209.163.124:8081",
         download: "/download/",
         show: "/show/",
       };
@@ -679,7 +679,7 @@ export default {
     createNewCanvas() {
       console.log(JSON.stringify(this.beforeEncodeProcess).length);
       const quickResponse = new Blackhole();
-      quickResponse.generate("quickResponse", this.beforeEncodeProcess, 300);
+      quickResponse.generate("quickResponse", JSON.stringify(this.beforeEncodeProcess), 300);
       this.machineURL = quickResponse.cborHex;
       console.log(this.machineURL, quickResponse.decode());
     },
