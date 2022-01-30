@@ -1,7 +1,7 @@
 <template>
   <div class="css-main-flex-wrap">
     <header class="css-work-project-her" :class="{ active: workspace }">
-      <router-link to="/main">
+      <router-link to="/main" style="display: flex; align-items: baseline">
         <svg
           id="logo-blue"
           width="120px"
@@ -299,28 +299,15 @@
             </g>
           </g>
         </svg>
+        <div class="css-dyor-ver">v1.0.0</div>
       </router-link>
 
       <div class="css-work-tool-haw">
-        <svg
-          id="SVGRoot"
-          width="16px"
-          height="16px"
-          version="1.1"
-          viewBox="0 0 16 16"
-        >
-          <g fill="#0069f5" stroke-width=".87352">
-            <path
-              id="Mask"
-              d="m7.9926 7.2145c-1.9297 0-3.4941-1.5644-3.4941-3.4941 0-1.9297 1.5644-3.4941 3.4941-3.4941s3.4941 1.5644 3.4941 3.4941c0 1.9297-1.5644 3.4941-3.4941 3.4941z"
-              opacity=".3"
-            />
-            <path
-              id="Mask-Copy"
-              d="m0.13147 15.25c0.33858-4.169 3.7223-6.2886 7.8465-6.2886 4.1823 0 7.6184 2.0031 7.8744 6.2893 0.01023 0.17075 0 0.69882-0.6562 0.69882h-14.43c-0.21907 0-0.65336-0.47242-0.63492-0.69951z"
-            />
-          </g>
-        </svg>
+        <div class="css-identicon-wrp">
+          <div class="css-identicon" id="identicon">
+            <img :src="avatarSeed" alt="" />
+          </div>
+        </div>
         <span>{{ newAudit.an }}</span>
       </div>
     </header>
@@ -608,7 +595,7 @@
               <button
                 class="css-work-quest-panel-b"
                 id="css-work-quest-panel-bl"
-                @click="item.answer = 0"
+                @click="nextGlassButton()"
               >
                 <svg
                   id="SVGRoot"
@@ -738,16 +725,12 @@
             </div>
           </template>
           <template v-if="item.answer === null">
-            <div class="css-work-quest-panel-ta">
-              <textarea
-                id="story"
-                name="story"
-                v-model="item.textarea"
-                rows="5"
-                cols="33"
-                placeholder="Write in this space"
-              ></textarea>
-              <div class="css-work-quest-panel-tac">
+            <div class="css-work-quest-pta">
+              <DyorEditor
+                ref="DyorEditorRef"
+                :data="currentQuestion[0].textarea"
+              ></DyorEditor>
+              <div class="css-work-quest-tac">
                 <span
                   class="css-length-counter"
                   :class="{ active: knowTextareaLength() }"
@@ -885,7 +868,6 @@
                     width="2.1334"
                     height="9.6"
                     rx="1.0666"
-                    opacity=".3"
                   />
                   <path
                     d="m12.409 17.73c0.41656 0.41656 0.41656 1.092 0 1.5085-0.41656 0.41656-1.092 0.41656-1.5085 0l-6.4-6.4c-0.40382-0.40382-0.41795-1.0541-0.03206-1.475l5.8667-6.4c0.39808-0.43426 1.0729-0.4636 1.5071-0.065525 0.43426 0.39807 0.4636 1.0728 0.06552 1.5071l-5.1766 5.6472z"
@@ -921,7 +903,6 @@
                       width="2.1334"
                       height="9.6"
                       rx="1.0666"
-                      opacity=".3"
                     />
                     <path
                       d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
@@ -971,7 +952,12 @@
 </template>
 
 <script>
+import DyorEditor from "../components/DyorEditor.vue";
+
 export default {
+  components: {
+    DyorEditor,
+  },
   data() {
     return {
       newAudit: {
@@ -981,6 +967,7 @@ export default {
         pc: "www.example.com",
         pl: [],
       },
+      avatarSeed: "",
       numberQuestion: [0, 0],
       questionList: [
         {
@@ -1718,8 +1705,28 @@ export default {
     this.changeCurrentQuestion();
     this.chargeListQuestion();
     this.sendMeAtribute();
+    this.createNewIdenticon();
   },
+  mounted() {},
   methods: {
+    async nextGlassButton() {
+      this.currentQuestion[0].textarea =
+        await this.$refs.DyorEditorRef[0].sendMeData();
+      this.currentQuestion[0].answer = 0;
+    },
+    createNewIdenticon() {
+      const hashCode = function (s) {
+        return s.split("").reduce(function (a, b) {
+          a = (a << 5) - a + b.charCodeAt(0);
+          return a & a;
+        }, 0);
+      };
+      const base = this.newAudit.an + this.newAudit.an.length;
+
+      this.avatarSeed = `https://avatars.dicebear.com/api/identicon/${hashCode(
+        base
+      )}.svg`;
+    },
     sendMeAtribute() {
       this.newAudit = this.$store.getters.sendMeAtribute;
     },
@@ -1732,12 +1739,15 @@ export default {
     cleanCurrentQuestion() {
       this.currentQuestion = [];
     },
-    nextAnswerQuestion() {
+    async nextAnswerQuestion() {
+      console.log(this.currentQuestion[0].textarea, "WHAT");
+
       if (this.currentQuestion[0].answer === 404) {
         this.createNewReport();
       }
 
       this.checkCorrectQuestion();
+
       this.answeredQuestion[this.numberQuestion[0]] =
         this.currentQuestion.pop();
       this.numberQuestion[0] += 1;
@@ -1873,24 +1883,6 @@ export default {
 </script>
 
 <style scoped>
-textarea {
-  width: 100%;
-  max-width: 100%;
-  height: 230px;
-  line-height: 1.5;
-  outline: none;
-  border: none;
-  resize: none;
-  font-family: "Nunito", sans-serif;
-  color: var(--text-color-secondary);
-  caret-color: transparent;
-  box-sizing: border-box;
-}
-
-textarea:focus-within {
-  caret-color: black;
-}
-
 #css-work-quest-panel-bl {
   display: flex;
   align-items: flex-start;
@@ -1946,15 +1938,54 @@ textarea:focus-within {
   }
 }
 
-.css-work-quest-panel-ta {
+.css-identicon-wrp {
+  border: 1px solid var(--border-primary);
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.css-identicon {
+  width: 20px;
+  height: 20px;
+}
+
+.css-dyor-ver {
+  font-size: var(--text-size-secondary);
+  color: var(--text-color-secondary);
+  margin-left: 10px;
+  margin-bottom: 3px;
+}
+
+.css-work-quest-pta {
   border: 1px solid var(--border-primary);
   border-radius: 4px;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   padding: 10px 1rem;
-  background: #fff;
   border-top: none;
+  height: 300px;
+  min-height: 300px;
   position: relative;
+  overflow-y: scroll;
+  background: var(--base-color-white-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.css-work-quest-tac {
+  right: 0;
+  bottom: 0;
+  margin-bottom: 1rem;
+  margin-right: 1.4rem;
+  margin-top: auto;
+  font-size: var(--text-size-secondary);
+  display: flex;
+  position: absolute;
+  background: yellow;
+}
+
+.css-work-quest-tac span {
+  margin-left: 2px;
 }
 
 .css-work-quest-thl {
@@ -2023,24 +2054,6 @@ textarea:focus-within {
 .css-work-quest-nac {
   height: 100px;
 }
-.css-work-quest-panel-tac {
-  right: 0%;
-  bottom: 0%;
-  margin-bottom: 1rem;
-  margin-right: 1.4rem;
-  position: absolute;
-  font-size: var(--text-size-secondary);
-  display: flex;
-}
-
-.css-work-quest-panel-tac span {
-  margin-left: 2px;
-}
-
-.textarea {
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-}
 
 .css-work-quest-top {
   padding: 0 15%;
@@ -2069,7 +2082,7 @@ textarea:focus-within {
 
 .css-work-tool-haw {
   display: flex;
-  align-items: baseline;
+  align-items: center;
 }
 
 .css-work-tool-haw span {
@@ -2216,7 +2229,7 @@ textarea:focus-within {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
+  padding: 0 3rem;
   border: 1px solid var(--border-primary);
 }
 
@@ -2277,55 +2290,7 @@ textarea:focus-within {
   justify-content: center;
 }
 
-.control input {
-  z-index: -1;
-  opacity: 0;
-}
-
-.control__indicator {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--border-primary);
-  border-radius: 4px;
-}
-
-.control--radio .control__indicator {
-  border-radius: 50%;
-}
-
-/* Checked state */
-.control input:checked ~ .control__indicator {
-  background: var(--complementary-color-blue);
-}
-
-/* Hover state whilst checked */
-.control:hover input:not([disabled]):checked ~ .control__indicator,
-.control input:checked:focus ~ .control__indicator {
-  background: var(--complementary-color-blue);
-}
-
-/* Disabled state */
-.control input:disabled ~ .control__indicator {
-  pointer-events: none;
-  opacity: 0.6;
-  background: #e6e6e6;
-}
-
-/* Check mark */
-.control__indicator:after {
-  position: absolute;
-  display: none;
-  content: "";
-}
-
-/* Show check mark */
-.control input:checked ~ .control__indicator:after {
-  display: block;
-}
-
-/* Checkbox tick */
-.control--checkbox .control__indicator:after {
+.control--checkbox:after {
   top: 8px;
   left: 14px;
   width: 8px;
@@ -2333,26 +2298,6 @@ textarea:focus-within {
   transform: rotate(45deg);
   border: solid #fff;
   border-width: 0 2px 2px 0;
-}
-
-/* Disabled tick colour */
-.control--checkbox input:disabled ~ .control__indicator:after {
-  border-color: #7b7b7b;
-}
-
-/* Radio button inner circle */
-.control--radio .control__indicator:after {
-  top: 7px;
-  left: 7px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #fff;
-}
-
-/* Disabled circle colour */
-.control--radio input:disabled ~ .control__indicator:after {
-  background: #7b7b7b;
 }
 
 .css-work-quest-suggest {
