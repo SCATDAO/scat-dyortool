@@ -321,7 +321,9 @@
             />
           </g>
         </svg>
+        
         <span>{{ newAudit.an }}</span>
+
       </div>
     </header>
     <div class="css-work-tool-wrap">
@@ -738,16 +740,9 @@
             </div>
           </template>
           <template v-if="item.answer === null">
-            <div class="css-work-quest-panel-ta">
-              <textarea
-                id="story"
-                name="story"
-                v-model="item.textarea"
-                rows="5"
-                cols="33"
-                placeholder="Write in this space"
-              ></textarea>
-              <div class="css-work-quest-panel-tac">
+            <div class="css-work-quest-pta">
+              <dyor-editor ref= 'DyorEditorRef' />
+              <div class="css-work-quest-tac">
                 <span
                   class="css-length-counter"
                   :class="{ active: knowTextareaLength() }"
@@ -885,7 +880,6 @@
                     width="2.1334"
                     height="9.6"
                     rx="1.0666"
-                    opacity=".3"
                   />
                   <path
                     d="m12.409 17.73c0.41656 0.41656 0.41656 1.092 0 1.5085-0.41656 0.41656-1.092 0.41656-1.5085 0l-6.4-6.4c-0.40382-0.40382-0.41795-1.0541-0.03206-1.475l5.8667-6.4c0.39808-0.43426 1.0729-0.4636 1.5071-0.065525 0.43426 0.39807 0.4636 1.0728 0.06552 1.5071l-5.1766 5.6472z"
@@ -921,7 +915,6 @@
                       width="2.1334"
                       height="9.6"
                       rx="1.0666"
-                      opacity=".3"
                     />
                     <path
                       d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
@@ -971,7 +964,12 @@
 </template>
 
 <script>
+import DyorEditor from "../components/DyorEditor.vue";
+
 export default {
+  components: {
+    DyorEditor,
+  },
   data() {
     return {
       newAudit: {
@@ -981,6 +979,7 @@ export default {
         pc: "www.example.com",
         pl: [],
       },
+      editors: [],
       numberQuestion: [0, 0],
       questionList: [
         {
@@ -1736,7 +1735,6 @@ export default {
       if (this.currentQuestion[0].answer === 404) {
         this.createNewReport();
       }
-
       this.checkCorrectQuestion();
       this.answeredQuestion[this.numberQuestion[0]] =
         this.currentQuestion.pop();
@@ -1873,24 +1871,6 @@ export default {
 </script>
 
 <style scoped>
-textarea {
-  width: 100%;
-  max-width: 100%;
-  height: 230px;
-  line-height: 1.5;
-  outline: none;
-  border: none;
-  resize: none;
-  font-family: "Nunito", sans-serif;
-  color: var(--text-color-secondary);
-  caret-color: transparent;
-  box-sizing: border-box;
-}
-
-textarea:focus-within {
-  caret-color: black;
-}
-
 #css-work-quest-panel-bl {
   display: flex;
   align-items: flex-start;
@@ -1946,15 +1926,36 @@ textarea:focus-within {
   }
 }
 
-.css-work-quest-panel-ta {
+.css-work-quest-pta {
   border: 1px solid var(--border-primary);
   border-radius: 4px;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   padding: 10px 1rem;
-  background: #fff;
   border-top: none;
+  height: 300px;
+  min-height: 300px;
   position: relative;
+  overflow-y: scroll;
+  background: var(--base-color-white-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.css-work-quest-tac {
+  right: 0;
+  bottom: 0;
+  margin-bottom: 1rem;
+  margin-right: 1.4rem;
+  margin-top: auto;
+  font-size: var(--text-size-secondary);
+  display: flex;
+  position: absolute;
+  background: yellow;
+}
+
+.css-work-quest-tac span {
+  margin-left: 2px;
 }
 
 .css-work-quest-thl {
@@ -2022,24 +2023,6 @@ textarea:focus-within {
 
 .css-work-quest-nac {
   height: 100px;
-}
-.css-work-quest-panel-tac {
-  right: 0%;
-  bottom: 0%;
-  margin-bottom: 1rem;
-  margin-right: 1.4rem;
-  position: absolute;
-  font-size: var(--text-size-secondary);
-  display: flex;
-}
-
-.css-work-quest-panel-tac span {
-  margin-left: 2px;
-}
-
-.textarea {
-  font-size: 0.8rem;
-  letter-spacing: 1px;
 }
 
 .css-work-quest-top {
@@ -2277,55 +2260,7 @@ textarea:focus-within {
   justify-content: center;
 }
 
-.control input {
-  z-index: -1;
-  opacity: 0;
-}
-
-.control__indicator {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--border-primary);
-  border-radius: 4px;
-}
-
-.control--radio .control__indicator {
-  border-radius: 50%;
-}
-
-/* Checked state */
-.control input:checked ~ .control__indicator {
-  background: var(--complementary-color-blue);
-}
-
-/* Hover state whilst checked */
-.control:hover input:not([disabled]):checked ~ .control__indicator,
-.control input:checked:focus ~ .control__indicator {
-  background: var(--complementary-color-blue);
-}
-
-/* Disabled state */
-.control input:disabled ~ .control__indicator {
-  pointer-events: none;
-  opacity: 0.6;
-  background: #e6e6e6;
-}
-
-/* Check mark */
-.control__indicator:after {
-  position: absolute;
-  display: none;
-  content: "";
-}
-
-/* Show check mark */
-.control input:checked ~ .control__indicator:after {
-  display: block;
-}
-
-/* Checkbox tick */
-.control--checkbox .control__indicator:after {
+.control--checkbox:after {
   top: 8px;
   left: 14px;
   width: 8px;
@@ -2333,26 +2268,6 @@ textarea:focus-within {
   transform: rotate(45deg);
   border: solid #fff;
   border-width: 0 2px 2px 0;
-}
-
-/* Disabled tick colour */
-.control--checkbox input:disabled ~ .control__indicator:after {
-  border-color: #7b7b7b;
-}
-
-/* Radio button inner circle */
-.control--radio .control__indicator:after {
-  top: 7px;
-  left: 7px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #fff;
-}
-
-/* Disabled circle colour */
-.control--radio input:disabled ~ .control__indicator:after {
-  background: #7b7b7b;
 }
 
 .css-work-quest-suggest {

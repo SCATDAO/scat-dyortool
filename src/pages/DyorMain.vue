@@ -826,8 +826,6 @@ export default {
   z-index: 1;
   padding: 0 10%;
   box-sizing: border-box;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
   background: var(--base-color-white-primary);
 }
 
