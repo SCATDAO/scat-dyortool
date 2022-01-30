@@ -16,13 +16,41 @@ import Underline from "@editorjs/underline";
 import TextVariantTune from "@editorjs/text-variant-tune";
 import Quote from "@editorjs/quote";
 
+import { ref } from "vue";
+
 export default {
+  props: {
+    data: String,
+  },
+  data() {
+    return {
+      editor: ref([]),
+      parseData: null,
+    };
+  },
   mounted() {
+    this.parsedata();
     this.createNewEditor();
   },
   methods: {
+    parsedata() {
+      this.parseData = this.data;
+      console.log(this.parseData)
+    },
+
+    async sendMeData() {
+      return this.editor[0]
+        .save()
+        .then((outputData) => {
+          return outputData;
+        })
+        .catch((error) => {
+          console.log(error);
+          return "Empty";
+        });
+    },
     createNewEditor() {
-      new EditorJS({
+      const editor = new EditorJS({
         holder: "editorx",
         minHeight: 50,
         tunes: ["textVariant"],
@@ -89,8 +117,10 @@ export default {
           },
         },
 
-        data: {},
+        data:this.data,
       });
+
+      this.editor.push(editor);
     },
   },
 };

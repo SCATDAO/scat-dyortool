@@ -917,11 +917,12 @@ export default {
   outline: none;
   cursor: pointer;
   color: #fff;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 1rem;
   margin-left: 2rem;
   border-radius: 8px;
 }
+
 .custom-shape-divider-bottom-1640461385 {
   position: absolute;
   bottom: 0;
