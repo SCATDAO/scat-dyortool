@@ -487,7 +487,111 @@
             @click="visualHelper.purpose = !visualHelper.purpose"
           >
             <div class="css-work-quest-fps">
-              <div class="css-work-quest-fph">Why this matter?</div>
+              <div class="css-work-quest-fph">
+                <div>
+                  <span> Why This Matters?</span>
+
+                  <svg
+                    width="16px"
+                    height="16px"
+                    viewBox="0 0 16 16"
+                    version="1.1"
+                    id="SVGRoot"
+                    sodipodi:docname="a.svg"
+                  >
+                    <sodipodi:namedview
+                      id="namedview3143"
+                      pagecolor="#ffffff"
+                      bordercolor="#666666"
+                      borderopacity="1.0"
+                      inkscape:pageshadow="2"
+                      inkscape:pageopacity="0.0"
+                      inkscape:pagecheckerboard="0"
+                      inkscape:document-units="px"
+                      showgrid="false"
+                      inkscape:zoom="20.496745"
+                      inkscape:cx="14.880411"
+                      inkscape:cy="8.757488"
+                      inkscape:window-width="1920"
+                      inkscape:window-height="1016"
+                      inkscape:window-x="0"
+                      inkscape:window-y="27"
+                      inkscape:window-maximized="1"
+                      inkscape:current-layer="Stockholm-icons-/-General-/-Shield-protected"
+                    />
+                    <defs id="defs3138" />
+                    <g
+                      inkscape:label="Layer 1"
+                      inkscape:groupmode="layer"
+                      id="layer1"
+                    >
+                      <g
+                        id="Stockholm-icons-/-General-/-Shield-protected"
+                        stroke="none"
+                        stroke-width="1"
+                        fill="none"
+                        fill-rule="evenodd"
+                        transform="matrix(0.65765615,0,0,0.65765615,0.08267261,0.13226617)"
+                      >
+                        <rect id="bound" x="0" y="0" width="24" height="24" />
+                        <path
+                          d="M 3.4259171,2.7346228 11.802404,1.1640314 c 0.267378,-0.050133 0.541746,-0.050133 0.809123,0 l 8.376488,1.5705914 V 12.923944 c 0,3.220863 -1.659239,6.214539 -4.390525,7.921593 l -3.808781,2.380489 c -0.355929,0.222456 -0.807558,0.222456 -1.163487,0 L 7.8164415,20.845537 C 5.0851551,19.138483 3.4259171,16.144807 3.4259171,12.923944 Z"
+                          id="Path-50"
+                          fill="#000000"
+                          opacity="0.3"
+                          style="
+                            fill: #0069f5;
+                            fill-opacity: 1;
+                            stroke-width: 1.09763;
+                          "
+                        />
+                        <path
+                          d="m 14.951044,10.418041 c 0.606205,0 1.097631,0.491426 1.097631,1.097632 v 3.292893 c 0,0.606205 -0.491426,1.097631 -1.097631,1.097631 H 9.4628881 c -0.6062048,0 -1.097631,-0.491426 -1.097631,-1.097631 v -3.292893 c 0,-0.606206 0.4914262,-1.097632 1.097631,-1.097632 V 9.869225 c 0,-1.5155124 1.2285649,-2.7440778 2.7440779,-2.7440778 1.515512,0 2.744078,1.2285654 2.744078,2.7440778 z M 12.206966,8.2227783 c -0.909307,0 -1.646447,0.7371393 -1.646447,1.6464467 v 0.548816 h 3.292894 V 9.869225 c 0,-0.9093074 -0.73714,-1.6464467 -1.646447,-1.6464467 z"
+                          id="Combined-Shape"
+                          fill="#000000"
+                          style="
+                            fill: #0069f5;
+                            fill-opacity: 1;
+                            stroke-width: 1.09763;
+                          "
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <button>
+                  <svg
+                    id="SVGRoot"
+                    width="16px"
+                    height="16px"
+                    version="1.1"
+                    viewBox="0 0 16 16"
+                  >
+                    <g
+                      id="Stockholm-icons-/-Navigation-/-Close"
+                      transform="translate(-4.016 -3.7816)"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <g
+                        id="Group"
+                        transform="rotate(-45 14.828 5.1716)"
+                        fill="#727384"
+                      >
+                        <rect y="7" width="16" height="2" rx="1" />
+                        <rect
+                          id="Rectangle-185-Copy"
+                          transform="rotate(90,8,8)"
+                          y="7"
+                          width="16"
+                          height="2"
+                          rx="1"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+              </div>
               <div class="css-work-quest-fpx">
                 <span
                   class="css-work-quest-fpz"
@@ -496,6 +600,10 @@
                 >
                   {{ item }}
                 </span>
+                <div class="css-work-quest-fxp">
+                  <div>SCATDAO</div>
+                  <span>www.scatdao.com</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1038,7 +1146,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "Practically all exit scams and rug pulls are performed by anonymous teams. Why do you suppose that is? I think that the simplest answer is that if you are going to commit a crime, it is infinitely easier to get away with it if nobody knows who you are. The exact same reason that bank robbers choose to wear a mask. If you commit fraud and steal millions from investors, the police will hunt you down and you will face consequences for your actions. At the very least, you will be labeled a charlatan and will not be able to easily do the same thing in the future. If you commit fraud and steal millions of investors while remaining completely anonymous, you will never really face any consequences for your actions and will be able to continue doing it again and again.  / Now, does this mean that any dev team that chooses to remain anonymous is 100% going to commit fraud and steal? Of course not. There are lots of brilliant, hard working, and trustworthy developers out there that might prefer to be anonymous, and that is their right. But the good teams who choose to remain anonymous are normalizing the practice which leaves the door wide open for the bad teams to steal over and over again. We as a community should not be willing to invest in or use any dApp where the dev team has chosen to be anonymous, as this potential for fraud will always be present. We have no way to sort the trustworthy teams from the untrustworthy and are left in a situation where we are essentially just hoping that people do the right thing. If a dev team wants us to trust them enough to use and invest in their products, they must give us a reason to trust them. Revealing themselves is a loud and clear message to the investing community that they will do right by us and if they do not, they will suffer the consequences. The good teams who choose to remain anonymous are normalizing the practice which leaves the door wide open for the bad teams to steal over and over again. ",
+            "Practically all exit scams and rug pulls are performed by anonymous teams. Why do you suppose that is? I think that the simplest answer is that if you are going to commit a crime, it is infinitely easier to get away with it if nobody knows who you are. The exact same reason that bank robbers choose to wear a mask. If you commit fraud and steal millions from investors, the police will hunt you down and you will face consequences for your actions. At the very least, you will be labeled a charlatan and will not be able to easily do the same thing in the future. If you commit fraud and steal millions of investors while remaining completely anonymous, you will never really face any consequences for your actions and will be able to continue doing it again and again.\n Now, does this mean that any dev team that chooses to remain anonymous is 100% going to commit fraud and steal? Of course not. There are lots of brilliant, hard working, and trustworthy developers out there that might prefer to be anonymous, and that is their right. But the good teams who choose to remain anonymous are normalizing the practice which leaves the door wide open for the bad teams to steal over and over again. We as a community should not be willing to invest in or use any dApp where the dev team has chosen to be anonymous, as this potential for fraud will always be present. We have no way to sort the trustworthy teams from the untrustworthy and are left in a situation where we are essentially just hoping that people do the right thing.\n If a dev team wants us to trust them enough to use and invest in their products, they must give us a reason to trust them. Revealing themselves is a loud and clear message to the investing community that they will do right by us and if they do not, they will suffer the consequences. The good teams who choose to remain anonymous are normalizing the practice which leaves the door wide open for the bad teams to steal over and over again. ",
           files: [],
           images: [],
           video: [],
@@ -1067,7 +1175,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "Simply verifying that there are people listed on the project website is insufficient. It is not unheard of for a team to list fake people on the website to give the appearance they have all revealed their identities when they have not. Because of this, you must do a little work verifying that each person listed is real. Ideally there will be links included with each name and photo in the teams section that direct you to each persons LinkedIn account, Github, Medium, or any other socials that are used to corroborate identity and professional credentials. Many teams will provide these freely because they want to make it easy for you to verify them. If links are not provided, that is frustrating but not necessarily a red flag. Go through the worksteps that are listed here to try to find various social media accounts to confirm their identity and credentials. / Even if you do find a LinkedIn account or social media account, that doesn't guarantee that the information is legitimate. Any good scammer would have gone through the trouble of creating a fake identity for each person they listed in the website. You will need to use some of your past experience and common sense to review what is available and determine if it is legitimate. You have likely seems hundreds of LinkedIn profiles or Twitter/IG accounts and can spot things that look funny. Hardly any contacts. A ton of contacts but barely and activity. There are all kinds of things that can appear unusual and are too many to list here, but you will need to review the information and determine if you think it appears legitimate. And typically finding several sources online that can be compared and cross referenced to each other provides additional assurance that the person is real (e.g. has LinkedIn profile with several connections and people who have attested to a certain skill the person has, has a Facebook or IG account with similar pictures that appears legitimate, has a few articles written about them from various third party publications that you are familiar with).  / If you do determine that there are people listed in the website but they appear to be fake people, that is going to be a huge red flag. Honesty and reputation are extremely important and a team that is willing to mislead on this would likely be willing to mislead in other areas as well. It is possible that there are reasonable explanations or it is a rare instance where a person has no online presence, but anyone should proceed extremely cautiously if they are having trouble verifying the teams identities. ",
+            "Simply verifying that there are people listed on the project website is insufficient. It is not unheard of for a team to list fake people on the website to give the appearance they have all revealed their identities when they have not. Because of this, you must do a little work verifying that each person listed is real. Ideally there will be links included with each name and photo in the teams section that direct you to each persons LinkedIn account, Github, Medium, or any other socials that are used to corroborate identity and professional credentials. Many teams will provide these freely because they want to make it easy for you to verify them. If links are not provided, that is frustrating but not necessarily a red flag. Go through the worksteps that are listed here to try to find various social media accounts to confirm their identity and credentials. \n Even if you do find a LinkedIn account or social media account, that doesn't guarantee that the information is legitimate. Any good scammer would have gone through the trouble of creating a fake identity for each person they listed in the website. You will need to use some of your past experience and common sense to review what is available and determine if it is legitimate. You have likely seems hundreds of LinkedIn profiles or Twitter/IG accounts and can spot things that look funny. Hardly any contacts. A ton of contacts but barely and activity. There are all kinds of things that can appear unusual and are too many to list here, but you will need to review the information and determine if you think it appears legitimate. And typically finding several sources online that can be compared and cross referenced to each other provides additional assurance that the person is real (e.g. has LinkedIn profile with several connections and people who have attested to a certain skill the person has, has a Facebook or IG account with similar pictures that appears legitimate, has a few articles written about them from various third party publications that you are familiar with). \n If you do determine that there are people listed in the website but they appear to be fake people, that is going to be a huge red flag. Honesty and reputation are extremely important and a team that is willing to mislead on this would likely be willing to mislead in other areas as well. It is possible that there are reasonable explanations or it is a rare instance where a person has no online presence, but anyone should proceed extremely cautiously if they are having trouble verifying the teams identities. ",
           files: [],
           images: [],
           video: [],
@@ -1093,7 +1201,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "Prior experience is extremely valuable in assessing if something is going to be successful going forward. As they say, the best way to predict the future is to study the past. So having a team that has a successful history with blockchain or previous start ups suggests that they will have success with the project you are currently researching. Blockchain is also a very new and fast paced industry, so having a team with experience navigating it makes it more likely that they will be successful. Now does this mean that just because someone was successful in the past it is a guarantee they will always be successful? Of course not. Each project needs to be assessed on its own mertis independent of the last, but having that prior experience to leverage will usually provide an edge and increase the chances of its success. It is also important to research prior experience becuase of anything negative that might turn up. Just like prior positive exerience being a good indicator that the current project will be successful, prior negative experience is just as good an indicator that you might want to avoid. Was someone on the team invovled in some type of fraud or illegal behavior in the past? Have they relseased a prdocut that is getting large amounts of complaints from thier users or investors? This is all information that you can use to assess if the current project they are working on will have a similar outcome. Just remember that the past helps us assess the future, but it doesnt gaurantee anything, positive or negative. ",
+            "Prior experience is extremely valuable in assessing if something is going to be successful going forward. As they say, the best way to predict the future is to study the past. So having a team that has a successful history with blockchain or previous start ups suggests that they will have success with the project you are currently researching. Blockchain is also a very new and fast paced industry, so having a team with experience navigating it makes it more likely that they will be successful. Now does this mean that just because someone was successful in the past it is a guarantee they will always be successful? Of course not. Each project needs to be assessed on its own mertis independent of the last, but having that prior experience to leverage will usually provide an edge and increase the chances of its success. \n It is also important to research prior experience becuase of anything negative that might turn up. Just like prior positive exerience being a good indicator that the current project will be successful, prior negative experience is just as good an indicator that you might want to avoid. Was someone on the team invovled in some type of fraud or illegal behavior in the past? Have they relseased a prdocut that is getting large amounts of complaints from thier users or investors? This is all information that you can use to assess if the current project they are working on will have a similar outcome. Just remember that the past helps us assess the future, but it doesnt gaurantee anything, positive or negative. ",
           files: [],
           images: [],
           video: [],
@@ -1120,7 +1228,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "A third party audit by a reputable independent service provider is a crucial step in establishing trust with potential investors and users. It is important to have people who are not affiliated with the project review the code who can attest that it is free from any bugs, exploits, or vulnerabilities. Just think about this rationally for a second, how much would you trust the dev team if they say they have looked everything over and it is safe to use? You can see how there is a conflict of interest here because the dev team could be the ones who have programmed the application to do something malicious, so taking their word for it is probably not a great idea. There are also instances where the dev team has not done anything wrong intentionally, but they still could have programmed in things that could harm investors accidently. By having a fresh set of eyes reviewing their work, you have a good chance at finding things that the original team may have overlooked.  It is also important that you assess the people who are performing the audits. Reputation is important and the firms that do a good job will have built a solid reputation for themselves. If it is one you have never heard of or cannot find any information about online, you would usually have less faith in that audit work. / Now does this mean that if it has an audit it is 100% safe to use? Unfortunately no. Read any audit report and there will be plenty of disclaimers about how any audit only provides limited assurance and they themselves will not guarantee the safety of the application. So while not 100%, it is still a good sign that the dev team cares about their product and wants to make sure its safe to use, and professionals have reviewed it and hopefully caught anything major. ",
+            "A third party audit by a reputable independent service provider is a crucial step in establishing trust with potential investors and users. It is important to have people who are not affiliated with the project review the code who can attest that it is free from any bugs, exploits, or vulnerabilities. Just think about this rationally for a second, how much would you trust the dev team if they say they have looked everything over and it is safe to use? You can see how there is a conflict of interest here because the dev team could be the ones who have programmed the application to do something malicious, so taking their word for it is probably not a great idea.\n There are also instances where the dev team has not done anything wrong intentionally, but they still could have programmed in things that could harm investors accidently. By having a fresh set of eyes reviewing their work, you have a good chance at finding things that the original team may have overlooked.  It is also important that you assess the people who are performing the audits. Reputation is important and the firms that do a good job will have built a solid reputation for themselves. If it is one you have never heard of or cannot find any information about online, you would usually have less faith in that audit work. \n Now does this mean that if it has an audit it is 100% safe to use? Unfortunately no. Read any audit report and there will be plenty of disclaimers about how any audit only provides limited assurance and they themselves will not guarantee the safety of the application. So while not 100%, it is still a good sign that the dev team cares about their product and wants to make sure its safe to use, and professionals have reviewed it and hopefully caught anything major. ",
           files: [],
           images: [],
           video: [],
@@ -1144,7 +1252,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "As mentioned in #2, honesty and reputation are extremely important and a team that is willing to mislead or cheat in one area would likely be willing to mislead and cheat in other areas as well. Stealing someone's ideas and passing them off as your own is very similar to stealing money or assets. So people who have demonstrated they are willing to steal ideas are better off avoided as they might be willing to steal your money/crypto as well. Now does this mean that people should not be leveraging other ideas or knowledge? Of course not, that is one of the things that makes open source blockchain and tech in general so special. Everyone can learn from one another and build off each other which ultimately speeds. But blindly copying someone else's whitepaper does not really fall under this category. If a team ends up copying large sections of another teams whitepaper without citing their source or giving credit, it is usually a bad sign and something you would want to consider while evaluating the project. ",
+            "As mentioned in #2, honesty and reputation are extremely important and a team that is willing to mislead or cheat in one area would likely be willing to mislead and cheat in other areas as well. Stealing someone's ideas and passing them off as your own is very similar to stealing money or assets. So people who have demonstrated they are willing to steal ideas are better off avoided as they might be willing to steal your money/crypto as well. \n Now does this mean that people should not be leveraging other ideas or knowledge? Of course not, that is one of the things that makes open source blockchain and tech in general so special. Everyone can learn from one another and build off each other which ultimately speeds. But blindly copying someone else's whitepaper does not really fall under this category. If a team ends up copying large sections of another teams whitepaper without citing their source or giving credit, it is usually a bad sign and something you would want to consider while evaluating the project. ",
           files: [],
           images: [],
           video: [],
@@ -1170,7 +1278,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "Most serious teams that are truly building something significant take a lot of pride in what they do. They like to make sure that everything is presented as the best version of itself and take the time and effort to review things multiple times with multiple people. As a result of this effort, there usually arent too many errors to be found. This is contrasted against teams that have hastilly put something together as fast as possible to exit scam or rug pull before quickly moving on to the next one. If a team has no real intention of brining this product to market or sticking around long enough to see it through, they usually arent spending all the time and energy to ensure everything is perfect. So if you are seeing a whitepaper that is full of spelling, grammar, and punctuation errors, that can be an indication that this team has not taken anything very seriously and may have bad intentions. Of course this is not a guarantee and its possible for an amazing project to have plenty of flaws in the whitepaper or a malicious project to have a flawless whitepaper. It is just one of the many things we look at when assessing a project on the whole. ",
+            "Most serious teams that are truly building something significant take a lot of pride in what they do. They like to make sure that everything is presented as the best version of itself and take the time and effort to review things multiple times with multiple people. As a result of this effort, there usually arent too many errors to be found. This is contrasted against teams that have hastilly put something together as fast as possible to exit scam or rug pull before quickly moving on to the next one. \n If a team has no real intention of brining this product to market or sticking around long enough to see it through, they usually arent spending all the time and energy to ensure everything is perfect. So if you are seeing a whitepaper that is full of spelling, grammar, and punctuation errors, that can be an indication that this team has not taken anything very seriously and may have bad intentions. Of course this is not a guarantee and its possible for an amazing project to have plenty of flaws in the whitepaper or a malicious project to have a flawless whitepaper. It is just one of the many things we look at when assessing a project on the whole. ",
           files: [],
           images: [],
           video: [],
@@ -1229,7 +1337,7 @@ export default {
             },
           ],
           purpose:
-            "Having huge portions of the token supply held by a small number of insiders is usually undesirable due to the selling pressure it can put on the token which can harm you as an investor. Team members or venture capitalists who got in extremely early and were able to acquire tokens for 1/1000 of the price you are able to acquire them for are going to want to sell at some point and lock in their gains. In order to sell these tokens, they will need sufficient liquidity from other people who are buying the token. Many projects can have large market caps, but if there is not a large amount of liquidity, any purchase or sale of the token can cause large fluctuations in price. In instances where teams and insiders want to exit their positions and cash out, this can cause the price to crash on the smaller investors who purchased the tokens at higher prices. / Having large portions of tokens held by the team and insiders is also undesirable due to the centralized control that it means for the project. Decentralization is an important concept in blockchain and there are many different layers and aspects of decentralization to consider. One of those aspects is having this control over a large amount of supply held by a small number of people. Many project have governance features where 1 token = 1 vote and holders can propose changes, vote on those changes, and essentially control the project going forward. If you have large numbers of tokens concentrated in a few hands, they will essentially be able to control the project going forward, which is the antithesis of what most crypto projects are hoping to achieve.",
+            "Having huge portions of the token supply held by a small number of insiders is usually undesirable due to the selling pressure it can put on the token which can harm you as an investor. Team members or venture capitalists who got in extremely early and were able to acquire tokens for 1/1000 of the price you are able to acquire them for are going to want to sell at some point and lock in their gains. In order to sell these tokens, they will need sufficient liquidity from other people who are buying the token. Many projects can have large market caps, but if there is not a large amount of liquidity, any purchase or sale of the token can cause large fluctuations in price. In instances where teams and insiders want to exit their positions and cash out, this can cause the price to crash on the smaller investors who purchased the tokens at higher prices. \n Having large portions of tokens held by the team and insiders is also undesirable due to the centralized control that it means for the project. Decentralization is an important concept in blockchain and there are many different layers and aspects of decentralization to consider. One of those aspects is having this control over a large amount of supply held by a small number of people. Many project have governance features where 1 token = 1 vote and holders can propose changes, vote on those changes, and essentially control the project going forward. If you have large numbers of tokens concentrated in a few hands, they will essentially be able to control the project going forward, which is the antithesis of what most crypto projects are hoping to achieve.",
           files: [],
           images: [],
           video: [],
@@ -1279,7 +1387,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "Lets start by describing what vesting is. According to Investopedia 'Being fully vested means a person has rights to the full amount of some benefit, most commonly employee benefits such as stock options, profit sharing, or retirement benefits. Benefits that must be fully vested benefits often accrue to employees each year, but they only become the employee's property according to a vesting schedule.Vesting may occur on a gradual schedule, such as 25 percent per year, or on a 'cliff' schedule where 100 percent of benefits vest at a set time, such as four years after the award date. Fully vested may be compared with partially vested.' // To give an example in the crpyrto world, the dev team might have 20% of all tokens reserved for themselves. As already discussed in #8, this can create a large amount of selling pressure if all the tokens were unlocked at once. It also can create concerns that there might be more work that needs to be done but now that the teams tokens are all unlocked, they could just take the money and run. To alleviate these concerns, a team can implement a vesting schedule so that not all of these tokens are available immediately. It can be vested over 4 years and 1/4 of the tokens are unlocked each year. It can be vested over 2 years where all the tokens are available at once at the end of the two years. Or anything that the team decides they want to do. By having a vesting schedule in place that makes sense, it is a clear signal to investors that tokens will not be massively dumped on them and that the team is in it for the long haul.",
+            "Lets start by describing what vesting is. According to Investopedia 'Being fully vested means a person has rights to the full amount of some benefit, most commonly employee benefits such as stock options, profit sharing, or retirement benefits. Benefits that must be fully vested benefits often accrue to employees each year, but they only become the employee's property according to a vesting schedule.Vesting may occur on a gradual schedule, such as 25 percent per year, or on a 'cliff' schedule where 100 percent of benefits vest at a set time, such as four years after the award date. Fully vested may be compared with partially vested.' \n To give an example in the crpyrto world, the dev team might have 20% of all tokens reserved for themselves. As already discussed in #8, this can create a large amount of selling pressure if all the tokens were unlocked at once. It also can create concerns that there might be more work that needs to be done but now that the teams tokens are all unlocked, they could just take the money and run. To alleviate these concerns, a team can implement a vesting schedule so that not all of these tokens are available immediately. It can be vested over 4 years and 1/4 of the tokens are unlocked each year. It can be vested over 2 years where all the tokens are available at once at the end of the two years. Or anything that the team decides they want to do. By having a vesting schedule in place that makes sense, it is a clear signal to investors that tokens will not be massively dumped on them and that the team is in it for the long haul.",
           files: [],
           images: [],
           video: [],
@@ -1304,7 +1412,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "Ask an Bitcoin Maxi why they love Bitcoin so much and there is a good chance one of their respnoses will be 'fixed and unchanging monetary policy'. They are not wrong about this being a good feature, as it ensures that everyone know the rules and can plan accordingly. You know how many tokens exist and know if more can be created. Most people wouldn't be too thrilled if the makers of the token they just purchased decided to mint trillions more which dilute the value of the ones they currently hold. You can make sure this is not possible if the policy is locked and can no longer be changed. If that is the case, then whatever the rules are when the tokens were minted will always apply and you do not run the risk of this being altered later down the line.  // It is also worth noting that each policy ID is unique to that token. It is possible to have 100 different tokens all with the same name, ticket symbol, and icon image. Some scammers might try to trick you by listing a copied token for sale on a DEX which appears to be the same (same name and ticket). But no matter what, the policy ID cannot be copied. It is a good practice to check the policy ID which is usually listed on the website and ensure you are purchasing the correct tokens.",
+            "Ask an Bitcoin Maxi why they love Bitcoin so much and there is a good chance one of their respnoses will be 'fixed and unchanging monetary policy'. They are not wrong about this being a good feature, as it ensures that everyone know the rules and can plan accordingly. You know how many tokens exist and know if more can be created. Most people wouldn't be too thrilled if the makers of the token they just purchased decided to mint trillions more which dilute the value of the ones they currently hold. You can make sure this is not possible if the policy is locked and can no longer be changed. If that is the case, then whatever the rules are when the tokens were minted will always apply and you do not run the risk of this being altered later down the line. \n It is also worth noting that each policy ID is unique to that token. It is possible to have 100 different tokens all with the same name, ticket symbol, and icon image. Some scammers might try to trick you by listing a copied token for sale on a DEX which appears to be the same (same name and ticket). But no matter what, the policy ID cannot be copied. It is a good practice to check the policy ID which is usually listed on the website and ensure you are purchasing the correct tokens.",
           files: [],
           images: [],
           video: [],
@@ -1354,7 +1462,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "This is another one of the more subjective points and shoud be taken with a grain of salt. Overall, if a pool is transparent about the fee structure they are charging and not misleading anybody, that is not a problem and each investor can decide for themselves if they want to proceed. So this is not really to punish the projects that decide to keep a larger percentage of the staking rewards for themselves, but more to reward the projects that try to make it as fair as possible. Many peopole in the crypto community care about fairness, and projects that conduct an ISO in a manner that helps smaller pools and doesnt gouge supporters are generally looked upon favorable and generate some positive attitudes towards it. So for that reason, we give a small number of bonus points to the projects which are extremely fair during thier ISO.",
+            "This is another one of the more subjective points and shoud be taken with a grain of salt. Overall, if a pool is transparent about the fee structure they are charging and not misleading anybody, that is not a problem and each investor can decide for themselves if they want to proceed. So this is not really to punish the projects that decide to keep a larger percentage of the staking rewards for themselves, but more to reward the projects that try to make it as fair as possible. Many peopole in the crypto community care about fairness, and projects that conduct an ISO in a manner that helps smaller pools and doesnt gouge supporters are generally looked upon favorable and generate some positive attitudes towards it. \n So for that reason, we give a small number of bonus points to the projects which are extremely fair during thier ISO.",
           files: [],
           images: [],
           video: [],
@@ -1379,7 +1487,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "This point has a few things to be considered. On the one hand, if a project is the first of its kind, it has a first mover advantage and has a better shot at cornering its market due to the fact that it’s the only game in town. As we have seen with Uniswap, Aave, Chainlink, and all the other projects that were the first of its kind, they usually have pretty good staying power and are typically one of if not the most popular project in its niche. On the other hand, being completely new can have negatives as its not really an established market, people might not fully understand what they are trying to do, the market might just not be ready for it yet, etc. Those are a lot of uncertainties that can make investing in a totally brand new product a bit risky. But in general, if you have read the whiteppaer and understand its use case, and beieve that it is fulfulling a reall need, there is a good chance that the positives outweigh the negatives when it comes to investing in something brand new.",
+            "This point has a few things to be considered. On the one hand, if a project is the first of its kind, it has a first mover advantage and has a better shot at cornering its market due to the fact that it’s the only game in town. As we have seen with Uniswap, Aave, Chainlink, and all the other projects that were the first of its kind, they usually have pretty good staying power and are typically one of if not the most popular project in its niche. \n On the other hand, being completely new can have negatives as its not really an established market, people might not fully understand what they are trying to do, the market might just not be ready for it yet, etc. Those are a lot of uncertainties that can make investing in a totally brand new product a bit risky. But in general, if you have read the whiteppaer and understand its use case, and beieve that it is fulfulling a reall need, there is a good chance that the positives outweigh the negatives when it comes to investing in something brand new.",
           files: [],
           images: [],
           video: [],
@@ -1406,7 +1514,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
+            "You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
           files: [],
           images: [],
           video: [],
@@ -1432,7 +1540,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "As discussed in the last point, community is important to a projects success. But simply looking at the number of followers is insufficient. This is because there are a LOT of projects out there that have recognized how important a community is to a project, and simply buy thousands of followers to give the appearance that they have a large organic community behind them. Now can a project buy followers and still end up being a good investment? Of course they can. But we have already covered honesty and integrity in the other points, and that still applies here. Most legitamite projets will gain a following organically because they are high quality and people can recognize that. Low quality projects that dont have much to offer will usually be the culprits in purchasing followers, which are typically the types of investments you would want to avoid. So doing a little extra leg work in reviewing the posts to see how much actual engagement they get will be a good indicator if the followers are real or not. Someone with 50K followers who gets 5 to 10 likes is probably purchainsg them. Someone who has no other people commenting or posting to thier page probably doenst have many real followers. And unfortunately, the really crafty projects who are on top of everything will also buy likes for thier posts to avoid being discovered. But those will typically be soething you can spot by looking through the people who engaged and seeing how many connections or followers they have. If they are all super low, its a good chance they are paid bots.",
+            "As discussed in the last point, community is important to a projects success. But simply looking at the number of followers is insufficient. This is because there are a LOT of projects out there that have recognized how important a community is to a project, and simply buy thousands of followers to give the appearance that they have a large organic community behind them. Now can a project buy followers and still end up being a good investment? Of course they can. But we have already covered honesty and integrity in the other points, and that still applies here. Most legitamite projets will gain a following organically because they are high quality and people can recognize that. Low quality projects that dont have much to offer will usually be the culprits in purchasing followers, which are typically the types of investments you would want to avoid. \n So doing a little extra leg work in reviewing the posts to see how much actual engagement they get will be a good indicator if the followers are real or not. Someone with 50K followers who gets 5 to 10 likes is probably purchainsg them. Someone who has no other people commenting or posting to thier page probably doenst have many real followers. And unfortunately, the really crafty projects who are on top of everything will also buy likes for thier posts to avoid being discovered. But those will typically be soething you can spot by looking through the people who engaged and seeing how many connections or followers they have. If they are all super low, its a good chance they are paid bots.",
           files: [],
           images: [],
           video: [],
@@ -1458,7 +1566,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
+            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
           files: [],
           images: [],
           video: [],
@@ -1483,7 +1591,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "This is a very similar concept to the one on Twitter I am copying it here again for your convenience.  As discussed in the last point, community is important to a projects success. But simply looking at the number of subscribers is insufficient. This is because there are a LOT of projects out there that have recognized how important a community is to a project, and simply buy thousands of subscribers to give the appearance that they have a large organic community behind them. Now can a project buy subscribers and still end up being a good investment? Of course they can. But we have already covered honesty and integrity in the other points, and that still applies here. Most legitimate projects will gain a following organically because they are high quality and people can recognize that. Low quality projects that don't have much to offer will usually be the culprits in purchasing subscribers, which are typically the types of investments you would want to avoid. So doing a little extra leg work in reviewing the posts to see how much actual engagement they get will be a good indicator if the subscribers are real or not. Someone with 50K subscribers who gets 5 to 10 upvotes is probably purchasing them. Someone who has no other people commenting or posting to their page probably doesn't have many real subscribers. And if you only see the same person making posts, that is usually not a good sign. Ideally you want to look for a wide range of people posting and engaging on posts.",
+            "This is a very similar concept to the one on Twitter I am copying it here again for your convenience.  As discussed in the last point, community is important to a projects success. But simply looking at the number of subscribers is insufficient. This is because there are a LOT of projects out there that have recognized how important a community is to a project, and simply buy thousands of subscribers to give the appearance that they have a large organic community behind them. Now can a project buy subscribers and still end up being a good investment? Of course they can. But we have already covered honesty and integrity in the other points, and that still applies here. Most legitimate projects will gain a following organically because they are high quality and people can recognize that. Low quality projects that don't have much to offer will usually be the culprits in purchasing subscribers, which are typically the types of investments you would want to avoid. \n So doing a little extra leg work in reviewing the posts to see how much actual engagement they get will be a good indicator if the subscribers are real or not. Someone with 50K subscribers who gets 5 to 10 upvotes is probably purchasing them. Someone who has no other people commenting or posting to their page probably doesn't have many real subscribers. And if you only see the same person making posts, that is usually not a good sign. Ideally you want to look for a wide range of people posting and engaging on posts.",
           files: [],
           images: [],
           video: [],
@@ -1509,7 +1617,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesnt just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoptoin than ones with a couple hundred. Not to mantion the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invalubale information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
+            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesnt just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoptoin than ones with a couple hundred. Not to mantion the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invalubale information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
           files: [],
           images: [],
           video: [],
@@ -1558,7 +1666,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesnt just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoptoin than ones with a couple hundred. Not to mantion the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invalubale information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
+            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesnt just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoptoin than ones with a couple hundred. Not to mantion the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invalubale information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
           files: [],
           images: [],
           video: [],
@@ -1582,7 +1690,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
+            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
           files: [],
           images: [],
           video: [],
@@ -1608,7 +1716,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "We already touched on this a bit in the ISO percentage section when discussing projects that attempt to be as fair as possible in different aspects, and the launch is no different. So just like the ISO percentage, this is not really to punish the projects that do not have a fair launch, but more to reward the projects that try to make it as fair as possible. Many people in the crypto community care about fairness, and projects that conduct a fair launch  are generally looked upon favorable and generate some positive attitudes towards it. We also talked about tokens being concentrated in early investors/backers can create massive sell pressure at some point when they finally decide to sell. Well projects that had a fair launch have minimized the possibility of these VC/early investors and instead have tokens in the hands of the general community. So for those reasons, we give bonus points to the projects which are extremely fair during their launch.",
+            "We already touched on this a bit in the ISO percentage section when discussing projects that attempt to be as fair as possible in different aspects, and the launch is no different. So just like the ISO percentage, this is not really to punish the projects that do not have a fair launch, but more to reward the projects that try to make it as fair as possible. Many people in the crypto community care about fairness, and projects that conduct a fair launch  are generally looked upon favorable and generate some positive attitudes towards it. \n We also talked about tokens being concentrated in early investors/backers can create massive sell pressure at some point when they finally decide to sell. Well projects that had a fair launch have minimized the possibility of these VC/early investors and instead have tokens in the hands of the general community. So for those reasons, we give bonus points to the projects which are extremely fair during their launch.",
           files: [],
           images: [],
           video: [],
@@ -1634,7 +1742,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "This is another one of those double edged swords that can go in either direction. The smaller a projects market cap, the more room it has to grow. Getting in early on a project when the market cap is at 1 Million means you have the potential for those massive 1000X gains simply due to the fact that the project starts off so small. Similarly, it would be a bit silly to be getting into Bitcoin at a 1 Trillion dollar market cap and be expecting it to 1000X into a quadrillion dollar market cap and be worth more than there are dollars in existence. So when you are researching new projects, paying attention to the market cap can give you an idea of how much room it has to grow. Now the other side of the coin is that extremely small market caps are going to be much riskier investments than the larger and more established ones. Going back to our example, the 1 million market cap project has a lot of room to grow, but there is a good chance that your investment can fall to zero and be worth nothing. While Bitcoin isn't going to have its massive gains anymore, the chances of it dropping to zero are much lower (although it is still possible). Different investors will have different goals, but that is the general thought process when looking at a projects market cap. For the purposes of this assessment, we gave more points to the higher market cap because we are more focused on not losing money than we are in gaining money. But when doing your own personal assessments, it would be ok if you care more about the larger gain potential and lean towards a smaller market cap preference.",
+            "This is another one of those double edged swords that can go in either direction. The smaller a projects market cap, the more room it has to grow. Getting in early on a project when the market cap is at 1 Million means you have the potential for those massive 1000X gains simply due to the fact that the project starts off so small. Similarly, it would be a bit silly to be getting into Bitcoin at a 1 Trillion dollar market cap and be expecting it to 1000X into a quadrillion dollar market cap and be worth more than there are dollars in existence. So when you are researching new projects, paying attention to the market cap can give you an idea of how much room it has to grow. \n Now the other side of the coin is that extremely small market caps are going to be much riskier investments than the larger and more established ones. Going back to our example, the 1 million market cap project has a lot of room to grow, but there is a good chance that your investment can fall to zero and be worth nothing. While Bitcoin isn't going to have its massive gains anymore, the chances of it dropping to zero are much lower (although it is still possible). Different investors will have different goals, but that is the general thought process when looking at a projects market cap. For the purposes of this assessment, we gave more points to the higher market cap because we are more focused on not losing money than we are in gaining money. But when doing your own personal assessments, it would be ok if you care more about the larger gain potential and lean towards a smaller market cap preference.",
           files: [],
           images: [],
           video: [],
@@ -1658,7 +1766,7 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "Instead of writing my own take, I have copied this information from learncrypto.com as I think it explains it pretty well (https://learncrypto.com/knowledge-base/how-to-trade-crypto/understanding-crypto-trading-volume) Volume is important because it has such a significant impact on price from both an absolute and relative perspective. The total volume traded for a given cryptocurrency has a direct relationship with how volatile it is. Remember, price represents the balance of opinions between buyers and sellers. / If an equal amount (in terms of volume) is being bought and sold then price will be stable, but stability suggests that people opinion about the price are well informed; this is known as market efficiency. / Mature markets with significant volume and good price discovery have less volatility. Cryptocurrency is inherently volatile because it is immature and its adoption path is uncertain. Market participants are an unusual mix of recreational investors (holders), miners, speculators and institutional investors each with varying opinions and motivations, with those opinions subject to significant outside influences. / So when looking at trading a given cryptocurrency, the total volume traded will immediately tell you how volatile it is likely to be. The change in volume over time will also give you a sense of interest in the project. /  It may seem a bit obvious but in order to trade a particular cryptocurrency it has to be listed on an exchange. Exchanges choose which coins to trade, and being listed on the bigger exchanges can make a huge difference to volume. / If, for example, you have an opinion about an obscure cryptocurrency and want to buy it at a specific price. The absence of volume is going to make that really hard - there won’t  be enough buyers and sellers, so the difference between the available Offers (buyers) and Bids (sellers) - known as the Spread - will be wide. / The wider the spread, the less efficient a market and therefore the more volatile. Websites like Coinmarketcap provide historical volume data.",
+            "Instead of writing my own take, I have copied this information from learncrypto.com as I think it explains it pretty well (https://learncrypto.com/knowledge-base/how-to-trade-crypto/understanding-crypto-trading-volume) Volume is important because it has such a significant impact on price from both an absolute and relative perspective. The total volume traded for a given cryptocurrency has a direct relationship with how volatile it is. Remember, price represents the balance of opinions between buyers and sellers. \n If an equal amount (in terms of volume) is being bought and sold then price will be stable, but stability suggests that people opinion about the price are well informed; this is known as market efficiency. \n Mature markets with significant volume and good price discovery have less volatility. Cryptocurrency is inherently volatile because it is immature and its adoption path is uncertain. Market participants are an unusual mix of recreational investors (holders), miners, speculators and institutional investors each with varying opinions and motivations, with those opinions subject to significant outside influences. \n So when looking at trading a given cryptocurrency, the total volume traded will immediately tell you how volatile it is likely to be. The change in volume over time will also give you a sense of interest in the project. \n  It may seem a bit obvious but in order to trade a particular cryptocurrency it has to be listed on an exchange. Exchanges choose which coins to trade, and being listed on the bigger exchanges can make a huge difference to volume. \n If, for example, you have an opinion about an obscure cryptocurrency and want to buy it at a specific price. The absence of volume is going to make that really hard - there won’t  be enough buyers and sellers, so the difference between the available Offers (buyers) and Bids (sellers) - known as the Spread - will be wide. \n The wider the spread, the less efficient a market and therefore the more volatile. Websites like Coinmarketcap provide historical volume data.",
           files: [],
           images: [],
           video: [],
@@ -1703,7 +1811,7 @@ export default {
       answeredQuestion: [],
       checkedOption: "",
       visualHelper: {
-        purpose: true,
+        purpose:false,
         evaluate: false,
         example: false,
       },
@@ -2014,7 +2122,7 @@ export default {
   position: absolute;
   display: flex;
   flex-direction: column;
-  z-index: 100;
+  z-index: 1;
   overflow-y: auto;
   padding: 1 2rem;
   box-sizing: border-box;
@@ -2092,6 +2200,21 @@ export default {
   padding: 0 2rem;
   color: var(--text-color-primary);
   font-weight: bold;
+  justify-content: space-between;
+}
+
+.css-work-quest-fph div {
+  display: flex;
+  align-items: center;
+}
+
+.css-work-quest-fph svg {
+  margin-left: 5px;
+}
+
+.css-work-quest-fph button {
+  background: transparent;
+  border: none;
 }
 
 .css-work-quest-fpx {
@@ -2107,9 +2230,22 @@ export default {
   margin-top: 1rem;
 }
 
+.css-work-quest-fxp {
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: column;
+  text-align: start;
+  justify-content: space-between;
+}
+
+.css-work-quest-fxp span {
+  font-size: var(--text-size-secondary);
+}
+
 .css-work-quest-fps {
   width: 1000px;
-  height: 500px;
+  height: fit-content;
+  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
   border-radius: 8px;
@@ -2228,7 +2364,7 @@ export default {
 .css-work-quest-panel {
   background: var(--base-color-white-primary);
   height: 3rem;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   border-radius: 4px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
