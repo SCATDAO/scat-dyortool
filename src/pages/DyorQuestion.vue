@@ -2203,6 +2203,10 @@ export default {
   justify-content: space-between;
 }
 
+.css-work-quest-fph button{
+  cursor:pointer;
+}
+
 .css-work-quest-fph div {
   display: flex;
   align-items: center;

@@ -301,6 +301,9 @@
         </svg>
       </router-link>
     </header>
+
+    <TradeHistory/>
+    
     <div class="css-dyor-create-ndw">
       <div class="css-dyor-create-ndf">
         <div class="css-dyor-create-ndt">Setting your project</div>
@@ -367,7 +370,12 @@
 </template>
 
 <script>
+import TradeHistory from "../components/TradeHistory.vue";
+
 export default {
+  components: {
+    TradeHistory,
+  },
   data() {
     return {
       newAudit: {
