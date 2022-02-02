@@ -398,18 +398,25 @@
             <div class="css-work-main-bzi">NEW</div>
           </div>
           <div class="css-work-main-bri">
-            <div>Become a Blockchain Project Auditor</div>
+            <div>
+              <a href="https://www.scatdao.com/contact" target="blank"
+                >Become a Blockchain Dapp Auditor
+              </a>
+            </div>
           </div>
         </div>
         <h1>
           <span>
-            Do Your Own Research is a tool for evaluating Dapps, Tokens and
-            Blockchain projects</span
+            <span class="css-work-main-btx">
+              Do Your Own Research is a tool for</span
+            >
+            evaluating Dapps, Tokens and Blockchain projects</span
           >
         </h1>
       </div>
-
-      <div class="css-work-main-gte"></div>
+      <div class="css-work-main-gte">
+        <img width="250" src="./3.svg" alt="" />
+      </div>
     </div>
     <div class="css-work-main-ses">
       <div class="css-work-main-sss">
@@ -570,7 +577,7 @@ export default {
   color: var(--text-color-primary);
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.2px;
+  letter-spacing: 2px;
   background: #abffdb;
   border-radius: 2px;
   padding: 0.3rem;
@@ -580,13 +587,22 @@ export default {
   color: #fff;
   padding-left: 1rem;
   display: flex;
+  margin-bottom: 0.15rem;
   align-items: center;
+}
+
+.css-work-main-bri a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.css-work-main-btx {
+  font-weight: 10 !important;
 }
 
 .css-work-main-bri div {
   color: #fff;
   padding-left: 1rem;
-  padding: 0.3rem;
   display: flex;
   align-items: center;
 }
@@ -679,7 +695,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-image: url("data:image/svg+xml,%3Csvg width='359.9px' height='490.5px' overflow='visible' version='1.1' viewBox='24.446 27.25 359.9 490.5' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Master/Composition/Graphs' fill='none' fill-rule='evenodd'%3E%3Cg id='Chart' transform='translate(40 41)'%3E%3Cpath id='Value' d='m48.661 47.713c-2.4759 2.618-5.9832 4.262-9.8841 4.262-7.4955 0-13.572-6.033-13.572-13.475s6.0763-13.475 13.572-13.475v-25.025c-21.323 0-38.777 17.329-38.777 38.5s17.453 38.5 38.777 38.5c11.201 0 21.323-4.7047 28.223-12.189l-18.339-17.098z' fill='%23F2F2F2'/%3E%3Cpath d='m38 0v25.35c7.5387 0 13.65 6.1113 13.65 13.65h25.35c0-21.446-17.554-39-39-39z' fill='%2342A5FF'/%3E%3Cpath d='m51.292 38c0 4.4007-2.0725 8.3124-5.2919 10.838l15.838 20.162c9.2193-7.2182 15.162-18.407 15.162-31h-25.708z' fill='%23C5CFD6'/%3E%3C/g%3E%3Cg id='Circles' transform='translate(24 112)'%3E%3Ccircle cx='335' cy='20' r='20' fill='%23C1DEE2'/%3E%3Ccircle cx='64.5' cy='234.5' r='13.5' fill='%2389C5CC'/%3E%3Ccircle cx='140.5' cy='19.5' r='13.5' fill='%2356919C'/%3E%3Ccircle cx='113.5' cy='214.5' r='13.5' fill='%2356919C'/%3E%3Ccircle cx='162.5' cy='118.5' r='18.5' fill='%23C1DEE2'/%3E%3Ccircle cx='301' cy='36' r='27' fill='%2389C5CC'/%3E%3Cg fill='%23C1DEE2'%3E%3Ccircle cx='37.5' cy='187.5' r='13.5'/%3E%3Ccircle cx='9.5' cy='247.5' r='9.5'/%3E%3Ccircle cx='114' cy='163' r='10'/%3E%3Ccircle cx='204' cy='134' r='17'/%3E%3Ccircle cx='211' cy='63' r='17'/%3E%3C/g%3E%3Ccircle cx='78' cy='136' r='17' fill='%2389C5CC'/%3E%3Ccircle cx='262' cy='91' r='20' fill='%2389C5CC'/%3E%3C/g%3E%3Cg id='Head/Front' transform='translate(101.86 127.15) scale(1.1016 1.1044)'%3E%3Cg id='Head/Front/Short Beard' fill-rule='evenodd'%3E%3Cg id='Head' transform='translate(54 31)' fill='%23d4a181'%3E%3Cpath id='SKIN' d='m38.143 9.1339c5.7948 10.801 5.1062 38.199-2.383 40.13-2.9866 0.76985-9.349-1.1159-15.824-5.0189l4.0641 28.755h-24l8.2616-38.511c-4.6075-5.4086-7.7259-12.037-7.2048-19.464 1.5016-21.4 31.292-16.693 37.087-5.8915z'/%3E%3C/g%3E%3Cpath id='Hair' d='m79.132 29.621c6.7339 0.57759 12.747 2.6309 14.451 3.8504 0 6.3752-1.2353 8.2667-11.786 8.1-2.5923 1.369-4.5852 3.7264-6.6608 6.817 0.91772 12.797 3.3479 19.197 7.2898 19.197 5.9128 0 10.929-3.7536 13.524-3.7536 1.8912 0 1.469 2.3667 0.21537 4.1214-1.0343 1.4477-6.071 2.8431-6.071 5.0876 0 2.2444 3.9795 0.50804 3.9795 1.8392 0 2.2019 0.69939 6.3418-3.1222 6.3418-3.8675 0-14.956-1.4094-16.857-7.1495-1.2264-3.7043-2.0193-11.38-2.3789-23.028-0.23427-0.029459-0.47323-0.043824-0.71556-0.043824-3.3137 0-6 2.6863-6 6 0 1.6822 0.69229 3.2027 1.8075 4.2922-1.3883 1.9596-2.9442 4.0067-4.7271 6.119-6.698-4.0185-12.668-16.782-6.1199-28.083 1.81-5.536 6.9075-7.493 11.747-8.8661 3.9201-1.6398 7.9895-1.8247 11.425-0.84164z' fill='%23181658'/%3E%3C/g%3E%3C/g%3E%3Cg id='Bottom/Sitting' transform='translate(11.531 333.67) scale(1.1016 1.1044)'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg id='Objects/Seat' transform='translate(10 42) scale(1)'%3E%3Cg id='Objects/Seat/Cube' fill='none' fill-rule='evenodd'%3E%3Cg id='Seat' transform='translate(55)'%3E%3Cpolygon id='Seat-Stuff' points='27.623 0 104.88 0 115 124 0 124' fill='%23C5CFD6'/%3E%3Cpolygon points='27.623 0 51.383 0 65.604 124 0 124' fill='%23000' fill-opacity='.1'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3Cpath id='LegBack' d='m257.95 20.757 0.28786-0.16821c8.2667-4.6312 21.767 1.658 21.758 8.6497-0.028394 21.164-19.343 120.91-20.352 127.22-1.0085 6.3056-11.812 7.9712-12.441 0.020664-1.001-12.651-2.8608-56.444-1-76.715 0.76814-8.3679 1.5954-16.337 2.4098-23.447-10.134 18.302-25.809 44.508-47.024 78.618l-11.517-5.2616c9.0436-29.796 16.459-50.831 22.247-63.106 9.9098-21.017 19.202-39.015 23.113-45.354 6.1519-9.9727 16.86-6.4925 22.518-0.4551z' fill='%23d4a181'/%3E%3Cpath id='LegLower' transform='translate(228.83 67.42) rotate(20) translate(-228.83 -67.42)' d='m208.82 123.34 5.1177-101.51c3.6884-17.553 34.907-9.4064 34.894 0-0.02915 21.355-12.857 95.127-12.866 101.49l-27.146 0.020851z' fill='%23e87613'/%3E%3Cpath id='shoe' transform='translate(210.32 140.98) rotate(30) translate(-210.32 -140.98)' d='m183 136.88c-1.1188 2.9865-1.6781 5.2211-1.6781 6.7037 0 1.8033 0.30042 4.4347 0.90124 7.8943h56.402c1.4657-4.8455 0.61961-7.4614-2.5382-7.8478-3.1578-0.38636-5.7811-0.73521-7.8698-1.0466l-26.215-11.687c-0.50443-0.22488-1.0956 0.001745-1.3205 0.50617-0.003847 0.008629-0.007571 0.017313-0.011172 0.026047l-1.6851 4.0876c-2.9233 1.364-5.2988 2.0459-7.1265 2.0459-1.485 0-3.5357-0.59972-6.1522-1.7992l6e-6 -1.2e-5c-1.0041-0.4603-2.1912-0.019453-2.6515 0.98465-0.019839 0.043278-0.038127 0.087251-0.054828 0.13184z' fill='%23E4E4E4'/%3E%3Cpath d='m244.68 151.4c-1.1188 2.9865-1.6781 5.2211-1.6781 6.7037 0 1.8033 0.30041 4.4347 0.90124 7.8943h56.402c1.4657-4.8455 0.61961-7.4614-2.5382-7.8478-3.1578-0.38636-5.7811-0.73521-7.8698-1.0466l-26.215-11.687c-0.50443-0.22488-1.0956 0.001745-1.3205 0.50617-0.003847 0.00863-0.007572 0.017313-0.011172 0.026048l-1.6851 4.0876c-2.9233 1.364-5.2988 2.0459-7.1265 2.0459-1.485 0-3.5357-0.59973-6.1522-1.7992l5e-6 -1.2e-5c-1.0041-0.4603-2.1912-0.019454-2.6515 0.98465-0.019839 0.043278-0.038127 0.087251-0.054828 0.13183z' fill='%23E4E4E4'/%3E%3Cpath id='Leg-and-Butt' d='m282.77 36.433c0 26.567-12.617 88.537-12.625 94.387l-27.146 0.020851c3.9733-55.295 5.3822-83.241 4.2267-83.837-1.7332-0.89354-71.051 6.9208-91.84 6.9208-29.979 0-42.38-18.905-43.386-53.925h59.386c12.092 1.2939 75.162 14.015 98.586 18.388 10.028 1.8722 12.798 10.726 12.798 18.045z' fill='%23ffa434'/%3E%3C/g%3E%3C/g%3E%3Cg id='Body' transform='translate(35.766 217.71) scale(1.1016 1.1044)'%3E%3Cdefs%3E%3Cpath id='bodypointing-forward-path-1' d='m8.5049 11.364c12.028 1.775 28.442 1.775 47.246-6.3642l4.3399 16.026c-13.638 9.8292-31.731 16.814-46.156 14.112-11.368-2.1292-15.016-16.865-5.4297-23.774z'/%3E%3Cpath id='bodypointing-forward-path-3' d='m65.544 1.9895e-13c1.5309 19.669 9.2364 41.345 15.56 62.76 12.907 3.2198 34.551-0.57605 64.932-11.387 7.5357 15.59 11.019 26.705 10.451 33.344-26.066 13.616-48.406 19.685-66.811 20.085 0.59237 10.916-0.73646 21.309-5.2022 30.804-9.1793 19.518-62.929 1.4422-81.001 5-11.317-36.755 10.565-51.692 10.583-75.209 0.019282-25.754 20.699-65.397 23.741-65.397z'/%3E%3C/defs%3E%3Cg id='Body/Pointing Forward' fill='none' fill-rule='evenodd'%3E%3Cpath d='m238.56 46.408c4.3328-0.892 14.908-8.7571 16.73-7.1602 2.6957 2.3625 0.29205 9.6169-2.5401 13.225-5.2932 6.7445-9.6758 9.051-20.508 12.071-5.6636 1.5792-11.787 4.7445-18.37 9.4959l-0.86822-15.3 15.247-8.3756c2.1393-8.1403 4.6966-12.236 7.6718-12.287 2.2856-1.0635-1.6948 9.2226 2.638 8.3306zm-26.242-34.866c-2.7995 4.9689-5.5207 10.321-4.0945 11.852 1.4262 1.5308 4.9827-0.60766 6.6842 1.9358 1.1343 1.6956-4.9416 4.3742-18.228 8.0358l-25.221 23.092-12.818-13.757 34.71-19.01c5.772-6.8543 11.459-12.178 17.061-15.97 1.7118-0.71465 4.7053-1.1472 1.9058 3.8217z' fill='%23ba8b72'/%3E%3Cg transform='translate(134.35 23.386)'%3E%3Cmask fill='%23fff'%3E%3Cuse xlink:href='%23bodypointing-forward-path-1'/%3E%3C/mask%3E%3Cuse id='Mask' transform='translate(31.545 20.362) rotate(-9) translate(-31.545 -20.362)' fill='%23c7d1d9' xlink:href='%23bodypointing-forward-path-1'/%3E%3C/g%3E%3Cg transform='translate(77)'%3E%3Cmask fill='%23fff'%3E%3Cuse xlink:href='%23bodypointing-forward-path-3'/%3E%3C/mask%3E%3Cuse fill='%23f2f2f2' xlink:href='%23bodypointing-forward-path-3'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3Cg id='Bars' transform='translate(260 33)'%3E%3Crect id='Rectangle' width='110' height='16' rx='4' fill='%23ffa434'/%3E%3Crect y='24' width='70' height='16' rx='4' fill='%23C1DEE2'/%3E%3Crect y='48' width='86' height='16' rx='4' fill='%23C1DEE2'/%3E%3C/g%3E%3Cg id='Graph' transform='translate(24 426)'%3E%3Cg fill='%2342A5FF'%3E%3Crect y='32' width='6' height='25' rx='3'/%3E%3Crect x='14' y='16' width='6' height='41' rx='3'/%3E%3Crect x='28' y='8' width='6' height='49' rx='3'/%3E%3Crect x='42' y='16' width='6' height='41' rx='3'/%3E%3C/g%3E%3Crect x='56' width='6' height='57' rx='3' fill='%23ffa434'/%3E%3C/g%3E%3Cg id='Pie-Chart' transform='translate(353 465) scale(-1 1) translate(-29 -29)'%3E%3Cpath d='m58 29.516c0-16.231-13.053-29.516-29-29.516v29.516l19.819 21.484c5.6376-5.2525 9.1814-12.958 9.1814-21.484z' fill='%23F2F2F2'/%3E%3Cpath d='m30.108 29h-29.108c0 7.5704 3.0694 14.664 7.9217 19.819 5.3369 5.6376 12.937 9.1814 21.186 9.1814 7.5986 0 14.554-3.058 19.892-7.8924l-19.892-21.108z' fill='%23AFB9C5'/%3E%3Cpath d='m0 29c0-15.947 13.053-29 29-29v29h-29zm43.5-29-11.6 26.1 26.1-11.6c-2.581-6.7657-8.3766-11.919-14.5-14.5z' fill='%238991DC'/%3E%3C/g%3E%3Cg transform='translate(122 246)'%3E%3Ccircle id='Circle' cx='14.5' cy='104.5' r='14.5' fill='%2389C5CC'/%3E%3Ccircle cx='57' cy='21' r='7' fill='%23C1DEE2'/%3E%3Ccircle cx='145' cy='15' r='15' fill='%2389C5CC'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+
   background-repeat: no-repeat;
   background-size: contain;
 }
