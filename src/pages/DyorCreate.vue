@@ -315,20 +315,68 @@
           </div>
         </div>
         <div class="css-dyor-create-faw">
-          <div class="css-dyor-create-nsi">
+          <div class="css-dyor-create-nsc">
             <div class="css-dyor-create-nst">Name<span>*</span></div>
             <input
+              id="tableTradeSearch"
+              name="query"
+              autocomplete="off"
               class="css-dyor-create-nii"
-              v-model="newAudit.pw"
               type="text"
               placeholder="Project's name"
-              @click="deployDropDown()"
+              v-model="filterKey"
             />
+            <template v-if="isDeployed">
+              <div class="css-trade-history-wrp">
+                <div
+                  class="css-trade-history-scl"
+                  @click="isDeployed = false"
+                ></div>
+                <div class="css-trade-history-sub">
+                  <span>Powered by CoinGecko</span>
+                </div>
+                <div class="css-trade-history-tablew">
+                  <table>
+                    <thead>
+                      <tr class="css-trade-history-txz">
+                        <th
+                          v-for="key in columns"
+                          :key="key"
+                          @click="sortBy(key)"
+                          class="css-trade-history-tzx"
+                          :class="{ active: sortKey == key }"
+                        >
+                          {{ capitalize(key) }}
+                          <span
+                            class="arrow"
+                            :class="sortOrders[key] > 0 ? 'asc' : 'dsc'"
+                          >
+                          </span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="entry in filteredHeroes"
+                        :key="entry"
+                        @click="conne(entry)"
+                      >
+                        <td v-for="key in columns" :key="key">
+                          <template v-if="key === 'logo'">
+                            <img :src="entry[key]" alt="" />
+                          </template>
+                          <template v-if="key !== 'logo'">
+                            {{ entry[key] }}
+                          </template>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </template>
           </div>
 
-          <template v-if="isDeployed">
-            <TradeHistory />
-          </template>
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">Symbol<span>*</span></div>
             <input
@@ -357,12 +405,14 @@
             />
           </div>
           <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">Github<span>*</span></div>
+            <div class="css-dyor-create-nst">
+              Github/Repository<span>*</span>
+            </div>
             <input
               class="css-dyor-create-nii"
               v-model="newAudit.an"
               type="text"
-              placeholder="Your name ..."
+              placeholder="Code repository link"
             />
           </div>
           <div class="css-dyor-create-nsi">
@@ -385,14 +435,25 @@
 </template>
 
 <script>
-import TradeHistory from "../components/TradeHistory.vue";
+import axios from "axios";
+
+const columns = ["logo", "name", "token"];
+
+const sorted = {};
+columns.forEach(function (key) {
+  sorted[key] = 1;
+});
 
 export default {
-  components: {
-    TradeHistory,
+  async mounted() {
+    this.inputScanner();
   },
   data() {
     return {
+      tableData: [],
+      columns: columns,
+      sortKey: "",
+      filterKey: "",
       newAudit: {
         an: null,
         pn: null,
@@ -403,8 +464,80 @@ export default {
       isDeployed: false,
     };
   },
+  watch: {
+    filterKey() {
+      console.log(this.filterKey.length);
+
+      if (this.filterKey.length === 0) {
+        this.isDeployed = false;
+      } else {
+        this.isDeployed = true;
+      }
+    },
+  },
   methods: {
-    deployDropDown() {
+    async inputScanner() {
+      let timer;
+
+      const waitTime = 500;
+
+      const input = document.querySelector("#tableTradeSearch");
+
+      input.addEventListener("keyup", () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          console.log("LLAMADO");
+          this.searchCoins();
+        }, waitTime);
+      });
+    },
+    capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    },
+    sortBy(key) {
+      this.sortKey = key;
+      this.sortOrders[key] = this.sortOrders[key] * -1;
+    },
+    conne(element) {
+      console.log(element);
+      this.isDeployed = false;
+    },
+    async createNewAxios() {
+      console.log("funciona1");
+      fetch(`https://api.coingecko.com/api/v3/search?query=${this.filterKey}`)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          this.tableData = data.coins.map((e) => {
+            return {
+              logo: e.thumb,
+              name: e.name,
+              token: e.symbol,
+            };
+          });
+        });
+    },
+    async updateCoins() {
+      if (this.filterKey !== "") {
+        try {
+          const res = await axios.get(
+            `https://api.coingecko.com/api/v3/search?query=${this.filterKey}`
+          );
+          this.tableData = res.data.coins.map((e) => {
+            return {
+              logo: e.thumb,
+              name: e.name,
+              token: e.symbol,
+            };
+          });
+        } catch (error) {
+          console.log(error);
+          this.createNewAxios;
+        }
+      }
+    },
+    deployDropdown() {
       this.isDeployed = !this.isDeployed;
     },
     nextResearch() {
@@ -421,6 +554,42 @@ export default {
       ) {
         return true;
       }
+    },
+    async searchCoins() {
+      console.log("funciona");
+      this.updateCoins();
+    },
+  },
+  computed: {
+    filteredHeroes() {
+      const sortKey = this.sortKey;
+      const filterKey = this.filterKey && this.filterKey.toLowerCase();
+      const order = this.sortOrders[sortKey] || 1;
+      let tableData = this.tableData;
+      if (filterKey) {
+        tableData = tableData.filter(function (row) {
+          return Object.keys(row).some(function (key) {
+            return String(row[key]).toLowerCase().indexOf(filterKey) > -1;
+          });
+        });
+      }
+      if (sortKey) {
+        tableData = tableData.slice().sort(function (a, b) {
+          a = a[sortKey];
+          b = b[sortKey];
+          return (a === b ? 0 : a > b ? 1 : -1) * order;
+        });
+      }
+      return tableData;
+    },
+    sortOrders() {
+      const columnSortOrders = {};
+
+      this.columns.forEach(function (key) {
+        columnSortOrders[key] = 1;
+      });
+
+      return columnSortOrders;
     },
   },
 };
@@ -444,6 +613,16 @@ export default {
   background-size: contain;
   border: 1px solid var(--border-primary);
   background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/6117f689ce4c7529d5850b8a_sundae.png");
+}
+
+.css-trade-history-scl {
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+  position: fixed;
+  z-index: -1;
 }
 
 .css-dyor-create-wrap {
@@ -522,6 +701,10 @@ export default {
   height: 100px;
 }
 
+.css-trade-history-tzx.active {
+  color: var(--complementary-color-blue);
+}
+
 .css-dyor-create-nst span {
   margin-left: 5px;
   margin-top: 5px;
@@ -545,10 +728,16 @@ export default {
   border: 1px dashed var(--border-primary);
 }
 
-.css-dyor-create-nsi {
+.css-dyor-create-nsi,
+.css-dyor-create-nsc {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
+}
+
+.css-dyor-create-nsc {
+  position: relative;
+  box-sizing: border-box;
 }
 
 .css-dyor-create-nsl {
@@ -619,5 +808,144 @@ export default {
     background: var(--complementary-color-blue);
     box-shadow: none;
   }
+}
+
+/* */
+
+.css-trade-history-wrp {
+  width: calc(700px - 6rem);
+  border: 1px solid var(--border-primary);
+  height: 300px;
+  background: var(--base-color-white-primary);
+  border-radius: 8px;
+  position: absolute;
+  margin-top: 7rem;
+  z-index: 1;
+  animation-name: deploy;
+  animation-duration: 0.5s;
+  transition: ease 0.1s;
+}
+
+@keyframes deploy {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.css-trade-history-sub {
+  background: var(--color-base-third);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1rem;
+  font-size: var(--text-size-secondary);
+  color: var(--text-color-secondary);
+  height: 40px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.css-trade-history-tablew {
+  overflow-x: scroll;
+  height: 80%;
+}
+
+.css-trade-history-sub ul {
+  display: flex;
+  color: var(--ui-base-color-primary);
+  font-size: 0.8rem;
+  list-style: none;
+  padding: 0;
+}
+
+.css-trade-history-sub li {
+  display: flex;
+  margin-right: 1rem;
+}
+
+table {
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+th {
+  color: var(--text-color-primary);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: start;
+}
+
+td {
+  text-align: start;
+  text-transform: uppercase;
+}
+
+th,
+td {
+  padding: 10px 2rem;
+  width: 100%;
+}
+
+th.active {
+  color: #fff;
+}
+
+tr {
+  color: var(--text-color-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+th.active .arrow {
+  opacity: 1;
+}
+
+.arrow {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  opacity: 0.66;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.css-logo-width {
+  width: 50px !important;
+}
+
+.arrow.asc {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #fff;
+}
+
+.arrow.dsc {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #fff;
+}
+
+#tableTradeSearch {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ui-text-primary);
+  height: 50px;
+  border-radius: 8px;
+  padding: 0 1rem;
+  border: 1px solid var(--border-primary);
+}
+
+#tableTradeSearch::placeholder {
+  margin-left: 10px;
 }
 </style>

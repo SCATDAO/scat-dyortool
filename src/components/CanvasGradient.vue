@@ -507,7 +507,7 @@ export default {
             e(this, "last", 0),
             e(this, "width", void 0),
             e(this, "minWidth", 1111),
-            e(this, "height", 500),
+            e(this, "height", 700),
             e(this, "xSegCount", void 0),
             e(this, "ySegCount", void 0),
             e(this, "mesh", void 0),
@@ -822,11 +822,11 @@ export default {
 <style scoped>
 #gradient-canvas {
   --gradient-color-1: #0069f5;
-  --gradient-color-2: #0069f5;
-  --gradient-color-3: #0069f5;
+  --gradient-color-2: #0050dc;
+  --gradient-color-3: #0050dc;
   --gradient-color-4: #0050dc;
   width: 100%;
-  height: 50%;
+  height: 100%;
 }
 
 .css-work-main-gradient {

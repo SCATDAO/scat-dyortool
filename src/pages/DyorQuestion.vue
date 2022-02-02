@@ -299,7 +299,6 @@
             </g>
           </g>
         </svg>
-        <div class="css-dyor-ver">v1.0.0</div>
       </router-link>
 
       <div class="css-work-tool-haw">
@@ -2072,13 +2071,6 @@ export default {
 .css-identicon {
   width: 20px;
   height: 20px;
-}
-
-.css-dyor-ver {
-  font-size: var(--text-size-secondary);
-  color: var(--text-color-secondary);
-  margin-left: 10px;
-  margin-bottom: 3px;
 }
 
 .css-work-quest-pta {

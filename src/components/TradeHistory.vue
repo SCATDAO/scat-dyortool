@@ -164,17 +164,15 @@ export default {
 <style scoped>
 .css-trade-history-container {
   width: calc(700px - 6rem);
-  height: 23vw;
-  min-height: 23vw;
-  max-height: 23vw;
   border: 1px solid var(--border-primary);
-  border-left: none;
-  background: white;
+  border-top: none;
+  height: 300px;
+  background: var(--base-color-white-primary);
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
   position: absolute;
-  z-index: 1;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 7rem;
+  z-index: 12;
   animation-name: deploy;
   animation-duration: 0.5s;
   transition: ease 0.1s;
@@ -182,14 +180,13 @@ export default {
 
 @keyframes deploy {
   0% {
-  opacity: 0;
-  transform: translateY(-100px);
+    opacity: 0;
+    transform: translateY(-10px);
   }
   100% {
     opacity: 1;
-      transform: translateY(0);
+    transform: translateY(0);
   }
-
 }
 
 .css-trade-history-subheader {
@@ -240,8 +237,6 @@ td {
 
 th,
 td {
-  min-width: 150px;
-  max-width: 150px;
   padding: 10px 2rem;
 }
 
