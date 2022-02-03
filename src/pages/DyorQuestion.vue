@@ -2186,7 +2186,7 @@ export default {
 }
 
 .css-work-quest-fph {
-  height: 50px;
+  height:4rem;
   display: flex;
   align-items: center;
   padding: 0 2rem;

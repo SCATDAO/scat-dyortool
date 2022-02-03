@@ -1,6 +1,10 @@
 <template>
   <main>
-    <router-view></router-view>
+    <router-view v-slot="{ Component, route }">
+      <transition name="fade">
+        <component :is="Component" :key="route.path" />
+      </transition>
+    </router-view>
   </main>
 </template>
 
@@ -136,6 +140,17 @@ li {
   height: 2.1vw;
 }
 
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.fade-enter-active,
+.fade-leave-to {
+  transition: opacity 0.3s, transform 0.5s;
+}
+
 .css-main-flex-wrap {
   display: flex;
   flex-direction: column;
@@ -209,7 +224,6 @@ li {
   opacity: 0;
 }
 
-
 @media (-webkit-device-pixel-ratio: 1.1) {
   :root {
     zoom: 0.9999;
@@ -228,9 +242,26 @@ li {
   }
 }
 
+@media (max-width: 1921px) {
+  html {
+    font-size: 100%;
+  }
+}
+
+@media (max-width: 1441px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+@media (max-width: 1025px) {
+  html {
+    font-size: 90%;
+  }
+}
+
 @media (max-width: 600px) {
   header {
- 
   }
   .css-header.active {
     display: none;
