@@ -392,7 +392,9 @@
         <div class="css-work-main-bxs">
           <div class="css-work-main-bzs">
             <div class="css-work-main-biz"></div>
-            <div class="css-work-main-bzi">NEW</div>
+            <div class="css-work-main-bzi">
+               <div>NEW</div>
+              </div>
           </div>
           <div class="css-work-main-bri">
             <div>
@@ -597,7 +599,11 @@ export default {
   letter-spacing: 2px;
   background: #abffdb;
   border-radius: 2px;
-  padding: 0.3rem;
+  padding: 0.3em;
+}
+
+.css-work-main-bzi div{
+  margin-left: 0.3em;
 }
 
 .css-work-main-bri {
@@ -800,7 +806,6 @@ export default {
 
 .css-work-main-slc span {
   font-size: var(--text-size-third);
-  font-weight: normal;
 }
 
 #slide-left1 {
@@ -992,7 +997,7 @@ export default {
   }
 
   .css-work-main-bnt span {
-    font-size: var(--text-size-third);
+    font-size: var(--text-size-fourth);
     line-height: 1rem;
   }
 
@@ -1072,7 +1077,7 @@ export default {
   }
 
   .css-work-main-slc span {
-    font-size: var(--text-size-third);
+    font-size: var(--text-size-third);font-weight: normal;
   }
 
   .css-work-main-sli {
