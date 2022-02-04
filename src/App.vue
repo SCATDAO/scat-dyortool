@@ -1,10 +1,6 @@
 <template>
   <main>
-    <router-view v-slot="{ Component, route }">
-      <transition name="fade">
-        <component :is="Component" :key="route.path" />
-      </transition>
-    </router-view>
+    <router-view> </router-view>
   </main>
 </template>
 
@@ -93,6 +89,8 @@ li {
   line-height: 1.5;
   animation-name: deploy;
   animation-duration: 1s;
+  -webkit-tap-highlight-color: transparent;
+
 }
 
 @keyframes deploy {

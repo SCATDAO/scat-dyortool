@@ -387,12 +387,12 @@
             />
           </div>
           <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">Website<span>*</span></div>
+            <div class="css-dyor-create-nst">Description<span>*</span></div>
             <input
               class="css-dyor-create-nii"
               v-model="newAudit.pw"
               type="text"
-              placeholder="www.example.com"
+              placeholder="Short description"
             />
           </div>
           <div class="css-dyor-create-nsi">
@@ -404,6 +404,16 @@
               placeholder="DEX, NFT, stablecoin, etc..."
             />
           </div>
+          <div class="css-dyor-create-nsi">
+            <div class="css-dyor-create-nst">Website<span>*</span></div>
+            <input
+              class="css-dyor-create-nii"
+              v-model="newAudit.pw"
+              type="text"
+              placeholder="www.example.com"
+            />
+          </div>
+
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">
               Github/Repository<span>*</span>
@@ -502,22 +512,6 @@ export default {
       console.log(element);
       this.isDeployed = false;
     },
-    async createNewAxios() {
-      console.log("funciona1");
-      fetch(`https://api.coingecko.com/api/v3/search?query=${this.filterKey}`)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          this.tableData = data.coins.map((e) => {
-            return {
-              logo: e.thumb,
-              name: e.name,
-              token: e.symbol,
-            };
-          });
-        });
-    },
     async updateCoins() {
       if (this.filterKey !== "") {
         try {
@@ -533,7 +527,6 @@ export default {
           });
         } catch (error) {
           console.log(error);
-          this.createNewAxios;
         }
       }
     },
@@ -853,6 +846,7 @@ export default {
 .css-trade-history-tablew {
   overflow-x: scroll;
   height: 80%;
+  background: var(--base-color-white-secondary);
 }
 
 .css-trade-history-sub ul {

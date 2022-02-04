@@ -26,6 +26,7 @@ export default {
     return {
       editor: ref([]),
       parseData: null,
+      editorLength: null,
     };
   },
   mounted() {
@@ -35,10 +36,10 @@ export default {
   methods: {
     parsedata() {
       this.parseData = this.data;
-      console.log(this.parseData)
+      console.log(this.parseData);
     },
-
     async sendMeData() {
+      console.log(this.length, "WTF?");
       return this.editor[0]
         .save()
         .then((outputData) => {
@@ -55,7 +56,7 @@ export default {
         minHeight: 50,
         tunes: ["textVariant"],
         autofocus: true,
-        placeholder: "Let`s write an awesome report!",
+        placeholder: "Edit here",
         tools: {
           header: {
             class: Header,
@@ -117,7 +118,7 @@ export default {
           },
         },
 
-        data:this.data,
+        data: this.data,
       });
 
       this.editor.push(editor);
@@ -144,7 +145,7 @@ export default {
 
 .ce-block__content,
 .ce-toolbar__content {
-  max-width: calc(100% - 80px) !important;
+  max-width: calc(100% - 50px) !important;
 }
 
 .cdx-block {
