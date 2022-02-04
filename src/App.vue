@@ -1,6 +1,6 @@
 <template>
   <main>
-    <router-view></router-view>
+    <router-view> </router-view>
   </main>
 </template>
 
@@ -89,6 +89,8 @@ li {
   line-height: 1.5;
   animation-name: deploy;
   animation-duration: 1s;
+  -webkit-tap-highlight-color: transparent;
+
 }
 
 @keyframes deploy {
@@ -134,6 +136,17 @@ li {
   object-fit: cover;
   width: 2.1vw;
   height: 2.1vw;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.fade-enter-active,
+.fade-leave-to {
+  transition: opacity 0.3s, transform 0.5s;
 }
 
 .css-main-flex-wrap {
@@ -209,7 +222,6 @@ li {
   opacity: 0;
 }
 
-
 @media (-webkit-device-pixel-ratio: 1.1) {
   :root {
     zoom: 0.9999;
@@ -228,9 +240,26 @@ li {
   }
 }
 
+@media (max-width: 1921px) {
+  html {
+    font-size: 100%;
+  }
+}
+
+@media (max-width: 1441px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+@media (max-width: 1025px) {
+  html {
+    font-size: 90%;
+  }
+}
+
 @media (max-width: 600px) {
   header {
- 
   }
   .css-header.active {
     display: none;

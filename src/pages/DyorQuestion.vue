@@ -307,7 +307,7 @@
             <img :src="avatarSeed" alt="" />
           </div>
         </div>
-        <span>{{ newAudit.an }}</span>
+        <span class="css-identicon-wrx">{{ newAudit.an }}</span>
       </div>
     </header>
     <div class="css-work-tool-wrap">
@@ -479,7 +479,10 @@
           <div class="css-work-project-scc"></div>
         </div>
       </div>
-      <div class="css-work-quest-wrap">
+      <div
+        class="css-work-quest-wrap"
+        :class="{ active: showSummary || visualHelper.purpose }"
+      >
         <template v-if="visualHelper.purpose">
           <div
             class="css-work-quest-fpl"
@@ -489,72 +492,33 @@
               <div class="css-work-quest-fph">
                 <div>
                   <span> Why This Matters?</span>
-
                   <svg
+                    id="SVGRoot"
                     width="16px"
                     height="16px"
-                    viewBox="0 0 16 16"
                     version="1.1"
-                    id="SVGRoot"
-                    sodipodi:docname="a.svg"
+                    viewBox="0 0 16 16"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <sodipodi:namedview
-                      id="namedview3143"
-                      pagecolor="#ffffff"
-                      bordercolor="#666666"
-                      borderopacity="1.0"
-                      inkscape:pageshadow="2"
-                      inkscape:pageopacity="0.0"
-                      inkscape:pagecheckerboard="0"
-                      inkscape:document-units="px"
-                      showgrid="false"
-                      inkscape:zoom="20.496745"
-                      inkscape:cx="14.880411"
-                      inkscape:cy="8.757488"
-                      inkscape:window-width="1920"
-                      inkscape:window-height="1016"
-                      inkscape:window-x="0"
-                      inkscape:window-y="27"
-                      inkscape:window-maximized="1"
-                      inkscape:current-layer="Stockholm-icons-/-General-/-Shield-protected"
-                    />
-                    <defs id="defs3138" />
                     <g
-                      inkscape:label="Layer 1"
-                      inkscape:groupmode="layer"
-                      id="layer1"
+                      id="Stockholm-icons-/-General-/-Shield-protected"
+                      transform="matrix(.65766 0 0 .65766 .082673 .13227)"
+                      fill="none"
+                      fill-rule="evenodd"
                     >
-                      <g
-                        id="Stockholm-icons-/-General-/-Shield-protected"
-                        stroke="none"
-                        stroke-width="1"
-                        fill="none"
-                        fill-rule="evenodd"
-                        transform="matrix(0.65765615,0,0,0.65765615,0.08267261,0.13226617)"
-                      >
-                        <rect id="bound" x="0" y="0" width="24" height="24" />
-                        <path
-                          d="M 3.4259171,2.7346228 11.802404,1.1640314 c 0.267378,-0.050133 0.541746,-0.050133 0.809123,0 l 8.376488,1.5705914 V 12.923944 c 0,3.220863 -1.659239,6.214539 -4.390525,7.921593 l -3.808781,2.380489 c -0.355929,0.222456 -0.807558,0.222456 -1.163487,0 L 7.8164415,20.845537 C 5.0851551,19.138483 3.4259171,16.144807 3.4259171,12.923944 Z"
-                          id="Path-50"
-                          fill="#000000"
-                          opacity="0.3"
-                          style="
-                            fill: #0069f5;
-                            fill-opacity: 1;
-                            stroke-width: 1.09763;
-                          "
-                        />
-                        <path
-                          d="m 14.951044,10.418041 c 0.606205,0 1.097631,0.491426 1.097631,1.097632 v 3.292893 c 0,0.606205 -0.491426,1.097631 -1.097631,1.097631 H 9.4628881 c -0.6062048,0 -1.097631,-0.491426 -1.097631,-1.097631 v -3.292893 c 0,-0.606206 0.4914262,-1.097632 1.097631,-1.097632 V 9.869225 c 0,-1.5155124 1.2285649,-2.7440778 2.7440779,-2.7440778 1.515512,0 2.744078,1.2285654 2.744078,2.7440778 z M 12.206966,8.2227783 c -0.909307,0 -1.646447,0.7371393 -1.646447,1.6464467 v 0.548816 h 3.292894 V 9.869225 c 0,-0.9093074 -0.73714,-1.6464467 -1.646447,-1.6464467 z"
-                          id="Combined-Shape"
-                          fill="#000000"
-                          style="
-                            fill: #0069f5;
-                            fill-opacity: 1;
-                            stroke-width: 1.09763;
-                          "
-                        />
-                      </g>
+                      <rect id="bound" width="24" height="24" />
+                      <path
+                        d="m3.4259 2.7346 8.3765-1.5706c0.26738-0.050133 0.54175-0.050133 0.80912 0l8.3765 1.5706v10.189c0 3.2209-1.6592 6.2145-4.3905 7.9216l-3.8088 2.3805c-0.35593 0.22246-0.80756 0.22246-1.1635 0l-3.8088-2.3805c-2.7313-1.7071-4.3905-4.7007-4.3905-7.9216z"
+                        fill="#0069f5"
+                        opacity=".3"
+                        stroke-width="1.0976"
+                      />
+                      <path
+                        id="Combined-Shape"
+                        d="m14.951 10.418c0.6062 0 1.0976 0.49143 1.0976 1.0976v3.2929c0 0.6062-0.49143 1.0976-1.0976 1.0976h-5.4882c-0.6062 0-1.0976-0.49143-1.0976-1.0976v-3.2929c0-0.60621 0.49143-1.0976 1.0976-1.0976v-0.54882c0-1.5155 1.2286-2.7441 2.7441-2.7441 1.5155 0 2.7441 1.2286 2.7441 2.7441zm-2.7441-2.1953c-0.90931 0-1.6464 0.73714-1.6464 1.6464v0.54882h3.2929v-0.54882c0-0.90931-0.73714-1.6464-1.6464-1.6464z"
+                        fill="#0069f5"
+                        stroke-width="1.0976"
+                      />
                     </g>
                   </svg>
                 </div>
@@ -605,6 +569,127 @@
                 </div>
               </div>
             </div>
+          </div>
+        </template>
+        <template v-if="showSummary">
+          <div class="css-work-quest-fpl" @click="showSummary = !showSummary">
+            <div class="css-work-quest-fyy">
+              <div class="css-work-quest-fph">
+                <div>
+                  <span>Summary</span>
+                  <svg
+                    id="SVGRoot"
+                    width="16px"
+                    height="16px"
+                    version="1.1"
+                    viewBox="0 0 16 16"
+                  >
+                    <g
+                      id="Stockholm-icons-/-General-/-Shield-protected"
+                      transform="matrix(.65766 0 0 .65766 .082673 .13227)"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <rect id="bound" width="24" height="24" />
+                      <g
+                        id="Stockholm-icons-/-General-/-Shield-check"
+                        transform="matrix(1.1027 0 0 1.1027 -.96743 -1.7585)"
+                        fill="none"
+                        fill-rule="evenodd"
+                      >
+                        <rect width="24" height="24" />
+                        <path
+                          d="m4 4 7.6314-1.4309c0.2436-0.045674 0.49356-0.045674 0.73715 0l7.6314 1.4309v9.283c0 2.9344-1.5117 5.6618-4 7.217l-3.47 2.1688c-0.32427 0.20267-0.73573 0.20267-1.06 0l-3.47-2.1688c-2.4883-1.5552-4-4.2826-4-7.217z"
+                          fill="#0069f5"
+                          opacity=".3"
+                        />
+                        <path
+                          id="check-path"
+                          d="m11.175 14.75c-0.23958 0-0.47917-0.09583-0.67083-0.2875l-1.9167-1.9167c-0.38333-0.38333-0.38333-0.95833 0-1.3417 0.38333-0.38333 1.0062-0.38333 1.3417 0l1.2458 1.2458 3.1625-3.1625c0.38333-0.38333 0.95833-0.38333 1.3417 0s0.38333 0.95833 0 1.3417l-3.8333 3.8333c-0.19167 0.19167-0.43125 0.2875-0.67083 0.2875z"
+                          fill="#0069f5"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <button @click="showSummary = !showSummary">
+                  <svg
+                    id="SVGRoot"
+                    width="16px"
+                    height="16px"
+                    version="1.1"
+                    viewBox="0 0 16 16"
+                  >
+                    <g
+                      id="Stockholm-icons-/-Navigation-/-Close"
+                      transform="translate(-4.016 -3.7816)"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <g
+                        id="Group"
+                        transform="rotate(-45 14.828 5.1716)"
+                        fill="#727384"
+                      >
+                        <rect y="7" width="16" height="2" rx="1" />
+                        <rect
+                          id="Rectangle-185-Copy"
+                          transform="rotate(90,8,8)"
+                          y="7"
+                          width="16"
+                          height="2"
+                          rx="1"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+
+              <div class="css-work-quest-fpx">
+                <div class="css-work-quest-fyx">
+                  <span class="css-work-quest-fzz"
+                    >List of remaining questions</span
+                  >
+                  <span>3</span>
+                </div>
+                <div
+                  class="css-work-quest-fpb"
+                  v-for="element in remainingQuestion()"
+                  :key="element"
+                  @click="clickCurrentQuestion(element.id)"
+                >
+                  <span> {{ element.a }} </span> <span> {{ element.b }} </span>
+                  <span> {{ element.c }} </span>
+                  <span
+                    ><svg
+                      id="SVGRoot"
+                      width="16px"
+                      height="16px"
+                      version="1.1"
+                      viewBox="0 0 16 16"
+                    >
+                      <g
+                        id="Stockholm-icons-/-Communication-/-Reply-all"
+                        transform="matrix(.65974 0 0 .65974 .18642 .10193)"
+                        fill="none"
+                        fill-rule="evenodd"
+                      >
+                        <rect width="24" height="24" />
+                        <path
+                          id="Shape"
+                          d="m21.022 18.094c0-0.82031 0.17578-4.0576-2.3779-6.626-1.7188-1.7285-4.291-2.0283-7.3672-2.165v-4.3069c0-0.41421-0.33579-0.75-0.75-0.75-0.18631 0-0.36595 0.069345-0.50394 0.19453l-7.1401 6.4777c-0.30678 0.27832-0.32985 0.75263-0.051533 1.0594 0.014608 0.0161 0.029909 0.03156 0.045861 0.04633l7.1401 6.6125c0.30391 0.28145 0.77843 0.26324 1.0599-0.04066 0.1284-0.13864 0.19973-0.32064 0.19973-0.50961v-4.2832c1.9531 0.05371 3.3444 0.17795 4.6084 0.58008 1.82 0.57902 3.2266 2.2218 4.2196 4.9283l-1.6e-5 6e-6c0.10836 0.29534 0.38952 0.49166 0.70412 0.49166h0.21786c0-0.49316-0.0049-1.2744-0.0049-1.709z"
+                          fill="#86898d"
+                          fill-rule="nonzero"
+                        />
+                      </g>
+                    </svg>
+                  </span>
+                </div>
+                <div class="css-work-quest-fcc"></div>
+              </div>
+            </div>
+            <div class="css-work-quest-xsc"></div>
           </div>
         </template>
         <div class="css-work-quest-top">
@@ -849,14 +934,24 @@
               <template v-if="!visualHelper.evaluate">
                 <div class="css-work-quest-got">
                   <div class="box box--left"></div>
-                  <div class="css-work-quest-gtt">
-                    Click on the magnifying glass to evaluate each question
-                  </div>
-                  <button
+                  <div
+                    class="css-work-quest-gtt"
                     @click="visualHelper.evaluate = !visualHelper.evaluate"
                   >
-                    I got it
-                  </button>
+                    <svg
+                      class="icon"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 1024 1024"
+                      data-v-042ca774=""
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M512 64a448 448 0 110 896.064A448 448 0 01512 64zm67.2 275.072c33.28 0 60.288-23.104 60.288-57.344s-27.072-57.344-60.288-57.344c-33.28 0-60.16 23.104-60.16 57.344s26.88 57.344 60.16 57.344zM590.912 699.2c0-6.848 2.368-24.64 1.024-34.752l-52.608 60.544c-10.88 11.456-24.512 19.392-30.912 17.28a12.992 12.992 0 01-8.256-14.72l87.68-276.992c7.168-35.136-12.544-67.2-54.336-71.296-44.096 0-108.992 44.736-148.48 101.504 0 6.784-1.28 23.68.064 33.792l52.544-60.608c10.88-11.328 23.552-19.328 29.952-17.152a12.8 12.8 0 017.808 16.128L388.48 728.576c-10.048 32.256 8.96 63.872 55.04 71.04 67.84 0 107.904-43.648 147.456-100.416z"
+                      ></path>
+                    </svg>
+                    <span>Click to evaluate each question.</span>
+                  </div>
                 </div>
               </template>
             </div>
@@ -867,17 +962,7 @@
                 ref="DyorEditorRef"
                 :data="currentQuestion[0].textarea"
               ></DyorEditor>
-              <div class="css-work-quest-tac">
-                <span
-                  class="css-length-counter"
-                  :class="{ active: knowTextareaLength() }"
-                >
-                  {{ currentQuestion[0].textarea.length }}
-                </span>
-                <span>/</span>
 
-                <span>1000</span>
-              </div>
               <template v-if="item.id === 9">
                 <div class="css-work-quest-thl">
                   <div
@@ -1052,7 +1137,7 @@
               <div
                 class="css-work-quest-arrow"
                 id="right-arrow"
-                @click="createNewReport()"
+                @click="summaryLayout()"
               >
                 <span>Next</span>
                 <svg
@@ -1109,7 +1194,7 @@ export default {
       questionList: [
         {
           id: 1,
-          tag: "DT1",
+          tag: "DT1-1",
           category: "Development Team",
           name: "Read Whitepaper",
           question: "Did you read the whitepaper?",
@@ -1129,7 +1214,7 @@ export default {
         },
         {
           id: 2,
-          tag: "DT2",
+          tag: "DT2-2",
           category: "Development Team",
           name: "Anonymous Team",
           question: "Is the development team anonymous?",
@@ -1152,7 +1237,7 @@ export default {
         },
         {
           id: 3,
-          tag: "DT3",
+          tag: "DT3-3",
           category: "Development Team",
           name: "Identity Verification",
           question:
@@ -1163,7 +1248,7 @@ export default {
             "C. If no links are provided, you will need to manually search. Begin with Google for general information. Check Linkedin, Facebook, Instagram, Github, and twitter to see if you can locate a profile that matches each person.",
             "D. If you have reason to doubt the profiles you have found were authentic, use google image serch for each profile picture that was provided. Instructions for using Google search can be found here (https://support.google.com/websearch/answer/1325808?hl=en&co=GENIE.Platform%3DDesktop). Ensure image is not a stock photo and can be traced to a matching social media platform. ",
             "E. For any profiles found using workstep C, perform the review from Workstep B.",
-            "F. If you discover the team info is fake, go back to TD1 and change the answer to Yes.",
+            "F. If you discover the team info is fake, go back to TD1-1 and change the answer to Yes.",
             "G. Save links to supporting information in this workstep to support your review.",
           ],
 
@@ -1181,10 +1266,9 @@ export default {
         },
         {
           id: 4,
-          tag: "DT4",
+          tag: "DT4-4",
           category: "Development Team",
           name: "Prior Experience",
-
           question:
             "Does the Dev team have the proper experience to execute this project? ",
           worksteps: [
@@ -1207,7 +1291,7 @@ export default {
         },
         {
           id: 5,
-          tag: "DT5",
+          tag: "DT5-5",
           category: "Development Team",
           name: "Audit",
           question:
@@ -1234,10 +1318,9 @@ export default {
         },
         {
           id: 6,
-          tag: "DT6",
+          tag: "DT6-6",
           category: "Development Team",
           name: "Plagarism",
-
           question: "Was there any plagiarism in the whitepaper?",
           worksteps: [
             "A. Upload a copy of the whitepaper to Grammerly using this link ( https://www.grammarly.com/plagiarism-checker ).",
@@ -1258,7 +1341,7 @@ export default {
         },
         {
           id: 7,
-          tag: "DT7",
+          tag: "DT7-7",
           category: "Development Team",
           name: "Spelling Errors",
           question:
@@ -1284,7 +1367,7 @@ export default {
         },
         {
           id: 8,
-          tag: "DT8",
+          tag: "DT8-8",
           category: "Development Team",
           name: "Whitepaper Length",
           question: "What is the length of the Whitepaper?",
@@ -1307,7 +1390,7 @@ export default {
         },
         {
           id: 9,
-          tag: "TK1",
+          tag: "TK1-9",
           category: "Tokenomics",
           name: "Insider Allocation",
           question:
@@ -1324,7 +1407,6 @@ export default {
             { id: 1, name: "0% to 15%", value: 3.0 },
             { id: 2, name: "16% to 25%", value: 2.0 },
             { id: 3, name: ">25%", value: 0.0 },
-            { id: 4, name: "Not Available", value: 0.0 },
           ],
           answer: null,
           textarea: "",
@@ -1343,41 +1425,39 @@ export default {
         },
         {
           id: 10,
-          tag: "TK2",
+          tag: "TK2-10",
           category: "Tokenomics",
           name: "Community Allocation",
           question:
             "What portion of tokens will be available to the general public either through sale or rewards ?",
           worksteps: [
-            "A. Review whitepaper and website for token allocation information.",
-            "B. Sum all portions that are allocated for public sale or will be made to general public through rewards such as staking or providing liquidity.",
-            "C. Provide the information in the box below.",
+            "A. With the tokenomics information collected in the previous question (TK1), indicate what percentage is allocated to the general public through sale or rewards.",
+            "B. Provide the information in the box below",
           ],
           options: [
             { id: 1, name: "0% to 49%", value: 0.0 },
             { id: 2, name: "50% to 75%", value: 0.5 },
             { id: 3, name: ">75%", value: 1.0 },
-            { id: 4, name: "Not Available", value: 0.0 },
           ],
           answer: null,
           textarea: "",
           purpose:
-            "Go back and re-read step #8, as its essentially the same explanation, or I guess the mirror image of it. Just like having large numbers of tokens held by a few insiders can be bad, having a large number of tokens spread out across a large number of people is good. Explanations of sell pressure and decentralization both apply.",
+            "Go back and re-read step #8, as it's essentially the same explanation, or I guess the mirror image of it. Just like having large numbers of tokens held by a few insiders can be bad, having a large number of tokens spread out across a large number of people is good. Explanations of sell pressure and decentralization both apply.",
           files: [],
           images: [],
           video: [],
         },
         {
           id: 11,
-          tag: "TK3",
+          tag: "TK3-11",
           category: "Tokenomics",
           name: "Vesting",
           question:
             "For tokens reserved for development team and early investors, is there a vesting schedule?",
           worksteps: [
             "A. Vesting means that all tokens are not immediately available. Instead they are held for a predetermined period of time.",
-            "B. Review white paper, most likely in the tokenomics section, to see if development team or early investor tokens are immediately available to them or are held for a specified time",
-            "C. If there is a vesting schedule, outline it in the box below",
+            "B. Review white paper, most likely in the tokenomics section, to see if development team or early investor tokens are immediately available to them or are held for a specified time.",
+            "C. If there is a vesting schedule, outline it in the box below.",
           ],
           options: [
             { id: 1, name: "Yes", value: 1.5 },
@@ -1386,14 +1466,14 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "Lets start by describing what vesting is. According to Investopedia 'Being fully vested means a person has rights to the full amount of some benefit, most commonly employee benefits such as stock options, profit sharing, or retirement benefits. Benefits that must be fully vested benefits often accrue to employees each year, but they only become the employee's property according to a vesting schedule.Vesting may occur on a gradual schedule, such as 25 percent per year, or on a 'cliff' schedule where 100 percent of benefits vest at a set time, such as four years after the award date. Fully vested may be compared with partially vested.' \n To give an example in the crpyrto world, the dev team might have 20% of all tokens reserved for themselves. As already discussed in #8, this can create a large amount of selling pressure if all the tokens were unlocked at once. It also can create concerns that there might be more work that needs to be done but now that the teams tokens are all unlocked, they could just take the money and run. To alleviate these concerns, a team can implement a vesting schedule so that not all of these tokens are available immediately. It can be vested over 4 years and 1/4 of the tokens are unlocked each year. It can be vested over 2 years where all the tokens are available at once at the end of the two years. Or anything that the team decides they want to do. By having a vesting schedule in place that makes sense, it is a clear signal to investors that tokens will not be massively dumped on them and that the team is in it for the long haul.",
+            "Lets start by describing what vesting is. According to Investopedia 'Being fully vested means a person has rights to the full amount of some benefit, most commonly employee benefits such as stock options, profit sharing, or retirement benefits. Benefits that must be fully vested benefits often accrue to employees each year, but they only become the employee's property according to a vesting schedule.Vesting may occur on a gradual schedule, such as 25 percent per year, or on a 'cliff' schedule where 100 percent of benefits vest at a set time, such as four years after the award date. Fully vested may be compared with partially vested. \n To give an example in the crpyrto world, the dev team might have 20% of all tokens reserved for themselves. As already discussed in #8, this can create a large amount of selling pressure if all the tokens were unlocked at once. It also can create concerns that there might be more work that needs to be done but now that the teams tokens are all unlocked, they could just take the money and run. To alleviate these concerns, a team can implement a vesting schedule so that not all of these tokens are available immediately. It can be vested over 4 years and 1/4 of the tokens are unlocked each year. It can be vested over 2 years where all the tokens are available at once at the end of the two years. Or anything that the team decides they want to do. By having a vesting schedule in place that makes sense, it is a clear signal to investors that tokens will not be massively dumped on them and that the team is in it for the long haul.",
           files: [],
           images: [],
           video: [],
         },
         {
           id: 12,
-          tag: "TK4",
+          tag: "TK4-12",
           category: "Tokenomics",
           name: "Locked Policy",
           question:
@@ -1418,7 +1498,7 @@ export default {
         },
         {
           id: 13,
-          tag: "TK5",
+          tag: "TK5-13",
           category: "Tokenomics",
           name: "Use Case",
           question:
@@ -1442,7 +1522,7 @@ export default {
         },
         {
           id: 14,
-          tag: "TK6",
+          tag: "TK6-14",
           category: "Tokenomics",
           name: "ISO Fee",
           question:
@@ -1457,6 +1537,7 @@ export default {
           options: [
             { id: 1, name: "0% to 3%", value: 0.5 },
             { id: 2, name: ">3%", value: 0.0 },
+            { id: 3, name: "N/A", value: 0.5 },
           ],
           answer: null,
           textarea: "",
@@ -1468,7 +1549,7 @@ export default {
         },
         {
           id: 15,
-          tag: "TK7",
+          tag: "TK7-15",
           category: "Tokenomics",
           name: "Originality",
           question:
@@ -1493,7 +1574,7 @@ export default {
         },
         {
           id: 16,
-          tag: "CT1",
+          tag: "CT1-16",
           category: "Community",
           name: "Twitter",
           question: "How many followers does the project have on Twitter?",
@@ -1520,7 +1601,7 @@ export default {
         },
         {
           id: 17,
-          tag: "CT2",
+          tag: "CT2-17",
           category: "Community",
           name: "Real Followers",
           question:
@@ -1546,7 +1627,7 @@ export default {
         },
         {
           id: 18,
-          tag: "CT3",
+          tag: "CT3-18",
           category: "Community",
           name: "Reddit",
           question: "How many subscribers does the project have on Reddit?",
@@ -1572,7 +1653,7 @@ export default {
         },
         {
           id: 19,
-          tag: "CT4",
+          tag: "CT4-19",
           category: "Community",
           name: "Subreddit Activity",
           question:
@@ -1590,14 +1671,14 @@ export default {
           answer: null,
           textarea: "",
           purpose:
-            "This is a very similar concept to the one on Twitter I am copying it here again for your convenience.  As discussed in the last point, community is important to a projects success. But simply looking at the number of subscribers is insufficient. This is because there are a LOT of projects out there that have recognized how important a community is to a project, and simply buy thousands of subscribers to give the appearance that they have a large organic community behind them. Now can a project buy subscribers and still end up being a good investment? Of course they can. But we have already covered honesty and integrity in the other points, and that still applies here. Most legitimate projects will gain a following organically because they are high quality and people can recognize that. Low quality projects that don't have much to offer will usually be the culprits in purchasing subscribers, which are typically the types of investments you would want to avoid. \n So doing a little extra leg work in reviewing the posts to see how much actual engagement they get will be a good indicator if the subscribers are real or not. Someone with 50K subscribers who gets 5 to 10 upvotes is probably purchasing them. Someone who has no other people commenting or posting to their page probably doesn't have many real subscribers. And if you only see the same person making posts, that is usually not a good sign. Ideally you want to look for a wide range of people posting and engaging on posts.",
+            "This is a very similar concept to the one on Twitter I am copying it here again for your convenience.  As discussed in the last point, community is important to the success of a project. But simply looking at the number of subscribers is insufficient. This is because there are a LOT of projects out there that have recognized how important a community is to a project, and simply buy thousands of subscribers to give the appearance that they have a large organic community behind them. \n Now can a project buy subscribers and still end up being a good investment? Of course they can. But we have already covered honesty and integrity in the other points, and that still applies here. Most legitimate projects will gain a following organically because they are high quality and people can recognize that. Low-quality projects that don't have much to offer will usually be the culprits in purchasing subscribers, which are typically the types of investments you would want to avoid. So doing a little extra leg work in reviewing the posts to see how much actual engagement they get will be a good indicator if the subscribers are real or not. Someone with 50K subscribers who gets 5 to 10 upvotes is probably purchasing them. Someone who has no other people commenting or posting to their page probably doesn't have many real subscribers. And if you only see the same person making posts, that is usually not a good sign. Ideally, you want to look for a wide range of people posting and engaging on posts.",
           files: [],
           images: [],
           video: [],
         },
         {
           id: 20,
-          tag: "CT5",
+          tag: "CT5-20",
           category: "Community",
           name: "Telegram",
           question: "How many subscribers does the project have on Telegram?",
@@ -1623,7 +1704,7 @@ export default {
         },
         {
           id: 21,
-          tag: "CT6",
+          tag: "CT6-21",
           category: "Community",
           name: "Telegram Activity",
           question: "Does their Telegram appear to have an active environment?",
@@ -1647,7 +1728,7 @@ export default {
         },
         {
           id: 22,
-          tag: "CT7",
+          tag: "CT7-22",
           category: "Community",
           name: "Discord",
           question: "How many members does the project have on discord?",
@@ -1672,7 +1753,7 @@ export default {
         },
         {
           id: 23,
-          tag: "CT8",
+          tag: "CT8-23",
           category: "Community",
           name: "Discord Activity",
           question: "Does their Discord appear to have an active environment?",
@@ -1696,7 +1777,7 @@ export default {
         },
         {
           id: 24,
-          tag: "MT1",
+          tag: "MT1-24",
           category: "Metrics",
           name: "Fair Launch",
           question:
@@ -1722,7 +1803,7 @@ export default {
         },
         {
           id: 25,
-          tag: "MT2",
+          tag: "MT2-25",
           category: "Metrics",
           name: "Market cap",
           question: "What is the current market cap of the project?",
@@ -1737,6 +1818,7 @@ export default {
             { id: 1, name: "<50 Million", value: 0.0 },
             { id: 2, name: "50 to 100 Million", value: 0.5 },
             { id: 3, name: "100 Million +", value: 1.0 },
+            { id: 404, name: "Doesn't apply", value: 0.0 },
           ],
           answer: null,
           textarea: "",
@@ -1748,7 +1830,7 @@ export default {
         },
         {
           id: 26,
-          tag: "MT3",
+          tag: "MT3-26",
           category: "Metrics",
           name: "Volume",
           question: "What is the daily trading volume of the Token ?",
@@ -1761,6 +1843,7 @@ export default {
             { id: 2, name: "1 to 5 Million", value: 0.5 },
             { id: 3, name: "5 Million +", value: 1.0 },
             { id: 4, name: "N/A", value: 1.0 },
+            { id: 404, name: "Doesn't apply", value: 0.0 },
           ],
           answer: null,
           textarea: "",
@@ -1772,7 +1855,7 @@ export default {
         },
         {
           id: 27,
-          tag: "MT4",
+          tag: "MT4-27",
           category: "Metrics",
           name: "CEX",
           question: "Is the token listed on large  centralized exchanges?",
@@ -1785,11 +1868,12 @@ export default {
           options: [
             { id: 1, name: "Yes", value: 1.5 },
             { id: 2, name: "No", value: 0.0 },
+            { id: 404, name: "Doesn't apply", value: 0.0 },
           ],
           answer: null,
           textarea: "",
           purpose:
-            "We talked about volume in the last point. Well where do you think most of the volume is coming from in crypto markets? I'd like to tell you it is from decentralized exchanges, but that is just not the case. Perhaps someday it will be, but for now the tokens and coins listed on centralized exchanges have access to the most liquidity and volume of all the tokens. For this reason, checking if a token is listed on centralized exchanges or not is always worth the effort. If you have found one that is only listed on a decentralized exchange this can be a good thing as the price might get some upward movement if and when it ever gets listed on one. But this is also something that you should take caution of. The shadiest projects out there that are trying to scam you will usually be found exclusively on decentralized exchanges, as they will not meet the more strict criteria to get listed on the centralized ones. So to summarize, being only on a DEX can have some upside if it is a solid project, but you should definitely exercise caution as it can be riskier as well. Tokens that have been listed on the big centralized exchanges such as Coinbase, Kraken, Binance, etc. will have access to more liquidity, be more well vetted, and oftentimes have less risk than a project that only lives on a DEX.",
+            "We talked about volume in the last point. Well, where do you think most of the volume is coming from in crypto markets? I'd like to tell you it is from decentralized exchanges, but that is just not the case. Perhaps someday it will be, but for now, the tokens and coins listed on centralized exchanges have access to the most liquidity and volume of all the tokens. For this reason, checking if a token is listed on centralized exchanges or not is always worth the effort. If you have found one that is only listed on a decentralized exchange this can be a good thing as the price might get some upward movement if and when it ever gets listed on one. But this is also something that you should take caution of.  \n The shadiest projects out there that are trying to scam you will usually be found exclusively on decentralized exchanges, as they will not meet the more strict criteria to get listed on the centralized ones. Please note that this does not mean listed only on a DEX = shady, that is NOT what we are saying. Many great projects are only found on DEXs/ We are saying that Grimace cion or ElonDogeInuRocket with zero utility meant for quick pump and dumps will likely never make it on a centralized exchange. So to summarize, being only on a DEX can have some upside if it is a solid project, but you should definitely exercise caution as it can be riskier as well. Tokens that have been listed on the big centralized exchanges such as Coinbase, Kraken, Binance, etc. will have access to more liquidity, be more well-vetted, and oftentimes have less risk than a project that only lives on a DEX.",
           files: [],
           images: [],
           video: [],
@@ -1810,11 +1894,13 @@ export default {
       answeredQuestion: [],
       checkedOption: "",
       visualHelper: {
-        purpose:false,
+        purpose: false,
         evaluate: false,
         example: false,
       },
+      queryInput: [],
       isFinished: true,
+      showSummary: true,
       result: "",
       error: "",
     };
@@ -1827,8 +1913,25 @@ export default {
     this.sendMeAtribute();
     this.createNewIdenticon();
   },
-  mounted() {},
   methods: {
+    summaryLayout() {
+      this.showSummary = !this.showSummary;
+    },
+    remainingQuestion() {
+      let remaining = [];
+      for (const element of this.answeredQuestion) {
+        if (element.answer === null) {
+          remaining.push({
+            id: element.id,
+            a: element.tag,
+            b: element.name,
+            c: element.category,
+          });
+        }
+        console.log(element.answer);
+      }
+      return remaining;
+    },
     splitPurpose() {
       return this.currentQuestion[0].purpose.split(/\r?\n/);
     },
@@ -1866,7 +1969,7 @@ export default {
       console.log(this.currentQuestion[0].textarea, "WHAT");
 
       if (this.currentQuestion[0].answer === 404) {
-        this.createNewReport();
+        this.answeredQuestion[this.numberQuestion[0] + 1].answer = 404;
       }
 
       this.checkCorrectQuestion();
@@ -1965,9 +2068,6 @@ export default {
       });
       return acc;
     },
-    knowTextareaLength() {
-      return this.currentQuestion[0].textarea.length <= 100 ? true : false;
-    },
     chargeListQuestion() {
       for (const element of this.questionList) {
         switch (element.category) {
@@ -2051,6 +2151,7 @@ export default {
 
 #logo-blue {
   fill: var(--complementary-color-blue);
+  margin-bottom: 5px;
 }
 
 @keyframes pulse {
@@ -2066,11 +2167,18 @@ export default {
   border: 1px solid var(--border-primary);
   padding: 10px;
   border-radius: 50%;
+  background: var(--base-color-white-primary);
 }
 
 .css-identicon {
   width: 20px;
   height: 20px;
+}
+
+.css-work-quest-fcc {
+  height: 1000px;
+  width: 100%;
+  background: red;
 }
 
 .css-work-quest-pta {
@@ -2089,22 +2197,6 @@ export default {
   flex-direction: column;
 }
 
-.css-work-quest-tac {
-  right: 0;
-  bottom: 0;
-  margin-bottom: 1rem;
-  margin-right: 1.4rem;
-  margin-top: auto;
-  font-size: var(--text-size-secondary);
-  display: flex;
-  position: absolute;
-  background: yellow;
-}
-
-.css-work-quest-tac span {
-  margin-left: 2px;
-}
-
 .css-work-quest-thl {
   width: 100%;
   height: 100%;
@@ -2118,6 +2210,35 @@ export default {
   overflow-y: auto;
   padding: 1 2rem;
   box-sizing: border-box;
+}
+
+.css-work-quest-xsc {
+  width: 1000px;
+  height: 100px;
+  border-radius: 8px;
+  display: flex;
+  position: absolute;
+  bottom: 200px;
+  background: var(--base-color-white-primary);
+}
+
+.css-work-quest-fpb {
+  border: 1px solid var(--border-primary);
+  border-left: 1px solid var(--complementary-color-blue);
+  color: var(--text-color-primary);
+  padding: 1rem;
+  align-items: center;
+  background: var(--base-color-white-secondary);
+  border-radius: 8px;
+  justify-content: space-between;
+  display: flex;
+  font-size: var(--text-size-secondary);
+  margin-top: 1rem;
+}
+
+.css-work-quest-fpb span {
+  width: 200px;
+  text-align: center;
 }
 
 .css-work-quest-bta {
@@ -2150,6 +2271,27 @@ export default {
   color: var(--text-color-secondary);
 }
 
+.css-work-quest-fyx {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--base-color-white-secondary);
+  border-radius: 8px;
+  color: var(--complementary-color-blue);
+  border: 1px solid var(--complementary-color-blue);
+}
+
+.css-work-quest-fxx {
+  color: var(--text-color-primary);
+  font-size: var(--text-size-third);
+  font-weight: 600;
+}
+
+.css-work-quest-fzz {
+}
+
 .css-work-quest-ths {
   display: flex;
   padding: 0 1rem;
@@ -2171,22 +2313,27 @@ export default {
   position: relative;
 }
 
+.css-work-quest-wrap.active {
+  overflow: unset;
+}
+
 .css-work-quest-fpl {
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   z-index: 11;
-  padding: 3rem 15%;
-  position: fixed;
   display: flex;
+  position: absolute;
   cursor: pointer;
+  justify-content: center;
   animation-name: faded;
   animation-duration: 1s;
   transition: ease 0.3s;
 }
 
 .css-work-quest-fph {
-  height: 50px;
+  height: 4rem;
+  min-height: 4rem;
   display: flex;
   align-items: center;
   padding: 0 2rem;
@@ -2195,8 +2342,8 @@ export default {
   justify-content: space-between;
 }
 
-.css-work-quest-fph button{
-  cursor:pointer;
+.css-work-quest-fph button {
+  cursor: pointer;
 }
 
 .css-work-quest-fph div {
@@ -2219,6 +2366,7 @@ export default {
   word-break: break-word;
   white-space: pre-line;
   display: flex;
+  overflow-y: scroll;
   flex-direction: column;
 }
 
@@ -2238,14 +2386,22 @@ export default {
   font-size: var(--text-size-secondary);
 }
 
-.css-work-quest-fps {
+.css-work-quest-fps,
+.css-work-quest-fyy {
   width: 1000px;
   height: fit-content;
-  padding-bottom: 2rem;
+  position: fixed;
+  padding-bottom: 3rem;
+  margin-top: 3rem;
   display: flex;
+  box-sizing: border-box;
   flex-direction: column;
   border-radius: 8px;
   background: var(--base-color-white-primary);
+}
+
+.css-work-quest-fyy {
+  height: 600px;
 }
 
 @keyframes faded {
@@ -2281,9 +2437,20 @@ export default {
 }
 
 .css-work-quest-gtt {
-  color: #fff;
+  color: var(--complementary-color-blue);
   font-weight: 500;
+  display: flex;
+  align-items: center;
   font-size: var(--text-size-secondary);
+}
+
+.css-work-quest-gtt svg {
+  min-width: 16px;
+  max-width: 16px;
+}
+
+.css-work-quest-gtt span {
+  margin-left: 0.5rem;
 }
 
 .css-work-tool-haw {
@@ -2299,21 +2466,18 @@ export default {
 
 .css-work-quest-got {
   width: 200px;
-  height: 100px;
-  max-width: 200px;
-  max-height: 100px;
   padding: 0.5rem;
   box-sizing: border-box;
   z-index: 10;
   right: -222px;
   position: absolute;
-  background: var(--text-color-primary);
-  border: 2px solid var(--border-primary);
+  background: #deecfd;
+  border: 1px solid var(--border-primary);
   border-radius: 8px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  box-shadow: 1px 1px 20px var(--border-primary);
+  box-shadow: 0px 0px 30px var(--border-primary);
 }
 
 .css-work-project-wrap {
@@ -2332,29 +2496,10 @@ export default {
   overflow-y: auto;
 }
 
-.css-work-quest-got button {
-  padding: 5px 10px;
-  border: none;
-  background: var(--complementary-color-blue);
-  border-radius: 4px;
-  color: #ffffff;
-  margin-top: 1rem;
-  cursor: pointer;
-}
-
 .css-work-quest-got::before {
   content: "";
   position: absolute;
   transition: all 0s ease-in;
-}
-
-.css-work-quest-got::before {
-  left: -16px;
-  bottom: 40px;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid transparent;
-  border-right: 6px solid var(--text-color-primary);
 }
 
 .css-work-quest-panel {
@@ -2427,7 +2572,6 @@ export default {
 }
 
 .css-work-project-her {
-  background: var(--base-color-white-primary);
   height: 64px;
   display: flex;
   align-items: center;
@@ -2713,6 +2857,15 @@ export default {
     background: var(--complementary-color-blue);
   }
 
+  .css-identicon-wrx {
+    display: none;
+  }
+
+  .css-work-project-her {
+    background: var(--complementary-color-blue);
+    border: none;
+  }
+
   .css-work-quest-wrap {
     margin-left: 0;
     border-top-right-radius: 16px;
@@ -2723,6 +2876,10 @@ export default {
 
   .css-main-flex-wrap {
     overflow-y: auto;
+  }
+
+  .css-work-quest-gtt span {
+    white-space: nowrap;
   }
 
   .css-work-quest-tss {
@@ -2737,16 +2894,6 @@ export default {
   .css-work-quest-got {
     right: 0;
     top: 50px;
-  }
-
-  .css-work-quest-got::before {
-    bottom: 92px;
-    left: calc(77% - 10px);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid var(--text-color-primary);
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-radius: 2px;
   }
 
   .css-work-project-wrapper {
@@ -2770,11 +2917,6 @@ export default {
 
   .css-work-quest-answer {
     padding: 0 10%;
-  }
-
-  .css-work-project-her {
-    background: var(--complementary-color-blue);
-    border: none;
   }
 }
 </style>

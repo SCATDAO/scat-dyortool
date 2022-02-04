@@ -623,13 +623,20 @@ export default {
       for (const element of this.answeredQuestion) {
         if (element.category === cty) {
           for (const option of element.options) {
+            if (element.answer === 404) {
+              counter = 404;
+            }
             if (option.id === element.answer) {
               counter += option.value;
             }
           }
         }
       }
-      return counter.toFixed(2);
+      if (counter === 404) {
+        return "Doesn't Apply";
+      } else {
+        return counter.toFixed(2);
+      }
     },
     showAnswerData(question) {
       for (const option of question.options) {
@@ -672,14 +679,18 @@ export default {
           id: e.id,
           an: e.answer,
           ta: e.textarea,
-          ed: e.input
+          ed: e.input,
         })
       );
     },
     createNewCanvas() {
       console.log(JSON.stringify(this.beforeEncodeProcess).length);
       const quickResponse = new Blackhole();
-      quickResponse.generate("quickResponse", JSON.stringify(this.beforeEncodeProcess), 300);
+      quickResponse.generate(
+        "quickResponse",
+        JSON.stringify(this.beforeEncodeProcess),
+        300
+      );
       this.machineURL = quickResponse.cborHex;
       console.log(this.machineURL, quickResponse.decode());
     },
@@ -720,6 +731,9 @@ a {
   box-sizing: border-box;
   justify-content: center;
   box-shadow: 1px 1px 20px var(--border-primary);
+  background-image: url("data:image/svg+xml,%3Csvg width=%271920%27 height=%271080%27 preserveAspectRatio=%27none%27 version=%271.1%27 viewBox=%270 0 1920 1080%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg mask=%27url%28%23SvgjsMask1078%29%27%3E%3Crect width=%271920%27 height=%271080%27 fill=%27rgba%280, 105, 245, 1%29%27/%3E%3Cpath d=%27m0 646.28c119.92 7.676 222.06-78.528 321.8-145.54 97.885-65.769 204.16-130.92 250.84-239.22 46.31-107.45 2.483-226.93 0.48-343.92-2.347-137.07 56.325-284.6-13.266-402.71-71.766-121.8-214.42-191.57-353.09-219.06-133.16-26.399-264.68 25.827-392.62 71.229-121.54 43.132-240.26 93.402-330.62 185.43-94.164 95.902-198.86 211.63-190.99 345.8 7.854 133.78 151.02 211.51 230.06 319.73 60.826 83.285 104.25 174.27 181.02 243.14 88.495 79.387 177.73 177.52 296.37 185.12%27 fill=%27%230050dc%27/%3E%3Cpath d=%27m1920 1828.5c142.58-23.859 278.35-51.115 410.47-109.78 153.61-68.204 332.46-116.05 420.53-259.2 90.692-147.42 79.637-335.64 50.368-506.22-28.737-167.49-81.086-345.91-214.61-451.02-128.14-100.88-308.34-77.755-471.05-88.747-130.19-8.795-254.13 6.45-382.27 31.101-141.94 27.306-305.54 18.154-407.3 120.8-102.81 103.69-97.789 267.64-120.78 411.84-23.356 146.46-47.512 291.13-14.372 435.69 38.731 168.95 69.043 373.86 219.63 459.7 151.13 86.145 337.82-15.444 509.4-44.156%27 fill=%27%231a83ff%27/%3E%3C/g%3E%3Cdefs%3E%3Cmask id=%27SvgjsMask1078%27%3E%3Crect width=%271920%27 height=%271080%27 fill=%27%23fff%27/%3E%3C/mask%3E%3C/defs%3E%3C/svg%3E%0A");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .css-work-finished {
@@ -827,7 +841,7 @@ a {
   display: flex;
   align-items: center;
   padding: 0 2rem !important;
-  box-shadow: 1px 1px 20px var(--border-primary);
+  border: 1px solid var(--border-primary);
 }
 
 .css-work-finished-sti {
