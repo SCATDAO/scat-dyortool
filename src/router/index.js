@@ -12,7 +12,7 @@ const router = createRouter({
         { path: '/main', component: DyorMain },
         { path: '/create', component: DyorCreate },
         { path: '/research', component: DyorQuestion, },
-        { path: '/summary', component: DyorSummary, },
+        { path: '/summary/:id', component: DyorSummary, },
         { path: '/:notFound(.*)', redirect: '/main' }
     ]
 });

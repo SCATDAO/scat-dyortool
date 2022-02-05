@@ -689,7 +689,13 @@
                 <div class="css-work-quest-fcc"></div>
               </div>
             </div>
-            <div class="css-work-quest-xsc"></div>
+            <div class="css-work-quest-xsc">
+              <div>
+                <button class="css-work-quest-xkx" @click="createNewReport()">
+                  Create
+                </button>
+              </div>
+            </div>
           </div>
         </template>
         <div class="css-work-quest-top">
@@ -1175,6 +1181,7 @@
 
 <script>
 import DyorEditor from "../components/DyorEditor.vue";
+import axios from "axios";
 
 export default {
   components: {
@@ -2027,9 +2034,32 @@ export default {
       };
       console.log(this.currentQuestion[0].input);
     },
-    updateDataState() {
+    async updateDataState() {
       this.$store.commit("newQuestData", this.answeredQuestion);
-      this.$router.push("/summary");
+      await this.pushNewReport();
+      //this.$router.push("/summary/id");
+    },
+    async pushNewReport() {
+      try {
+        const params = {
+          hex: "aaaaaaaaa22aaaaaaaaaaaaa221232322323222332132223333333",
+        };
+
+        await axios({
+          method: "post",
+          url: "http://134.209.163.124:8030/v1/sendReport",
+          data: params,
+          headers: { "content-type": "application/json" },
+        })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log("NOO", error)
+          });
+      } catch (error) {
+        console.log(error);
+      }
     },
     checkCorrectQuestion() {
       return this.currentQuestion[0].answer
@@ -2218,8 +2248,22 @@ export default {
   border-radius: 8px;
   display: flex;
   position: absolute;
+  align-items: center;
   bottom: 200px;
   background: var(--base-color-white-primary);
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.css-work-quest-xkx {
+  padding: 10px 14px;
+  background: var(--complementary-color-blue);
+  border: none;
+  letter-spacing: 0.3px;
+  outline: none;
+  margin-left: 1rem;
+  border-radius: 8px;
+  color: #fff;
 }
 
 .css-work-quest-fpb {
