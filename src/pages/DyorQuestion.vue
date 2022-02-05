@@ -572,7 +572,7 @@
           </div>
         </template>
         <template v-if="showSummary">
-          <div class="css-work-quest-fpl" @click="showSummary = !showSummary">
+          <div class="css-work-quest-fpl">
             <div class="css-work-quest-fyy">
               <div class="css-work-quest-fph">
                 <div>
@@ -657,7 +657,7 @@
                   class="css-work-quest-fpb"
                   v-for="element in remainingQuestion()"
                   :key="element"
-                  @click="clickCurrentQuestion(element.id)"
+                  @click="clickCurrentQuestion(element.id) & (showSummary = !showSummary)"
                 >
                   <span> {{ element.a }} </span> <span> {{ element.b }} </span>
                   <span> {{ element.c }} </span>
@@ -691,9 +691,21 @@
             </div>
             <div class="css-work-quest-xsc">
               <div>
-                <button class="css-work-quest-xkx" @click="createNewReport()">
-                  Create
-                </button>
+                <template v-if="!isReportCreated">
+                  <button class="css-work-quest-xkx" @click="createNewReport()">
+                    Create
+                  </button></template
+                >
+                <template v-if="isReportCreated">
+                  <button class="css-work-quest-xkx">
+                    <a
+                      :href="reportLink"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Go to Report</a
+                    >
+                  </button>
+                </template>
               </div>
             </div>
           </div>
@@ -1182,6 +1194,7 @@
 <script>
 import DyorEditor from "../components/DyorEditor.vue";
 import axios from "axios";
+import { BestialEncoder } from "bestial-encoder";
 
 export default {
   components: {
@@ -1905,6 +1918,9 @@ export default {
         evaluate: false,
         example: false,
       },
+      isReportCreated: false,
+      reportLink: "",
+      beforeEncodeProcess: [],
       queryInput: [],
       isFinished: true,
       showSummary: true,
@@ -2037,14 +2053,29 @@ export default {
     async updateDataState() {
       this.$store.commit("newQuestData", this.answeredQuestion);
       await this.pushNewReport();
-      //this.$router.push("/summary/id");
     },
     async pushNewReport() {
+      this.beforeEncodeProcess.push(this.$store.getters.sendMeAtribute);
+      this.answeredQuestion.forEach((e) =>
+        this.beforeEncodeProcess.push({
+          id: e.id,
+          an: e.answer,
+          ta: e.textarea,
+          ed: e.input,
+        })
+      );
+      console.log(this.beforeEncodeProcess);
+      const bestialEncoder = new BestialEncoder();
+      const resultEncoder = bestialEncoder.encodeByValue(
+        JSON.stringify(this.beforeEncodeProcess)
+      );
+
+      console.log(resultEncoder);
       try {
         const params = {
-          hex: "aaaaaaaaa22aaaaaaaaaaaaa221232322323222332132223333333",
+          hex: `${resultEncoder}`,
         };
-
+        console.log("SECH", params.hex);
         await axios({
           method: "post",
           url: "http://134.209.163.124:8030/v1/sendReport",
@@ -2053,9 +2084,12 @@ export default {
         })
           .then((response) => {
             console.log(response);
+            this.isReportCreated = !this.isReportCreated;
+            this.reportLink = `http://192.168.1.3:8080/report/${response.data.report_id}`;
+            console.log(this.isReportCreated, this.reportLink);
           })
           .catch((error) => {
-            console.log("NOO", error)
+            console.log("NOO", error);
           });
       } catch (error) {
         console.log(error);
