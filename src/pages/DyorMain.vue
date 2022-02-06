@@ -638,7 +638,6 @@ export default {
   },
   mounted() {
     this.isMainPath = true;
-    this.generateQr();
   },
   methods: {
     showMiniPanel() {

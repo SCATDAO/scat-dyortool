@@ -25,6 +25,7 @@
     "core-js": "^3.6.5",
     "node-polyfill-webpack-plugin": "^1.1.4",
     "vue": "^3.0.0",
+    "vue-image-crop-upload": "^3.0.3",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"
   },

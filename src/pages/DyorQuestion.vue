@@ -339,7 +339,6 @@
               :class="{ active: !isRetrayed[0] }"
               isRetrayed
               viewBox="0 0 1024 1024"
-              xmlns="http://www.w3.org/2000/svg"
               data-v-365b8594=""
             >
               <path
@@ -362,7 +361,7 @@
               :class="{
                 active: progressWorkData.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id)"
+              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
             >
               {{ category.name }}
             </li>
@@ -376,7 +375,6 @@
               :class="{ active: !isRetrayed[1] }"
               isRetrayed
               viewBox="0 0 1024 1024"
-              xmlns="http://www.w3.org/2000/svg"
               data-v-365b8594=""
             >
               <path
@@ -398,7 +396,7 @@
               :class="{
                 active: progressWorkData.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id)"
+              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
             >
               {{ category.name }}
             </li>
@@ -412,7 +410,6 @@
               :class="{ active: !isRetrayed[2] }"
               isRetrayed
               viewBox="0 0 1024 1024"
-              xmlns="http://www.w3.org/2000/svg"
               data-v-365b8594=""
             >
               <path
@@ -434,7 +431,7 @@
               :class="{
                 active: progressWorkData.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id)"
+              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
             >
               {{ category.name }}
             </li>
@@ -448,7 +445,6 @@
               :class="{ active: !isRetrayed[3] }"
               isRetrayed
               viewBox="0 0 1024 1024"
-              xmlns="http://www.w3.org/2000/svg"
               data-v-365b8594=""
             >
               <path
@@ -470,7 +466,7 @@
               :class="{
                 active: progressWorkData.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id)"
+              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
             >
               {{ category.name }}
             </li>
@@ -498,7 +494,6 @@
                     height="16px"
                     version="1.1"
                     viewBox="0 0 16 16"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <g
                       id="Stockholm-icons-/-General-/-Shield-protected"
@@ -651,13 +646,16 @@
                   <span class="css-work-quest-fzz"
                     >List of remaining questions</span
                   >
-                  <span>3</span>
+                  <span>{{ remainingQuestion().length }}</span>
                 </div>
                 <div
                   class="css-work-quest-fpb"
                   v-for="element in remainingQuestion()"
                   :key="element"
-                  @click="clickCurrentQuestion(element.id) & (showSummary = !showSummary)"
+                  @click="
+                    clickCurrentQuestion(element.id) &
+                      (showSummary = !showSummary)
+                  "
                 >
                   <span> {{ element.a }} </span> <span> {{ element.b }} </span>
                   <span> {{ element.c }} </span>
@@ -686,7 +684,39 @@
                     </svg>
                   </span>
                 </div>
-                <div class="css-work-quest-fcc"></div>
+                <template v-if="remainingQuestion().length === 0">
+                  <div class="css-work-quest-fcc">
+                    <svg
+                      id="SVGRoot"
+                      width="100px"
+                      height="100px"
+                      version="1.1"
+                      viewBox="0 0 100 100"
+                    >
+                      <g
+                        id="Stockholm-icons-/-General-/-Shield-check"
+                        transform="matrix(4.1297 0 0 4.1297 .51783 .61266)"
+                        fill="none"
+                        fill-rule="evenodd"
+                      >
+                        <rect id="bound" width="24" height="24" />
+                        <path
+                          d="m4 4 7.6314-1.4309c0.2436-0.045674 0.49356-0.045674 0.73715 0l7.6314 1.4309v9.283c0 2.9344-1.5117 5.6618-4 7.217l-3.47 2.1688c-0.32427 0.20267-0.73573 0.20267-1.06 0l-3.47-2.1688c-2.4883-1.5552-4-4.2826-4-7.217z"
+                          fill="#00f512"
+                          opacity=".3"
+                        />
+                        <path
+                          id="check-path"
+                          d="m11.175 14.75c-0.23958 0-0.47917-0.09583-0.67083-0.2875l-1.9167-1.9167c-0.38333-0.38333-0.38333-0.95833 0-1.3417 0.38333-0.38333 1.0062-0.38333 1.3417 0l1.2458 1.2458 3.1625-3.1625c0.38333-0.38333 0.95833-0.38333 1.3417 0s0.38333 0.95833 0 1.3417l-3.8333 3.8333c-0.19167 0.19167-0.43125 0.2875-0.67083 0.2875z"
+                          fill="#00f512"
+                        />
+                      </g>
+                    </svg>
+                    <div class="css-work-quest-fsc">
+                      <span>All questions completed!</span>
+                    </div>
+                  </div>
+                </template>
               </div>
             </div>
             <div class="css-work-quest-xsc">
@@ -720,7 +750,6 @@
           >
             <div>
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 1024 1024"
                 data-v-066465b6=""
                 width="24"
@@ -795,7 +824,6 @@
                   height="16px"
                   version="1.1"
                   viewBox="0 0 16 16"
-                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <g
                     id="Stockholm-icons-/-General-/-Clipboard"
@@ -845,7 +873,6 @@
                   height="16px"
                   version="1.1"
                   viewBox="0 0 16 16"
-                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <g transform="matrix(.033329 0 0 .033329 -.67907 -.47141)">
                     <path
@@ -1049,7 +1076,6 @@
                           height="8px"
                           version="1.1"
                           viewBox="0 0 8 8"
-                          xmlns="http://www.w3.org/2000/svg"
                         >
                           <g
                             id="Stockholm-icons-/-Navigation-/-Plus"
@@ -1097,7 +1123,6 @@
                 height="24px"
                 version="1.1"
                 viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
               >
                 <g fill="#001737" stroke-width="1.0666">
                   <rect
@@ -1953,7 +1978,11 @@ export default {
         }
         console.log(element.answer);
       }
-      return remaining;
+      if (remaining.length === 0) {
+        return [];
+      } else {
+        return remaining;
+      }
     },
     splitPurpose() {
       return this.currentQuestion[0].purpose.split(/\r?\n/);
@@ -2240,9 +2269,17 @@ export default {
 }
 
 .css-work-quest-fcc {
-  height: 1000px;
   width: 100%;
-  background: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+.css-work-quest-fsc {
+  color: var(--text-color-primary);
+  font-weight: 600;
+  margin-top: 1rem;
 }
 
 .css-work-quest-pta {
@@ -2293,6 +2330,7 @@ export default {
   padding: 10px 14px;
   background: var(--complementary-color-blue);
   border: none;
+  cursor: pointer;
   letter-spacing: 0.3px;
   outline: none;
   margin-left: 1rem;
@@ -2468,7 +2506,8 @@ export default {
 .css-work-quest-fyy {
   width: 1000px;
   height: fit-content;
-  position: fixed;
+  position: absolute;
+  z-index: 1;
   padding-bottom: 3rem;
   margin-top: 3rem;
   display: flex;

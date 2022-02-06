@@ -310,13 +310,14 @@
               Fill out the following form with details of the project
             </div>
           </div>
-          <div class="css-dyor-create-stx">
-            <div class="css-dyor-create-str"></div>
-          </div>
         </div>
         <div class="css-dyor-create-faw">
           <div class="css-dyor-create-nsc">
-            <div class="css-dyor-create-nst">Name<span>*</span></div>
+            <div class="css-dyor-create-nst">
+              Name<span class="css-dyor-create-sba" :class="{ active: true }"
+                >*</span
+              >
+            </div>
             <input
               id="tableTradeSearch"
               name="query"
@@ -324,7 +325,7 @@
               class="css-dyor-create-nii"
               type="text"
               placeholder="Project's name"
-              v-model="filterKey"
+              v-model="pn"
             />
             <template v-if="isDeployed">
               <div class="css-trade-history-wrp">
@@ -333,6 +334,7 @@
                   @click="isDeployed = false"
                 ></div>
                 <div class="css-trade-history-sub">
+                  <span>(Optional)</span>
                   <span>Powered by CoinGecko</span>
                 </div>
                 <div class="css-trade-history-tablew">
@@ -359,7 +361,7 @@
                       <tr
                         v-for="entry in filteredHeroes"
                         :key="entry"
-                        @click="conne(entry)"
+                        @click="configProject(entry)"
                       >
                         <td v-for="key in columns" :key="key">
                           <template v-if="key === 'logo'">
@@ -378,37 +380,57 @@
           </div>
 
           <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">Symbol<span>*</span></div>
+            <div class="css-dyor-create-nst">
+              Symbol<span class="css-dyor-create-sba" :class="{ active: true }"
+                >*</span
+              >
+            </div>
             <input
               class="css-dyor-create-nii"
-              v-model="newAudit.pw"
+              v-model="ps"
               type="text"
               placeholder="Token Symbol"
             />
           </div>
           <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">Description<span>*</span></div>
+            <div class="css-dyor-create-nst">
+              Description<span
+                class="css-dyor-create-sba"
+                :class="{ active: true }"
+                >*</span
+              >
+            </div>
             <input
               class="css-dyor-create-nii"
-              v-model="newAudit.pw"
+              v-model="pd"
               type="text"
               placeholder="Short description"
             />
           </div>
           <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">Category<span>*</span></div>
+            <div class="css-dyor-create-nst">
+              Category<span
+                class="css-dyor-create-sba"
+                :class="{ active: true }"
+                >*</span
+              >
+            </div>
             <input
               class="css-dyor-create-nii"
-              v-model="newAudit.pc"
+              v-model="pc"
               type="text"
               placeholder="DEX, NFT, stablecoin, etc..."
             />
           </div>
           <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">Website<span>*</span></div>
+            <div class="css-dyor-create-nst">
+              Website<span class="css-dyor-create-sba" :class="{ active: true }"
+                >*</span
+              >
+            </div>
             <input
               class="css-dyor-create-nii"
-              v-model="newAudit.pw"
+              v-model="pw"
               type="text"
               placeholder="www.example.com"
             />
@@ -416,23 +438,68 @@
 
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">
-              Github/Repository<span>*</span>
+              Github/Repository<span
+                class="css-dyor-create-sba"
+                :class="{ active: true }"
+                >*</span
+              >
             </div>
             <input
               class="css-dyor-create-nii"
-              v-model="newAudit.an"
+              v-model="pr"
               type="text"
               placeholder="Code repository link"
             />
           </div>
           <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">Your Name<span>*</span></div>
+            <div class="css-dyor-create-nst">
+              Your Name<span
+                class="css-dyor-create-sba"
+                :class="{ active: true }"
+                >*</span
+              >
+            </div>
             <input
               class="css-dyor-create-nii"
-              v-model="newAudit.an"
+              v-model="an"
               type="text"
               placeholder="Your name ..."
             />
+          </div>
+          <div class="css-dyor-create-nsi">
+            <div class="css-dyor-create-nst">
+              Logo<span class="css-dyor-create-sba" :class="{ active: true }"
+                >*</span
+              >
+            </div>
+            <div class="css-dyor-create-sla">
+              <my-upload
+                field="img"
+                @crop-success="cropSuccess"
+                @crop-upload-success="cropUploadSuccess"
+                @crop-upload-fail="cropUploadFail"
+                v-model="show"
+                :width="80"
+                :height="80"
+                :langType="langType"
+                :params="params"
+                :headers="headers"
+                img-format="png"
+              ></my-upload>
+
+              <div class="css-dyor-create-ixw">
+                <div class="css-dyor-create-stx" :class="{ active: pl }">
+                  <div class="css-dyor-create-str">
+                    <img :src="pl" alt="" />
+                  </div>
+                </div>
+                <div class="css-dyor-create-bwp">
+                  <button class="css-upload-button" @click="toggleShow">
+                    Upload logo
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="css-dyor-create-nsl"></div>
         </div>
@@ -446,7 +513,7 @@
 
 <script>
 import axios from "axios";
-
+import myUpload from "vue-image-crop-upload";
 const columns = ["logo", "name", "token"];
 
 const sorted = {};
@@ -458,34 +525,77 @@ export default {
   async mounted() {
     this.inputScanner();
   },
+  components: {
+    "my-upload": myUpload,
+  },
   data() {
     return {
+      show: false,
+      params: {
+        token: "123456798",
+        name: "avatar",
+      },
+      langType: "en",
+      headers: {
+        smail: "*_~",
+      },
+      imgDataUrl: "",
       tableData: [],
       columns: columns,
       sortKey: "",
-      filterKey: "",
-      newAudit: {
-        an: null,
-        pn: null,
-        pw: null,
-        pc: null,
-        pl: [],
-      },
+      pn: null,
+      ps: null,
+      pd: null,
+      pc: null,
+      pw: null,
+      pr: null,
+      an: null,
+      pl: null,
       isDeployed: false,
+      isSelected: false,
+      isUploaded: false,
     };
   },
   watch: {
-    filterKey() {
-      console.log(this.filterKey.length);
-
-      if (this.filterKey.length === 0) {
+    pn() {
+      if (this.pn.length <= 0 && this.isSelected) {
         this.isDeployed = false;
-      } else {
+        this.isSelected = false;
+        this.resetInputs();
+      }
+      if (!this.pn.length <= 0) {
         this.isDeployed = true;
+      }
+      if (this.isSelected) {
+        this.isDeployed = false;
       }
     },
   },
   methods: {
+    resetInputs() {
+      this.ps = null;
+      this.pl = null;
+    },
+    toggleShow() {
+      this.show = !this.show;
+    },
+    cropSuccess(imgDataUrl, field) {
+      this.pl = imgDataUrl;
+      this.isUploaded = true;
+      console.log(imgDataUrl, field);
+    },
+
+    cropUploadSuccess(jsonData, field) {
+      console.log("-------- upload success --------");
+      console.log(jsonData);
+      console.log("field: " + field);
+    },
+    cropUploadFail(status, field) {
+      console.log("-------- upload fail --------");
+      this.pl = "";
+      console.log(status);
+      console.log("field: " + field);
+    },
     async inputScanner() {
       let timer;
 
@@ -496,7 +606,6 @@ export default {
       input.addEventListener("keyup", () => {
         clearTimeout(timer);
         timer = setTimeout(() => {
-          console.log("LLAMADO");
           this.searchCoins();
         }, waitTime);
       });
@@ -508,21 +617,26 @@ export default {
       this.sortKey = key;
       this.sortOrders[key] = this.sortOrders[key] * -1;
     },
-    conne(element) {
-      console.log(element);
-      this.isDeployed = false;
+    configProject(element) {
+      console.log(element.id);
+      this.pn = element.name;
+      this.ps = element.token;
+      this.pl = element.image;
+      this.isSelected = true;
     },
     async updateCoins() {
-      if (this.filterKey !== "") {
+      if (this.pn !== "") {
         try {
           const res = await axios.get(
-            `https://api.coingecko.com/api/v3/search?query=${this.filterKey}`
+            `https://api.coingecko.com/api/v3/search?query=${this.pn}`
           );
           this.tableData = res.data.coins.map((e) => {
             return {
+              id: e.id,
               logo: e.thumb,
               name: e.name,
               token: e.symbol,
+              image: e.large,
             };
           });
         } catch (error) {
@@ -540,23 +654,19 @@ export default {
       }
     },
     checkData() {
-      if (
-        this.newAudit.pn != null &&
-        this.newAudit.pw != null &&
-        this.newAudit.pc != null
-      ) {
+      console.log(`pn: ${this.pn}, ps: ${this.ps}, pd:${this.pd}, pc:${this.pc}, pw: ${this.pw}, pr: ${this.pr}, an: ${this.an}, pl:${this.pl}`);
+      if (this.pn != null && this.pw != null && this.pc != null) {
         return true;
       }
     },
     async searchCoins() {
-      console.log("funciona");
       this.updateCoins();
     },
   },
   computed: {
     filteredHeroes() {
       const sortKey = this.sortKey;
-      const filterKey = this.filterKey && this.filterKey.toLowerCase();
+      const filterKey = this.pn && this.pn.toLowerCase();
       const order = this.sortOrders[sortKey] || 1;
       let tableData = this.tableData;
       if (filterKey) {
@@ -598,6 +708,29 @@ export default {
   justify-content: space-between;
 }
 
+.css-upload-button {
+  background: var(--color-soft-blue);
+  padding: 1rem 4rem;
+  color: var(--complementary-color-blue);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.css-dyor-create-ixw {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.css-dyor-create-bwp {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
 .css-dyor-create-ari {
   height: 100px;
   width: 100px;
@@ -615,6 +748,7 @@ export default {
   left: 0;
   background: transparent;
   position: fixed;
+  cursor: text;
   z-index: -1;
 }
 
@@ -627,6 +761,12 @@ export default {
   box-sizing: border-box;
   flex-direction: column;
   overflow-y: auto;
+}
+
+.css-dyor-create-sla {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .css-dyor-create-header {
@@ -675,8 +815,8 @@ export default {
   display: flex;
   flex-direction: column;
   background: var(--base-color-white-primary);
-  border-radius: 8px;
   box-sizing: border-box;
+  border-radius: 8px;
   padding: 3rem 3rem;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 }
@@ -687,21 +827,37 @@ export default {
 
 .css-dyor-create-nst {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .css-dyor-create-str {
   width: 100px;
   height: 100px;
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
+  justify-content: center;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.css-dyor-create-str img {
+  border-radius: 8px;
+  width: 80px;
+  border: 1px solid transparent;
+  height: 80px;
 }
 
 .css-trade-history-tzx.active {
   color: var(--complementary-color-blue);
 }
 
-.css-dyor-create-nst span {
-  margin-left: 5px;
-  margin-top: 5px;
+.css-dyor-create-sba {
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+.css-dyor-create-sba.active {
   color: red;
 }
 
@@ -713,13 +869,19 @@ export default {
 
 .css-dyor-create-nxs {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
 .css-dyor-create-stx {
-  border-radius: 4px;
-  border: 1px dashed var(--border-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='SVGRoot' width='100px' height='100px' version='1.1' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cfilter id='filter3322' x='-.00012' y='-.00012' width='1.0002' height='1.0002' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='0.005'/%3E%3C/filter%3E%3C/defs%3E%3Cg fill='%230069f5'%3E%3Crect x='-.18634' y='5e-7' width='100' height='100' filter='url(%23filter3322)' opacity='.1' stroke-width='0'/%3E%3Cpath d='m38.863 32.225h26.117c3.6061 0 6.5294 2.9233 6.5294 6.5294v19.588c0 3.6061-2.9233 6.5294-6.5294 6.5294h-26.117c-3.6061 0-6.5294-2.9233-6.5294-6.5294v-19.588c0-3.6061 2.9233-6.5294 6.5294-6.5294zm-2.1765 26.117h19.588l-9.7941-13.059zm23.941-6.5294c3.6061 0 6.5294-2.9233 6.5294-6.5294 0-3.6061-2.9233-6.5294-6.5294-6.5294-3.6061 0-6.5294 2.9233-6.5294 6.5294 0 3.6061 2.9233 6.5294 6.5294 6.5294z' stroke-width='2.1765'/%3E%3C/g%3E%3C/svg%3E%0A");
+}
+.css-dyor-create-stx.active {
+  border-radius: 8px;
+  background: none;
+  cursor: default;
 }
 
 .css-dyor-create-nsi,
@@ -835,7 +997,7 @@ export default {
   background: var(--color-base-third);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0 1rem;
   font-size: var(--text-size-secondary);
   color: var(--text-color-secondary);
@@ -897,6 +1059,10 @@ tr {
   cursor: pointer;
   display: flex;
   align-items: center;
+}
+
+tr:hover {
+  background: var(--color-soft-blue);
 }
 th.active .arrow {
   opacity: 1;
