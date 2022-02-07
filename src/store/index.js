@@ -10,7 +10,7 @@ const store = createStore({
         pn: "Name",
         pw: "Category",
         pc: "www.example.com",
-        pl: [],
+        pl: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png",
       },
       answeredQuestion: null,
     }

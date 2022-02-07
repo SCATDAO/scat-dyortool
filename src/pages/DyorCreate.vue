@@ -314,8 +314,9 @@
         <div class="css-dyor-create-faw">
           <div class="css-dyor-create-nsc">
             <div class="css-dyor-create-nst">
-              Name<span class="css-dyor-create-sba" :class="{ active: true }"
-                >*</span
+              Name<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.pn }"
+                >Must not be empty or greater than 50 length</span
               >
             </div>
             <input
@@ -381,8 +382,9 @@
 
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">
-              Symbol<span class="css-dyor-create-sba" :class="{ active: true }"
-                >*</span
+              Symbol<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.ps }"
+                >Must not be empty or greater than 20 length</span
               >
             </div>
             <input
@@ -394,10 +396,9 @@
           </div>
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">
-              Description<span
-                class="css-dyor-create-sba"
-                :class="{ active: true }"
-                >*</span
+              Description<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.pd }"
+                >Must not be empty or greater than 200 length</span
               >
             </div>
             <input
@@ -409,10 +410,9 @@
           </div>
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">
-              Category<span
-                class="css-dyor-create-sba"
-                :class="{ active: true }"
-                >*</span
+              Category<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.pc }"
+                >Must not be empty or greater than 100 length</span
               >
             </div>
             <input
@@ -424,8 +424,9 @@
           </div>
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">
-              Website<span class="css-dyor-create-sba" :class="{ active: true }"
-                >*</span
+              Website<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.pw }"
+                >Must not be empty or greater than 50 length</span
               >
             </div>
             <input
@@ -438,10 +439,9 @@
 
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">
-              Github/Repository<span
-                class="css-dyor-create-sba"
-                :class="{ active: true }"
-                >*</span
+              Github/Repository<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.pr }"
+                >Must not be empty or greater than 100 length</span
               >
             </div>
             <input
@@ -453,10 +453,9 @@
           </div>
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">
-              Your Name<span
-                class="css-dyor-create-sba"
-                :class="{ active: true }"
-                >*</span
+              Your Nick<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.an }"
+                >Must not be empty or greater than 16 length</span
               >
             </div>
             <input
@@ -468,8 +467,9 @@
           </div>
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">
-              Logo<span class="css-dyor-create-sba" :class="{ active: true }"
-                >*</span
+              Logo<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.pl }"
+                >Please upload the logo of the project</span
               >
             </div>
             <div class="css-dyor-create-sla">
@@ -530,6 +530,15 @@ export default {
   },
   data() {
     return {
+      errors: {
+        pn: false,
+        ps: false,
+        pd: false,
+        pc: false,
+        pw: false,
+        pr: false,
+        an: false,
+      },
       show: false,
       params: {
         token: "123456798",
@@ -543,14 +552,14 @@ export default {
       tableData: [],
       columns: columns,
       sortKey: "",
-      pn: null,
-      ps: null,
-      pd: null,
-      pc: null,
-      pw: null,
-      pr: null,
-      an: null,
-      pl: null,
+      pn: "",
+      ps: "",
+      pd: "",
+      pc: "",
+      pw: "",
+      pr: "",
+      an: "",
+      pl: "",
       isDeployed: false,
       isSelected: false,
       isUploaded: false,
@@ -573,8 +582,8 @@ export default {
   },
   methods: {
     resetInputs() {
-      this.ps = null;
-      this.pl = null;
+      this.ps = "";
+      this.pl = "";
     },
     toggleShow() {
       this.show = !this.show;
@@ -649,15 +658,59 @@ export default {
     },
     nextResearch() {
       if (this.checkData()) {
-        this.$store.commit("modifyAuditData", this.newAudit);
+        this.$store.commit("modifyAuditData", {
+          pn: this.pn,
+          ps: this.ps,
+          pd: this.pd,
+          pc: this.pc,
+          pw: this.pw,
+          pr: this.pr,
+          an: this.an,
+          pl: this.pl,
+        });
         this.$router.push("/research");
       }
     },
     checkData() {
-      console.log(`pn: ${this.pn}, ps: ${this.ps}, pd:${this.pd}, pc:${this.pc}, pw: ${this.pw}, pr: ${this.pr}, an: ${this.an}, pl:${this.pl}`);
-      if (this.pn != null && this.pw != null && this.pc != null) {
-        return true;
-      }
+      console.log(
+        `pn: ${this.pn}, ps: ${this.ps}, pd:${this.pd}, pc:${this.pc}, pw: ${this.pw}, pr: ${this.pr}, an: ${this.an}, pl:${this.pl}`
+      );
+      (this.errors = {
+        pn: false,
+        ps: false,
+        pd: false,
+        pc: false,
+        pw: false,
+        pr: false,
+        an: false,
+        pl: false,
+      }),
+        this.pn.length > 0 ? true : (this.errors.pn = true);
+      this.pn.length < 50 ? true : (this.errors.pn = true);
+
+      this.ps.length > 0 ? true : (this.errors.ps = true);
+      this.ps.length < 20 ? true : (this.errors.ps = true);
+
+      this.pd.length > 0 ? true : (this.errors.pd = true);
+      this.pd.length < 200 ? true : (this.errors.pd = true);
+
+      this.pc.length > 0 ? true : (this.errors.pc = true);
+      this.pc.length < 100 ? true : (this.errors.pc = true);
+
+      this.pw.length > 0 ? true : (this.errors.pw = true);
+      this.pw.length < 50 ? true : (this.errors.pw = true);
+
+      this.pr.length > 0 ? true : (this.errors.pr = true);
+      this.pr.length < 100 ? true : (this.errors.pr = true);
+
+      this.an.length > 0 ? true : (this.errors.an = true);
+      this.an.length < 16 ? true : (this.errors.an = true);
+
+      this.pl.length > 0 ? true : (this.errors.pl = true);
+
+      console.log(Object.values(this.errors));
+
+      return !Object.values(this.errors).includes(true) ? true : false;
     },
     async searchCoins() {
       this.updateCoins();
@@ -855,10 +908,18 @@ export default {
 .css-dyor-create-sba {
   font-size: 12px;
   margin-left: 6px;
+  color: red;
 }
 
-.css-dyor-create-sba.active {
+.css-dyor-create-xsa {
+  display: none;
+  margin-left: auto;
+}
+.css-dyor-create-xsa.active {
   color: red;
+  opacity: 0.8;
+  display: initial;
+  font-size: var(--text-size-secondary);
 }
 
 .css-dyor-create-ndt {
@@ -875,8 +936,7 @@ export default {
 
 .css-dyor-create-stx {
   border-radius: 8px;
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='SVGRoot' width='100px' height='100px' version='1.1' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cfilter id='filter3322' x='-.00012' y='-.00012' width='1.0002' height='1.0002' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='0.005'/%3E%3C/filter%3E%3C/defs%3E%3Cg fill='%230069f5'%3E%3Crect x='-.18634' y='5e-7' width='100' height='100' filter='url(%23filter3322)' opacity='.1' stroke-width='0'/%3E%3Cpath d='m38.863 32.225h26.117c3.6061 0 6.5294 2.9233 6.5294 6.5294v19.588c0 3.6061-2.9233 6.5294-6.5294 6.5294h-26.117c-3.6061 0-6.5294-2.9233-6.5294-6.5294v-19.588c0-3.6061 2.9233-6.5294 6.5294-6.5294zm-2.1765 26.117h19.588l-9.7941-13.059zm23.941-6.5294c3.6061 0 6.5294-2.9233 6.5294-6.5294 0-3.6061-2.9233-6.5294-6.5294-6.5294-3.6061 0-6.5294 2.9233-6.5294 6.5294 0 3.6061 2.9233 6.5294 6.5294 6.5294z' stroke-width='2.1765'/%3E%3C/g%3E%3C/svg%3E%0A");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='SVGRoot' width='100px' height='100px' version='1.1' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cfilter id='filter3322' x='-.00012001' y='-.00012' width='1.0002' height='1.0002' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='0.005'/%3E%3C/filter%3E%3C/defs%3E%3Cg fill='%230069f5'%3E%3Crect x='-.18634' y='5e-7' width='99.999' height='100' filter='url(%23filter3322)' opacity='.1' stroke-width='0'/%3E%3Cpath d='m36.529 33.792h26.117c3.6061 0 6.5294 2.9233 6.5294 6.5294v19.588c0 3.6061-2.9233 6.5294-6.5294 6.5294h-26.117c-3.6061 0-6.5294-2.9233-6.5294-6.5294v-19.588c0-3.6061 2.9233-6.5294 6.5294-6.5294zm-2.1765 26.117h19.588l-9.7941-13.059zm23.941-6.5294c3.6061 0 6.5294-2.9233 6.5294-6.5294 0-3.6061-2.9233-6.5294-6.5294-6.5294-3.6061 0-6.5294 2.9233-6.5294 6.5294 0 3.6061 2.9233 6.5294 6.5294 6.5294z' opacity='.8' stroke-width='2.1765'/%3E%3C/g%3E%3C/svg%3E%0A");
 }
 .css-dyor-create-stx.active {
   border-radius: 8px;

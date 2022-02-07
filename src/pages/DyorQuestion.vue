@@ -317,7 +317,11 @@
             <b>Audit progress</b>
           </div>
           <div class="css-work-project-arw">
-            <div class="css-work-project-ari"></div>
+            <div class="css-work-project-ari">
+              <div class="css-work-project-awp">
+                <img :src="newAudit.pl" alt="" />
+              </div>
+            </div>
           </div>
           <div class="css-work-project-legend">
             <div class="css-work-project-name">
@@ -2268,6 +2272,14 @@ export default {
   height: 20px;
 }
 
+.css-work-project-awp {
+  display: flex;
+  justify-content: center;
+}
+.css-work-project-awp img {
+  width: 80px;
+  height: 80px;
+}
 .css-work-quest-fcc {
   width: 100%;
   display: flex;
@@ -2570,9 +2582,12 @@ export default {
   margin-left: 0.5rem;
 }
 
-.css-work-tool-haw {
-  display: flex;
-  align-items: center;
+.css-work-tool-haw[data-v-51f114e2] {
+	display: flex;
+	align-items: center;
+	border: 1px solid var(--border-primary);
+	border-radius: 8px;
+	padding: 2px 14px;
 }
 
 .css-work-tool-haw span {
@@ -2603,7 +2618,7 @@ export default {
   min-width: 331px;
   caret-color: transparent;
   color: #ffffff;
-  line-height: 1.75;
+  line-height: 1.9;
   height: 100vh;
   background: linear-gradient(
     22.58deg,
@@ -2859,15 +2874,12 @@ export default {
 .css-work-project-ari {
   height: 100px;
   width: 100px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--base-color-white-primary);
   border-radius: 8px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  flex-direction: column;
-  background-size: contain;
+  justify-content: center;
   box-shadow: var(--shadow-blue);
-  background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/6138a6ca75afa04605a749af_GADA.png");
 }
 
 .css-work-project-upl {
@@ -2903,7 +2915,7 @@ export default {
 }
 
 .css-work-project-scc {
-  height: 150px;
+  height: 130px;
 }
 .css-work-project-name {
   text-align: center;
