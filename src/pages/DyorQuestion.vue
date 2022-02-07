@@ -2394,6 +2394,7 @@ export default {
   outline: none;
   margin-left: 1rem;
   font-weight: 700;
+  white-space: nowrap;
   border-radius: 8px;
   color: #fff;
 }
