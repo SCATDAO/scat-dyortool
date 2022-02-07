@@ -724,23 +724,39 @@
               </div>
             </div>
             <div class="css-work-quest-xsc">
-              <div>
-                <template v-if="!isReportCreated">
-                  <button class="css-work-quest-xkx" @click="createNewReport()">
-                    Create
-                  </button></template
-                >
-                <template v-if="isReportCreated">
-                  <button class="css-work-quest-xkx">
-                    <a
-                      :href="reportLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >Go to Report</a
+              <template v-if="remainingQuestion().length !== 0">
+                <div class="css-work-quest-xcq">
+                  <span>Please complete the remaining questions.</span>
+                </div>
+              </template>
+
+              <template v-if="remainingQuestion().length === 0">
+                <div class="css-work-quest-bfw">
+                  <template v-if="errReportGen">
+                    <div class="css-work-quest-xcq">
+                      <span>This report has already been generated</span>
+                    </div>
+                  </template>
+                  <template v-if="!isReportCreated">
+                    <button
+                      class="css-work-quest-xkx"
+                      @click="createNewReport()"
                     >
-                  </button>
-                </template>
-              </div>
+                      Create Report
+                    </button></template
+                  >
+                  <template v-if="isReportCreated">
+                    <button class="css-work-quest-xkx" id="css-cyanbutton">
+                      <a
+                        :href="reportLink"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Go to Report</a
+                      >
+                    </button>
+                  </template>
+                </div>
+              </template>
             </div>
           </div>
         </template>
@@ -1236,8 +1252,9 @@ export default {
         pn: "Name",
         pw: "Category",
         pc: "www.example.com",
-        pl: [],
+        pl: "",
       },
+      errReportGen: false,
       avatarSeed: "",
       numberQuestion: [0, 0],
       questionList: [
@@ -1965,6 +1982,11 @@ export default {
     this.sendMeAtribute();
     this.createNewIdenticon();
   },
+  watch: {
+    showSummary() {
+      this.isReportCreated = false;
+    },
+  },
   methods: {
     summaryLayout() {
       this.showSummary = !this.showSummary;
@@ -2011,6 +2033,7 @@ export default {
     },
     sendMeAtribute() {
       this.newAudit = this.$store.getters.sendMeAtribute;
+      console.log(this.newAudit);
     },
     changeCurrentQuestion() {
       this.currentQuestion.push(this.questionList[this.numberQuestion[0]]);
@@ -2088,6 +2111,10 @@ export default {
       await this.pushNewReport();
     },
     async pushNewReport() {
+      this.beforeEncodeProcess = [];
+      this.errReportGen = false;
+      this.reportLink = "";
+
       this.beforeEncodeProcess.push(this.$store.getters.sendMeAtribute);
       this.answeredQuestion.forEach((e) =>
         this.beforeEncodeProcess.push({
@@ -2097,13 +2124,13 @@ export default {
           ed: e.input,
         })
       );
-      console.log(this.beforeEncodeProcess);
+
       const bestialEncoder = new BestialEncoder();
       const resultEncoder = bestialEncoder.encodeByValue(
         JSON.stringify(this.beforeEncodeProcess)
       );
 
-      console.log(resultEncoder);
+      console.log("TEST1", JSON.stringify(this.beforeEncodeProcess.length));
       try {
         const params = {
           hex: `${resultEncoder}`,
@@ -2120,9 +2147,14 @@ export default {
             this.isReportCreated = !this.isReportCreated;
             this.reportLink = `http://192.168.1.3:8080/report/${response.data.report_id}`;
             console.log(this.isReportCreated, this.reportLink);
+            console.log(
+              "TEST2",
+              JSON.stringify(this.beforeEncodeProcess.length)
+            );
           })
           .catch((error) => {
-            console.log("NOO", error);
+            this.errReportGen = !this.errReportGen;
+            console.log("404", error);
           });
       } catch (error) {
         console.log(error);
@@ -2272,9 +2304,24 @@ export default {
   height: 20px;
 }
 
+.css-work-quest-xcq {
+  border: 1px dashed var(--complementary-color-blue);
+  border-radius: 8px;
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  color: var(--complementary-color-blue);
+}
 .css-work-project-awp {
   display: flex;
   justify-content: center;
+}
+
+.css-work-quest-bfw {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
 }
 .css-work-project-awp img {
   width: 80px;
@@ -2346,7 +2393,16 @@ export default {
   letter-spacing: 0.3px;
   outline: none;
   margin-left: 1rem;
+  font-weight: 700;
   border-radius: 8px;
+  color: #fff;
+}
+
+#css-cyanbutton {
+  background: #00e3f5;
+}
+.css-work-quest-xkx a {
+  text-decoration: none;
   color: #fff;
 }
 
@@ -2583,11 +2639,11 @@ export default {
 }
 
 .css-work-tool-haw[data-v-51f114e2] {
-	display: flex;
-	align-items: center;
-	border: 1px solid var(--border-primary);
-	border-radius: 8px;
-	padding: 2px 14px;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  padding: 2px 14px;
 }
 
 .css-work-tool-haw span {

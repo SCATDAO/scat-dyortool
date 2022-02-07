@@ -56,7 +56,7 @@ export default {
         minHeight: 50,
         tunes: ["textVariant"],
         autofocus: true,
-        placeholder: "Edit here",
+        placeholder: "Use this space to develop the steps.",
         tools: {
           header: {
             class: Header,

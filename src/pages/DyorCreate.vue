@@ -481,6 +481,7 @@
                 v-model="show"
                 :width="80"
                 :height="80"
+                noCircle
                 :langType="langType"
                 :params="params"
                 :headers="headers"
@@ -659,21 +660,21 @@ export default {
     nextResearch() {
       if (this.checkData()) {
         this.$store.commit("modifyAuditData", {
-          pn: this.pn,
-          ps: this.ps,
-          pd: this.pd,
-          pc: this.pc,
-          pw: this.pw,
-          pr: this.pr,
-          an: this.an,
-          pl: this.pl,
+          pn: this.pn.toLowerCase(),
+          ps: this.ps.toLowerCase(),
+          pd: this.pd.toLowerCase(),
+          pc: this.pc.toLowerCase(),
+          pw: this.pw.toLowerCase(),
+          pr: this.pr.toLowerCase(),
+          an: this.an.toLowerCase(),
+          pl: this.pl
         });
         this.$router.push("/research");
       }
     },
     checkData() {
       console.log(
-        `pn: ${this.pn}, ps: ${this.ps}, pd:${this.pd}, pc:${this.pc}, pw: ${this.pw}, pr: ${this.pr}, an: ${this.an}, pl:${this.pl}`
+        `pn: ${this.pn.toLowerCase()}, ps: ${this.ps}, pd:${this.pd}, pc:${this.pc}, pw: ${this.pw}, pr: ${this.pr}, an: ${this.an}, pl:${this.pl}`
       );
       (this.errors = {
         pn: false,
