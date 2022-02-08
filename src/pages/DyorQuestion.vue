@@ -706,13 +706,13 @@
                         <rect id="bound" width="24" height="24" />
                         <path
                           d="m4 4 7.6314-1.4309c0.2436-0.045674 0.49356-0.045674 0.73715 0l7.6314 1.4309v9.283c0 2.9344-1.5117 5.6618-4 7.217l-3.47 2.1688c-0.32427 0.20267-0.73573 0.20267-1.06 0l-3.47-2.1688c-2.4883-1.5552-4-4.2826-4-7.217z"
-                          fill="#00f512"
-                          opacity=".3"
+                          fill="#0069f5"
+                          opacity=".1"
                         />
                         <path
                           id="check-path"
                           d="m11.175 14.75c-0.23958 0-0.47917-0.09583-0.67083-0.2875l-1.9167-1.9167c-0.38333-0.38333-0.38333-0.95833 0-1.3417 0.38333-0.38333 1.0062-0.38333 1.3417 0l1.2458 1.2458 3.1625-3.1625c0.38333-0.38333 0.95833-0.38333 1.3417 0s0.38333 0.95833 0 1.3417l-3.8333 3.8333c-0.19167 0.19167-0.43125 0.2875-0.67083 0.2875z"
-                          fill="#00f512"
+                          fill="#0069f5"
                         />
                       </g>
                     </svg>
@@ -1052,7 +1052,7 @@
                       placeholder="%"
                     />
 
-                    <template v-if="!inputPhases[element.id]">
+                    <template v-if="!tokenPhases[element.id]">
                       <button
                         class="css-work-quest-bta"
                         @click="createNewInput(element.id)"
@@ -1085,7 +1085,7 @@
                       </button>
                     </template>
 
-                    <template v-if="inputPhases[element.id]">
+                    <template v-if="tokenPhases[element.id]">
                       <button
                         class="css-work-quest-bta"
                         @click="removeAddedInput(element.id)"
@@ -1108,6 +1108,58 @@
                         </svg>
                       </button>
                     </template>
+                  </div>
+                </div>
+              </template>
+
+              <template v-if="item.id === 16">
+                <div class="css-work-quest-thl">
+                  <div class="css-work-quest-txs">
+                    <input
+                      v-model="currentQuestion[0].input"
+                      class="css-work-quest-tss"
+                      type="number"
+                      placeholder="Followers"
+                    />
+                  </div>
+                </div>
+              </template>
+
+                 <template v-if="item.id === 18">
+                <div class="css-work-quest-thl">
+                  <div class="css-work-quest-txs">
+                    <input
+                      v-model="currentQuestion[0].input"
+                      class="css-work-quest-tss"
+                      type="number"
+                      placeholder="Followers"
+                    />
+                  </div>
+                </div>
+              </template>
+
+                 <template v-if="item.id === 20">
+                <div class="css-work-quest-thl">
+                  <div class="css-work-quest-txs">
+                    <input
+                      v-model="currentQuestion[0].input"
+                      class="css-work-quest-tss"
+                      type="number"
+                      placeholder="Members"
+                    />
+                  </div>
+                </div>
+              </template>
+
+                 <template v-if="item.id === 22">
+                <div class="css-work-quest-thl">
+                  <div class="css-work-quest-txs">
+                    <input
+                      v-model="currentQuestion[0].input"
+                      class="css-work-quest-tss"
+                      type="number"
+                      placeholder="Members"
+                    />
                   </div>
                 </div>
               </template>
@@ -1932,7 +1984,7 @@ export default {
             "D. Note the exchanges in the box.",
           ],
           options: [
-            { id: 1, name: "Yes", value: 1.5 },
+            { id: 1, name: "Yes", value: 1.0 },
             { id: 2, name: "No", value: 0.0 },
             { id: 404, name: "Doesn't apply", value: 0.0 },
           ],
@@ -1945,7 +1997,7 @@ export default {
           video: [],
         },
       ],
-      inputPhases: [0],
+      tokenPhases: [0],
       inputDelete: [],
       workspace: false,
       workProgramCategory: {
@@ -1969,7 +2021,7 @@ export default {
       beforeEncodeProcess: [],
       queryInput: [],
       isFinished: true,
-      showSummary: true,
+      showSummary: false,
       result: "",
       error: "",
     };
@@ -1988,6 +2040,9 @@ export default {
     },
   },
   methods: {
+    testea() {
+      console.log(this.currentQuestion[0].input);
+    },
     summaryLayout() {
       this.showSummary = !this.showSummary;
     },
@@ -2085,14 +2140,13 @@ export default {
       this.updateDataState();
     },
     createNewInput(element) {
-      this.inputPhases[element] = !this.inputPhases[element];
-      this.inputPhases.push(0);
+      this.tokenPhases[element] = !this.tokenPhases[element];
+      this.tokenPhases.push(0);
       this.currentQuestion[0].input.push({
         id: element + 1,
         name: "",
         per: "",
       });
-      console.log(JSON.stringify(this.currentQuestion[0].input));
     },
     knowInputDelete(element) {
       return this.inputDelete.includes(element);
@@ -2104,7 +2158,6 @@ export default {
         name: "",
         per: "",
       };
-      console.log(this.currentQuestion[0].input);
     },
     async updateDataState() {
       this.$store.commit("newQuestData", this.answeredQuestion);
@@ -2357,6 +2410,13 @@ export default {
   flex-direction: column;
 }
 
+.css-work-quest-txs {
+  display: flex;
+  padding: 0 1rem;
+  margin: 1rem 20%;
+  align-items: center;
+  border-radius: 4px;
+}
 .css-work-quest-thl {
   width: 100%;
   height: 100%;
@@ -2409,11 +2469,9 @@ export default {
 
 .css-work-quest-fpb {
   border: 1px solid var(--border-primary);
-  border-left: 1px solid var(--complementary-color-blue);
   color: var(--text-color-primary);
   padding: 1rem;
   align-items: center;
-  background: var(--base-color-white-secondary);
   border-radius: 8px;
   justify-content: space-between;
   display: flex;

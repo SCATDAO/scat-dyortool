@@ -481,7 +481,7 @@
                 v-model="show"
                 :width="80"
                 :height="80"
-                noCircle
+                noSquare
                 :langType="langType"
                 :params="params"
                 :headers="headers"
@@ -667,14 +667,16 @@ export default {
           pw: this.pw.toLowerCase(),
           pr: this.pr.toLowerCase(),
           an: this.an.toLowerCase(),
-          pl: this.pl
+          pl: this.pl,
         });
         this.$router.push("/research");
       }
     },
     checkData() {
       console.log(
-        `pn: ${this.pn.toLowerCase()}, ps: ${this.ps}, pd:${this.pd}, pc:${this.pc}, pw: ${this.pw}, pr: ${this.pr}, an: ${this.an}, pl:${this.pl}`
+        `pn: ${this.pn.toLowerCase()}, ps: ${this.ps}, pd:${this.pd}, pc:${
+          this.pc
+        }, pw: ${this.pw}, pr: ${this.pr}, an: ${this.an}, pl:${this.pl}`
       );
       (this.errors = {
         pn: false,
@@ -839,9 +841,11 @@ export default {
   box-sizing: border-box;
   padding: 1rem 0;
   background: var(--complementary-color-blue);
-  background-image: url("data:image/svg+xml,%3Csvg width='1920' height='1080' preserveAspectRatio='none' version='1.1' viewBox='0 0 1920 1080' xmlns='http://www.w3.org/2000/svg'%3E%3Cg mask='url(%23SvgjsMask1078)'%3E%3Crect width='1920' height='1080' fill='rgba(0, 105, 245, 1)'/%3E%3Cpath d='m0 646.28c119.92 7.676 222.06-78.528 321.8-145.54 97.885-65.769 204.16-130.92 250.84-239.22 46.31-107.45 2.483-226.93 0.48-343.92-2.347-137.07 56.325-284.6-13.266-402.71-71.766-121.8-214.42-191.57-353.09-219.06-133.16-26.399-264.68 25.827-392.62 71.229-121.54 43.132-240.26 93.402-330.62 185.43-94.164 95.902-198.86 211.63-190.99 345.8 7.854 133.78 151.02 211.51 230.06 319.73 60.826 83.285 104.25 174.27 181.02 243.14 88.495 79.387 177.73 177.52 296.37 185.12' fill='%230050dc'/%3E%3Cpath d='m1920 1828.5c142.58-23.859 278.35-51.115 410.47-109.78 153.61-68.204 332.46-116.05 420.53-259.2 90.692-147.42 79.637-335.64 50.368-506.22-28.737-167.49-81.086-345.91-214.61-451.02-128.14-100.88-308.34-77.755-471.05-88.747-130.19-8.795-254.13 6.45-382.27 31.101-141.94 27.306-305.54 18.154-407.3 120.8-102.81 103.69-97.789 267.64-120.78 411.84-23.356 146.46-47.512 291.13-14.372 435.69 38.731 168.95 69.043 373.86 219.63 459.7 151.13 86.145 337.82-15.444 509.4-44.156' fill='%231a83ff'/%3E%3C/g%3E%3Cdefs%3E%3Cmask id='SvgjsMask1078'%3E%3Crect width='1920' height='1080' fill='%23fff'/%3E%3C/mask%3E%3C/defs%3E%3C/svg%3E%0A");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: linear-gradient(
+    22.58deg,
+    rgba(0, 80, 220, 1) 0%,
+    rgba(0, 105, 245, 1) 100%
+  );
 }
 
 .css-logo {
