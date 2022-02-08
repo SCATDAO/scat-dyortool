@@ -317,7 +317,11 @@
             <b>Audit progress</b>
           </div>
           <div class="css-work-project-arw">
-            <div class="css-work-project-ari"></div>
+            <div class="css-work-project-ari">
+              <div class="css-work-project-awp">
+                <img :src="newAudit.pl" alt="" />
+              </div>
+            </div>
           </div>
           <div class="css-work-project-legend">
             <div class="css-work-project-name">
@@ -339,7 +343,6 @@
               :class="{ active: !isRetrayed[0] }"
               isRetrayed
               viewBox="0 0 1024 1024"
-              xmlns="http://www.w3.org/2000/svg"
               data-v-365b8594=""
             >
               <path
@@ -362,7 +365,7 @@
               :class="{
                 active: progressWorkData.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id)"
+              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
             >
               {{ category.name }}
             </li>
@@ -376,7 +379,6 @@
               :class="{ active: !isRetrayed[1] }"
               isRetrayed
               viewBox="0 0 1024 1024"
-              xmlns="http://www.w3.org/2000/svg"
               data-v-365b8594=""
             >
               <path
@@ -398,7 +400,7 @@
               :class="{
                 active: progressWorkData.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id)"
+              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
             >
               {{ category.name }}
             </li>
@@ -412,7 +414,6 @@
               :class="{ active: !isRetrayed[2] }"
               isRetrayed
               viewBox="0 0 1024 1024"
-              xmlns="http://www.w3.org/2000/svg"
               data-v-365b8594=""
             >
               <path
@@ -434,7 +435,7 @@
               :class="{
                 active: progressWorkData.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id)"
+              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
             >
               {{ category.name }}
             </li>
@@ -448,7 +449,6 @@
               :class="{ active: !isRetrayed[3] }"
               isRetrayed
               viewBox="0 0 1024 1024"
-              xmlns="http://www.w3.org/2000/svg"
               data-v-365b8594=""
             >
               <path
@@ -470,7 +470,7 @@
               :class="{
                 active: progressWorkData.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id)"
+              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
             >
               {{ category.name }}
             </li>
@@ -498,7 +498,6 @@
                     height="16px"
                     version="1.1"
                     viewBox="0 0 16 16"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <g
                       id="Stockholm-icons-/-General-/-Shield-protected"
@@ -572,7 +571,7 @@
           </div>
         </template>
         <template v-if="showSummary">
-          <div class="css-work-quest-fpl" @click="showSummary = !showSummary">
+          <div class="css-work-quest-fpl">
             <div class="css-work-quest-fyy">
               <div class="css-work-quest-fph">
                 <div>
@@ -651,13 +650,16 @@
                   <span class="css-work-quest-fzz"
                     >List of remaining questions</span
                   >
-                  <span>3</span>
+                  <span>{{ remainingQuestion().length }}</span>
                 </div>
                 <div
                   class="css-work-quest-fpb"
                   v-for="element in remainingQuestion()"
                   :key="element"
-                  @click="clickCurrentQuestion(element.id)"
+                  @click="
+                    clickCurrentQuestion(element.id) &
+                      (showSummary = !showSummary)
+                  "
                 >
                   <span> {{ element.a }} </span> <span> {{ element.b }} </span>
                   <span> {{ element.c }} </span>
@@ -686,10 +688,76 @@
                     </svg>
                   </span>
                 </div>
-                <div class="css-work-quest-fcc"></div>
+                <template v-if="remainingQuestion().length === 0">
+                  <div class="css-work-quest-fcc">
+                    <svg
+                      id="SVGRoot"
+                      width="100px"
+                      height="100px"
+                      version="1.1"
+                      viewBox="0 0 100 100"
+                    >
+                      <g
+                        id="Stockholm-icons-/-General-/-Shield-check"
+                        transform="matrix(4.1297 0 0 4.1297 .51783 .61266)"
+                        fill="none"
+                        fill-rule="evenodd"
+                      >
+                        <rect id="bound" width="24" height="24" />
+                        <path
+                          d="m4 4 7.6314-1.4309c0.2436-0.045674 0.49356-0.045674 0.73715 0l7.6314 1.4309v9.283c0 2.9344-1.5117 5.6618-4 7.217l-3.47 2.1688c-0.32427 0.20267-0.73573 0.20267-1.06 0l-3.47-2.1688c-2.4883-1.5552-4-4.2826-4-7.217z"
+                          fill="#0069f5"
+                          opacity=".1"
+                        />
+                        <path
+                          id="check-path"
+                          d="m11.175 14.75c-0.23958 0-0.47917-0.09583-0.67083-0.2875l-1.9167-1.9167c-0.38333-0.38333-0.38333-0.95833 0-1.3417 0.38333-0.38333 1.0062-0.38333 1.3417 0l1.2458 1.2458 3.1625-3.1625c0.38333-0.38333 0.95833-0.38333 1.3417 0s0.38333 0.95833 0 1.3417l-3.8333 3.8333c-0.19167 0.19167-0.43125 0.2875-0.67083 0.2875z"
+                          fill="#0069f5"
+                        />
+                      </g>
+                    </svg>
+                    <div class="css-work-quest-fsc">
+                      <span>All questions completed!</span>
+                    </div>
+                  </div>
+                </template>
               </div>
             </div>
-            <div class="css-work-quest-xsc"></div>
+            <div class="css-work-quest-xsc">
+              <template v-if="remainingQuestion().length !== 0">
+                <div class="css-work-quest-xcq">
+                  <span>Please complete the remaining questions.</span>
+                </div>
+              </template>
+
+              <template v-if="remainingQuestion().length === 0">
+                <div class="css-work-quest-bfw">
+                  <template v-if="errReportGen">
+                    <div class="css-work-quest-xcq">
+                      <span>This report has already been generated</span>
+                    </div>
+                  </template>
+                  <template v-if="!isReportCreated">
+                    <button
+                      class="css-work-quest-xkx"
+                      @click="createNewReport()"
+                    >
+                      Create Report
+                    </button></template
+                  >
+                  <template v-if="isReportCreated">
+                    <button class="css-work-quest-xkx" id="css-cyanbutton">
+                      <a
+                        :href="reportLink"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Go to Report</a
+                      >
+                    </button>
+                  </template>
+                </div>
+              </template>
+            </div>
           </div>
         </template>
         <div class="css-work-quest-top">
@@ -702,7 +770,6 @@
           >
             <div>
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 1024 1024"
                 data-v-066465b6=""
                 width="24"
@@ -777,7 +844,6 @@
                   height="16px"
                   version="1.1"
                   viewBox="0 0 16 16"
-                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <g
                     id="Stockholm-icons-/-General-/-Clipboard"
@@ -827,7 +893,6 @@
                   height="16px"
                   version="1.1"
                   viewBox="0 0 16 16"
-                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <g transform="matrix(.033329 0 0 .033329 -.67907 -.47141)">
                     <path
@@ -987,7 +1052,7 @@
                       placeholder="%"
                     />
 
-                    <template v-if="!inputPhases[element.id]">
+                    <template v-if="!tokenPhases[element.id]">
                       <button
                         class="css-work-quest-bta"
                         @click="createNewInput(element.id)"
@@ -1020,7 +1085,7 @@
                       </button>
                     </template>
 
-                    <template v-if="inputPhases[element.id]">
+                    <template v-if="tokenPhases[element.id]">
                       <button
                         class="css-work-quest-bta"
                         @click="removeAddedInput(element.id)"
@@ -1031,7 +1096,6 @@
                           height="8px"
                           version="1.1"
                           viewBox="0 0 8 8"
-                          xmlns="http://www.w3.org/2000/svg"
                         >
                           <g
                             id="Stockholm-icons-/-Navigation-/-Plus"
@@ -1044,6 +1108,58 @@
                         </svg>
                       </button>
                     </template>
+                  </div>
+                </div>
+              </template>
+
+              <template v-if="item.id === 16">
+                <div class="css-work-quest-thl">
+                  <div class="css-work-quest-txs">
+                    <input
+                      v-model="currentQuestion[0].input"
+                      class="css-work-quest-tss"
+                      type="number"
+                      placeholder="Followers"
+                    />
+                  </div>
+                </div>
+              </template>
+
+                 <template v-if="item.id === 18">
+                <div class="css-work-quest-thl">
+                  <div class="css-work-quest-txs">
+                    <input
+                      v-model="currentQuestion[0].input"
+                      class="css-work-quest-tss"
+                      type="number"
+                      placeholder="Followers"
+                    />
+                  </div>
+                </div>
+              </template>
+
+                 <template v-if="item.id === 20">
+                <div class="css-work-quest-thl">
+                  <div class="css-work-quest-txs">
+                    <input
+                      v-model="currentQuestion[0].input"
+                      class="css-work-quest-tss"
+                      type="number"
+                      placeholder="Members"
+                    />
+                  </div>
+                </div>
+              </template>
+
+                 <template v-if="item.id === 22">
+                <div class="css-work-quest-thl">
+                  <div class="css-work-quest-txs">
+                    <input
+                      v-model="currentQuestion[0].input"
+                      class="css-work-quest-tss"
+                      type="number"
+                      placeholder="Members"
+                    />
                   </div>
                 </div>
               </template>
@@ -1079,7 +1195,6 @@
                 height="24px"
                 version="1.1"
                 viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
               >
                 <g fill="#001737" stroke-width="1.0666">
                   <rect
@@ -1175,6 +1290,8 @@
 
 <script>
 import DyorEditor from "../components/DyorEditor.vue";
+import axios from "axios";
+import { BestialEncoder } from "bestial-encoder";
 
 export default {
   components: {
@@ -1187,8 +1304,9 @@ export default {
         pn: "Name",
         pw: "Category",
         pc: "www.example.com",
-        pl: [],
+        pl: "",
       },
+      errReportGen: false,
       avatarSeed: "",
       numberQuestion: [0, 0],
       questionList: [
@@ -1866,7 +1984,7 @@ export default {
             "D. Note the exchanges in the box.",
           ],
           options: [
-            { id: 1, name: "Yes", value: 1.5 },
+            { id: 1, name: "Yes", value: 1.0 },
             { id: 2, name: "No", value: 0.0 },
             { id: 404, name: "Doesn't apply", value: 0.0 },
           ],
@@ -1879,7 +1997,7 @@ export default {
           video: [],
         },
       ],
-      inputPhases: [0],
+      tokenPhases: [0],
       inputDelete: [],
       workspace: false,
       workProgramCategory: {
@@ -1898,9 +2016,12 @@ export default {
         evaluate: false,
         example: false,
       },
+      isReportCreated: false,
+      reportLink: "",
+      beforeEncodeProcess: [],
       queryInput: [],
       isFinished: true,
-      showSummary: true,
+      showSummary: false,
       result: "",
       error: "",
     };
@@ -1913,7 +2034,15 @@ export default {
     this.sendMeAtribute();
     this.createNewIdenticon();
   },
+  watch: {
+    showSummary() {
+      this.isReportCreated = false;
+    },
+  },
   methods: {
+    testea() {
+      console.log(this.currentQuestion[0].input);
+    },
     summaryLayout() {
       this.showSummary = !this.showSummary;
     },
@@ -1930,7 +2059,11 @@ export default {
         }
         console.log(element.answer);
       }
-      return remaining;
+      if (remaining.length === 0) {
+        return [];
+      } else {
+        return remaining;
+      }
     },
     splitPurpose() {
       return this.currentQuestion[0].purpose.split(/\r?\n/);
@@ -1955,6 +2088,7 @@ export default {
     },
     sendMeAtribute() {
       this.newAudit = this.$store.getters.sendMeAtribute;
+      console.log(this.newAudit);
     },
     changeCurrentQuestion() {
       this.currentQuestion.push(this.questionList[this.numberQuestion[0]]);
@@ -2006,14 +2140,13 @@ export default {
       this.updateDataState();
     },
     createNewInput(element) {
-      this.inputPhases[element] = !this.inputPhases[element];
-      this.inputPhases.push(0);
+      this.tokenPhases[element] = !this.tokenPhases[element];
+      this.tokenPhases.push(0);
       this.currentQuestion[0].input.push({
         id: element + 1,
         name: "",
         per: "",
       });
-      console.log(JSON.stringify(this.currentQuestion[0].input));
     },
     knowInputDelete(element) {
       return this.inputDelete.includes(element);
@@ -2025,11 +2158,60 @@ export default {
         name: "",
         per: "",
       };
-      console.log(this.currentQuestion[0].input);
     },
-    updateDataState() {
+    async updateDataState() {
       this.$store.commit("newQuestData", this.answeredQuestion);
-      this.$router.push("/summary");
+      await this.pushNewReport();
+    },
+    async pushNewReport() {
+      this.beforeEncodeProcess = [];
+      this.errReportGen = false;
+      this.reportLink = "";
+
+      this.beforeEncodeProcess.push(this.$store.getters.sendMeAtribute);
+      this.answeredQuestion.forEach((e) =>
+        this.beforeEncodeProcess.push({
+          id: e.id,
+          an: e.answer,
+          ta: e.textarea,
+          ed: e.input,
+        })
+      );
+
+      const bestialEncoder = new BestialEncoder();
+      const resultEncoder = bestialEncoder.encodeByValue(
+        JSON.stringify(this.beforeEncodeProcess)
+      );
+
+      console.log("TEST1", JSON.stringify(this.beforeEncodeProcess.length));
+      try {
+        const params = {
+          hex: `${resultEncoder}`,
+        };
+        console.log("SECH", params.hex);
+        await axios({
+          method: "post",
+          url: "http://134.209.163.124:8030/v1/sendReport",
+          data: params,
+          headers: { "content-type": "application/json" },
+        })
+          .then((response) => {
+            console.log(response);
+            this.isReportCreated = !this.isReportCreated;
+            this.reportLink = `http://192.168.1.3:8080/report/${response.data.report_id}`;
+            console.log(this.isReportCreated, this.reportLink);
+            console.log(
+              "TEST2",
+              JSON.stringify(this.beforeEncodeProcess.length)
+            );
+          })
+          .catch((error) => {
+            this.errReportGen = !this.errReportGen;
+            console.log("404", error);
+          });
+      } catch (error) {
+        console.log(error);
+      }
     },
     checkCorrectQuestion() {
       return this.currentQuestion[0].answer
@@ -2175,10 +2357,41 @@ export default {
   height: 20px;
 }
 
-.css-work-quest-fcc {
-  height: 1000px;
+.css-work-quest-xcq {
+  border: 1px dashed var(--complementary-color-blue);
+  border-radius: 8px;
   width: 100%;
-  background: red;
+  padding: 1rem;
+  text-align: center;
+  color: var(--complementary-color-blue);
+}
+.css-work-project-awp {
+  display: flex;
+  justify-content: center;
+}
+
+.css-work-quest-bfw {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+}
+.css-work-project-awp img {
+  width: 80px;
+  height: 80px;
+}
+.css-work-quest-fcc {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+.css-work-quest-fsc {
+  color: var(--text-color-primary);
+  font-weight: 600;
+  margin-top: 1rem;
 }
 
 .css-work-quest-pta {
@@ -2197,6 +2410,13 @@ export default {
   flex-direction: column;
 }
 
+.css-work-quest-txs {
+  display: flex;
+  padding: 0 1rem;
+  margin: 1rem 20%;
+  align-items: center;
+  border-radius: 4px;
+}
 .css-work-quest-thl {
   width: 100%;
   height: 100%;
@@ -2218,17 +2438,40 @@ export default {
   border-radius: 8px;
   display: flex;
   position: absolute;
+  align-items: center;
   bottom: 200px;
   background: var(--base-color-white-primary);
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.css-work-quest-xkx {
+  padding: 10px 14px;
+  background: var(--complementary-color-blue);
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  outline: none;
+  margin-left: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  border-radius: 8px;
+  color: #fff;
+}
+
+#css-cyanbutton {
+  background: #00e3f5;
+}
+.css-work-quest-xkx a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .css-work-quest-fpb {
   border: 1px solid var(--border-primary);
-  border-left: 1px solid var(--complementary-color-blue);
   color: var(--text-color-primary);
   padding: 1rem;
   align-items: center;
-  background: var(--base-color-white-secondary);
   border-radius: 8px;
   justify-content: space-between;
   display: flex;
@@ -2390,7 +2633,8 @@ export default {
 .css-work-quest-fyy {
   width: 1000px;
   height: fit-content;
-  position: fixed;
+  position: absolute;
+  z-index: 1;
   padding-bottom: 3rem;
   margin-top: 3rem;
   display: flex;
@@ -2453,9 +2697,12 @@ export default {
   margin-left: 0.5rem;
 }
 
-.css-work-tool-haw {
+.css-work-tool-haw[data-v-51f114e2] {
   display: flex;
   align-items: center;
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  padding: 2px 14px;
 }
 
 .css-work-tool-haw span {
@@ -2486,7 +2733,7 @@ export default {
   min-width: 331px;
   caret-color: transparent;
   color: #ffffff;
-  line-height: 1.75;
+  line-height: 1.9;
   height: 100vh;
   background: linear-gradient(
     22.58deg,
@@ -2742,15 +2989,12 @@ export default {
 .css-work-project-ari {
   height: 100px;
   width: 100px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--base-color-white-primary);
   border-radius: 8px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  flex-direction: column;
-  background-size: contain;
+  justify-content: center;
   box-shadow: var(--shadow-blue);
-  background-image: url("https://uploads-ssl.webflow.com/60d83e3c6cf84748f7d0a62b/6138a6ca75afa04605a749af_GADA.png");
 }
 
 .css-work-project-upl {
@@ -2786,7 +3030,7 @@ export default {
 }
 
 .css-work-project-scc {
-  height: 150px;
+  height: 130px;
 }
 .css-work-project-name {
   text-align: center;

@@ -310,13 +310,15 @@
               Fill out the following form with details of the project
             </div>
           </div>
-          <div class="css-dyor-create-stx">
-            <div class="css-dyor-create-str"></div>
-          </div>
         </div>
         <div class="css-dyor-create-faw">
           <div class="css-dyor-create-nsc">
-            <div class="css-dyor-create-nst">Name<span>*</span></div>
+            <div class="css-dyor-create-nst">
+              Name<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.pn }"
+                >Must not be empty or greater than 50 length</span
+              >
+            </div>
             <input
               id="tableTradeSearch"
               name="query"
@@ -324,7 +326,7 @@
               class="css-dyor-create-nii"
               type="text"
               placeholder="Project's name"
-              v-model="filterKey"
+              v-model="pn"
             />
             <template v-if="isDeployed">
               <div class="css-trade-history-wrp">
@@ -333,6 +335,7 @@
                   @click="isDeployed = false"
                 ></div>
                 <div class="css-trade-history-sub">
+                  <span>(Optional)</span>
                   <span>Powered by CoinGecko</span>
                 </div>
                 <div class="css-trade-history-tablew">
@@ -359,7 +362,7 @@
                       <tr
                         v-for="entry in filteredHeroes"
                         :key="entry"
-                        @click="conne(entry)"
+                        @click="configProject(entry)"
                       >
                         <td v-for="key in columns" :key="key">
                           <template v-if="key === 'logo'">
@@ -378,37 +381,57 @@
           </div>
 
           <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">Symbol<span>*</span></div>
+            <div class="css-dyor-create-nst">
+              Symbol<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.ps }"
+                >Must not be empty or greater than 20 length</span
+              >
+            </div>
             <input
               class="css-dyor-create-nii"
-              v-model="newAudit.pw"
+              v-model="ps"
               type="text"
               placeholder="Token Symbol"
             />
           </div>
           <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">Description<span>*</span></div>
+            <div class="css-dyor-create-nst">
+              Description<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.pd }"
+                >Must not be empty or greater than 200 length</span
+              >
+            </div>
             <input
               class="css-dyor-create-nii"
-              v-model="newAudit.pw"
+              v-model="pd"
               type="text"
               placeholder="Short description"
             />
           </div>
           <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">Category<span>*</span></div>
+            <div class="css-dyor-create-nst">
+              Category<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.pc }"
+                >Must not be empty or greater than 100 length</span
+              >
+            </div>
             <input
               class="css-dyor-create-nii"
-              v-model="newAudit.pc"
+              v-model="pc"
               type="text"
               placeholder="DEX, NFT, stablecoin, etc..."
             />
           </div>
           <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">Website<span>*</span></div>
+            <div class="css-dyor-create-nst">
+              Website<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.pw }"
+                >Must not be empty or greater than 50 length</span
+              >
+            </div>
             <input
               class="css-dyor-create-nii"
-              v-model="newAudit.pw"
+              v-model="pw"
               type="text"
               placeholder="www.example.com"
             />
@@ -416,23 +439,68 @@
 
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">
-              Github/Repository<span>*</span>
+              Github/Repository<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.pr }"
+                >Must not be empty or greater than 100 length</span
+              >
             </div>
             <input
               class="css-dyor-create-nii"
-              v-model="newAudit.an"
+              v-model="pr"
               type="text"
               placeholder="Code repository link"
             />
           </div>
           <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">Your Name<span>*</span></div>
+            <div class="css-dyor-create-nst">
+              Your Nick<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.an }"
+                >Must not be empty or greater than 16 length</span
+              >
+            </div>
             <input
               class="css-dyor-create-nii"
-              v-model="newAudit.an"
+              v-model="an"
               type="text"
               placeholder="Your name ..."
             />
+          </div>
+          <div class="css-dyor-create-nsi">
+            <div class="css-dyor-create-nst">
+              Logo<span class="css-dyor-create-sba">*</span>
+              <span class="css-dyor-create-xsa" :class="{ active: errors.pl }"
+                >Please upload the logo of the project</span
+              >
+            </div>
+            <div class="css-dyor-create-sla">
+              <my-upload
+                field="img"
+                @crop-success="cropSuccess"
+                @crop-upload-success="cropUploadSuccess"
+                @crop-upload-fail="cropUploadFail"
+                v-model="show"
+                :width="80"
+                :height="80"
+                noSquare
+                :langType="langType"
+                :params="params"
+                :headers="headers"
+                img-format="png"
+              ></my-upload>
+
+              <div class="css-dyor-create-ixw">
+                <div class="css-dyor-create-stx" :class="{ active: pl }">
+                  <div class="css-dyor-create-str">
+                    <img :src="pl" alt="" />
+                  </div>
+                </div>
+                <div class="css-dyor-create-bwp">
+                  <button class="css-upload-button" @click="toggleShow">
+                    Upload logo
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="css-dyor-create-nsl"></div>
         </div>
@@ -446,7 +514,7 @@
 
 <script>
 import axios from "axios";
-
+import myUpload from "vue-image-crop-upload";
 const columns = ["logo", "name", "token"];
 
 const sorted = {};
@@ -458,34 +526,86 @@ export default {
   async mounted() {
     this.inputScanner();
   },
+  components: {
+    "my-upload": myUpload,
+  },
   data() {
     return {
+      errors: {
+        pn: false,
+        ps: false,
+        pd: false,
+        pc: false,
+        pw: false,
+        pr: false,
+        an: false,
+      },
+      show: false,
+      params: {
+        token: "123456798",
+        name: "avatar",
+      },
+      langType: "en",
+      headers: {
+        smail: "*_~",
+      },
+      imgDataUrl: "",
       tableData: [],
       columns: columns,
       sortKey: "",
-      filterKey: "",
-      newAudit: {
-        an: null,
-        pn: null,
-        pw: null,
-        pc: null,
-        pl: [],
-      },
+      pn: "",
+      ps: "",
+      pd: "",
+      pc: "",
+      pw: "",
+      pr: "",
+      an: "",
+      pl: "",
       isDeployed: false,
+      isSelected: false,
+      isUploaded: false,
     };
   },
   watch: {
-    filterKey() {
-      console.log(this.filterKey.length);
-
-      if (this.filterKey.length === 0) {
+    pn() {
+      if (this.pn.length <= 0 && this.isSelected) {
         this.isDeployed = false;
-      } else {
+        this.isSelected = false;
+        this.resetInputs();
+      }
+      if (!this.pn.length <= 0) {
         this.isDeployed = true;
+      }
+      if (this.isSelected) {
+        this.isDeployed = false;
       }
     },
   },
   methods: {
+    resetInputs() {
+      this.ps = "";
+      this.pl = "";
+    },
+    toggleShow() {
+      this.show = !this.show;
+    },
+    cropSuccess(imgDataUrl, field) {
+      this.pl = imgDataUrl;
+      this.isUploaded = true;
+      console.log(imgDataUrl, field);
+    },
+
+    cropUploadSuccess(jsonData, field) {
+      console.log("-------- upload success --------");
+      console.log(jsonData);
+      console.log("field: " + field);
+    },
+    cropUploadFail(status, field) {
+      console.log("-------- upload fail --------");
+      this.pl = "";
+      console.log(status);
+      console.log("field: " + field);
+    },
     async inputScanner() {
       let timer;
 
@@ -496,7 +616,6 @@ export default {
       input.addEventListener("keyup", () => {
         clearTimeout(timer);
         timer = setTimeout(() => {
-          console.log("LLAMADO");
           this.searchCoins();
         }, waitTime);
       });
@@ -508,21 +627,26 @@ export default {
       this.sortKey = key;
       this.sortOrders[key] = this.sortOrders[key] * -1;
     },
-    conne(element) {
-      console.log(element);
-      this.isDeployed = false;
+    configProject(element) {
+      console.log(element.id);
+      this.pn = element.name;
+      this.ps = element.token;
+      this.pl = element.image;
+      this.isSelected = true;
     },
     async updateCoins() {
-      if (this.filterKey !== "") {
+      if (this.pn !== "") {
         try {
           const res = await axios.get(
-            `https://api.coingecko.com/api/v3/search?query=${this.filterKey}`
+            `https://api.coingecko.com/api/v3/search?query=${this.pn}`
           );
           this.tableData = res.data.coins.map((e) => {
             return {
+              id: e.id,
               logo: e.thumb,
               name: e.name,
               token: e.symbol,
+              image: e.large,
             };
           });
         } catch (error) {
@@ -535,28 +659,70 @@ export default {
     },
     nextResearch() {
       if (this.checkData()) {
-        this.$store.commit("modifyAuditData", this.newAudit);
+        this.$store.commit("modifyAuditData", {
+          pn: this.pn.toLowerCase(),
+          ps: this.ps.toLowerCase(),
+          pd: this.pd.toLowerCase(),
+          pc: this.pc.toLowerCase(),
+          pw: this.pw.toLowerCase(),
+          pr: this.pr.toLowerCase(),
+          an: this.an.toLowerCase(),
+          pl: this.pl,
+        });
         this.$router.push("/research");
       }
     },
     checkData() {
-      if (
-        this.newAudit.pn != null &&
-        this.newAudit.pw != null &&
-        this.newAudit.pc != null
-      ) {
-        return true;
-      }
+      console.log(
+        `pn: ${this.pn.toLowerCase()}, ps: ${this.ps}, pd:${this.pd}, pc:${
+          this.pc
+        }, pw: ${this.pw}, pr: ${this.pr}, an: ${this.an}, pl:${this.pl}`
+      );
+      (this.errors = {
+        pn: false,
+        ps: false,
+        pd: false,
+        pc: false,
+        pw: false,
+        pr: false,
+        an: false,
+        pl: false,
+      }),
+        this.pn.length > 0 ? true : (this.errors.pn = true);
+      this.pn.length < 50 ? true : (this.errors.pn = true);
+
+      this.ps.length > 0 ? true : (this.errors.ps = true);
+      this.ps.length < 20 ? true : (this.errors.ps = true);
+
+      this.pd.length > 0 ? true : (this.errors.pd = true);
+      this.pd.length < 200 ? true : (this.errors.pd = true);
+
+      this.pc.length > 0 ? true : (this.errors.pc = true);
+      this.pc.length < 100 ? true : (this.errors.pc = true);
+
+      this.pw.length > 0 ? true : (this.errors.pw = true);
+      this.pw.length < 50 ? true : (this.errors.pw = true);
+
+      this.pr.length > 0 ? true : (this.errors.pr = true);
+      this.pr.length < 100 ? true : (this.errors.pr = true);
+
+      this.an.length > 0 ? true : (this.errors.an = true);
+      this.an.length < 16 ? true : (this.errors.an = true);
+
+      this.pl.length > 0 ? true : (this.errors.pl = true);
+
+      console.log(Object.values(this.errors));
+
+      return !Object.values(this.errors).includes(true) ? true : false;
     },
     async searchCoins() {
-      console.log("funciona");
       this.updateCoins();
     },
   },
   computed: {
     filteredHeroes() {
       const sortKey = this.sortKey;
-      const filterKey = this.filterKey && this.filterKey.toLowerCase();
+      const filterKey = this.pn && this.pn.toLowerCase();
       const order = this.sortOrders[sortKey] || 1;
       let tableData = this.tableData;
       if (filterKey) {
@@ -598,6 +764,29 @@ export default {
   justify-content: space-between;
 }
 
+.css-upload-button {
+  background: var(--color-soft-blue);
+  padding: 1rem 4rem;
+  color: var(--complementary-color-blue);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.css-dyor-create-ixw {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.css-dyor-create-bwp {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
 .css-dyor-create-ari {
   height: 100px;
   width: 100px;
@@ -615,6 +804,7 @@ export default {
   left: 0;
   background: transparent;
   position: fixed;
+  cursor: text;
   z-index: -1;
 }
 
@@ -627,6 +817,12 @@ export default {
   box-sizing: border-box;
   flex-direction: column;
   overflow-y: auto;
+}
+
+.css-dyor-create-sla {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .css-dyor-create-header {
@@ -645,9 +841,11 @@ export default {
   box-sizing: border-box;
   padding: 1rem 0;
   background: var(--complementary-color-blue);
-  background-image: url("data:image/svg+xml,%3Csvg width='1920' height='1080' preserveAspectRatio='none' version='1.1' viewBox='0 0 1920 1080' xmlns='http://www.w3.org/2000/svg'%3E%3Cg mask='url(%23SvgjsMask1078)'%3E%3Crect width='1920' height='1080' fill='rgba(0, 105, 245, 1)'/%3E%3Cpath d='m0 646.28c119.92 7.676 222.06-78.528 321.8-145.54 97.885-65.769 204.16-130.92 250.84-239.22 46.31-107.45 2.483-226.93 0.48-343.92-2.347-137.07 56.325-284.6-13.266-402.71-71.766-121.8-214.42-191.57-353.09-219.06-133.16-26.399-264.68 25.827-392.62 71.229-121.54 43.132-240.26 93.402-330.62 185.43-94.164 95.902-198.86 211.63-190.99 345.8 7.854 133.78 151.02 211.51 230.06 319.73 60.826 83.285 104.25 174.27 181.02 243.14 88.495 79.387 177.73 177.52 296.37 185.12' fill='%230050dc'/%3E%3Cpath d='m1920 1828.5c142.58-23.859 278.35-51.115 410.47-109.78 153.61-68.204 332.46-116.05 420.53-259.2 90.692-147.42 79.637-335.64 50.368-506.22-28.737-167.49-81.086-345.91-214.61-451.02-128.14-100.88-308.34-77.755-471.05-88.747-130.19-8.795-254.13 6.45-382.27 31.101-141.94 27.306-305.54 18.154-407.3 120.8-102.81 103.69-97.789 267.64-120.78 411.84-23.356 146.46-47.512 291.13-14.372 435.69 38.731 168.95 69.043 373.86 219.63 459.7 151.13 86.145 337.82-15.444 509.4-44.156' fill='%231a83ff'/%3E%3C/g%3E%3Cdefs%3E%3Cmask id='SvgjsMask1078'%3E%3Crect width='1920' height='1080' fill='%23fff'/%3E%3C/mask%3E%3C/defs%3E%3C/svg%3E%0A");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: linear-gradient(
+    22.58deg,
+    rgba(0, 80, 220, 1) 0%,
+    rgba(0, 105, 245, 1) 100%
+  );
 }
 
 .css-logo {
@@ -675,8 +873,8 @@ export default {
   display: flex;
   flex-direction: column;
   background: var(--base-color-white-primary);
-  border-radius: 8px;
   box-sizing: border-box;
+  border-radius: 8px;
   padding: 3rem 3rem;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 }
@@ -687,22 +885,46 @@ export default {
 
 .css-dyor-create-nst {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .css-dyor-create-str {
   width: 100px;
   height: 100px;
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
+  justify-content: center;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.css-dyor-create-str img {
+  border-radius: 8px;
+  width: 80px;
+  border: 1px solid transparent;
+  height: 80px;
 }
 
 .css-trade-history-tzx.active {
   color: var(--complementary-color-blue);
 }
 
-.css-dyor-create-nst span {
-  margin-left: 5px;
-  margin-top: 5px;
+.css-dyor-create-sba {
+  font-size: 12px;
+  margin-left: 6px;
   color: red;
+}
+
+.css-dyor-create-xsa {
+  display: none;
+  margin-left: auto;
+}
+.css-dyor-create-xsa.active {
+  color: red;
+  opacity: 0.8;
+  display: initial;
+  font-size: var(--text-size-secondary);
 }
 
 .css-dyor-create-ndt {
@@ -713,13 +935,18 @@ export default {
 
 .css-dyor-create-nxs {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
 .css-dyor-create-stx {
-  border-radius: 4px;
-  border: 1px dashed var(--border-primary);
+  border-radius: 8px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='SVGRoot' width='100px' height='100px' version='1.1' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cfilter id='filter3322' x='-.00012001' y='-.00012' width='1.0002' height='1.0002' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='0.005'/%3E%3C/filter%3E%3C/defs%3E%3Cg fill='%230069f5'%3E%3Crect x='-.18634' y='5e-7' width='99.999' height='100' filter='url(%23filter3322)' opacity='.1' stroke-width='0'/%3E%3Cpath d='m36.529 33.792h26.117c3.6061 0 6.5294 2.9233 6.5294 6.5294v19.588c0 3.6061-2.9233 6.5294-6.5294 6.5294h-26.117c-3.6061 0-6.5294-2.9233-6.5294-6.5294v-19.588c0-3.6061 2.9233-6.5294 6.5294-6.5294zm-2.1765 26.117h19.588l-9.7941-13.059zm23.941-6.5294c3.6061 0 6.5294-2.9233 6.5294-6.5294 0-3.6061-2.9233-6.5294-6.5294-6.5294-3.6061 0-6.5294 2.9233-6.5294 6.5294 0 3.6061 2.9233 6.5294 6.5294 6.5294z' opacity='.8' stroke-width='2.1765'/%3E%3C/g%3E%3C/svg%3E%0A");
+}
+.css-dyor-create-stx.active {
+  border-radius: 8px;
+  background: none;
+  cursor: default;
 }
 
 .css-dyor-create-nsi,
@@ -835,7 +1062,7 @@ export default {
   background: var(--color-base-third);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0 1rem;
   font-size: var(--text-size-secondary);
   color: var(--text-color-secondary);
@@ -897,6 +1124,10 @@ tr {
   cursor: pointer;
   display: flex;
   align-items: center;
+}
+
+tr:hover {
+  background: var(--color-soft-blue);
 }
 th.active .arrow {
   opacity: 1;

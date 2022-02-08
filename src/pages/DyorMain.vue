@@ -623,7 +623,6 @@
 </template>
 
 <script>
-import { Blackhole } from "blackhole-qr";
 
 import CanvasGradient from "../components/CanvasGradient";
 
@@ -639,7 +638,6 @@ export default {
   },
   mounted() {
     this.isMainPath = true;
-    this.generateQr();
   },
   methods: {
     showMiniPanel() {
@@ -650,10 +648,6 @@ export default {
     },
     navToPath(path) {
       this.$router.push(path);
-    },
-    generateQr() {
-      const code = new Blackhole();
-      code.generate("mini-qr", "1234567890", 150);
     },
   },
 };
