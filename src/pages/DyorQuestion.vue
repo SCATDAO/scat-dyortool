@@ -889,8 +889,8 @@
               >
                 <svg
                   id="SVGRoot"
-                  width="16px"
-                  height="16px"
+                  width="18px"
+                  height="18px"
                   version="1.1"
                   viewBox="0 0 16 16"
                 >
@@ -2477,7 +2477,7 @@ export default {
   color: var(--complementary-color-blue);
 }
 
-.css-blue-button {
+#css-blue-button {
   background: var(--complementary-color-blue);
 }
 
@@ -2566,7 +2566,6 @@ export default {
 .css-work-quest-wrap {
   width: 100%;
   height: 100vh;
-  background: var(--base-color-white-secondary);
   caret-color: transparent;
   padding-bottom: 10%;
   overflow-y: auto;
@@ -2716,17 +2715,16 @@ export default {
   margin-left: 0.5rem;
 }
 
-.css-work-tool-haw[data-v-51f114e2] {
+.css-work-tool-haw {
   display: flex;
   align-items: center;
-  border: 1px solid var(--border-primary);
   border-radius: 8px;
   padding: 2px 14px;
 }
 
 .css-work-tool-haw span {
   margin-left: 10px;
-  font-weight: 600;
+
   text-transform: lowercase;
   color: var(--text-color-primary);
 }
