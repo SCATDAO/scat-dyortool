@@ -491,7 +491,7 @@
               <div class="css-dyor-create-ixw">
                 <div class="css-dyor-create-stx" :class="{ active: pl }">
                   <div class="css-dyor-create-str">
-                    <img :src="pl" alt="" />
+                    <img  class="icon_406" :src="pl" alt="" />
                   </div>
                 </div>
                 <div class="css-dyor-create-bwp">
@@ -560,7 +560,7 @@ export default {
       pw: "",
       pr: "",
       an: "",
-      pl: "",
+      pl: " ",
       isDeployed: false,
       isSelected: false,
       isUploaded: false,
@@ -874,7 +874,6 @@ export default {
   flex-direction: column;
   background: var(--base-color-white-primary);
   box-sizing: border-box;
-  border-radius: 8px;
   padding: 3rem 3rem;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 }
@@ -902,7 +901,7 @@ export default {
 .css-dyor-create-str img {
   border-radius: 8px;
   width: 80px;
-  border: 1px solid transparent;
+  border: 1px solid white!important;
   height: 80px;
 }
 
@@ -975,7 +974,7 @@ export default {
   padding: 0 1rem;
   color: var(--text-color-secondary);
   border: 1px solid var(--border-primary);
-  border-radius: 8px;
+  border-radius: 4px;
   margin-top: 1rem;
 }
 
@@ -1166,7 +1165,7 @@ th.active .arrow {
   outline: none;
   color: var(--ui-text-primary);
   height: 50px;
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 0 1rem;
   border: 1px solid var(--border-primary);
 }

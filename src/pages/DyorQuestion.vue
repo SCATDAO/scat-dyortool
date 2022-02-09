@@ -746,7 +746,7 @@
                     </button></template
                   >
                   <template v-if="isReportCreated">
-                    <button class="css-work-quest-xkx" id="css-cyanbutton">
+                    <button class="css-work-quest-xkx" id="css-blue-button">
                       <a
                         :href="reportLink"
                         target="_blank"
@@ -1048,7 +1048,7 @@
                       v-model="currentQuestion[0].input[element.id].per"
                       class="css-work-quest-tss"
                       style="width: 50%"
-                      type="number"
+                      type="text"
                       placeholder="%"
                     />
 
@@ -1118,47 +1118,47 @@
                     <input
                       v-model="currentQuestion[0].input"
                       class="css-work-quest-tss"
-                      type="number"
-                      placeholder="Followers"
+                      type="text"
+                      placeholder="Nº Followers"
                     />
                   </div>
                 </div>
               </template>
 
-                 <template v-if="item.id === 18">
+              <template v-if="item.id === 18">
                 <div class="css-work-quest-thl">
                   <div class="css-work-quest-txs">
                     <input
                       v-model="currentQuestion[0].input"
                       class="css-work-quest-tss"
-                      type="number"
-                      placeholder="Followers"
+                      type="text"
+                      placeholder="Nº Followers"
                     />
                   </div>
                 </div>
               </template>
 
-                 <template v-if="item.id === 20">
+              <template v-if="item.id === 20">
                 <div class="css-work-quest-thl">
                   <div class="css-work-quest-txs">
                     <input
                       v-model="currentQuestion[0].input"
                       class="css-work-quest-tss"
-                      type="number"
-                      placeholder="Members"
+                      type="text"
+                      placeholder="Nº Members"
                     />
                   </div>
                 </div>
               </template>
 
-                 <template v-if="item.id === 22">
+              <template v-if="item.id === 22">
                 <div class="css-work-quest-thl">
                   <div class="css-work-quest-txs">
                     <input
                       v-model="currentQuestion[0].input"
                       class="css-work-quest-tss"
-                      type="number"
-                      placeholder="Members"
+                      type="text"
+                      placeholder="Nº Members"
                     />
                   </div>
                 </div>
@@ -2100,14 +2100,12 @@ export default {
       this.currentQuestion = [];
     },
     async nextAnswerQuestion() {
-      console.log(this.currentQuestion[0].textarea, "WHAT");
-
       if (this.currentQuestion[0].answer === 404) {
-        this.answeredQuestion[this.numberQuestion[0] + 1].answer = 404;
+        this.answeredQuestion[24].answer = 404;
+        this.answeredQuestion[25].answer = 404;
+        this.answeredQuestion[26].answer = 404;
       }
-
       this.checkCorrectQuestion();
-
       this.answeredQuestion[this.numberQuestion[0]] =
         this.currentQuestion.pop();
       this.numberQuestion[0] += 1;
@@ -2134,6 +2132,26 @@ export default {
       }
     },
     createNewReport() {
+      if (this.answeredQuestion[23].answer === 404) {
+        this.answeredQuestion[24].answer = 404;
+        this.answeredQuestion[25].answer = 404;
+        this.answeredQuestion[26].answer = 404;
+      }
+      if (this.answeredQuestion[24].answer === 404) {
+        this.answeredQuestion[23].answer = 404;
+        this.answeredQuestion[25].answer = 404;
+        this.answeredQuestion[26].answer = 404;
+      }
+      if (this.answeredQuestion[25].answer === 404) {
+        this.answeredQuestion[23].answer = 404;
+        this.answeredQuestion[24].answer = 404;
+        this.answeredQuestion[26].answer = 404;
+      }
+      if (this.answeredQuestion[26].answer === 404) {
+        this.answeredQuestion[23].answer = 404;
+        this.answeredQuestion[24].answer = 404;
+        this.answeredQuestion[25].answer = 404;
+      }
       this.checkCorrectQuestion();
       this.progressWorkData.push(this.currentQuestion[0].id);
       this.answeredQuestion[this.numberQuestion[0]] = this.currentQuestion[0];
@@ -2447,7 +2465,7 @@ export default {
 
 .css-work-quest-xkx {
   padding: 10px 14px;
-  background: var(--complementary-color-blue);
+  background: var(--color-soft-blue);
   border: none;
   cursor: pointer;
   letter-spacing: 0.3px;
@@ -2456,12 +2474,13 @@ export default {
   font-weight: 700;
   white-space: nowrap;
   border-radius: 8px;
-  color: #fff;
+  color: var(--complementary-color-blue);
 }
 
-#css-cyanbutton {
-  background: #00e3f5;
+.css-blue-button {
+  background: var(--complementary-color-blue);
 }
+
 .css-work-quest-xkx a {
   text-decoration: none;
   color: #fff;
@@ -2708,6 +2727,7 @@ export default {
 .css-work-tool-haw span {
   margin-left: 10px;
   font-weight: 600;
+  text-transform: lowercase;
   color: var(--text-color-primary);
 }
 
@@ -3039,6 +3059,7 @@ export default {
 
 .css-work-project-ul {
   cursor: pointer;
+  list-style: none;
 }
 
 .css-work-project-uli {
@@ -3047,12 +3068,27 @@ export default {
   transition: 0.1s;
 }
 
-.css-work-project-uli:active {
+.css-work-project-uli:focus {
   background: transparent;
+  font-weight: bold;
 }
 
 .css-work-project-uli:hover {
+  font-weight: bold;
   border-left: 4px solid rgba(255, 255, 255, 0.3);
+  animation-name: xtrans;
+  animation-duration: 1s;
+}
+
+@keyframes xtrans {
+  0% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }
 
 .css-work-project-uli.active::before {
