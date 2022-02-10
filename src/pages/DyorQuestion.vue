@@ -739,7 +739,8 @@
                   </template>
                   <template v-if="!isReportCreated">
                     <button
-                      class="css-work-quest-xkx" id="create-report"
+                      class="css-work-quest-xkx"
+                      id="create-report"
                       @click="createNewReport()"
                     >
                       Create Report
@@ -1023,11 +1024,10 @@
           </template>
           <template v-if="item.answer === null">
             <div class="css-work-quest-pta">
-              <DyorEditor
-                ref="DyorEditorRef"
-                :data="currentQuestion[0].textarea"
-              ></DyorEditor>
-
+              <textarea
+                class="css-work-quest-tex"
+                v-model="currentQuestion[0].textarea"
+              ></textarea>
               <template v-if="item.id === 9">
                 <div class="css-work-quest-thl">
                   <div
@@ -1289,14 +1289,10 @@
 </template>
 
 <script>
-import DyorEditor from "../components/DyorEditor.vue";
 import axios from "axios";
 import { BestialEncoder } from "bestial-encoder";
 
 export default {
-  components: {
-    DyorEditor,
-  },
   data() {
     return {
       newAudit: {
@@ -2065,8 +2061,6 @@ export default {
       return this.currentQuestion[0].purpose.split(/\r?\n/);
     },
     async nextGlassButton() {
-      this.currentQuestion[0].textarea =
-        await this.$refs.DyorEditorRef[0].sendMeData();
       this.currentQuestion[0].answer = 0;
     },
     createNewIdenticon() {
@@ -2201,14 +2195,13 @@ export default {
         };
         await axios({
           method: "post",
-          url: "http://134.209.163.124:23450/v1/sendReport",
+          url: "http://167.71.91.99:8083/v1/sendReport",
           data: params,
           headers: { "content-type": "application/json" },
         })
           .then((response) => {
             this.isReportCreated = !this.isReportCreated;
-            this.reportLink = `http://134.209.163.124:8081/report/${response.data.report_id}`;
-
+            this.reportLink = `http://167.71.91.99:8081/report/${response.data.report_id}`;
           })
           .catch((error) => {
             this.errReportGen = !this.errReportGen;
@@ -2361,6 +2354,26 @@ export default {
   height: 20px;
 }
 
+.css-work-quest-tex {
+  width: 100%;
+  border: none;
+  height: 300px;
+  font-size: var(--text-size-primary);
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  caret-color: var(--text-color-primary);
+  color: var(--text-color-secondary);
+  resize: none;
+  font-family: "Nunito", sans-serif;
+  font-weight: lighter;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+}
+
 .css-work-quest-xcq {
   border: 1px dashed var(--complementary-color-blue);
   border-radius: 8px;
@@ -2462,7 +2475,7 @@ export default {
   color: var(--complementary-color-blue);
 }
 
-#create-report{
+#create-report {
   padding: 10px 14px;
 }
 
@@ -2473,9 +2486,8 @@ export default {
 .css-work-quest-xkx a {
   text-decoration: none;
   color: #fff;
-   padding: 10px 14px;
-   display: flex;
-
+  padding: 10px 14px;
+  display: flex;
 }
 
 .css-work-quest-fpb {

@@ -867,21 +867,6 @@ export default {
       isUploaded: false,
     };
   },
-  watch: {
-    pn() {
-      if (this.pn.length <= 0 && this.isSelected) {
-        this.isDeployed = false;
-        this.isSelected = false;
-        this.resetInputs();
-      }
-      if (!this.pn.length <= 0) {
-        this.isDeployed = true;
-      }
-      if (this.isSelected) {
-        this.isDeployed = false;
-      }
-    },
-  },
   methods: {
     resetInputs() {
       this.ps = "";
