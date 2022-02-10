@@ -2195,13 +2195,13 @@ export default {
         };
         await axios({
           method: "post",
-          url: "http://167.71.91.99:8083/v1/sendReport",
+          url: "http://104.248.123.67:8083/v1/sendReport",
           data: params,
           headers: { "content-type": "application/json" },
         })
           .then((response) => {
             this.isReportCreated = !this.isReportCreated;
-            this.reportLink = `http://167.71.91.99:8081/report/${response.data.report_id}`;
+            this.reportLink = `http://104.248.123.67:8081/report/${response.data.report_id}`;
           })
           .catch((error) => {
             this.errReportGen = !this.errReportGen;
