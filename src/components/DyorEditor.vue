@@ -144,7 +144,7 @@ export default {
 
 .ce-block__content,
 .ce-toolbar__content {
-  max-width: calc(100% - 80px) !important;
+  max-width: calc(80% + 60px ) !important;
 }
 
 .cdx-block {
