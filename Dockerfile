@@ -1,4 +1,4 @@
-FROM node:lts-bullseye-slim as build-stage
+FROM node:17.1.0 as build-stage
 WORKDIR /scat-dyortool
 COPY package.json ./
 RUN npm install
