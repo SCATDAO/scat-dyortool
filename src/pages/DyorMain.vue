@@ -302,11 +302,12 @@
       </router-link>
       <div class="css-work-main-xks">
         <router-link to="/create">
-          <button>New Research</button>
+          <button class="css-work-main-xkb">New Research</button>
         </router-link>
-        <router-link to="/scan">
-          <button>Scan QR</button>
-        </router-link>
+
+        <button class="css-work-main-bwa">
+          <a href="http://192.168.1.3:8080">Scan QR</a>
+        </button>
       </div>
       <div class="css-work-main-hah">
         <button class="css-work-main-hhb" @click="showMiniPanel()">
@@ -322,23 +323,24 @@
           <div class="css-work-main-hth">
             <ul>
               <li>
-                <router-link to="/research">
+                <a href="https://www.scatdao.com/contact" target="blank">
                   <svg
                     id="becAud"
                     width="24px"
                     height="24px"
                     version="1.1"
+                    opacity=".1"
                     viewBox="0 0 24 24"
                   >
                     <path
                       d="m7.1722 7.8693a4.7341 4.7341 0 1 0 9.4682 0 4.7341 4.7341 0 1 0-9.4682 0zm11.497 12.85h-14.202a0.6763 0.6763 0 0 1-0.6763-0.6763v-2.0289a3.3815 3.3815 0 0 1 3.3815-3.3815h9.4682a3.3815 3.3815 0 0 1 3.3815 3.3815v2.0289a0.6763 0.6763 0 0 1-0.6763 0.6763z"
-                      fill="#fff"
+                      fill="var(--text-color-secondary);"
                       stroke-width=".021134"
                     />
                   </svg>
 
                   <div><span>Become an auditor</span></div>
-                </router-link>
+                </a>
               </li>
               <li>
                 <router-link to="/research">
@@ -348,10 +350,11 @@
                     height="24px"
                     version="1.1"
                     viewBox="0 0 24 24"
+                    opacity=".1"
                   >
                     <path
                       d="m13.514 3.2535v6.5471l2.1935-2.1824 2.1935 2.1824v-6.5471h2.9247v17.459h-13.161v-17.459zm-10.237 0h2.9247v17.459h-2.9247z"
-                      fill="#fff"
+                      fill="var(--text-color-secondary);"
                       stroke-width=".022791"
                     />
                   </svg>
@@ -366,11 +369,12 @@
                     width="24px"
                     height="24px"
                     version="1.1"
+                    opacity=".1"
                     viewBox="0 0 24 24"
                   >
                     <path
                       d="m12.024 3.1942a8.7959 8.7959 0 1 1 0 17.592 8.7959 8.7959 0 0 1 0-17.592zm1.3193 5.4003c0.65337 0 1.1836-0.45359 1.1836-1.1258 0-0.67221-0.53149-1.1258-1.1836-1.1258-0.65336 0-1.1811 0.45359-1.1811 1.1258 0 0.67221 0.52772 1.1258 1.1811 1.1258zm0.22994 7.0702c0-0.13444 0.04649-0.48374 0.02011-0.68226l-1.0328 1.1886c-0.2136 0.22491-0.48123 0.38071-0.60688 0.33925a0.25506 0.25506 0 0 1-0.16208-0.28899l1.7214-5.438c0.14073-0.6898-0.24627-1.3193-1.0667-1.3997-0.86571 0-2.1398 0.87827-2.915 1.9928 0 0.13319-0.025129 0.4649 0.00127 0.66342l1.0316-1.1899c0.2136-0.2224 0.46238-0.37945 0.58803-0.33673a0.25129 0.25129 0 0 1 0.15329 0.31663l-1.7063 5.4116c-0.19727 0.63326 0.17591 1.254 1.0806 1.3947 1.3319 0 2.1184-0.85691 2.8949-1.9714z"
-                      fill="#fff"
+                      fill="var(--text-color-secondary);"
                       stroke-width=".019632"
                     />
                   </svg>
@@ -443,11 +447,12 @@
       </div>
       <div class="css-work-main-bmh">
         <router-link to="/create">
-          <button>New Research</button>
+          <button class="css-work-main-xkb" id="css-scanb">New Research</button>
         </router-link>
-        <router-link to="/scan">
-          <button>Scan QR</button>
-        </router-link>
+
+        <button class="css-work-main-bwa" id="css-scanb">
+          <a href="http://192.168.1.3:8080">Scan QR</a>
+        </button>
       </div>
       <div class="css-work-main-gte">
         <svg
@@ -852,6 +857,30 @@ export default {
   margin-left: 0.3em;
 }
 
+.css-work-main-bwa {
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-left: 1rem;
+  background: hsla(0, 0%, 100%, 0.2);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.css-work-main-bwa:hover {
+  transition: ease-in 0.3s;
+  background: hsla(0, 0%, 100%, 0.4);
+}
+
+.css-work-main-bwa a {
+  padding: 10px 14px;
+  color: #fff;
+  white-space: nowrap;
+  text-decoration: none;
+}
 .css-work-main-bri {
   color: #fff;
   padding-left: 1rem;
@@ -913,7 +942,7 @@ export default {
   display: flex;
 }
 
-.css-work-main-xks button {
+.css-work-main-xkb {
   padding: 10px 14px;
   border-radius: 8px;
   margin-left: 1rem;
@@ -923,6 +952,16 @@ export default {
   font-weight: 600;
   cursor: pointer;
   letter-spacing: 0.3px;
+}
+
+.css-work-main-xkb:hover {
+  transition: ease-in 0.3s;
+  background: hsla(0, 0%, 100%, 0.4);
+}
+
+#css-scanb {
+  margin: 0;
+  margin-right: 1rem;
 }
 
 .css-work-main-sss {
@@ -1122,11 +1161,12 @@ export default {
   }
 
   .css-work-main-bmh button {
-    padding: 10px 14px;
+    padding: 1rem;
     cursor: pointer;
     border-radius: 8px;
     border: none;
     color: #fff;
+    font-size: var(--text-size-primary);
     letter-spacing: 0.2px;
     margin-right: 1rem;
     background: hsla(0, 0%, 100%, 0.2);
@@ -1145,11 +1185,12 @@ export default {
     border-top: 1px dashed var(--border-primary);
     border-bottom: 1px dashed var(--border-primary);
     border-radius: 16px;
+    margin: 1rem 0;
     padding: 2rem 10%;
   }
 
   .css-work-main-hth {
-    background: var(--text-color-primary);
+    background: var(--base-color-white-primary);
     width: 200px;
     height: 150px;
     border-radius: 8px;
@@ -1180,29 +1221,13 @@ export default {
 
   .css-work-main-hth a {
     text-decoration: none;
-    color: #fff;
+    color: var(--text-color-primary);
     display: flex;
     align-items: center;
   }
 
   .css-work-main-hth span {
     margin-left: 10px;
-  }
-
-  .css-work-main-hth::before {
-    content: "";
-    position: absolute;
-    transition: all 0s ease-in;
-  }
-
-  .css-work-main-hth::before {
-    right: 10px;
-    top: -16px;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 10px solid transparent;
-    border-right: 6px solid var(--text-color-primary);
-    transform: rotate(90deg);
   }
 
   .css-work-main-bnt {
@@ -1214,7 +1239,7 @@ export default {
 
   .css-work-main-bnt span {
     font-size: var(--text-size-fourth);
-    line-height: 1rem;
+    line-height: 1.8em;
   }
 
   .css-work-main-xks {
@@ -1226,13 +1251,15 @@ export default {
   }
 
   .css-work-main-gte {
-    margin-top: 2rem;
+    margin-bottom: 6rem;
     width: 100%;
     flex-direction: column;
     box-sizing: border-box;
-    padding: 10%;
   }
 
+  #gradient-canvas {
+    height: 100vh !important;
+  }
   .css-work-main-sss {
     border: none;
     background: var(--complementary-color-blue);
@@ -1267,6 +1294,7 @@ export default {
   .css-work-main-ses {
     padding: 0;
     border-radius: 0;
+    margin-top: calc(100% + 2rem);
     background: var(--base-color-white-primary);
   }
 
@@ -1282,8 +1310,6 @@ export default {
   .css-work-main-slr {
     flex-direction: column;
     background: var(--complementary-color-blue);
-    border-top-right-radius: 16px;
-    border-top-left-radius: 16px;
     background-image: url("data:image/svg+xml,%3Csvg width=%271920%27 height=%271080%27 preserveAspectRatio=%27none%27 version=%271.1%27 viewBox=%270 0 1920 1080%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg mask=%27url%28%23SvgjsMask1078%29%27%3E%3Crect width=%271920%27 height=%271080%27 fill=%27rgba%280, 105, 245, 1%29%27/%3E%3Cpath d=%27m0 646.28c119.92 7.676 222.06-78.528 321.8-145.54 97.885-65.769 204.16-130.92 250.84-239.22 46.31-107.45 2.483-226.93 0.48-343.92-2.347-137.07 56.325-284.6-13.266-402.71-71.766-121.8-214.42-191.57-353.09-219.06-133.16-26.399-264.68 25.827-392.62 71.229-121.54 43.132-240.26 93.402-330.62 185.43-94.164 95.902-198.86 211.63-190.99 345.8 7.854 133.78 151.02 211.51 230.06 319.73 60.826 83.285 104.25 174.27 181.02 243.14 88.495 79.387 177.73 177.52 296.37 185.12%27 fill=%27%230050dc%27/%3E%3Cpath d=%27m1920 1828.5c142.58-23.859 278.35-51.115 410.47-109.78 153.61-68.204 332.46-116.05 420.53-259.2 90.692-147.42 79.637-335.64 50.368-506.22-28.737-167.49-81.086-345.91-214.61-451.02-128.14-100.88-308.34-77.755-471.05-88.747-130.19-8.795-254.13 6.45-382.27 31.101-141.94 27.306-305.54 18.154-407.3 120.8-102.81 103.69-97.789 267.64-120.78 411.84-23.356 146.46-47.512 291.13-14.372 435.69 38.731 168.95 69.043 373.86 219.63 459.7 151.13 86.145 337.82-15.444 509.4-44.156%27 fill=%27%231a83ff%27/%3E%3C/g%3E%3Cdefs%3E%3Cmask id=%27SvgjsMask1078%27%3E%3Crect width=%271920%27 height=%271080%27 fill=%27%23fff%27/%3E%3C/mask%3E%3C/defs%3E%3C/svg%3E%0A");
     background-size: cover;
     background-repeat: no-repeat;

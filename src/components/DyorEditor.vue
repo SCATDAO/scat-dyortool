@@ -36,10 +36,8 @@ export default {
   methods: {
     parsedata() {
       this.parseData = this.data;
-      console.log(this.parseData);
     },
     async sendMeData() {
-      console.log(this.length, "WTF?");
       return this.editor[0]
         .save()
         .then((outputData) => {

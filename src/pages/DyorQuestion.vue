@@ -739,7 +739,7 @@
                   </template>
                   <template v-if="!isReportCreated">
                     <button
-                      class="css-work-quest-xkx"
+                      class="css-work-quest-xkx" id="create-report"
                       @click="createNewReport()"
                     >
                       Create Report
@@ -2040,9 +2040,6 @@ export default {
     },
   },
   methods: {
-    testea() {
-      console.log(this.currentQuestion[0].input);
-    },
     summaryLayout() {
       this.showSummary = !this.showSummary;
     },
@@ -2057,7 +2054,6 @@ export default {
             c: element.category,
           });
         }
-        console.log(element.answer);
       }
       if (remaining.length === 0) {
         return [];
@@ -2088,7 +2084,6 @@ export default {
     },
     sendMeAtribute() {
       this.newAudit = this.$store.getters.sendMeAtribute;
-      console.log(this.newAudit);
     },
     changeCurrentQuestion() {
       this.currentQuestion.push(this.questionList[this.numberQuestion[0]]);
@@ -2200,13 +2195,10 @@ export default {
       const resultEncoder = bestialEncoder.encodeByValue(
         JSON.stringify(this.beforeEncodeProcess)
       );
-
-      console.log("TEST1", JSON.stringify(this.beforeEncodeProcess.length));
       try {
         const params = {
           hex: `${resultEncoder}`,
         };
-        console.log("SECH", params.hex);
         await axios({
           method: "post",
           url: "http://134.209.163.124:8030/v1/sendReport",
@@ -2214,14 +2206,9 @@ export default {
           headers: { "content-type": "application/json" },
         })
           .then((response) => {
-            console.log(response);
             this.isReportCreated = !this.isReportCreated;
             this.reportLink = `http://192.168.1.3:8080/report/${response.data.report_id}`;
-            console.log(this.isReportCreated, this.reportLink);
-            console.log(
-              "TEST2",
-              JSON.stringify(this.beforeEncodeProcess.length)
-            );
+
           })
           .catch((error) => {
             this.errReportGen = !this.errReportGen;
@@ -2246,7 +2233,6 @@ export default {
       if (!checkAnswers.includes(null)) {
         isComplete = true;
       }
-      console.log(checkAnswers);
       return isComplete;
     },
 
@@ -2464,7 +2450,6 @@ export default {
 }
 
 .css-work-quest-xkx {
-  padding: 10px 14px;
   background: var(--color-soft-blue);
   border: none;
   cursor: pointer;
@@ -2477,6 +2462,10 @@ export default {
   color: var(--complementary-color-blue);
 }
 
+#create-report{
+  padding: 10px 14px;
+}
+
 #css-blue-button {
   background: var(--complementary-color-blue);
 }
@@ -2484,6 +2473,9 @@ export default {
 .css-work-quest-xkx a {
   text-decoration: none;
   color: #fff;
+   padding: 10px 14px;
+   display: flex;
+
 }
 
 .css-work-quest-fpb {
