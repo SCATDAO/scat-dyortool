@@ -78,6 +78,7 @@ li {
   text-align: start;
   color: var(--text-color-secondary);
   text-rendering: geometricPrecision;
+  image-rendering: optimizeQuality;
   width: 100vw;
   height: 100vh;
   max-width: 100vw;

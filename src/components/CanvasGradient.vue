@@ -6,11 +6,25 @@
 
 <script>
 export default {
-  name:"canvas-gradient",
+  name: "canvas-gradient",
   mounted() {
     this.showGradient();
+    this.setHeight();
   },
   methods: {
+    setHeight() {
+      function myFunction(x) {
+        if (x.matches) {
+          let canvas = document.getElementById("gradient-canvas");
+          canvas.style.height = "99vh";
+        } else {
+         console.log("LOADED")
+        }
+      }
+
+      var x = window.matchMedia("(max-width: 600px)");
+      myFunction(x);
+    },
     showGradient() {
       window.addEventListener("DOMContentLoaded", () => {
         var gradient = new Gradient();
@@ -507,7 +521,7 @@ export default {
             e(this, "last", 0),
             e(this, "width", void 0),
             e(this, "minWidth", 1111),
-            e(this, "height", 700),
+            e(this, "height", 834),
             e(this, "xSegCount", void 0),
             e(this, "ySegCount", void 0),
             e(this, "mesh", void 0),
