@@ -2201,13 +2201,13 @@ export default {
         };
         await axios({
           method: "post",
-          url: "http://134.209.163.124:8030/v1/sendReport",
+          url: "http://134.209.163.124:23450/v1/sendReport",
           data: params,
           headers: { "content-type": "application/json" },
         })
           .then((response) => {
             this.isReportCreated = !this.isReportCreated;
-            this.reportLink = `http://192.168.1.3:8080/report/${response.data.report_id}`;
+            this.reportLink = `http://134.209.163.124:8081/report/${response.data.report_id}`;
 
           })
           .catch((error) => {
