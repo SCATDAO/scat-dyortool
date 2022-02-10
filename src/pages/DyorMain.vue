@@ -306,7 +306,7 @@
         </router-link>
 
         <button class="css-work-main-bwa">
-          <a href="http://134.209.163.124:8081">Scan QR</a>
+          <a href="http://167.71.91.99:8081">Scan QR</a>
         </button>
       </div>
       <div class="css-work-main-hah">
@@ -451,7 +451,7 @@
         </router-link>
 
         <button class="css-work-main-bwa" id="css-scanb">
-          <a href="http://134.209.163.124:8080">Scan QR</a>
+          <a href="http://167.71.91.99:8080">Scan QR</a>
         </button>
       </div>
       <div class="css-work-main-gte">

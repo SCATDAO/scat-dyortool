@@ -1,6 +1,6 @@
 <template>
   <div class="css-work-quest-tew">
-    <div class="css-work-quest-tex" id="editorx"></div>
+    <div class="css-work-quest-tex" id="editor12"></div>
   </div>
 </template>
 
@@ -10,7 +10,6 @@ import Header from "@editorjs/header";
 import Marker from "@editorjs/marker";
 import InlineCode from "@editorjs/inline-code";
 import Table from "@editorjs/table";
-import ImageTool from "@editorjs/image";
 import List from "@editorjs/list";
 import Underline from "@editorjs/underline";
 import TextVariantTune from "@editorjs/text-variant-tune";
@@ -19,9 +18,7 @@ import Quote from "@editorjs/quote";
 import { ref } from "vue";
 
 export default {
-  props: {
-    data: String,
-  },
+  props: ['data'],
   data() {
     return {
       editor: ref([]),
@@ -51,7 +48,7 @@ export default {
     },
     createNewEditor() {
       const editor = new EditorJS({
-        holder: "editorx",
+        holder: "editor12",
         minHeight: 50,
         tunes: ["textVariant"],
         autofocus: true,
@@ -88,15 +85,7 @@ export default {
             },
           },
 
-          image: {
-            class: ImageTool,
-            config: {
-              endpoints: {
-                byFile: "http://localhost:8008/fetchUrl", // Your backend file uploader endpoint
-                byUrl: "http://localhost:8008/fetchUrl", // Your endpoint that provides uploading by Url
-              },
-            },
-          },
+
           list: {
             class: List,
             inlineToolbar: true,
