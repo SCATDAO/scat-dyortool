@@ -38,6 +38,7 @@ export default {
       this.parseData = this.data;
     },
     async sendMeData() {
+
       return this.editor[0]
         .save()
         .then((outputData) => {
