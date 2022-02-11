@@ -2,7 +2,7 @@
   <div class="css-work-main-wrap">
     <canvas-gradient> </canvas-gradient>
     <header class="css-work-main-header">
-      <router-link to="/main">
+      <router-link to="/">
         <svg
           id="SVGroot"
           width="120px"
@@ -400,7 +400,7 @@
           <div class="css-work-main-bri">
             <div>
               <a href="https://www.scatdao.com/contact" target="blank"
-                >Become a Blockchain Dapp Auditor
+                >Become a Smart Contract Auditor
               </a>
             </div>
             <div>
