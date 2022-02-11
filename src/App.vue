@@ -255,11 +255,14 @@ li {
 
 @media (max-width: 1025px) {
   html {
-    font-size: 90%;
+    font-size: 60%;
   }
 }
 
 @media (max-width: 600px) {
+  html {
+    font-size: 90%;
+  }
   header {
   }
   .css-header.active {

@@ -752,7 +752,7 @@
           </div>
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">
-              Your Nick<span class="css-dyor-create-sba">*</span>
+              Your Nickname<span class="css-dyor-create-sba">*</span>
               <span class="css-dyor-create-xsa" :class="{ active: errors.an }"
                 >Must not be empty or greater than 16 length</span
               >
@@ -815,7 +815,7 @@
 
 <script>
 import axios from "axios";
-import myUpload from "vue-image-crop-upload";
+import myUpload from "vue-image-crop-upload-responsive";
 const columns = ["logo", "name", "token"];
 
 const sorted = {};
@@ -861,7 +861,7 @@ export default {
       pw: "",
       pr: "",
       an: "",
-      pl: " ",
+      pl: "data:image/svg+xml;base64,PHN2ZyBpZD0iU1ZHUm9vdCIgd2lkdGg9IjgwcHgiIGhlaWdodD0iODBweCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgODAgODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8ZyBpZD0iU3RvY2tob2xtLWljb25zLS8tRmlsZXMtLy1VcGxvYWQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI3LjUzNSAyNS45NjkpIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogIDxyZWN0IGlkPSJib3VuZCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CiAgPGcgZmlsbD0iIzAwNjlmNSI+CiAgIDxwYXRoIGQ9Im0yIDEzYzAtMC41IDAuNS0xIDEtMXMxIDAuNSAxIDF2NWMwIDEuMTA0NiAwLjg5NTQzIDIgMiAyaDEyYzEuMTA0NiAwIDItMC44OTU0MyAyLTJ2LTVjMC0wLjU1MjI4IDAuNDQ3NzItMSAxLTFzMSAwLjQ0NzcyIDEgMXY1YzAgMi4yMDkxLTEuNzkwOSA0LTQgNGgtMTJjLTIuMjA5MSAwLTQtMS43OTA5LTQtNHYtNXoiIGZpbGwtcnVsZT0ibm9uemVybyIgb3BhY2l0eT0iLjMiLz4KICAgPHJlY3QgaWQ9IlJlY3RhbmdsZSIgeD0iMTEiIHk9IjIiIHdpZHRoPSIyIiBoZWlnaHQ9IjE0IiByeD0iMSIgb3BhY2l0eT0iLjMiLz4KICAgPHBhdGggZD0ibTEyLjAzNiAzLjM3OC00LjMyOTEgNC4zMjkxYy0wLjM5MDUyIDAuMzkwNTItMS4wMjM3IDAuMzkwNTItMS40MTQyIDBzLTAuMzkwNTItMS4wMjM3IDAtMS40MTQybDUtNWMwLjM3NjA4LTAuMzc2MDggMC45ODA3NC0wLjM5MTk4IDEuMzc2MS0wLjAzNjE4N2w1IDQuNWMwLjQxMDUxIDAuMzY5NDYgMC40NDM3OSAxLjAwMTcgMC4wNzQzMyAxLjQxMjMtMC4zNjk0NiAwLjQxMDUxLTEuMDAxNyAwLjQ0Mzc5LTEuNDEyMyAwLjA3NDMyOXoiIGZpbGwtcnVsZT0ibm9uemVybyIvPgogIDwvZz4KIDwvZz4KPC9zdmc+Cg==",
       isDeployed: false,
       isSelected: false,
       isUploaded: false,
@@ -878,7 +878,7 @@ export default {
     cropSuccess(imgDataUrl, field) {
       this.pl = imgDataUrl;
       this.isUploaded = true;
-      console.log(imgDataUrl, field);
+      console.log("IMAGE LOADED",field);
     },
 
     cropUploadSuccess(jsonData, field) {
@@ -989,9 +989,7 @@ export default {
       this.an.length > 0 ? true : (this.errors.an = true);
       this.an.length < 16 ? true : (this.errors.an = true);
 
-      this.pl.length > 0 ? true : (this.errors.pl = true);
-
-      console.log(Object.values(this.errors));
+      this.isUploaded ? true : (this.errors.pl = true);
 
       return !Object.values(this.errors).includes(true) ? true : false;
     },
@@ -1147,6 +1145,11 @@ export default {
   margin-top: 2rem;
 }
 
+.css-dyor-create-asa:hover {
+  transition: ease-in 0.3s;
+  opacity: 0.9
+}
+
 .css-dyor-create-ndf {
   width: 700px;
   min-width: 700px;
@@ -1255,7 +1258,7 @@ export default {
   padding: 0 1rem;
   color: var(--text-color-secondary);
   border: 1px solid var(--border-primary);
-  border-radius: 4px;
+  border-radius: 8px;
   margin-top: 1rem;
 }
 
@@ -1307,7 +1310,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 3rem;
+    padding: 0 10%;
   }
 
   .css-dyor-create-csh {
@@ -1475,4 +1478,12 @@ th.active .arrow {
 #tableTradeSearch::placeholder {
   margin-left: 10px;
 }
+
+
+
+
+
+
+
+
 </style>
