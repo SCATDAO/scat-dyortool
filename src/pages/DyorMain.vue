@@ -343,8 +343,7 @@
                 </a>
               </li>
               <li>
-                   <a href="https://www.scatdao.com/dyor-tool" target="blank">
-               
+                <a href="https://www.scatdao.com/dyor-tool" target="blank">
                   <svg
                     id="learnB"
                     width="24px"
@@ -360,11 +359,11 @@
                     />
                   </svg>
 
-                  <div><span>Learn</span></div> </a>
-              
+                  <div><span>Learn</span></div>
+                </a>
               </li>
               <li>
-             <a href="https://www.scatdao.com/team" target="blank">
+                <a href="https://www.scatdao.com/team" target="blank">
                   <svg
                     id="about"
                     width="24px"
@@ -380,7 +379,7 @@
                     />
                   </svg>
                   <div><span>About us</span></div>
-               </a>
+                </a>
               </li>
             </ul>
             <div class="css-work-main-swp" @click="touchZone()"></div>
@@ -876,7 +875,6 @@ export default {
   background: hsla(0, 0%, 100%, 0.4);
 }
 
-
 .css-work-main-bwa a {
   padding: 10px 14px;
   color: #fff;
@@ -1283,6 +1281,11 @@ export default {
     border-radius: 8px;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  .css-work-main-hhb:hover {
+    transition: ease-in 0.3s;
+    opacity: 0.9;
   }
 
   .css-work-main-slc {

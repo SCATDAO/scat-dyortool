@@ -566,6 +566,7 @@
                   <div>SCATDAO</div>
                   <span>www.scatdao.com</span>
                 </div>
+                <div class="css-work-quest-cso"></div>
               </div>
             </div>
           </div>
@@ -1189,25 +1190,33 @@
               id="left-arrow"
               @click="numberQuestion[0] > 0 ? backAnswerQuestion() : false"
             >
-              <svg
+           <svg
                 id="SVGRoot"
                 width="24px"
                 height="24px"
+                data-v-51f114e2=""
                 version="1.1"
+                style="transform: rotate(180deg);"
                 viewBox="0 0 24 24"
               >
-                <g fill="#001737" stroke-width="1.0666">
-                  <rect
-                    id="Rectangle"
-                    transform="matrix(0,-1,-1,0,0,0)"
-                    x="-13.15"
-                    y="-20.188"
-                    width="2.1334"
-                    height="9.6"
-                    rx="1.0666"
-                  />
+                <g
+                  transform="translate(-5.7242 -.032203)"
+                  fill="#727384"
+                  stroke-width="1.0666"
+                  data-v-51f114e2=""
+                >
                   <path
-                    d="m12.409 17.73c0.41656 0.41656 0.41656 1.092 0 1.5085-0.41656 0.41656-1.092 0.41656-1.5085 0l-6.4-6.4c-0.40382-0.40382-0.41795-1.0541-0.03206-1.475l5.8667-6.4c0.39808-0.43426 1.0729-0.4636 1.5071-0.065525 0.43426 0.39807 0.4636 1.0728 0.06552 1.5071l-5.1766 5.6472z"
+                    d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
+                    fill="#727384"
+                    fill-opacity=".0"
+                    data-v-51f114e2=""
+                  />
+                </g>
+                <g fill="#727384" stroke-width="1.0666" data-v-51f114e2="">
+                  <path
+                    d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
+                    fill="#727384"
+                    data-v-51f114e2=""
                   />
                 </g>
               </svg>
@@ -1224,28 +1233,35 @@
                 "
               >
                 <span>Next</span>
-                <svg
-                  id="SVGRoot"
-                  width="24px"
-                  height="24px"
-                  version="1.1"
-                  viewBox="0 0 24 24"
+              <svg
+                id="SVGRoot"
+                width="24px"
+                height="24px"
+                data-v-51f114e2=""
+                version="1.1"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  transform="translate(-5.7242 -.032203)"
+                  fill="#fff"
+                  stroke-width="1.0666"
+                  data-v-51f114e2=""
                 >
-                  <g fill="#fff" stroke-width="1.0666">
-                    <rect
-                      id="Rectangle"
-                      transform="rotate(-90)"
-                      x="-13.15"
-                      y="4.188"
-                      width="2.1334"
-                      height="9.6"
-                      rx="1.0666"
-                    />
-                    <path
-                      d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
-                    />
-                  </g>
-                </svg>
+                  <path
+                    d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
+                    fill="#fff"
+                    fill-opacity=".0"
+                    data-v-51f114e2=""
+                  />
+                </g>
+                <g fill="#fff" stroke-width="1.0666" data-v-51f114e2="">
+                  <path
+                    d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
+                    fill="#fff"
+                    data-v-51f114e2=""
+                  />
+                </g>
+              </svg>
               </div>
             </template>
             <template v-if="currentQuestion[0].id === questionList.length">
@@ -1255,34 +1271,43 @@
                 @click="summaryLayout()"
               >
                 <span>Next</span>
-                <svg
-                  id="SVGRoot"
-                  width="24px"
-                  height="24px"
-                  version="1.1"
-                  viewBox="0 0 24 24"
+               <svg
+                id="SVGRoot"
+                width="24px"
+                height="24px"
+                data-v-51f114e2=""
+                version="1.1"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  transform="translate(-5.7242 -.032203)"
+                  fill="#fff"
+                  stroke-width="1.0666"
+                  data-v-51f114e2=""
                 >
-                  <g fill="#fff" stroke-width="1.0666">
-                    <rect
-                      id="Rectangle"
-                      transform="rotate(-90)"
-                      x="-13.15"
-                      y="4.188"
-                      width="2.1334"
-                      height="9.6"
-                      rx="1.0666"
-                      opacity=".3"
-                    />
-                    <path
-                      d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
-                    />
-                  </g>
-                </svg>
+                  <path
+                    d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
+                    fill="#fff"
+                    fill-opacity=".0"
+                    data-v-51f114e2=""
+                  />
+                </g>
+                <g fill="#fff" stroke-width="1.0666" data-v-51f114e2="">
+                  <path
+                    d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
+                    fill="#fff"
+                    data-v-51f114e2=""
+                  />
+                </g>
+              </svg>
               </div>
             </template>
           </div>
         </div>
-        <div class="css-work-quest-nac"></div>
+        <div
+          class="css-work-quest-nac"
+          :class="{ active: visualHelper.purpose }"
+        ></div>
       </div>
     </div>
   </div>
@@ -2302,6 +2327,10 @@ export default {
     rgba(0, 105, 245, 1) 100%
   );
 }
+#right-arrow:hover {
+  transition: ease-in 0.1s;
+  opacity: 0.9;
+}
 
 #right-arrow span {
   color: #ffffff;
@@ -2450,7 +2479,7 @@ export default {
 }
 
 .css-work-quest-xsc {
-  width: 1000px;
+  width: 60%;
   height: 100px;
   border-radius: 8px;
   display: flex;
@@ -2535,6 +2564,8 @@ export default {
 
 .css-work-quest-tss::placeholder {
   color: var(--text-color-secondary);
+  letter-spacing: .2px;
+  opacity: .5;
 }
 
 .css-work-quest-fyx {
@@ -2585,7 +2616,7 @@ export default {
 .css-work-quest-fpl {
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(114, 115, 132, 0.3);
   z-index: 11;
   display: flex;
   position: absolute;
@@ -2594,6 +2625,7 @@ export default {
   animation-name: faded;
   animation-duration: 1s;
   transition: ease 0.3s;
+  box-sizing: border-box;
 }
 
 .css-work-quest-fph {
@@ -2631,7 +2663,6 @@ export default {
   word-break: break-word;
   white-space: pre-line;
   display: flex;
-  overflow-y: scroll;
   flex-direction: column;
 }
 
@@ -2653,8 +2684,7 @@ export default {
 
 .css-work-quest-fps,
 .css-work-quest-fyy {
-  width: 1000px;
-  height: fit-content;
+  width: 60%;
   position: absolute;
   z-index: 1;
   padding-bottom: 3rem;
@@ -2663,6 +2693,7 @@ export default {
   box-sizing: border-box;
   flex-direction: column;
   border-radius: 8px;
+  overflow-y: auto;
   background: var(--base-color-white-primary);
 }
 
@@ -2763,7 +2794,7 @@ export default {
     rgba(0, 105, 245, 1) 100%
   );
   overflow-y: auto;
-  overflow-x:hidden;
+  overflow-x: hidden;
 }
 
 .css-work-quest-got::before {
@@ -3128,6 +3159,55 @@ export default {
     opacity: 0;
   }
 
+.css-work-quest-xsc{
+  width: 90%;
+  bottom: 600px;
+  margin-top: calc(600px + 4rem);
+}
+
+  .css-work-quest-fyy{
+    width: 90%;
+  }
+  .css-work-quest-tss{
+    margin: 0 0.25rem;
+  }
+
+.css-work-quest-bta{
+  margin-top: 0.5rem;
+}
+.css-work-quest-ths{
+  margin: 0;
+}
+  #right-arrow span {
+    color: #ffffff;
+    font-weight: bold;
+    margin-right: 40px;
+  }
+
+  #left-arrow span {
+    color: var(--text-color-primary);
+    font-weight: bold;
+    margin-left: 40px;
+  }
+  .css-work-quest-fpl {
+    height: 175vh;
+  }
+
+  .css-work-quest-nac.active {
+    display: none;
+  }
+  .css-work-quest-fps {
+    width: 90%;
+    text-align: justify;
+  }
+  .css-work-quest-top {
+    padding: 0 10%;
+  }
+
+  .css-identicon-wrp {
+    border: 1px solid transparent;
+  }
+
   #logo-blue {
     fill: #fff;
   }
@@ -3159,6 +3239,7 @@ export default {
 
   .css-main-flex-wrap {
     overflow-y: auto;
+    box-sizing: border-box;
   }
 
   .css-work-quest-gtt span {
