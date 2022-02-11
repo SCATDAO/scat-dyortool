@@ -2763,6 +2763,7 @@ export default {
     rgba(0, 105, 245, 1) 100%
   );
   overflow-y: auto;
+  overflow-x:hidden;
 }
 
 .css-work-quest-got::before {

@@ -752,7 +752,7 @@
           </div>
           <div class="css-dyor-create-nsi">
             <div class="css-dyor-create-nst">
-              Your Nick<span class="css-dyor-create-sba">*</span>
+              Your Nickname<span class="css-dyor-create-sba">*</span>
               <span class="css-dyor-create-xsa" :class="{ active: errors.an }"
                 >Must not be empty or greater than 16 length</span
               >
@@ -815,7 +815,7 @@
 
 <script>
 import axios from "axios";
-import myUpload from "vue-image-crop-upload";
+import myUpload from "vue-image-crop-upload-responsive";
 const columns = ["logo", "name", "token"];
 
 const sorted = {};
@@ -878,7 +878,7 @@ export default {
     cropSuccess(imgDataUrl, field) {
       this.pl = imgDataUrl;
       this.isUploaded = true;
-      console.log(imgDataUrl, field);
+      console.log("IMAGE LOADED",field);
     },
 
     cropUploadSuccess(jsonData, field) {
@@ -989,9 +989,7 @@ export default {
       this.an.length > 0 ? true : (this.errors.an = true);
       this.an.length < 16 ? true : (this.errors.an = true);
 
-      this.pl.length > 0 ? true : (this.errors.pl = true);
-
-      console.log(Object.values(this.errors));
+      this.pl.length > 1 ? true : (this.errors.pl = true);
 
       return !Object.values(this.errors).includes(true) ? true : false;
     },
@@ -1147,6 +1145,11 @@ export default {
   margin-top: 2rem;
 }
 
+.css-dyor-create-asa:hover {
+  transition: ease-in 0.3s;
+  opacity: 0.9
+}
+
 .css-dyor-create-ndf {
   width: 700px;
   min-width: 700px;
@@ -1255,7 +1258,7 @@ export default {
   padding: 0 1rem;
   color: var(--text-color-secondary);
   border: 1px solid var(--border-primary);
-  border-radius: 4px;
+  border-radius: 8px;
   margin-top: 1rem;
 }
 
@@ -1307,7 +1310,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 3rem;
+    padding: 0 10%;
   }
 
   .css-dyor-create-csh {
@@ -1475,4 +1478,12 @@ th.active .arrow {
 #tableTradeSearch::placeholder {
   margin-left: 10px;
 }
+
+
+
+
+
+
+
+
 </style>

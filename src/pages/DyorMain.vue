@@ -343,7 +343,8 @@
                 </a>
               </li>
               <li>
-                <router-link to="/research">
+                   <a href="https://www.scatdao.com/dyor-tool" target="blank">
+               
                   <svg
                     id="learnB"
                     width="24px"
@@ -359,11 +360,11 @@
                     />
                   </svg>
 
-                  <div><span>Learn</span></div>
-                </router-link>
+                  <div><span>Learn</span></div> </a>
+              
               </li>
               <li>
-                <router-link to="/research">
+             <a href="https://www.scatdao.com/team" target="blank">
                   <svg
                     id="about"
                     width="24px"
@@ -378,8 +379,8 @@
                       stroke-width=".019632"
                     />
                   </svg>
-                  <div><span>About</span></div>
-                </router-link>
+                  <div><span>About us</span></div>
+               </a>
               </li>
             </ul>
             <div class="css-work-main-swp" @click="touchZone()"></div>
@@ -451,7 +452,7 @@
         </router-link>
 
         <button class="css-work-main-bwa" id="css-scanb">
-          <a href="http://104.248.123.67:8080">Scan QR</a>
+          <a href="http://104.248.123.67:8081">Scan QR</a>
         </button>
       </div>
       <div class="css-work-main-gte">
@@ -874,6 +875,7 @@ export default {
   transition: ease-in 0.3s;
   background: hsla(0, 0%, 100%, 0.4);
 }
+
 
 .css-work-main-bwa a {
   padding: 10px 14px;

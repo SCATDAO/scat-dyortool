@@ -16,6 +16,7 @@ export default {
       function myFunction(x) {
         if (x.matches) {
           let canvas = document.getElementById("gradient-canvas");
+          canvas.style.width = "100vw";
           canvas.style.height = "99vh";
         } else {
          console.log("LOADED")
