@@ -7,11 +7,10 @@ import DyorQuestion from '../pages/DyorQuestion.vue'
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/', redirect: '/main' },
-        { path: '/main', component: DyorMain },
+        { path: '/', component: DyorMain },
         { path: '/create', component: DyorCreate },
         { path: '/research', component: DyorQuestion, },
-        { path: '/:notFound(.*)', redirect: '/main' }
+        { path: '/:notFound(.*)', redirect: '/' }
     ]
 });
 

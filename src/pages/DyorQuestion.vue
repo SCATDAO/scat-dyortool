@@ -1,7 +1,7 @@
 <template>
   <div class="css-main-flex-wrap">
     <header class="css-work-project-her" :class="{ active: workspace }">
-      <router-link to="/main" style="display: flex; align-items: baseline">
+      <router-link to="/" style="display: flex; align-items: baseline">
         <svg
           id="logo-blue"
           width="120px"

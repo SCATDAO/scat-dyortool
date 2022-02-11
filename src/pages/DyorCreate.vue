@@ -1,7 +1,7 @@
 <template>
   <div class="css-dyor-create-wrap">
     <header class="css-dyor-create-hdc">
-      <router-link to="/main" style="display: flex; align-items: baseline">
+      <router-link to="/" style="display: flex; align-items: baseline">
         <svg
           id="logo-white"
           width="120px"
@@ -303,7 +303,7 @@
     </header>
     <div class="css-dyor-create-ndw">
       <div class="css-dyor-create-ndf">
-        <router-link class="logo-blue" to="/main">
+        <router-link class="logo-blue" to="/">
           <svg
             id="logo-blue"
             width="120px"
