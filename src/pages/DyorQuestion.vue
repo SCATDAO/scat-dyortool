@@ -828,6 +828,7 @@
               </div>
             </div>
           </template>
+          
           <template v-if="item.answer != null">
             <div class="css-work-quest-note">
               <b>Last step:</b>
@@ -1025,6 +1026,7 @@
           </template>
           <template v-if="item.answer === null">
             <div class="css-work-quest-pta">
+
               <textarea
                 class="css-work-quest-tex"
                 v-model="currentQuestion[0].textarea"
@@ -2390,6 +2392,7 @@ export default {
   font-size: var(--text-size-primary);
   overflow: auto;
   outline: none;
+  white-space: pre-line;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
