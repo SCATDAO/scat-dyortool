@@ -2220,13 +2220,13 @@ export default {
         };
         await axios({
           method: "post",
-          url: "http://104.248.123.67:8083/v1/sendReport",
+          url: "https://api.dyortool.io/v1/sendReport",
           data: params,
           headers: { "content-type": "application/json" },
         })
           .then((response) => {
             this.isReportCreated = !this.isReportCreated;
-            this.reportLink = `http://104.248.123.67:8081/report/${response.data.report_id}`;
+            this.reportLink = `https://audits.dyortool.io/report/${response.data.report_id}`;
           })
           .catch((error) => {
             this.errReportGen = !this.errReportGen;

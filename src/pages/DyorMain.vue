@@ -306,7 +306,7 @@
         </router-link>
 
         <button class="css-work-main-bwa">
-          <a href="http://104.248.123.67:8081">Scan QR</a>
+          <a href="https://audits.dyortool.io">Scan QR</a>
         </button>
       </div>
       <div class="css-work-main-hah">
@@ -451,7 +451,7 @@
         </router-link>
 
         <button class="css-work-main-bwa" id="css-scanb">
-          <a href="http://104.248.123.67:8081">Scan QR</a>
+          <a href="https://audits.dyortool.io">Scan QR</a>
         </button>
       </div>
       <div class="css-work-main-gte">
