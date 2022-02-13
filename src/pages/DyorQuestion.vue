@@ -723,42 +723,42 @@
                   </div>
                 </template>
               </div>
-            </div>
-            <div class="css-work-quest-xsc">
-              <template v-if="remainingQuestion().length !== 0">
-                <div class="css-work-quest-xcq">
-                  <span>Please complete the remaining questions.</span>
-                </div>
-              </template>
+              <div class="css-work-quest-xsc">
+                <template v-if="remainingQuestion().length !== 0">
+                  <div class="css-work-quest-xcq">
+                    <span>Please complete the remaining questions.</span>
+                  </div>
+                </template>
 
-              <template v-if="remainingQuestion().length === 0">
-                <div class="css-work-quest-bfw">
-                  <template v-if="errReportGen">
-                    <div class="css-work-quest-xcq">
-                      <span>This report has already been generated</span>
-                    </div>
-                  </template>
-                  <template v-if="!isReportCreated">
-                    <button
-                      class="css-work-quest-xkx"
-                      id="create-report"
-                      @click="createNewReport()"
-                    >
-                      Create Report
-                    </button></template
-                  >
-                  <template v-if="isReportCreated">
-                    <button class="css-work-quest-xkx" id="css-blue-button">
-                      <a
-                        :href="reportLink"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >Go to Report</a
+                <template v-if="remainingQuestion().length === 0">
+                  <div class="css-work-quest-bfw">
+                    <template v-if="errReportGen">
+                      <div class="css-work-quest-xcq">
+                        <span>This report has already been generated</span>
+                      </div>
+                    </template>
+                    <template v-if="!isReportCreated">
+                      <button
+                        class="css-work-quest-xkx"
+                        id="create-report"
+                        @click="createNewReport()"
                       >
-                    </button>
-                  </template>
-                </div>
-              </template>
+                        Create Report
+                      </button></template
+                    >
+                    <template v-if="isReportCreated">
+                      <button class="css-work-quest-xkx" id="css-blue-button">
+                        <a
+                          :href="reportLink"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >Go to Report</a
+                        >
+                      </button>
+                    </template>
+                  </div>
+                </template>
+              </div>
             </div>
           </div>
         </template>
@@ -828,7 +828,7 @@
               </div>
             </div>
           </template>
-          
+
           <template v-if="item.answer != null">
             <div class="css-work-quest-note">
               <b>Last step:</b>
@@ -1026,7 +1026,6 @@
           </template>
           <template v-if="item.answer === null">
             <div class="css-work-quest-pta">
-
               <textarea
                 class="css-work-quest-tex"
                 v-model="currentQuestion[0].textarea"
@@ -1192,13 +1191,13 @@
               id="left-arrow"
               @click="numberQuestion[0] > 0 ? backAnswerQuestion() : false"
             >
-           <svg
+              <svg
                 id="SVGRoot"
                 width="24px"
                 height="24px"
                 data-v-51f114e2=""
                 version="1.1"
-                style="transform: rotate(180deg);"
+                style="transform: rotate(180deg)"
                 viewBox="0 0 24 24"
               >
                 <g
@@ -1235,35 +1234,35 @@
                 "
               >
                 <span>Next</span>
-              <svg
-                id="SVGRoot"
-                width="24px"
-                height="24px"
-                data-v-51f114e2=""
-                version="1.1"
-                viewBox="0 0 24 24"
-              >
-                <g
-                  transform="translate(-5.7242 -.032203)"
-                  fill="#fff"
-                  stroke-width="1.0666"
+                <svg
+                  id="SVGRoot"
+                  width="24px"
+                  height="24px"
                   data-v-51f114e2=""
+                  version="1.1"
+                  viewBox="0 0 24 24"
                 >
-                  <path
-                    d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
+                  <g
+                    transform="translate(-5.7242 -.032203)"
                     fill="#fff"
-                    fill-opacity=".0"
+                    stroke-width="1.0666"
                     data-v-51f114e2=""
-                  />
-                </g>
-                <g fill="#fff" stroke-width="1.0666" data-v-51f114e2="">
-                  <path
-                    d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
-                    fill="#fff"
-                    data-v-51f114e2=""
-                  />
-                </g>
-              </svg>
+                  >
+                    <path
+                      d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
+                      fill="#fff"
+                      fill-opacity=".0"
+                      data-v-51f114e2=""
+                    />
+                  </g>
+                  <g fill="#fff" stroke-width="1.0666" data-v-51f114e2="">
+                    <path
+                      d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
+                      fill="#fff"
+                      data-v-51f114e2=""
+                    />
+                  </g>
+                </svg>
               </div>
             </template>
             <template v-if="currentQuestion[0].id === questionList.length">
@@ -1273,35 +1272,35 @@
                 @click="summaryLayout()"
               >
                 <span>Next</span>
-               <svg
-                id="SVGRoot"
-                width="24px"
-                height="24px"
-                data-v-51f114e2=""
-                version="1.1"
-                viewBox="0 0 24 24"
-              >
-                <g
-                  transform="translate(-5.7242 -.032203)"
-                  fill="#fff"
-                  stroke-width="1.0666"
+                <svg
+                  id="SVGRoot"
+                  width="24px"
+                  height="24px"
                   data-v-51f114e2=""
+                  version="1.1"
+                  viewBox="0 0 24 24"
                 >
-                  <path
-                    d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
+                  <g
+                    transform="translate(-5.7242 -.032203)"
                     fill="#fff"
-                    fill-opacity=".0"
+                    stroke-width="1.0666"
                     data-v-51f114e2=""
-                  />
-                </g>
-                <g fill="#fff" stroke-width="1.0666" data-v-51f114e2="">
-                  <path
-                    d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
-                    fill="#fff"
-                    data-v-51f114e2=""
-                  />
-                </g>
-              </svg>
+                  >
+                    <path
+                      d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
+                      fill="#fff"
+                      fill-opacity=".0"
+                      data-v-51f114e2=""
+                    />
+                  </g>
+                  <g fill="#fff" stroke-width="1.0666" data-v-51f114e2="">
+                    <path
+                      d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
+                      fill="#fff"
+                      data-v-51f114e2=""
+                    />
+                  </g>
+                </svg>
               </div>
             </template>
           </div>
@@ -1464,7 +1463,7 @@ export default {
           name: "Plagarism",
           question: "Was there any plagiarism in the whitepaper?",
           worksteps: [
-            "A. Upload a copy of the whitepaper to Grammerly using this link ( https://www.grammarly.com/plagiarism-checker ).",
+            "A. Copy the information in the whitepaper and paste it into the following website (https://www.check-plagiarism.com/).",
             "B. Include a copy of the results into the box below.",
           ],
 
@@ -2407,7 +2406,7 @@ export default {
 }
 
 .css-work-quest-xcq {
-  border: 1px dashed var(--complementary-color-blue);
+background: var(--base-color-white-secondary);
   border-radius: 8px;
   width: 100%;
   padding: 1rem;
@@ -2482,16 +2481,15 @@ export default {
 }
 
 .css-work-quest-xsc {
-  width: 60%;
-  height: 100px;
-  border-radius: 8px;
+  width: 100%;
   display: flex;
-  position: absolute;
   align-items: center;
   bottom: 200px;
   background: var(--base-color-white-primary);
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   box-sizing: border-box;
+  margin-top: auto;
+  border-top: 1px solid var(--border-primary);
 }
 
 .css-work-quest-xkx {
@@ -2567,8 +2565,8 @@ export default {
 
 .css-work-quest-tss::placeholder {
   color: var(--text-color-secondary);
-  letter-spacing: .2px;
-  opacity: .5;
+  letter-spacing: 0.2px;
+  opacity: 0.5;
 }
 
 .css-work-quest-fyx {
@@ -2580,7 +2578,6 @@ export default {
   background: var(--base-color-white-secondary);
   border-radius: 8px;
   color: var(--complementary-color-blue);
-  border: 1px solid var(--complementary-color-blue);
 }
 
 .css-work-quest-fxx {
@@ -2663,6 +2660,8 @@ export default {
 .css-work-quest-fpx {
   border-top: 1px solid var(--border-primary);
   padding: 0 2rem;
+  padding-bottom: 1rem;
+  overflow-y: auto;
   word-break: break-word;
   white-space: pre-line;
   display: flex;
@@ -2687,21 +2686,21 @@ export default {
 
 .css-work-quest-fps,
 .css-work-quest-fyy {
-  width: 60%;
+  width: 70%;
   position: absolute;
   z-index: 1;
-  padding-bottom: 3rem;
   margin-top: 3rem;
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
+  box-sizing: border-box;
   border-radius: 8px;
   overflow-y: auto;
   background: var(--base-color-white-primary);
 }
 
 .css-work-quest-fyy {
-  height: 600px;
+  height: 700px;
 }
 
 @keyframes faded {
@@ -3162,25 +3161,24 @@ export default {
     opacity: 0;
   }
 
-.css-work-quest-xsc{
-  width: 90%;
-  bottom: 600px;
-  margin-top: calc(600px + 4rem);
-}
+  .css-work-quest-xsc {
+    width: 90%;
+    bottom: 600px;
+  }
 
-  .css-work-quest-fyy{
+  .css-work-quest-fyy {
     width: 90%;
   }
-  .css-work-quest-tss{
+  .css-work-quest-tss {
     margin: 0 0.25rem;
   }
 
-.css-work-quest-bta{
-  margin-top: 0.5rem;
-}
-.css-work-quest-ths{
-  margin: 0;
-}
+  .css-work-quest-bta {
+    margin-top: 0.5rem;
+  }
+  .css-work-quest-ths {
+    margin: 0;
+  }
   #right-arrow span {
     color: #ffffff;
     font-weight: bold;
