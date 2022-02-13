@@ -302,7 +302,7 @@
       </router-link>
       <div class="css-work-main-xks">
         <router-link to="/create">
-          <button class="css-work-main-xkb">New Research</button>
+          <button class="css-work-main-xkb">New Report</button>
         </router-link>
 
         <button class="css-work-main-bwa">
@@ -447,7 +447,7 @@
       </div>
       <div class="css-work-main-bmh">
         <router-link to="/create">
-          <button class="css-work-main-xkb" id="css-scanb">New Research</button>
+          <button class="css-work-main-xkb" id="css-scanb">New Report</button>
         </router-link>
 
         <button class="css-work-main-bwa" id="css-scanb">
@@ -696,8 +696,7 @@
           <div class="css-work-main-slw" id="slide-left1">
             <h2>
               <span
-                >Designed to give you the knowledge and resources to properly
-                assess a project before investing in it.</span
+                >Designed to give you the knowledge and resources to holistically assess a project.</span
               >
             </h2>
           </div>
