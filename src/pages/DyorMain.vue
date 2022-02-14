@@ -1,6 +1,5 @@
 <template>
   <div class="css-work-main-wrap">
-    <canvas-gradient style="display:none;"> </canvas-gradient>
     <header class="css-work-main-header">
       <router-link to="/">
         <svg
@@ -753,12 +752,7 @@
 </template>
 
 <script>
-import CanvasGradient from "../components/CanvasGradient";
-
 export default {
-  components: {
-    CanvasGradient,
-  },
   data() {
     return {
       isMainPath: false,
