@@ -1,6 +1,6 @@
 <template>
   <div class="css-work-main-wrap">
-    <canvas-gradient> </canvas-gradient>
+    <canvas-gradient style="display:none;"> </canvas-gradient>
     <header class="css-work-main-header">
       <router-link to="/">
         <svg
@@ -785,13 +785,15 @@ export default {
 <style scoped>
 .css-work-main-wrap {
   width: 100%;
-  max-width: 100vw;
+  max-width: 100%;
   height: 100vh;
   display: flex;
   background: var(--complementary-color-blue);
   box-sizing: border-box;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .css-work-main-banner {
