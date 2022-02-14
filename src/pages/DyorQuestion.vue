@@ -1,5 +1,8 @@
 <template>
-  <div class="css-main-flex-wrap">
+  <div
+    class="css-main-flex-wrap"
+    :class="{ active: showSummary || visualHelper.purpose }"
+  >
     <header class="css-work-project-her" :class="{ active: workspace }">
       <router-link to="/" style="display: flex; align-items: baseline">
         <svg
@@ -2406,7 +2409,7 @@ export default {
 }
 
 .css-work-quest-xcq {
-background: var(--base-color-white-secondary);
+  background: var(--base-color-white-secondary);
   border-radius: 8px;
   width: 100%;
   padding: 1rem;
@@ -2545,7 +2548,7 @@ background: var(--base-color-white-secondary);
   height: 40px;
   cursor: pointer;
   opacity: 0.9;
-  margin: 0 1rem;
+  margin: 0 0.25rem;
 }
 
 .css-work-quest-ths.active {
@@ -2615,7 +2618,7 @@ background: var(--base-color-white-secondary);
 
 .css-work-quest-fpl {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: rgba(114, 115, 132, 0.3);
   z-index: 11;
   display: flex;
@@ -2674,7 +2677,7 @@ background: var(--base-color-white-secondary);
 
 .css-work-quest-fxp {
   display: flex;
-  margin-top: 2rem;
+  margin: 1rem 0;
   flex-direction: column;
   text-align: start;
   justify-content: space-between;
@@ -3161,9 +3164,20 @@ background: var(--base-color-white-secondary);
     opacity: 0;
   }
 
+  .css-work-quest-note{
+    font-size: var(--text-size-secondary);
+  }
+
+  .css-work-quest-txs {
+    margin: 1rem 2rem;
+  }
   .css-work-quest-xsc {
-    width: 90%;
+    width: 100%;
     bottom: 600px;
+  }
+
+  .css-work-quest-fpb {
+    padding: 0.5rem;
   }
 
   .css-work-quest-fyy {
@@ -3191,7 +3205,11 @@ background: var(--base-color-white-secondary);
     margin-left: 40px;
   }
   .css-work-quest-fpl {
-    height: 175vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    position: fixed;
   }
 
   .css-work-quest-nac.active {
@@ -3199,6 +3217,7 @@ background: var(--base-color-white-secondary);
   }
   .css-work-quest-fps {
     width: 90%;
+    height: 700px;
     text-align: justify;
   }
   .css-work-quest-top {
@@ -3243,6 +3262,9 @@ background: var(--base-color-white-secondary);
     box-sizing: border-box;
   }
 
+  .css-main-flex-wrap.active {
+    overflow-y: unset;
+  }
   .css-work-quest-gtt span {
     white-space: nowrap;
   }

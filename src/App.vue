@@ -223,23 +223,6 @@ li {
   opacity: 0;
 }
 
-@media (-webkit-device-pixel-ratio: 1.1) {
-  :root {
-    zoom: 0.9999;
-  }
-}
-
-@media (-webkit-device-pixel-ratio: 1.14) {
-  :root {
-    zoom: 0.8;
-  }
-}
-
-@media (-webkit-device-pixel-ratio: 1.25) {
-  :root {
-    zoom: 0.8;
-  }
-}
 
 @media (max-width: 1921px) {
   html {
