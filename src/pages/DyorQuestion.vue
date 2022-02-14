@@ -1924,7 +1924,7 @@ export default {
           category: "Metrics",
           name: "Fair Launch",
           question:
-            "If project has the token had its initial offering yet (ISO, IDO, ICO, etc.), was it a fair token launch?",
+            "If the project has had its initial offering, (ISO, IDO, ICO, etc) was it a fair launch?",
           worksteps: [
             "NOTE. This section only applies for projects which have had their initial offering and are actively traded. If it has not, skip this section by clicking next until it reaches the end.",
             "A. Fair launch would describe everyone having equal access to the token and no premine for specific individuals. Instances where certain countries are excluded for legal reasons would not apply.",
