@@ -1132,7 +1132,6 @@ export default {
     height: 1000%;
     background: transparent;
     position: absolute;
-    background: red;
     z-index: -1;
     left: auto;
     bottom: 0;
