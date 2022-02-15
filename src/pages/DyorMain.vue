@@ -779,7 +779,7 @@ export default {
 <style scoped>
 .css-work-main-wrap {
   width: 100%;
-  max-width: 100%;
+  max-width: 100vw;
   height: 100vh;
   display: flex;
   background: var(--complementary-color-blue);
@@ -925,7 +925,6 @@ export default {
 .css-work-main-ses {
   width: 100%;
   height: 100%;
-  z-index: 1;
   padding: 0 10%;
   box-sizing: border-box;
   background: var(--base-color-white-primary);
@@ -1116,6 +1115,7 @@ export default {
     height: 100%;
   }
 
+
   #scat-book {
     width: 50px;
     height: 50px;
@@ -1132,6 +1132,7 @@ export default {
     height: 1000%;
     background: transparent;
     position: absolute;
+    background: red;
     z-index: -1;
     left: auto;
     bottom: 0;
@@ -1174,6 +1175,7 @@ export default {
   .css-work-main-banner {
     flex-direction: column;
     padding: 0;
+    height: unset;
   }
 
   .css-work-main-slw {
@@ -1246,8 +1248,9 @@ export default {
   }
 
   .css-work-main-gte {
-    margin-bottom: 6rem;
+    margin-bottom: 3rem;
     width: 100%;
+    height: 100%;
     flex-direction: column;
     box-sizing: border-box;
   }
@@ -1294,7 +1297,6 @@ export default {
   .css-work-main-ses {
     padding: 0;
     border-radius: 0;
-    margin-top: calc(100% + 2rem);
     background: var(--base-color-white-primary);
   }
 

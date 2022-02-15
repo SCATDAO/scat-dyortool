@@ -13,6 +13,10 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap");
 
+html, body{
+  height: 100%  !important;
+}
+
 :root {
   --text-color-primary: #001737;
   --text-color-secondary: #727384;
@@ -148,13 +152,6 @@ li {
 .fade-enter-active,
 .fade-leave-to {
   transition: opacity 0.3s, transform 0.5s;
-}
-
-.css-main-flex-wrap {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
 }
 
 .css-logo {

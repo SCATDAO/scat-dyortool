@@ -806,7 +806,30 @@
         <button class="css-dyor-create-asa" @click="nextResearch()">
           Let's go !
         </button>
-
+        <template v-if="isDisclaimerKnown === false">
+          <div class="css-dyor-create-cgj">
+            <span class="css-dyor-create-cjs">Disclaimer</span>
+            <span>
+              DYOR Tool is meant to help users learn about investing. Using the
+              tool does not guarantee that your investments will be profitable
+              or that the information will be accurate or comprehensive. It is
+              meant for informational purposes only. The information contained
+              in the DYOR Tool is not intended as, and shall not be understood
+              or construed as, financial advice. The makers of the tool are not
+              financial advisors or attorneys, and the information contained on
+              the website is not a substitute for financial advice from a
+              professional who is aware of the facts and circumstances of your
+              individual situation. The creators of the tool accept no liability
+              whatsoever for any loss or damage you may incur. We expressly
+              recommend that you seek advice from a professional before making
+              any investments.
+            </span>
+            <div class="css-dyor-create-csj">
+              <button @click="isDisclaimerKnown = null">Decline</button>
+              <button @click="newReportNext()">Accept</button>
+            </div>
+          </div>
+        </template>
         <div class="css-dyor-create-csh"></div>
       </div>
     </div>
@@ -841,6 +864,7 @@ export default {
         pr: false,
         an: false,
       },
+      isDisclaimerKnown: null,
       show: false,
       params: {
         token: "123456798",
@@ -878,7 +902,7 @@ export default {
     cropSuccess(imgDataUrl, field) {
       this.pl = imgDataUrl;
       this.isUploaded = true;
-      console.log("IMAGE LOADED",field);
+      console.log("IMAGE LOADED", field);
     },
 
     cropUploadSuccess(jsonData, field) {
@@ -944,18 +968,24 @@ export default {
     },
     nextResearch() {
       if (this.checkData()) {
-        this.$store.commit("modifyAuditData", {
-          pn: this.pn.toLowerCase(),
-          ps: this.ps.toLowerCase(),
-          pd: this.pd.toLowerCase(),
-          pc: this.pc.toLowerCase(),
-          pw: this.pw.toLowerCase(),
-          pr: this.pr.toLowerCase(),
-          an: this.an.toLowerCase(),
-          pl: this.pl,
-        });
-        this.$router.push("/research");
+        this.isDisclaimerKnown = false;
       }
+    },
+    acceptDisclaimer() {
+      this.isDisclaimerKnown = true;
+    },
+    newReportNext() {
+      this.$store.commit("modifyAuditData", {
+        pn: this.pn.toLowerCase(),
+        ps: this.ps.toLowerCase(),
+        pd: this.pd.toLowerCase(),
+        pc: this.pc.toLowerCase(),
+        pw: this.pw.toLowerCase(),
+        pr: this.pr.toLowerCase(),
+        an: this.an.toLowerCase(),
+        pl: this.pl,
+      });
+      this.$router.push("/research");
     },
     checkData() {
       (this.errors = {
@@ -1035,6 +1065,47 @@ export default {
 <style scoped>
 #logo-blue {
   fill: var(--complementary-color-blue);
+}
+
+.css-dyor-create-cgj {
+  width: calc(100% - 6rem);
+  margin-top: 10%;
+  box-sizing: border-box;
+  padding: 2rem;
+  text-align: justify;
+  background: #fff;
+  border: 1px solid var(--complementary-color-blue);
+  border-radius: 8px;
+  position: absolute;
+  z-index: 1;
+  color: var(--text-color-secondary);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 20px var(--border-primary);
+}
+
+.css-dyor-create-csj {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-top: 1rem;
+}
+
+.css-dyor-create-csj button {
+  padding: 10px 14px;
+  margin-left: 1rem;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: var(--complementary-color-blue);
+  color: #fff;
+}
+
+.css-dyor-create-cjs {
+  font-weight: 700;
+  color: var(--text-color-primary);
+  margin-bottom: 1rem;
 }
 
 .css-dyor-create-nfd {
@@ -1147,7 +1218,7 @@ export default {
 
 .css-dyor-create-asa:hover {
   transition: ease-in 0.3s;
-  opacity: 0.9
+  opacity: 0.9;
 }
 
 .css-dyor-create-ndf {
@@ -1162,6 +1233,7 @@ export default {
   box-sizing: border-box;
   padding: 2rem 3rem;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .css-dyor-create-sdt {
@@ -1478,12 +1550,4 @@ th.active .arrow {
 #tableTradeSearch::placeholder {
   margin-left: 10px;
 }
-
-
-
-
-
-
-
-
 </style>
