@@ -2213,7 +2213,6 @@ export default {
           ed: e.input,
         })
       );
-
       const bestialEncoder = new BestialEncoder();
       const resultEncoder = bestialEncoder.encodeByValue(
         JSON.stringify(this.beforeEncodeProcess)
@@ -3176,7 +3175,7 @@ export default {
     opacity: 0;
   }
 
-  .css-work-quest-wrap{
+  .css-work-quest-wrap {
     height: 100% !important;
   }
 
@@ -3279,12 +3278,12 @@ export default {
     scroll-behavior: smooth;
     box-sizing: border-box;
   }
-.css-main-flex-wrap {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-}
+  .css-main-flex-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+  }
 
   .css-main-flex-wrap.active {
     overflow-y: hidden;
