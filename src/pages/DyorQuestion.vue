@@ -2393,6 +2393,7 @@ export default {
   height: 300px;
   font-size: var(--text-size-primary);
   overflow: auto;
+  scroll-behavior: smooth;
   outline: none;
   white-space: pre-line;
   -webkit-box-shadow: none;
@@ -2456,6 +2457,8 @@ export default {
   min-height: 300px;
   position: relative;
   overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
   background: var(--base-color-white-primary);
   display: flex;
   flex-direction: column;
@@ -2479,6 +2482,8 @@ export default {
   flex-direction: column;
   z-index: 1;
   overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
   padding: 1 2rem;
   box-sizing: border-box;
 }
@@ -2608,6 +2613,7 @@ export default {
   padding-bottom: 10%;
   overflow-y: auto;
   overflow-x: hidden;
+  scroll-behavior: smooth;
   box-sizing: border-box;
   position: relative;
 }
@@ -2665,6 +2671,8 @@ export default {
   padding: 0 2rem;
   padding-bottom: 1rem;
   overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
   word-break: break-word;
   white-space: pre-line;
   display: flex;
@@ -2699,6 +2707,8 @@ export default {
   box-sizing: border-box;
   border-radius: 8px;
   overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
   background: var(--base-color-white-primary);
 }
 
@@ -2800,6 +2810,7 @@ export default {
   );
   overflow-y: auto;
   overflow-x: hidden;
+  scroll-behavior: auto;
 }
 
 .css-work-quest-got::before {
@@ -2967,6 +2978,7 @@ export default {
   display: block;
   line-height: 1.75;
   overflow-y: auto;
+  scroll-behavior: smooth;
   cursor: url;
 }
 
@@ -3164,7 +3176,11 @@ export default {
     opacity: 0;
   }
 
-  .css-work-quest-note{
+  .css-work-quest-wrap{
+    height: 100% !important;
+  }
+
+  .css-work-quest-note {
     font-size: var(--text-size-secondary);
   }
 
@@ -3217,7 +3233,7 @@ export default {
   }
   .css-work-quest-fps {
     width: 90%;
-    height: 700px;
+    height: 90%;
     text-align: justify;
   }
   .css-work-quest-top {
@@ -3259,11 +3275,19 @@ export default {
 
   .css-main-flex-wrap {
     overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
     box-sizing: border-box;
   }
+.css-main-flex-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
 
   .css-main-flex-wrap.active {
-    overflow-y: unset;
+    overflow-y: hidden;
   }
   .css-work-quest-gtt span {
     white-space: nowrap;
