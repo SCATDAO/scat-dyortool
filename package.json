@@ -8,8 +8,6 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@dicebear/avatars": "^4.10.2",
-    "@dicebear/avatars-identicon-sprites": "^4.10.2",
     "axios": "^0.25.0",
     "bestial-encoder": "^1.0.9",
     "core-js": "^3.6.5",
