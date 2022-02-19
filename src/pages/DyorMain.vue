@@ -945,7 +945,7 @@ export default {
   color: #fff;
   font-weight: 600;
   cursor: pointer;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.4px;
 }
 
 .css-work-main-xkb:hover {
