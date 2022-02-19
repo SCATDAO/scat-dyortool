@@ -2713,7 +2713,7 @@ export default {
 }
 
 .css-work-quest-fyy {
-  height: 700px;
+  height: 70%;
 }
 
 @keyframes faded {
