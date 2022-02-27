@@ -782,7 +782,7 @@ export default {
   max-width: 100vw;
   height: 100vh;
   display: flex;
-  background: var(--complementary-color-blue);
+  background: linear-gradient(22.58deg, #0036C2 0%, #0069f5 100%);
   box-sizing: border-box;
   flex-direction: column;
   overflow-y: auto;
