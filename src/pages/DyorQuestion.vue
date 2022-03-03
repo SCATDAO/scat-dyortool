@@ -1788,6 +1788,7 @@ export default {
             { id: 1, name: "<1000", value: 0.0 },
             { id: 2, name: "1000 to 10000", value: 0.5 },
             { id: 3, name: ">10K", value: 1.0 },
+            { id: 4, name: "N/A", value: 0.0 },
           ],
           answer: null,
           textarea: "",
@@ -1840,6 +1841,7 @@ export default {
             { id: 1, name: "<1000", value: 0.0 },
             { id: 2, name: "1000 to 10000", value: 0.5 },
             { id: 3, name: ">10K", value: 1.0 },
+            { id: 4, name: "N/A", value: 0.0 },
           ],
           answer: null,
           textarea: "",
@@ -1890,6 +1892,7 @@ export default {
             { id: 1, name: "<1000", value: 0.0 },
             { id: 2, name: "1000 to 10K", value: 0.5 },
             { id: 3, name: "10K+", value: 1.5 },
+            { id: 4, name: "N/A", value: 0.0 },
           ],
           answer: null,
           textarea: "",
@@ -3182,7 +3185,7 @@ export default {
     opacity: 0;
   }
 
-  .css-work-quest-wrap{
+  .css-work-quest-wrap {
     height: 100% !important;
   }
 
@@ -3285,12 +3288,12 @@ export default {
     scroll-behavior: smooth;
     box-sizing: border-box;
   }
-.css-main-flex-wrap {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-}
+  .css-main-flex-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+  }
 
   .css-main-flex-wrap.active {
     overflow-y: hidden;
