@@ -2233,7 +2233,7 @@ export default {
         };
         await axios({
           method: "post",
-          url: "https://api.dyortool.io/v1/sendReport",
+          url: "https://api.dyortool.io/v1/report/send",
           data: params,
           headers: { "content-type": "application/json" },
         })
