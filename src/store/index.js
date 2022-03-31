@@ -11,6 +11,7 @@ const store = createStore({
         pw: "Category",
         pc: "www.example.com",
         pl: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png",
+        pp: ""
       },
       answeredQuestion: null,
     }
@@ -21,6 +22,9 @@ const store = createStore({
     },
     newQuestData(state, payload) {
       state.answeredQuestion = payload;
+    },
+    modifyPersonal(state, payload) {
+      state.newAudit.pp = payload;
     }
   },
   getters: {

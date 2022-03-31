@@ -694,38 +694,58 @@
                 </div>
                 <template v-if="remainingQuestion().length === 0">
                   <div class="css-work-quest-fcc">
-                    <svg
-                      id="SVGRoot"
-                      width="100px"
-                      height="100px"
-                      version="1.1"
-                      viewBox="0 0 100 100"
-                    >
-                      <g
-                        id="Stockholm-icons-/-General-/-Shield-check"
-                        transform="matrix(4.1297 0 0 4.1297 .51783 .61266)"
-                        fill="none"
-                        fill-rule="evenodd"
-                      >
-                        <rect id="bound" width="24" height="24" />
-                        <path
-                          d="m4 4 7.6314-1.4309c0.2436-0.045674 0.49356-0.045674 0.73715 0l7.6314 1.4309v9.283c0 2.9344-1.5117 5.6618-4 7.217l-3.47 2.1688c-0.32427 0.20267-0.73573 0.20267-1.06 0l-3.47-2.1688c-2.4883-1.5552-4-4.2826-4-7.217z"
-                          fill="#0069f5"
-                          opacity=".1"
-                        />
-                        <path
-                          id="check-path"
-                          d="m11.175 14.75c-0.23958 0-0.47917-0.09583-0.67083-0.2875l-1.9167-1.9167c-0.38333-0.38333-0.38333-0.95833 0-1.3417 0.38333-0.38333 1.0062-0.38333 1.3417 0l1.2458 1.2458 3.1625-3.1625c0.38333-0.38333 0.95833-0.38333 1.3417 0s0.38333 0.95833 0 1.3417l-3.8333 3.8333c-0.19167 0.19167-0.43125 0.2875-0.67083 0.2875z"
-                          fill="#0069f5"
-                        />
-                      </g>
-                    </svg>
                     <div class="css-work-quest-fsc">
-                      <span>All questions completed!</span>
+                      <svg
+                        class="css-work-project-dar"
+                        isRetrayed=""
+                        viewBox="0 0 1024 1024"
+                        data-v-365b8594=""
+                        data-v-51f114e2=""
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
+                          data-v-51f114e2=""
+                        ></path>
+                      </svg>
+                      <span class="css-wq-koc">
+                        What was your overall impression of the project?
+                      </span>
                     </div>
+                    <div class="css-wq-fko">
+                      <button
+                        @click="modifyPersonal('Positive')"
+                        class="positiveb"
+                        :class="{ active: conclusion.re === 'Positive' }"
+                      >
+                        Positive
+                      </button>
+                      <button
+                        @click="modifyPersonal('Negative')"
+                        class="negativeb"
+                        :class="{ active: conclusion.re === 'Negative' }"
+                      >
+                        Negative
+                      </button>
+                      <button
+                        @click="modifyPersonal('Neutral')"
+                        class="neutralb"
+                        :class="{ active: conclusion.re === 'Neutral' }"
+                      >
+                        Neutral
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="css-wq-cko">
+                    <textarea
+                      v-model="conclusion.pe"
+                      placeholder="Final Thoughts..."
+                    ></textarea>
                   </div>
                 </template>
               </div>
+
               <div class="css-work-quest-xsc">
                 <template v-if="remainingQuestion().length !== 0">
                   <div class="css-work-quest-xcq">
@@ -2031,6 +2051,10 @@ export default {
           video: [],
         },
       ],
+      conclusion: {
+        re: "",
+        pe: "",
+      },
       tokenPhases: [0],
       inputDelete: [],
       workspace: false,
@@ -2074,6 +2098,9 @@ export default {
     },
   },
   methods: {
+    modifyPersonal(element) {
+      this.conclusion.re = element;
+    },
     summaryLayout() {
       this.showSummary = !this.showSummary;
     },
@@ -2159,6 +2186,9 @@ export default {
       }
     },
     createNewReport() {
+      const pp = { re: this.conclusion.re, pe: this.conclusion.pe };
+      this.$store.commit("modifyPersonal", pp);
+
       if (this.answeredQuestion[23].answer === 404) {
         this.answeredQuestion[24].answer = 404;
         this.answeredQuestion[25].answer = 404;
@@ -2357,6 +2387,51 @@ export default {
   margin-left: 50px;
 }
 
+.negativeb {
+  border: 1px solid rgba(248, 73, 96, 0.3);
+  color: rgba(248, 73, 96, 1);
+}
+
+.positiveb {
+  border: 1px solid rgba(0, 211, 149, 0.3);
+  color: rgba(0, 211, 149, 1);
+}
+
+.neutralb {
+  color: var(--complementary-color-blue);
+  border: 1px solid var(--color-soft-blue);
+}
+
+.negativeb:hover {
+  background: rgba(248, 73, 96, 1);
+  color: #fff;
+}
+
+.positiveb:hover {
+  color: #fff;
+  background: rgba(0, 211, 149, 1);
+}
+
+.neutralb:hover {
+  color: #fff;
+  background: var(--complementary-color-blue);
+}
+
+.negativeb.active {
+  background: rgba(248, 73, 96, 1);
+  color: #fff;
+}
+
+.positiveb.active {
+  color: #fff;
+  background: rgba(0, 211, 149, 1);
+}
+
+.neutralb.active {
+  color: #fff;
+  background: var(--complementary-color-blue);
+}
+
 .dot {
   background: var(--complementary-color-blue);
   height: 6px;
@@ -2389,6 +2464,14 @@ export default {
   padding: 10px;
   border-radius: 50%;
   background: var(--base-color-white-primary);
+}
+
+.css-wq-koc {
+  display: flex;
+}
+
+.css-wq-koc svg {
+  margin-left: 0.25rem;
 }
 
 .css-identicon {
@@ -2442,22 +2525,31 @@ export default {
   height: 80px;
 }
 .css-work-quest-fcc {
-  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  height: 300px;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
+}
+.css-wq-fko button {
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-left: 1rem;
+  cursor: pointer;
+  background: transparent;
+  transition: 0.3s ease-out;
 }
 .css-work-quest-fsc {
   color: var(--text-color-primary);
   font-weight: 600;
-  margin-top: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .css-work-quest-pta {
   border: 1px solid var(--border-primary);
-  border-radius: 4px;
+  border-radius: 5px;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   padding: 10px 1rem;
@@ -2478,7 +2570,7 @@ export default {
   padding: 0 1rem;
   margin: 1rem 20%;
   align-items: center;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 .css-work-quest-thl {
   width: 100%;
@@ -2558,7 +2650,7 @@ export default {
   padding: 0 1rem;
   background: transparent;
   border: 1px solid var(--border-primary);
-  border-radius: 4px;
+  border-radius: 5px;
   height: 40px;
   cursor: pointer;
   opacity: 0.9;
@@ -2574,7 +2666,7 @@ export default {
   width: 100%;
   height: 40px;
   display: flex;
-  border-radius: 4px;
+  border-radius: 5px;
   padding: 0 1rem;
   margin: 0 1rem;
   color: var(--text-color-secondary);
@@ -2592,9 +2684,10 @@ export default {
   align-items: center;
   margin: 1rem 0;
   padding: 1rem;
-  background: var(--base-color-white-secondary);
   border-radius: 8px;
+  margin-top: 1rem;
   color: var(--complementary-color-blue);
+  border: 1px solid var(--complementary-color-blue);
 }
 
 .css-work-quest-fxx {
@@ -2612,7 +2705,7 @@ export default {
   margin: 1rem 20%;
   align-items: center;
   justify-content: space-between;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .css-work-quest-wrap {
@@ -2638,7 +2731,6 @@ export default {
   z-index: 11;
   display: flex;
   position: absolute;
-  cursor: pointer;
   justify-content: center;
   animation-name: faded;
   animation-duration: 1s;
@@ -2702,6 +2794,36 @@ export default {
 
 .css-work-quest-fxp span {
   font-size: var(--text-size-secondary);
+}
+
+.css-wq-cko {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  margin-top: 2rem;
+}
+
+.css-wq-cko textarea {
+  width: 100%;
+  border: none;
+  height: 300px;
+  font-size: var(--text-size-primary);
+  overflow: auto;
+  scroll-behavior: smooth;
+  outline: none;
+  white-space: pre-line;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  caret-color: var(--text-color-primary);
+  color: var(--text-color-secondary);
+  resize: none;
+  font-family: "Nunito", sans-serif;
+  font-weight: lighter;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
 }
 
 .css-work-quest-fps,
@@ -2832,7 +2954,7 @@ export default {
   background: var(--base-color-white-primary);
   height: 3rem;
   padding: 0 1rem;
-  border-radius: 4px;
+  border-radius: 5px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   margin-top: 1rem;
@@ -2847,7 +2969,7 @@ export default {
 .css-work-quest-panel-b {
   background: transparent;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 5px;
   border: none;
   cursor: pointer;
   background: var(--color-soft-blue);
@@ -2863,7 +2985,7 @@ export default {
   width: 40px;
   height: 40px;
   background: var(--color-soft-blue);
-  border-radius: 4px;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
 }
@@ -2888,7 +3010,7 @@ export default {
 .css-work-quest-evaluate {
   background: var(--complementary-color-blue) !important;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   padding: 10px 14px;
   height: 40px;
   color: white;
@@ -2933,7 +3055,7 @@ export default {
   height: 72px;
   min-height: 72px;
   max-height: 72px;
-  border-radius: 4px;
+  border-radius: 5px;
   padding: 0 1rem;
   display: flex;
   align-items: center;
@@ -2982,7 +3104,7 @@ export default {
   padding: 1rem;
   margin-top: 3rem;
   background: var(--color-soft-blue);
-  border-radius: 4px;
+  border-radius: 5px;
   color: var(--complementary-color-blue);
   display: block;
   line-height: 1.75;
@@ -2998,7 +3120,7 @@ export default {
 .css-work-quest-id {
   padding: 5px;
   background: var(--color-soft-blue);
-  border-radius: 4px;
+  border-radius: 5px;
   color: var(--complementary-color-blue);
 }
 
@@ -3019,7 +3141,7 @@ export default {
   display: flex;
   padding: 1rem;
   background: white;
-  border-radius: 4px;
+  border-radius: 5px;
   position: relative;
   cursor: pointer;
   box-shadow: 1px 1px 20px var(--border-primary);
@@ -3083,7 +3205,7 @@ export default {
   width: 40px;
   height: 40px;
   border: 1.1px dashed var(--complementary-color-blue);
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .css-work-project-upl:hover {
@@ -3187,6 +3309,18 @@ export default {
 
   .css-work-quest-wrap {
     height: 100% !important;
+  }
+
+  .css-wq-fko {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .css-wq-fko button {
+    margin-top: 1rem;
+  }
+  .css-work-quest-fcc {
+    flex-direction: column;
   }
 
   .css-work-quest-note {
