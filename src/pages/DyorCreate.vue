@@ -984,6 +984,7 @@ export default {
         pr: this.pr.toLowerCase(),
         an: this.an.toLowerCase(),
         pl: this.pl,
+        pp: ""
       });
       this.$router.push("/research");
     },
