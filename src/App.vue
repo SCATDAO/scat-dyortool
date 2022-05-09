@@ -11,7 +11,8 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap');
 
 html, body{
   height: 100%  !important;
@@ -76,7 +77,7 @@ li {
 }
 
 #app {
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: start;
