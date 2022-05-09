@@ -1520,7 +1520,7 @@ export default {
   background: var(--base-color-white-primary);
   border-radius: 8px;
   position: absolute;
-  margin-top: 7rem;
+  margin-top: 6rem;
   z-index: 1;
   animation-name: deploy;
   animation-duration: 0.5s;
