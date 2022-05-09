@@ -1,5 +1,14 @@
 <template>
   <div class="css-dyor-create-wrap">
+    <template v-if="isLoading">
+      <div class="css-kq2 k0c">
+        <div class="lds-fcs">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </template>
     <header class="css-dyor-create-hdc">
       <router-link to="/" style="display: flex; align-items: baseline">
         <svg
@@ -635,7 +644,7 @@
                 ></div>
                 <div class="css-trade-history-sub">
                   <span>(Optional)</span>
-                  <span>Powered by CoinGecko</span>
+                  <span>Powered by builtoncardano.com</span>
                 </div>
                 <div class="css-trade-history-tablew">
                   <table>
@@ -665,13 +674,18 @@
                       >
                         <td v-for="key in columns" :key="key">
                           <template v-if="key === 'logo'">
-                            <img :src="entry[key]" alt="" />
+                            <img
+                              style="width: 50px; height: 50px"
+                              :src="entry[key]"
+                              alt=""
+                            />
                           </template>
                           <template v-if="key !== 'logo'">
                             {{ entry[key] }}
                           </template>
                         </td>
                       </tr>
+                      <span v-if="!dataRaw">Not Found</span>
                     </tbody>
                   </table>
                 </div>
@@ -790,7 +804,18 @@
               <div class="css-dyor-create-ixw">
                 <div class="css-dyor-create-stx" :class="{ active: pl }">
                   <div class="css-dyor-create-str" id="canvas-wrapper">
-                    <img :src="pl" alt="" />
+                    <template v-if="!isFetching">
+                      <img :src="pl" alt="" />
+                    </template>
+
+                    <template v-if="isFetching">
+                      <div class="lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                    </template>
                   </div>
                 </div>
                 <div class="css-dyor-create-bwp">
@@ -839,7 +864,8 @@
 <script>
 import axios from "axios";
 import myUpload from "vue-image-crop-upload-responsive";
-const columns = ["logo", "name", "token"];
+
+const columns = ["logo", "name", "description"];
 
 const sorted = {};
 columns.forEach(function (key) {
@@ -849,6 +875,9 @@ columns.forEach(function (key) {
 export default {
   async mounted() {
     this.inputScanner();
+  },
+  async created() {
+    this.updateData();
   },
   components: {
     "my-upload": myUpload,
@@ -866,6 +895,7 @@ export default {
       },
       isDisclaimerKnown: null,
       show: false,
+      dataRaw: null,
       params: {
         token: "123456798",
         name: "avatar",
@@ -889,9 +919,36 @@ export default {
       isDeployed: false,
       isSelected: false,
       isUploaded: false,
+      isLoading: true,
+      isFetching: false,
     };
   },
   methods: {
+    async updateData() {
+      this.$nextTick(() => {
+        setTimeout(async () => {
+          let data = [];
+          try {
+            const res = await axios.get(
+              `https://us-central1-builtoncardano.cloudfunctions.net/api/projects`
+            );
+            data = res.data.map((e) => {
+              return {
+                logo: e.logoUrl,
+                name: e.name,
+                description: e.description,
+                category: e.industries[0],
+              };
+            });
+
+            this.dataRaw = data;
+            this.isLoading = false;
+          } catch (error) {
+            console.log(error);
+          }
+        }, 1000);
+      });
+    },
     resetInputs() {
       this.ps = "";
       this.pl = "";
@@ -926,6 +983,7 @@ export default {
       input.addEventListener("keyup", () => {
         clearTimeout(timer);
         timer = setTimeout(() => {
+          this.deployDropdown(true);
           this.searchCoins();
         }, waitTime);
       });
@@ -938,33 +996,38 @@ export default {
       this.sortOrders[key] = this.sortOrders[key] * -1;
     },
     configProject(element) {
-      this.pl = element.image;
+      this.deployDropdown(false);
       this.pn = element.name;
-      this.ps = element.token;
+      this.pd = element.description;
+      this.pc = element.category.toUpperCase();
+      this.updateLogo(element.name);
       this.isSelected = true;
+    },
+
+    async updateLogo(element) {
+      this.isFetching = true;
+      this.$nextTick(() => {
+        setTimeout(async () => {
+          try {
+            const res = await axios.get(
+              `http://192.168.1.3:8083/v1/logo/searchId/${element}`
+            );
+            this.pl = res.data.logo;
+            this.isFetching = false;
+            return res.data.logo;
+          } catch (error) {
+            console.log(error);
+          }
+        }, 1000);
+      });
     },
     async updateCoins() {
       if (this.pn !== "") {
-        try {
-          const res = await axios.get(
-            `https://api.coingecko.com/api/v3/search?query=${this.pn}`
-          );
-          this.tableData = res.data.coins.map((e) => {
-            return {
-              id: e.id,
-              logo: e.thumb,
-              name: e.name,
-              token: e.symbol,
-              image: e.large,
-            };
-          });
-        } catch (error) {
-          console.log(error);
-        }
+        this.tableData = this.dataRaw;
       }
     },
-    deployDropdown() {
-      this.isDeployed = !this.isDeployed;
+    deployDropdown(b) {
+      this.isDeployed = b;
     },
     nextResearch() {
       if (this.checkData()) {
@@ -984,7 +1047,7 @@ export default {
         pr: this.pr.toLowerCase(),
         an: this.an.toLowerCase(),
         pl: this.pl,
-        pp: ""
+        pp: "",
       });
       this.$router.push("/research");
     },
@@ -1020,7 +1083,9 @@ export default {
       this.an.length > 0 ? true : (this.errors.an = true);
       this.an.length < 16 ? true : (this.errors.an = true);
 
-      this.isUploaded ? true : (this.errors.pl = true);
+      if (!this.isSelected) {
+        this.isUploaded ? true : (this.errors.pl = true);
+      }
 
       return !Object.values(this.errors).includes(true) ? true : false;
     },
@@ -1114,6 +1179,42 @@ export default {
   justify-content: space-between;
 }
 
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 3px solid #0069f5;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #0069f5 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .css-upload-button {
   background: var(--color-soft-blue);
   padding: 1rem 4rem;
@@ -1123,7 +1224,60 @@ export default {
   font-weight: 600;
   cursor: pointer;
 }
+.css-kq2 {
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
 
+.k0c {
+  z-index: 2;
+  position: fixed;
+  height: 100vh;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.lds-fcs {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-fcs div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #ffffff;
+  animation: lds-fcs 1.1s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-fcs div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-fcs div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-fcs div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-fcs {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}
 .css-dyor-create-ixw {
   display: flex;
   width: 100%;
@@ -1193,11 +1347,9 @@ export default {
   justify-content: center;
   box-sizing: border-box;
   padding: 1rem 0;
-  background: linear-gradient(
-    22.58deg,
-    rgba(0, 80, 220, 1) 0%,
-    rgba(0, 105, 245, 1) 100%
-  );
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='250' preserveAspectRatio='none' viewBox='0 0 1440 250'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1009%26quot%3b)' fill='none'%3e%3crect width='1440' height='250' x='0' y='0' fill='rgba(0%2c 105%2c 245%2c 1)'%3e%3c/rect%3e%3cpath d='M26 250L276 0L487.5 0L237.5 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M256.6 250L506.6 0L763.1 0L513.1 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M504.20000000000005 250L754.2 0L848.7 0L598.7 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M755.8000000000001 250L1005.8000000000001 0L1308.8000000000002 0L1058.8000000000002 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M1408 250L1158 0L834 0L1084 250z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3cpath d='M1187.4 250L937.4000000000001 0L760.4000000000001 0L1010.4000000000001 250z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3cpath d='M921.8 250L671.8 0L611.8 0L861.8 250z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3cpath d='M693.1999999999999 250L443.19999999999993 0L348.69999999999993 0L598.6999999999999 250z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3cpath d='M1314.694065799721 250L1440 124.69406579972103L1440 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M0 250L125.30593420027897 250L 0 124.69406579972103z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1009'%3e%3crect width='1440' height='250' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='0%25' y1='100%25' x2='100%25' y2='0%25' id='SvgjsLinearGradient1010'%3e%3cstop stop-color='rgba(0%2c 100%2c 240%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(0%2c 100%2c 240%2c 1)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='100%25' y1='100%25' x2='0%25' y2='0%25' id='SvgjsLinearGradient1011'%3e%3cstop stop-color='rgba(0%2c 100%2c 240%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(0%2c 100%2c 240%2c 1)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .css-logo {
@@ -1353,8 +1505,40 @@ export default {
 .css-dyor-create-nii:focus-within::placeholder {
   opacity: 0;
 }
+.css-trade-history-wrp {
+  width: calc(700px - 6rem);
+  border: 1px solid var(--border-primary);
+  height: 600px;
+  background: var(--base-color-white-primary);
+  border-radius: 8px;
+  position: absolute;
+  margin-top: 7rem;
+  z-index: 1;
+  animation-name: deploy;
+  animation-duration: 0.5s;
+  transition: ease 0.1s;
+}
+
+th,
+td {
+  padding: 10px 2rem;
+  width: 100%;
+}
+
 
 @media (max-width: 600px) {
+  .css-trade-history-wrp {
+    width: 100%;
+    position: inherit;
+    margin-top: 1rem;
+  }
+
+  th,
+td {
+  padding: 1rem;
+  width: 100%;
+}
+
   .css-dyor-create-ndw {
     width: 100%;
     display: flex;
@@ -1391,9 +1575,6 @@ export default {
     height: 100px;
     display: flex;
   }
-  .css-dyor-create-stx {
-  }
-
   .css-dyor-create-ndf {
     min-width: 300px;
     box-sizing: content-box;
@@ -1410,20 +1591,6 @@ export default {
 }
 
 /* */
-
-.css-trade-history-wrp {
-  width: calc(700px - 6rem);
-  border: 1px solid var(--border-primary);
-  height: 300px;
-  background: var(--base-color-white-primary);
-  border-radius: 8px;
-  position: absolute;
-  margin-top: 7rem;
-  z-index: 1;
-  animation-name: deploy;
-  animation-duration: 0.5s;
-  transition: ease 0.1s;
-}
 
 @keyframes deploy {
   0% {
@@ -1450,7 +1617,7 @@ export default {
 
 .css-trade-history-tablew {
   overflow-x: scroll;
-  height: 80%;
+  height: 85%;
   background: var(--base-color-white-secondary);
 }
 
@@ -1484,14 +1651,9 @@ th {
 
 td {
   text-align: start;
-  text-transform: uppercase;
 }
 
-th,
-td {
-  padding: 10px 2rem;
-  width: 100%;
-}
+
 
 th.active {
   color: #fff;

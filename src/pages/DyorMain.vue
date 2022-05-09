@@ -782,7 +782,9 @@ export default {
   max-width: 100vw;
   height: 100vh;
   display: flex;
-  background: linear-gradient(22.58deg, #0036C2 0%, #0069f5 100%);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='250' preserveAspectRatio='none' viewBox='0 0 1440 250'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1009%26quot%3b)' fill='none'%3e%3crect width='1440' height='250' x='0' y='0' fill='rgba(0%2c 105%2c 245%2c 1)'%3e%3c/rect%3e%3cpath d='M26 250L276 0L487.5 0L237.5 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M256.6 250L506.6 0L763.1 0L513.1 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M504.20000000000005 250L754.2 0L848.7 0L598.7 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M755.8000000000001 250L1005.8000000000001 0L1308.8000000000002 0L1058.8000000000002 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M1408 250L1158 0L834 0L1084 250z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3cpath d='M1187.4 250L937.4000000000001 0L760.4000000000001 0L1010.4000000000001 250z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3cpath d='M921.8 250L671.8 0L611.8 0L861.8 250z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3cpath d='M693.1999999999999 250L443.19999999999993 0L348.69999999999993 0L598.6999999999999 250z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3cpath d='M1314.694065799721 250L1440 124.69406579972103L1440 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M0 250L125.30593420027897 250L 0 124.69406579972103z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1009'%3e%3crect width='1440' height='250' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='0%25' y1='100%25' x2='100%25' y2='0%25' id='SvgjsLinearGradient1010'%3e%3cstop stop-color='rgba(0%2c 100%2c 240%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(0%2c 100%2c 240%2c 1)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='100%25' y1='100%25' x2='0%25' y2='0%25' id='SvgjsLinearGradient1011'%3e%3cstop stop-color='rgba(0%2c 100%2c 240%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(0%2c 100%2c 240%2c 1)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: cover;
   box-sizing: border-box;
   flex-direction: column;
   overflow-y: auto;
@@ -928,8 +930,6 @@ export default {
   padding: 0 10%;
   box-sizing: border-box;
   background: var(--base-color-white-primary);
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
 }
 
 .css-work-main-xks {
