@@ -1096,7 +1096,9 @@ export default {
         this.isUploaded ? true : (this.errors.pl = true);
       }
 
-      return !Object.values(this.errors).includes(true) ? true : false;
+      if (!this.isFetching) {
+        return !Object.values(this.errors).includes(true) ? true : false;
+      }
     },
   },
   computed: {
