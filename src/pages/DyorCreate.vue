@@ -622,7 +622,7 @@
         <div class="css-dyor-create-faw">
           <div class="css-dyor-create-nsc">
             <div class="css-dyor-create-nst">
-              Name<span class="css-dyor-create-sba">*</span>
+              Search<span class="css-dyor-create-sba">*</span>
               <span class="css-dyor-create-xsa" :class="{ active: errors.pn }"
                 >Must not be empty or greater than 50 length</span
               >
@@ -637,13 +637,13 @@
               v-model="pn"
             />
             <template v-if="isDeployed">
-              <div class="css-trade-history-wrp">
+              <div class="css-trade-history-wrp" id="tableD">
                 <div
                   class="css-trade-history-scl"
                   @click="isDeployed = false"
                 ></div>
                 <div class="css-trade-history-sub">
-                  <span>(Optional)</span>
+                  <span></span>
                   <span>Powered by builtoncardano.com</span>
                 </div>
                 <div class="css-trade-history-tablew">
@@ -685,7 +685,6 @@
                           </template>
                         </td>
                       </tr>
-                      <span v-if="!dataRaw">Not Found</span>
                     </tbody>
                   </table>
                 </div>
@@ -873,7 +872,7 @@ columns.forEach(function (key) {
 });
 
 export default {
-  async mounted() {
+  mounted() {
     this.inputScanner();
   },
   async created() {
@@ -941,7 +940,10 @@ export default {
               };
             });
 
-            this.dataRaw = data;
+            this.tableData = data;
+
+            console.log(this.tableData);
+
             this.isLoading = false;
           } catch (error) {
             console.log(error);
@@ -973,18 +975,30 @@ export default {
       console.log(status);
       console.log("field: " + field);
     },
-    async inputScanner() {
+    inputScanner() {
       let timer;
 
       const waitTime = 500;
 
       const input = document.querySelector("#tableTradeSearch");
 
+      const tableD = document.querySelector("#tableTradeSearch");
+
       input.addEventListener("keyup", () => {
+        clearTimeout(timer);
+
+        timer = setTimeout(() => {
+          this.deployDropdown(true);
+
+          tableD.blur();
+          input.focus();
+        }, waitTime);
+      });
+
+      input.addEventListener("click", () => {
         clearTimeout(timer);
         timer = setTimeout(() => {
           this.deployDropdown(true);
-          this.searchCoins();
         }, waitTime);
       });
     },
@@ -1020,11 +1034,6 @@ export default {
           }
         }, 1000);
       });
-    },
-    async updateCoins() {
-      if (this.pn !== "") {
-        this.tableData = this.dataRaw;
-      }
     },
     deployDropdown(b) {
       this.isDeployed = b;
@@ -1088,9 +1097,6 @@ export default {
       }
 
       return !Object.values(this.errors).includes(true) ? true : false;
-    },
-    async searchCoins() {
-      this.updateCoins();
     },
   },
   computed: {
@@ -1229,11 +1235,12 @@ export default {
   left: 0;
   top: 0;
   bottom: 0;
+
   background: rgba(0, 0, 0, 0.5);
 }
 
 .k0c {
-  z-index: 2;
+  z-index: 30;
   position: fixed;
   height: 100vh;
   justify-content: center;
@@ -1324,6 +1331,7 @@ export default {
   box-sizing: border-box;
   flex-direction: column;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 .css-dyor-create-sla {
@@ -1525,7 +1533,6 @@ td {
   width: 100%;
 }
 
-
 @media (max-width: 600px) {
   .css-trade-history-wrp {
     width: 100%;
@@ -1534,10 +1541,10 @@ td {
   }
 
   th,
-td {
-  padding: 1rem;
-  width: 100%;
-}
+  td {
+    padding: 1rem;
+    width: 100%;
+  }
 
   .css-dyor-create-ndw {
     width: 100%;
@@ -1616,6 +1623,7 @@ td {
 }
 
 .css-trade-history-tablew {
+  scroll-behavior: smooth;
   overflow-x: scroll;
   height: 85%;
   background: var(--base-color-white-secondary);
@@ -1652,8 +1660,6 @@ th {
 td {
   text-align: start;
 }
-
-
 
 th.active {
   color: #fff;
