@@ -1010,7 +1010,7 @@ export default {
         setTimeout(async () => {
           try {
             const res = await axios.get(
-              `http://192.168.1.3:8083/v1/logo/searchId/${element}`
+              `https://api.dyortool.io/v1/logo/searchId/${element}`
             );
             this.pl = res.data.logo;
             this.isFetching = false;
