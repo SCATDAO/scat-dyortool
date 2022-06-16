@@ -1018,8 +1018,9 @@ export default {
       this.isSelected = true;
     },
 
-    async updateLogo(element) {
-      this.isFetching = true;
+    async updateLogo() {
+      this.isFetching = false;
+      /*
       this.$nextTick(() => {
         setTimeout(async () => {
           try {
@@ -1034,6 +1035,7 @@ export default {
           }
         }, 1000);
       });
+      */
     },
     deployDropdown(b) {
       this.isDeployed = b;
