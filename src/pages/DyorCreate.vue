@@ -873,7 +873,7 @@ columns.forEach(function (key) {
 
 export default {
   mounted() {
-    //();
+    this.inputScanner()
   },
   async created() {
     this.updateData();
@@ -1018,9 +1018,9 @@ export default {
       this.isSelected = true;
     },
 
-    async updateLogo() {
-      this.isFetching = false;
-      /*
+    async updateLogo(element) {
+      this.isFetching = true;
+      
       this.$nextTick(() => {
         setTimeout(async () => {
           try {
@@ -1035,7 +1035,7 @@ export default {
           }
         }, 1000);
       });
-      */
+      
     },
     deployDropdown(b) {
       this.isDeployed = b;
