@@ -873,7 +873,7 @@ columns.forEach(function (key) {
 
 export default {
   mounted() {
-    this.inputScanner();
+    //();
   },
   async created() {
     this.updateData();
