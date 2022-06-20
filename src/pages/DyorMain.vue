@@ -300,6 +300,31 @@
         </svg>
       </router-link>
       <div class="css-work-main-xks">
+        <div class="css-c0923"></div>
+
+        <router-link to="/research">
+          <div class="tooltip">
+            <button
+              class="css-work-main-xkb"
+              style="display: flex; align-items: center"
+            >
+ 
+              <svg
+                width="1rem"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
+                data-v-78e17ca8=""
+              >
+                <path
+                  fill="currentColor"
+                  d="M878.08 448H241.92l-96 384h636.16l96-384zM832 384v-64H485.76L357.504 192H128v448l57.92-231.744A32 32 0 0 1 216.96 384H832zm-24.96 512H96a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32h287.872l128.384 128H864a32 32 0 0 1 32 32v96h23.04a32 32 0 0 1 31.04 39.744l-112 448A32 32 0 0 1 807.04 896z"
+                ></path>
+              </svg>
+            </button>
+
+            <span class="tooltiptext">Draft mode</span>
+          </div>
+        </router-link>
         <router-link to="/create">
           <button class="css-work-main-xkb">New Report</button>
         </router-link>
@@ -695,7 +720,8 @@
           <div class="css-work-main-slw" id="slide-left1">
             <h2>
               <span
-                >Designed to give you the knowledge and resources to holistically assess a project.</span
+                >Designed to give you the knowledge and resources to
+                holistically assess a project.</span
               >
             </h2>
           </div>
@@ -804,6 +830,13 @@ export default {
   justify-content: space-between;
 }
 
+.css-c0923 {
+  display: flex;
+  height: 30px;
+  background: red;
+  color: white;
+  fill: white;
+}
 .css-work-main-bmh {
   display: none;
 }
@@ -819,6 +852,30 @@ export default {
 .css-work-main-slw {
   border: none;
   margin-top: 2rem;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  width: 120px;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 .css-work-main-bxs {
@@ -1114,7 +1171,6 @@ export default {
   #gradient-canvas {
     height: 100%;
   }
-
 
   #scat-book {
     width: 50px;

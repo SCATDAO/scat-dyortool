@@ -873,7 +873,7 @@ columns.forEach(function (key) {
 
 export default {
   mounted() {
-    //();
+    this.inputScanner()
   },
   async created() {
     this.updateData();
@@ -1018,9 +1018,9 @@ export default {
       this.isSelected = true;
     },
 
-    async updateLogo() {
-      this.isFetching = false;
-      /*
+    async updateLogo(element) {
+      this.isFetching = true;
+      
       this.$nextTick(() => {
         setTimeout(async () => {
           try {
@@ -1035,7 +1035,7 @@ export default {
           }
         }, 1000);
       });
-      */
+      
     },
     deployDropdown(b) {
       this.isDeployed = b;
@@ -1050,13 +1050,13 @@ export default {
     },
     newReportNext() {
       this.$store.commit("modifyAuditData", {
-        pn: this.pn.toLowerCase(),
-        ps: this.ps.toLowerCase(),
-        pd: this.pd.toLowerCase(),
-        pc: this.pc.toLowerCase(),
-        pw: this.pw.toLowerCase(),
-        pr: this.pr.toLowerCase(),
-        an: this.an.toLowerCase(),
+        pn: this.pn,
+        ps: this.ps,
+        pd: this.pd,
+        pc: this.pc,
+        pw: this.pw,
+        pr: this.pr,
+        an: this.an,
         pl: this.pl,
         pp: "",
       });
