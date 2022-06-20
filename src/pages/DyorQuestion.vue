@@ -305,6 +305,22 @@
       </router-link>
 
       <div class="css-work-tool-haw">
+        <div class="css-8801">
+          <div class="custom-select" style="width: 200px">
+            <select v-model="selected">
+              <option
+                v-for="option in options"
+                :value="option.value"
+                :key="option"
+              >
+                {{ option.text }}
+              </option>
+            </select>
+          </div>
+          <button class="css-8802" @click="saveDraftReport()">
+            Click to save
+          </button>
+        </div>
         <div class="css-identicon-wrp">
           <div class="css-identicon" id="identicon">
             <img :src="avatarSeed" alt="" />
@@ -1340,6 +1356,7 @@
 <script>
 import axios from "axios";
 import { BestialEncoder } from "bestial-encoder";
+import { saveAs } from 'file-saver';
 
 export default {
   data() {
@@ -1351,6 +1368,12 @@ export default {
         pc: "www.example.com",
         pl: "",
       },
+      selected: "A",
+      options: [
+        { text: "One", value: "A" },
+        { text: "Two", value: "B" },
+        { text: "Three", value: "C" },
+      ],
       errReportGen: false,
       avatarSeed: "",
       numberQuestion: [0, 0],
@@ -2098,6 +2121,24 @@ export default {
     },
   },
   methods: {
+    saveDraftReport() {
+      console.log("YEW", new Date().toLocaleDateString());
+      const drafts = [{ name: this.newAudit }];
+
+      console.log(this.answeredQuestion);
+
+      const fileName = `${
+        this.newAudit.pn
+      } - ${new Date().toLocaleDateString()}.json`;
+
+      // Create a blob of the data
+      const fileToSave = new Blob([JSON.stringify(data)], {
+        type: "application/json",
+      });
+
+      saveAs(fileToSave, fileName);
+
+    },
     modifyPersonal(element) {
       this.conclusion.re = element;
     },
@@ -2243,7 +2284,11 @@ export default {
       this.errReportGen = false;
       this.reportLink = "";
 
-      this.beforeEncodeProcess.push(this.$store.getters.sendMeAtribute);
+      let userData = this.$store.getters.sendMeAtribute;
+
+      userData["hh"] = Math.floor(Math.random() * 10000);
+
+      this.beforeEncodeProcess.push(userData);
       this.answeredQuestion.forEach((e) =>
         this.beforeEncodeProcess.push({
           id: e.id,
@@ -2252,6 +2297,8 @@ export default {
           ed: e.input,
         })
       );
+
+      console.log(this.beforeEncodeProcess);
 
       const bestialEncoder = new BestialEncoder();
       const resultEncoder = bestialEncoder.encodeByValue(
@@ -2396,10 +2443,37 @@ export default {
   border: 1px solid rgba(0, 211, 149, 0.3);
   color: rgba(0, 211, 149, 1);
 }
+.custom-select {
+  margin-right: 1rem;
+}
+
+.custom-select select {
+  padding: 0.5rem;
+  border-radius: 8px;
+  outline: none;
+  width: 200px;
+  border: 1px solid var(--border-primary);
+}
 
 .neutralb {
   color: var(--complementary-color-blue);
   border: 1px solid var(--color-soft-blue);
+}
+
+.css-8801 {
+  display: flex;
+  align-items: center;
+  margin-right: 5rem;
+}
+
+.css-8802 {
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5rem;
+  background: #0069f5;
+  color: #ffffff;
+  border: none;
 }
 
 .negativeb:hover {
