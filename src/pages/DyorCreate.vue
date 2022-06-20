@@ -1050,13 +1050,13 @@ export default {
     },
     newReportNext() {
       this.$store.commit("modifyAuditData", {
-        pn: this.pn.toLowerCase(),
-        ps: this.ps.toLowerCase(),
-        pd: this.pd.toLowerCase(),
-        pc: this.pc.toLowerCase(),
-        pw: this.pw.toLowerCase(),
-        pr: this.pr.toLowerCase(),
-        an: this.an.toLowerCase(),
+        pn: this.pn,
+        ps: this.ps,
+        pd: this.pd,
+        pc: this.pc,
+        pw: this.pw,
+        pr: this.pr,
+        an: this.an,
         pl: this.pl,
         pp: "",
       });

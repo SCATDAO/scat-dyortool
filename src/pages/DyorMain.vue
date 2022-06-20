@@ -308,7 +308,7 @@
               class="css-work-main-xkb"
               style="display: flex; align-items: center"
             >
-              <div style="margin-right: 10px">0</div>
+ 
               <svg
                 width="1rem"
                 viewBox="0 0 1024 1024"
@@ -322,7 +322,7 @@
               </svg>
             </button>
 
-            <span class="tooltiptext">Draft reports</span>
+            <span class="tooltiptext">Draft mode</span>
           </div>
         </router-link>
         <router-link to="/create">

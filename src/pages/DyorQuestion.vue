@@ -306,20 +306,26 @@
 
       <div class="css-work-tool-haw">
         <div class="css-8801">
-          <div class="custom-select" style="width: 200px">
-            <select v-model="selected">
-              <option
-                v-for="option in options"
-                :value="option.value"
-                :key="option"
-              >
-                {{ option.text }}
-              </option>
-            </select>
-          </div>
-          <button class="css-8802" @click="saveDraftReport()">
-            Click to save
-          </button>
+          {{ selected }}
+          <label
+            for="filex"
+            class="css-8802"
+            style="
+              background: transparent;
+              border: 1px solid #0069f5;
+              color: #0069f5;
+            "
+          >
+            Load Draft
+          </label>
+          <input
+            style="display: none"
+            type="file"
+            id="filex"
+            @change="handleFileUpload($event)"
+            accept=".json"
+          />
+          <label class="css-8802" @click="saveDraftReport()"> Save </label>
         </div>
         <div class="css-identicon-wrp">
           <div class="css-identicon" id="identicon">
@@ -346,11 +352,11 @@
             <div class="css-work-project-name">
               <b>{{ newAudit.pn }}</b>
             </div>
-            <div class="css-work-project-tag" style="text-transform: lowercase">
-              <span>{{ newAudit.pw }}</span>
-            </div>
             <div class="css-work-project-tag">
               <span>{{ newAudit.pc }}</span>
+            </div>
+            <div class="css-work-project-tag" style="text-transform: lowercase">
+              <span>{{ newAudit.pw }}</span>
             </div>
           </div>
           <div
@@ -499,16 +505,16 @@
         </div>
       </div>
       <div
-        class="css-work-quest-wrap"
+        class="css-wq-wrap"
         :class="{ active: showSummary || visualHelper.purpose }"
       >
         <template v-if="visualHelper.purpose">
           <div
-            class="css-work-quest-fpl"
+            class="css-wq-fpl"
             @click="visualHelper.purpose = !visualHelper.purpose"
           >
-            <div class="css-work-quest-fps">
-              <div class="css-work-quest-fph">
+            <div class="css-wq-fps">
+              <div class="css-wq-fph">
                 <div>
                   <span> Why This Matters?</span>
                   <svg
@@ -573,27 +579,27 @@
                   </svg>
                 </button>
               </div>
-              <div class="css-work-quest-fpx">
+              <div class="css-wq-fpx">
                 <span
-                  class="css-work-quest-fpz"
+                  class="css-wq-fpz"
                   v-for="item in splitPurpose()"
                   :key="item"
                 >
                   {{ item }}
                 </span>
-                <div class="css-work-quest-fxp">
+                <div class="css-wq-fxp">
                   <div>SCATDAO</div>
                   <span>www.scatdao.com</span>
                 </div>
-                <div class="css-work-quest-cso"></div>
+                <div class="css-wq-cso"></div>
               </div>
             </div>
           </div>
         </template>
         <template v-if="showSummary">
-          <div class="css-work-quest-fpl">
-            <div class="css-work-quest-fyy">
-              <div class="css-work-quest-fph">
+          <div class="css-wq-fpl">
+            <div class="css-wq-fyy">
+              <div class="css-wq-fph">
                 <div>
                   <span>Summary</span>
                   <svg
@@ -665,15 +671,13 @@
                 </button>
               </div>
 
-              <div class="css-work-quest-fpx">
-                <div class="css-work-quest-fyx">
-                  <span class="css-work-quest-fzz"
-                    >List of remaining questions</span
-                  >
+              <div class="css-wq-fpx">
+                <div class="css-wq-fyx">
+                  <span class="css-wq-fzz">List of remaining questions</span>
                   <span>{{ remainingQuestion().length }}</span>
                 </div>
                 <div
-                  class="css-work-quest-fpb"
+                  class="css-wq-fpb"
                   v-for="element in remainingQuestion()"
                   :key="element"
                   @click="
@@ -709,8 +713,8 @@
                   </span>
                 </div>
                 <template v-if="remainingQuestion().length === 0">
-                  <div class="css-work-quest-fcc">
-                    <div class="css-work-quest-fsc">
+                  <div class="css-wq-fcc">
+                    <div class="css-wq-fsc">
                       <svg
                         class="css-work-project-dar"
                         isRetrayed=""
@@ -762,31 +766,34 @@
                 </template>
               </div>
 
-              <div class="css-work-quest-xsc">
+              <div class="css-wq-xsc">
                 <template v-if="remainingQuestion().length !== 0">
-                  <div class="css-work-quest-xcq">
+                  <div class="css-wq-xcq">
                     <span>Please complete the remaining questions.</span>
                   </div>
                 </template>
 
                 <template v-if="remainingQuestion().length === 0">
-                  <div class="css-work-quest-bfw">
+                  <div class="css-wq-bfw">
                     <template v-if="errReportGen">
-                      <div class="css-work-quest-xcq">
-                        <span>This report has already been generated</span>
+                      <div class="css-wq-xcq">
+                        <span
+                          >There was a problem with the request, please try
+                          again</span
+                        >
                       </div>
                     </template>
                     <template v-if="!isReportCreated">
                       <button
-                        class="css-work-quest-xkx"
+                        class="css-wq-xkx"
                         id="create-report"
                         @click="createNewReport()"
                       >
-                        Create Report
+                        {{ reportUp }}
                       </button></template
                     >
                     <template v-if="isReportCreated">
-                      <button class="css-work-quest-xkx" id="css-blue-button">
+                      <button class="css-wq-xkx" id="css-blue-button">
                         <a
                           :href="reportLink"
                           target="_blank"
@@ -801,9 +808,9 @@
             </div>
           </div>
         </template>
-        <div class="css-work-quest-top">
+        <div class="css-wq-top">
           <div
-            class="css-work-quest-back"
+            class="css-wq-back"
             v-for="item in currentQuestion"
             :key="item"
             :class="{ active: item.answer != null }"
@@ -824,43 +831,31 @@
             </div>
             <span>Back to Worksteps</span>
           </div>
-          <div
-            class="css-work-quest-id"
-            v-for="item in currentQuestion"
-            :key="item"
-          >
+          <div class="css-wq-id" v-for="item in currentQuestion" :key="item">
             #{{ item.tag }}
           </div>
         </div>
 
-        <div class="css-work-quest-page">
+        <div class="css-wq-page">
           <div>
             <span
-              class="css-work-quest-pag"
+              class="css-wq-pag"
               v-for="item in currentQuestion"
               :key="item"
               >{{ item.id }}</span
-            ><span class="css-work-quest-div">/</span>{{ numberQuestion[1] }}
+            ><span class="css-wq-div">/</span>{{ numberQuestion[1] }}
           </div>
         </div>
 
-        <div
-          class="css-work-quest-legend"
-          v-for="item in currentQuestion"
-          :key="item"
-        >
+        <div class="css-wq-legend" v-for="item in currentQuestion" :key="item">
           {{ item.question }}
         </div>
-        <div
-          class="css-work-quest-answer"
-          v-for="item in currentQuestion"
-          :key="item"
-        >
+        <div class="css-wq-answer" v-for="item in currentQuestion" :key="item">
           <template v-if="item.answer != null">
-            <div class="css-work-quest-suggest">Select an option</div>
+            <div class="css-wq-suggest">Select an option</div>
           </template>
           <template v-if="item.answer === null">
-            <div class="css-work-quest-note">
+            <div class="css-wq-note">
               <b>Worksteps:</b>
               <div v-for="step in item.worksteps" :key="step">
                 {{ step }}
@@ -869,15 +864,15 @@
           </template>
 
           <template v-if="item.answer != null">
-            <div class="css-work-quest-note">
+            <div class="css-wq-note">
               <b>Last step:</b>
               <div>Select an option according to the information collected</div>
             </div>
           </template>
           <template v-if="item.answer === null">
-            <div class="css-work-quest-panel">
+            <div class="css-wq-panel">
               <button
-                class="css-work-quest-panel-b"
+                class="css-wq-panel-b"
                 @click="visualHelper.purpose = !visualHelper.purpose"
               >
                 <svg
@@ -925,8 +920,8 @@
               </button>
 
               <button
-                class="css-work-quest-panel-b"
-                id="css-work-quest-panel-bl"
+                class="css-wq-panel-b"
+                id="css-wq-panel-bl"
                 @click="nextGlassButton()"
               >
                 <svg
@@ -1039,10 +1034,10 @@
                 <span class="dot"></span>
               </button>
               <template v-if="!visualHelper.evaluate">
-                <div class="css-work-quest-got">
+                <div class="css-wq-got">
                   <div class="box box--left"></div>
                   <div
-                    class="css-work-quest-gtt"
+                    class="css-wq-gtt"
                     @click="visualHelper.evaluate = !visualHelper.evaluate"
                   >
                     <svg
@@ -1064,15 +1059,15 @@
             </div>
           </template>
           <template v-if="item.answer === null">
-            <div class="css-work-quest-pta">
+            <div class="css-wq-pta">
               <textarea
-                class="css-work-quest-tex"
+                class="css-wq-tex"
                 v-model="currentQuestion[0].textarea"
               ></textarea>
               <template v-if="item.id === 9">
-                <div class="css-work-quest-thl">
+                <div class="css-wq-thl">
                   <div
-                    class="css-work-quest-ths"
+                    class="css-wq-ths"
                     v-for="element in item.input"
                     :key="element"
                     :class="{
@@ -1081,13 +1076,13 @@
                   >
                     <input
                       v-model="currentQuestion[0].input[element.id].name"
-                      class="css-work-quest-tss"
+                      class="css-wq-tss"
                       type="text"
                       placeholder="E.g. Development team"
                     />
                     <input
                       v-model="currentQuestion[0].input[element.id].per"
-                      class="css-work-quest-tss"
+                      class="css-wq-tss"
                       style="width: 50%"
                       type="text"
                       placeholder="%"
@@ -1095,7 +1090,7 @@
 
                     <template v-if="!tokenPhases[element.id]">
                       <button
-                        class="css-work-quest-bta"
+                        class="css-wq-bta"
                         @click="createNewInput(element.id)"
                       >
                         <svg
@@ -1128,7 +1123,7 @@
 
                     <template v-if="tokenPhases[element.id]">
                       <button
-                        class="css-work-quest-bta"
+                        class="css-wq-bta"
                         @click="removeAddedInput(element.id)"
                       >
                         <svg
@@ -1154,11 +1149,11 @@
               </template>
 
               <template v-if="item.id === 16">
-                <div class="css-work-quest-thl">
-                  <div class="css-work-quest-txs">
+                <div class="css-wq-thl">
+                  <div class="css-wq-txs">
                     <input
                       v-model="currentQuestion[0].input"
-                      class="css-work-quest-tss"
+                      class="css-wq-tss"
                       type="text"
                       placeholder="Nº Followers"
                     />
@@ -1167,11 +1162,11 @@
               </template>
 
               <template v-if="item.id === 18">
-                <div class="css-work-quest-thl">
-                  <div class="css-work-quest-txs">
+                <div class="css-wq-thl">
+                  <div class="css-wq-txs">
                     <input
                       v-model="currentQuestion[0].input"
-                      class="css-work-quest-tss"
+                      class="css-wq-tss"
                       type="text"
                       placeholder="Nº Followers"
                     />
@@ -1180,11 +1175,11 @@
               </template>
 
               <template v-if="item.id === 20">
-                <div class="css-work-quest-thl">
-                  <div class="css-work-quest-txs">
+                <div class="css-wq-thl">
+                  <div class="css-wq-txs">
                     <input
                       v-model="currentQuestion[0].input"
-                      class="css-work-quest-tss"
+                      class="css-wq-tss"
                       type="text"
                       placeholder="Nº Members"
                     />
@@ -1193,11 +1188,11 @@
               </template>
 
               <template v-if="item.id === 22">
-                <div class="css-work-quest-thl">
-                  <div class="css-work-quest-txs">
+                <div class="css-wq-thl">
+                  <div class="css-wq-txs">
                     <input
                       v-model="currentQuestion[0].input"
-                      class="css-work-quest-tss"
+                      class="css-wq-tss"
                       type="text"
                       placeholder="Nº Members"
                     />
@@ -1209,7 +1204,7 @@
 
           <template v-for="option in item.options" :key="option">
             <div
-              class="css-work-quest-answer-item"
+              class="css-wq-answer-item"
               :class="{ active: item.answer === option.id }"
               v-if="item.answer != null"
             >
@@ -1217,16 +1212,16 @@
                 class="control control--checkbox"
                 @click="changeAnswerQuestion(option.id)"
               >
-                <div class="css-work-quest-item-label">{{ option.name }}</div>
+                <div class="css-wq-item-label">{{ option.name }}</div>
               </label>
             </div>
           </template>
         </div>
 
-        <div class="css-work-quest-bpf">
-          <div class="css-work-quest-nav">
+        <div class="css-wq-bpf">
+          <div class="css-wq-nav">
             <div
-              class="css-work-quest-arrow"
+              class="css-wq-arrow"
               id="left-arrow"
               @click="numberQuestion[0] > 0 ? backAnswerQuestion() : false"
             >
@@ -1264,7 +1259,7 @@
             </div>
             <template v-if="currentQuestion[0].id < questionList.length">
               <div
-                class="css-work-quest-arrow"
+                class="css-wq-arrow"
                 id="right-arrow"
                 @click="
                   numberQuestion[0] < numberQuestion[1] - 1
@@ -1306,7 +1301,7 @@
             </template>
             <template v-if="currentQuestion[0].id === questionList.length">
               <div
-                class="css-work-quest-arrow"
+                class="css-wq-arrow"
                 id="right-arrow"
                 @click="summaryLayout()"
               >
@@ -1344,10 +1339,7 @@
             </template>
           </div>
         </div>
-        <div
-          class="css-work-quest-nac"
-          :class="{ active: visualHelper.purpose }"
-        ></div>
+        <div class="css-wq-nac" :class="{ active: visualHelper.purpose }"></div>
       </div>
     </div>
   </div>
@@ -1356,24 +1348,20 @@
 <script>
 import axios from "axios";
 import { BestialEncoder } from "bestial-encoder";
-import { saveAs } from 'file-saver';
+import { saveAs } from "file-saver";
 
 export default {
   data() {
     return {
       newAudit: {
-        an: "DyorUser",
-        pn: "Name",
-        pw: "Category",
-        pc: "www.example.com",
+        an: "Empty",
+        pn: "Empty",
+        pw: "Empty",
+        pc: "Empty",
         pl: "",
       },
-      selected: "A",
-      options: [
-        { text: "One", value: "A" },
-        { text: "Two", value: "B" },
-        { text: "Three", value: "C" },
-      ],
+      selected: "",
+      reportUp: "Create Report",
       errReportGen: false,
       avatarSeed: "",
       numberQuestion: [0, 0],
@@ -2122,22 +2110,44 @@ export default {
   },
   methods: {
     saveDraftReport() {
-      console.log("YEW", new Date().toLocaleDateString());
-      const drafts = [{ name: this.newAudit }];
+      const drafts = [
+        this.answeredQuestion,
+        this.newAudit,
+        this.progressWorkData,
+      ];
 
-      console.log(this.answeredQuestion);
+      const today = new Date();
+      const date =
+        today.getFullYear() +
+        "." +
+        (today.getMonth() + 1) +
+        "." +
+        today.getDate();
+      const time = today.getHours() + "h-" + today.getMinutes() + "m-";
 
-      const fileName = `${
-        this.newAudit.pn
-      } - ${new Date().toLocaleDateString()}.json`;
+      const fileName = `${this.newAudit.pn.toUpperCase()} - ${
+        date + "--" + time
+      }.json`;
 
-      // Create a blob of the data
-      const fileToSave = new Blob([JSON.stringify(data)], {
+      const fileToSave = new Blob([JSON.stringify(drafts, null, 4)], {
         type: "application/json",
       });
 
       saveAs(fileToSave, fileName);
+    },
+    handleFileUpload(event) {
+      const reader = new FileReader();
+      reader.readAsText(event.target.files[0]);
+      reader.onload = (e) => {
+        const [questions, general, progress] = JSON.parse(e.target.result);
 
+        this.questionList = questions;
+        this.answeredQuestion = questions;
+        this.newAudit = general;
+        this.progressWorkData = progress;
+        this.$store.commit("modifyAuditData", general);
+        this.clickCurrentQuestion(1);
+      };
     },
     modifyPersonal(element) {
       this.conclusion.re = element;
@@ -2308,6 +2318,8 @@ export default {
         const params = {
           hex: `${resultEncoder}`,
         };
+        this.reportUp = "Uploading";
+        document.getElementById("create-report").disabled = true;
         await axios({
           method: "post",
           url: "https://api.dyortool.io/v1/report/send",
@@ -2317,10 +2329,12 @@ export default {
           .then((response) => {
             this.isReportCreated = !this.isReportCreated;
             this.reportLink = `https://audits.dyortool.io/report/${response.data.report_id}`;
+            this.reportUp = "Create Report";
           })
           .catch((error) => {
             this.errReportGen = !this.errReportGen;
-            console.log("404", error);
+            console.log(error.response);
+            this.reportUp = "Create Report";
           });
       } catch (error) {
         console.log(error);
@@ -2400,13 +2414,13 @@ export default {
 </script>
 
 <style scoped>
-#css-work-quest-panel-bl {
+#css-wq-panel-bl {
   display: flex;
   align-items: flex-start;
   background: initial;
 }
 
-#css-work-quest-panel-bl:hover {
+#css-wq-panel-bl:hover {
   background: initial;
 }
 
@@ -2443,17 +2457,6 @@ export default {
   border: 1px solid rgba(0, 211, 149, 0.3);
   color: rgba(0, 211, 149, 1);
 }
-.custom-select {
-  margin-right: 1rem;
-}
-
-.custom-select select {
-  padding: 0.5rem;
-  border-radius: 8px;
-  outline: none;
-  width: 200px;
-  border: 1px solid var(--border-primary);
-}
 
 .neutralb {
   color: var(--complementary-color-blue);
@@ -2463,14 +2466,19 @@ export default {
 .css-8801 {
   display: flex;
   align-items: center;
-  margin-right: 5rem;
+  margin-right: 3rem;
+}
+
+.css-8801 label {
+  padding: 0.4rem 1rem;
+  margin-right: 1rem;
 }
 
 .css-8802 {
   border-radius: 8px;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.75rem;
   background: #0069f5;
   color: #ffffff;
   border: none;
@@ -2553,7 +2561,7 @@ export default {
   height: 20px;
 }
 
-.css-work-quest-tex {
+.css-wq-tex {
   width: 100%;
   border: none;
   height: 300px;
@@ -2575,7 +2583,7 @@ export default {
   border: 1px solid transparent;
 }
 
-.css-work-quest-xcq {
+.css-wq-xcq {
   background: var(--base-color-white-secondary);
   border-radius: 8px;
   width: 100%;
@@ -2588,7 +2596,7 @@ export default {
   justify-content: center;
 }
 
-.css-work-quest-bfw {
+.css-wq-bfw {
   display: flex;
   width: 100%;
   align-items: center;
@@ -2598,7 +2606,7 @@ export default {
   width: 80px;
   height: 80px;
 }
-.css-work-quest-fcc {
+.css-wq-fcc {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2614,14 +2622,14 @@ export default {
   background: transparent;
   transition: 0.3s ease-out;
 }
-.css-work-quest-fsc {
+.css-wq-fsc {
   color: var(--text-color-primary);
   font-weight: 600;
   display: flex;
   align-items: center;
 }
 
-.css-work-quest-pta {
+.css-wq-pta {
   border: 1px solid var(--border-primary);
   border-radius: 5px;
   border-top-left-radius: 0px;
@@ -2639,14 +2647,14 @@ export default {
   flex-direction: column;
 }
 
-.css-work-quest-txs {
+.css-wq-txs {
   display: flex;
   padding: 0 1rem;
   margin: 1rem 20%;
   align-items: center;
   border-radius: 5px;
 }
-.css-work-quest-thl {
+.css-wq-thl {
   width: 100%;
   height: 100%;
   background: var(--base-color-white-primary);
@@ -2663,7 +2671,7 @@ export default {
   box-sizing: border-box;
 }
 
-.css-work-quest-xsc {
+.css-wq-xsc {
   width: 100%;
   display: flex;
   align-items: center;
@@ -2675,7 +2683,7 @@ export default {
   border-top: 1px solid var(--border-primary);
 }
 
-.css-work-quest-xkx {
+.css-wq-xkx {
   background: var(--color-soft-blue);
   border: none;
   cursor: pointer;
@@ -2696,14 +2704,14 @@ export default {
   background: var(--complementary-color-blue);
 }
 
-.css-work-quest-xkx a {
+.css-wq-xkx a {
   text-decoration: none;
   color: #fff;
   padding: 10px 14px;
   display: flex;
 }
 
-.css-work-quest-fpb {
+.css-wq-fpb {
   border: 1px solid var(--border-primary);
   color: var(--text-color-primary);
   padding: 1rem;
@@ -2715,12 +2723,12 @@ export default {
   margin-top: 1rem;
 }
 
-.css-work-quest-fpb span {
+.css-wq-fpb span {
   width: 200px;
   text-align: center;
 }
 
-.css-work-quest-bta {
+.css-wq-bta {
   padding: 0 1rem;
   background: transparent;
   border: 1px solid var(--border-primary);
@@ -2731,11 +2739,11 @@ export default {
   margin: 0 0.25rem;
 }
 
-.css-work-quest-ths.active {
+.css-wq-ths.active {
   display: none;
 }
 
-.css-work-quest-tss {
+.css-wq-tss {
   border: 1px solid var(--border-primary);
   width: 100%;
   height: 40px;
@@ -2746,13 +2754,13 @@ export default {
   color: var(--text-color-secondary);
 }
 
-.css-work-quest-tss::placeholder {
+.css-wq-tss::placeholder {
   color: var(--text-color-secondary);
   letter-spacing: 0.2px;
   opacity: 0.5;
 }
 
-.css-work-quest-fyx {
+.css-wq-fyx {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2761,19 +2769,19 @@ export default {
   border-radius: 8px;
   margin-top: 1rem;
   color: var(--complementary-color-blue);
-  border: 1px solid var(--complementary-color-blue);
+  border: 1px solid var(--border-primary);
 }
 
-.css-work-quest-fxx {
+.css-wq-fxx {
   color: var(--text-color-primary);
   font-size: var(--text-size-third);
   font-weight: 600;
 }
 
-.css-work-quest-fzz {
+.css-wq-fzz {
 }
 
-.css-work-quest-ths {
+.css-wq-ths {
   display: flex;
   padding: 0 1rem;
   margin: 1rem 20%;
@@ -2782,7 +2790,7 @@ export default {
   border-radius: 5px;
 }
 
-.css-work-quest-wrap {
+.css-wq-wrap {
   width: 100%;
   height: 100vh;
   caret-color: transparent;
@@ -2794,11 +2802,11 @@ export default {
   position: relative;
 }
 
-.css-work-quest-wrap.active {
+.css-wq-wrap.active {
   overflow: unset;
 }
 
-.css-work-quest-fpl {
+.css-wq-fpl {
   width: 100%;
   height: 100%;
   background: rgba(114, 115, 132, 0.3);
@@ -2812,7 +2820,7 @@ export default {
   box-sizing: border-box;
 }
 
-.css-work-quest-fph {
+.css-wq-fph {
   height: 4rem;
   min-height: 4rem;
   display: flex;
@@ -2823,25 +2831,25 @@ export default {
   justify-content: space-between;
 }
 
-.css-work-quest-fph button {
+.css-wq-fph button {
   cursor: pointer;
 }
 
-.css-work-quest-fph div {
+.css-wq-fph div {
   display: flex;
   align-items: center;
 }
 
-.css-work-quest-fph svg {
+.css-wq-fph svg {
   margin-left: 5px;
 }
 
-.css-work-quest-fph button {
+.css-wq-fph button {
   background: transparent;
   border: none;
 }
 
-.css-work-quest-fpx {
+.css-wq-fpx {
   border-top: 1px solid var(--border-primary);
   padding: 0 2rem;
   padding-bottom: 1rem;
@@ -2854,11 +2862,11 @@ export default {
   flex-direction: column;
 }
 
-.css-work-quest-fpz {
+.css-wq-fpz {
   margin-top: 1rem;
 }
 
-.css-work-quest-fxp {
+.css-wq-fxp {
   display: flex;
   margin: 1rem 0;
   flex-direction: column;
@@ -2866,7 +2874,7 @@ export default {
   justify-content: space-between;
 }
 
-.css-work-quest-fxp span {
+.css-wq-fxp span {
   font-size: var(--text-size-secondary);
 }
 
@@ -2900,8 +2908,8 @@ export default {
   border: 1px solid var(--border-primary);
 }
 
-.css-work-quest-fps,
-.css-work-quest-fyy {
+.css-wq-fps,
+.css-wq-fyy {
   width: 70%;
   position: absolute;
   z-index: 1;
@@ -2917,7 +2925,7 @@ export default {
   background: var(--base-color-white-primary);
 }
 
-.css-work-quest-fyy {
+.css-wq-fyy {
   height: 70%;
 }
 
@@ -2930,11 +2938,11 @@ export default {
   }
 }
 
-.css-work-quest-nac {
+.css-wq-nac {
   height: 100px;
 }
 
-.css-work-quest-top {
+.css-wq-top {
   padding: 0 15%;
   margin-top: 3rem;
   display: flex;
@@ -2942,7 +2950,7 @@ export default {
   align-items: center;
 }
 
-.css-work-quest-back {
+.css-wq-back {
   display: flex;
   width: 200px;
   align-items: center;
@@ -2953,7 +2961,7 @@ export default {
   cursor: default;
 }
 
-.css-work-quest-gtt {
+.css-wq-gtt {
   color: var(--complementary-color-blue);
   font-weight: 500;
   display: flex;
@@ -2961,12 +2969,12 @@ export default {
   font-size: var(--text-size-secondary);
 }
 
-.css-work-quest-gtt svg {
+.css-wq-gtt svg {
   min-width: 16px;
   max-width: 16px;
 }
 
-.css-work-quest-gtt span {
+.css-wq-gtt span {
   margin-left: 0.5rem;
 }
 
@@ -2984,7 +2992,7 @@ export default {
   color: var(--text-color-primary);
 }
 
-.css-work-quest-got {
+.css-wq-got {
   width: 200px;
   padding: 0.5rem;
   box-sizing: border-box;
@@ -3018,13 +3026,13 @@ export default {
   scroll-behavior: auto;
 }
 
-.css-work-quest-got::before {
+.css-wq-got::before {
   content: "";
   position: absolute;
   transition: all 0s ease-in;
 }
 
-.css-work-quest-panel {
+.css-wq-panel {
   background: var(--base-color-white-primary);
   height: 3rem;
   padding: 0 1rem;
@@ -3040,7 +3048,7 @@ export default {
   position: relative;
 }
 
-.css-work-quest-panel-b {
+.css-wq-panel-b {
   background: transparent;
   padding: 0.5rem 1rem;
   border-radius: 5px;
@@ -3049,13 +3057,13 @@ export default {
   background: var(--color-soft-blue);
 }
 
-.css-work-quest-back.active {
+.css-wq-back.active {
   opacity: 1;
   cursor: pointer;
   color: var(--complementary-color-blue);
 }
 
-.css-work-quest-back div {
+.css-wq-back div {
   width: 40px;
   height: 40px;
   background: var(--color-soft-blue);
@@ -3064,24 +3072,24 @@ export default {
   justify-content: center;
 }
 
-.css-work-quest-back span {
+.css-wq-back span {
   font-weight: bold;
   margin-left: 1rem;
 }
 
-.css-work-quest-header {
+.css-wq-header {
   width: auto;
   height: 50vh;
 }
 
-.css-work-quest-page {
+.css-wq-page {
   justify-content: center;
   display: flex;
   margin-top: 1rem;
   font-weight: bold;
 }
 
-.css-work-quest-evaluate {
+.css-wq-evaluate {
   background: var(--complementary-color-blue) !important;
   border: none;
   border-radius: 5px;
@@ -3102,7 +3110,7 @@ export default {
   border: 1px solid var(--border-primary);
 }
 
-.css-work-quest-legend {
+.css-wq-legend {
   font-weight: bold;
   padding: 0 20%;
   line-height: 2rem;
@@ -3112,19 +3120,19 @@ export default {
   margin-top: 2rem;
 }
 
-.css-work-quest-pag {
+.css-wq-pag {
   color: var(--complementary-color-blue);
 }
 
-.css-work-quest-div {
+.css-wq-div {
   margin: 0 0.5rem;
 }
 
-.css-work-quest-answer {
+.css-wq-answer {
   padding: 0 15%;
 }
 
-.css-work-quest-answer-item {
+.css-wq-answer-item {
   background: #ffffff;
   height: 72px;
   min-height: 72px;
@@ -3138,12 +3146,12 @@ export default {
   border: 1px solid transparent;
 }
 
-.css-work-quest-answer-item.active {
+.css-wq-answer-item.active {
   background: var(--color-soft-blue);
   border: 1px solid rgba(48, 99, 238, 0.5);
 }
 
-.css-work-quest-item-label {
+.css-wq-item-label {
   color: var(--text-color-primary);
   font-weight: bold;
 }
@@ -3169,12 +3177,12 @@ export default {
   border-width: 0 2px 2px 0;
 }
 
-.css-work-quest-suggest {
+.css-wq-suggest {
   text-align: center;
   line-height: 4rem;
 }
 
-.css-work-quest-note {
+.css-wq-note {
   padding: 1rem;
   margin-top: 3rem;
   background: var(--color-soft-blue);
@@ -3187,31 +3195,31 @@ export default {
   cursor: url;
 }
 
-.css-work-quest-note span {
+.css-wq-note span {
   cursor: pointer;
 }
 
-.css-work-quest-id {
+.css-wq-id {
   padding: 5px;
   background: var(--color-soft-blue);
   border-radius: 5px;
   color: var(--complementary-color-blue);
 }
 
-.css-work-quest-bpf {
+.css-wq-bpf {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
   margin-bottom: 20%;
 }
 
-.css-work-quest-nav {
+.css-wq-nav {
   display: flex;
   width: 600px;
   justify-content: space-around;
 }
 
-.css-work-quest-arrow {
+.css-wq-arrow {
   display: flex;
   padding: 1rem;
   background: white;
@@ -3377,11 +3385,11 @@ export default {
 }
 
 @media (max-width: 600px) {
-  .css-work-quest-back span {
+  .css-wq-back span {
     opacity: 0;
   }
 
-  .css-work-quest-wrap {
+  .css-wq-wrap {
     height: 100% !important;
   }
 
@@ -3393,37 +3401,37 @@ export default {
   .css-wq-fko button {
     margin-top: 1rem;
   }
-  .css-work-quest-fcc {
+  .css-wq-fcc {
     flex-direction: column;
   }
 
-  .css-work-quest-note {
+  .css-wq-note {
     font-size: var(--text-size-secondary);
   }
 
-  .css-work-quest-txs {
+  .css-wq-txs {
     margin: 1rem 2rem;
   }
-  .css-work-quest-xsc {
+  .css-wq-xsc {
     width: 100%;
     bottom: 600px;
   }
 
-  .css-work-quest-fpb {
+  .css-wq-fpb {
     padding: 0.5rem;
   }
 
-  .css-work-quest-fyy {
+  .css-wq-fyy {
     width: 90%;
   }
-  .css-work-quest-tss {
+  .css-wq-tss {
     margin: 0 0.25rem;
   }
 
-  .css-work-quest-bta {
+  .css-wq-bta {
     margin-top: 0.5rem;
   }
-  .css-work-quest-ths {
+  .css-wq-ths {
     margin: 0;
   }
   #right-arrow span {
@@ -3437,7 +3445,7 @@ export default {
     font-weight: bold;
     margin-left: 40px;
   }
-  .css-work-quest-fpl {
+  .css-wq-fpl {
     top: 0;
     bottom: 0;
     left: 0;
@@ -3445,15 +3453,15 @@ export default {
     position: fixed;
   }
 
-  .css-work-quest-nac.active {
+  .css-wq-nac.active {
     display: none;
   }
-  .css-work-quest-fps {
+  .css-wq-fps {
     width: 90%;
     height: 90%;
     text-align: justify;
   }
-  .css-work-quest-top {
+  .css-wq-top {
     padding: 0 10%;
   }
 
@@ -3482,7 +3490,7 @@ export default {
     border: none;
   }
 
-  .css-work-quest-wrap {
+  .css-wq-wrap {
     margin-left: 0;
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
@@ -3506,20 +3514,20 @@ export default {
   .css-main-flex-wrap.active {
     overflow-y: hidden;
   }
-  .css-work-quest-gtt span {
+  .css-wq-gtt span {
     white-space: nowrap;
   }
 
-  .css-work-quest-tss {
+  .css-wq-tss {
     margin-top: 0.5rem;
     width: 100%;
   }
 
-  .css-work-quest-thl {
+  .css-wq-thl {
     width: 100%;
   }
 
-  .css-work-quest-got {
+  .css-wq-got {
     right: 0;
     top: 50px;
   }
@@ -3543,7 +3551,7 @@ export default {
     color: var(--text-color-primary);
   }
 
-  .css-work-quest-answer {
+  .css-wq-answer {
     padding: 0 10%;
   }
 }
