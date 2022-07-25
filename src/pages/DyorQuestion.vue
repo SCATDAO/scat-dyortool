@@ -756,7 +756,7 @@
                       </button>
                     </div>
                   </div>
-                  <div class="css-wq-fcc">
+                  <div class="css-wq-fcc" style="margin-top: 1rem">
                     After researching all of these different areas, you will
                     usually have a strong feeling or impression of a project
                     that will influence your decision to invest in it or use it.
@@ -1042,11 +1042,11 @@
                 <span class="dot"></span>
               </button>
               <template v-if="!visualHelper.evaluate">
-                <div class="css-wq-got">
+                <div class="css-wq-got" @click="visualHelper.evaluate = !visualHelper.evaluate">
                   <div class="box box--left"></div>
                   <div
                     class="css-wq-gtt"
-                    @click="visualHelper.evaluate = !visualHelper.evaluate"
+                    
                   >
                     <svg
                       class="icon"
@@ -1060,7 +1060,7 @@
                         d="M512 64a448 448 0 110 896.064A448 448 0 01512 64zm67.2 275.072c33.28 0 60.288-23.104 60.288-57.344s-27.072-57.344-60.288-57.344c-33.28 0-60.16 23.104-60.16 57.344s26.88 57.344 60.16 57.344zM590.912 699.2c0-6.848 2.368-24.64 1.024-34.752l-52.608 60.544c-10.88 11.456-24.512 19.392-30.912 17.28a12.992 12.992 0 01-8.256-14.72l87.68-276.992c7.168-35.136-12.544-67.2-54.336-71.296-44.096 0-108.992 44.736-148.48 101.504 0 6.784-1.28 23.68.064 33.792l52.544-60.608c10.88-11.328 23.552-19.328 29.952-17.152a12.8 12.8 0 017.808 16.128L388.48 728.576c-10.048 32.256 8.96 63.872 55.04 71.04 67.84 0 107.904-43.648 147.456-100.416z"
                       ></path>
                     </svg>
-                    <span><b> Click here to evaluate question.</b></span>
+                    <span><b> Click here to evaluate the question.</b></span>
                   </div>
                 </div>
               </template>
@@ -1948,7 +1948,7 @@ export default {
           options: [
             { id: 1, name: "<1000", value: 0.0 },
             { id: 2, name: "1000 to 10K", value: 0.5 },
-            { id: 3, name: "10K+", value: 1 },
+            { id: 3, name: "10K+", value: 1.0 },
             { id: 4, name: "N/A", value: 0.0 },
           ],
           answer: null,
