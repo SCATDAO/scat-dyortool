@@ -756,6 +756,14 @@
                       </button>
                     </div>
                   </div>
+                  <div class="css-wq-fcc">
+                    After researching all of these different areas, you will
+                    usually have a strong feeling or impression of a project
+                    that will influence your decision to invest in it or use it.
+                    We wanted to leave a space where you can share that with
+                    others. There are no points assigned, you do not have to
+                    write anything. Literally anything goes here.
+                  </div>
 
                   <div class="css-wq-cko">
                     <textarea
@@ -1052,7 +1060,7 @@
                         d="M512 64a448 448 0 110 896.064A448 448 0 01512 64zm67.2 275.072c33.28 0 60.288-23.104 60.288-57.344s-27.072-57.344-60.288-57.344c-33.28 0-60.16 23.104-60.16 57.344s26.88 57.344 60.16 57.344zM590.912 699.2c0-6.848 2.368-24.64 1.024-34.752l-52.608 60.544c-10.88 11.456-24.512 19.392-30.912 17.28a12.992 12.992 0 01-8.256-14.72l87.68-276.992c7.168-35.136-12.544-67.2-54.336-71.296-44.096 0-108.992 44.736-148.48 101.504 0 6.784-1.28 23.68.064 33.792l52.544-60.608c10.88-11.328 23.552-19.328 29.952-17.152a12.8 12.8 0 017.808 16.128L388.48 728.576c-10.048 32.256 8.96 63.872 55.04 71.04 67.84 0 107.904-43.648 147.456-100.416z"
                       ></path>
                     </svg>
-                    <span>Click to evaluate each question.</span>
+                    <span><b> Click here to evaluate question.</b></span>
                   </div>
                 </div>
               </template>
@@ -1064,7 +1072,7 @@
                 class="css-wq-tex"
                 v-model="currentQuestion[0].textarea"
               ></textarea>
-              <template v-if="item.id === 9">
+              <template v-if="item.id === 10">
                 <div class="css-wq-thl">
                   <div
                     class="css-wq-ths"
@@ -1148,7 +1156,7 @@
                 </div>
               </template>
 
-              <template v-if="item.id === 16">
+              <template v-if="item.id === 17">
                 <div class="css-wq-thl">
                   <div class="css-wq-txs">
                     <input
@@ -1161,7 +1169,7 @@
                 </div>
               </template>
 
-              <template v-if="item.id === 18">
+              <template v-if="item.id === 19">
                 <div class="css-wq-thl">
                   <div class="css-wq-txs">
                     <input
@@ -1174,7 +1182,7 @@
                 </div>
               </template>
 
-              <template v-if="item.id === 20">
+              <template v-if="item.id === 21">
                 <div class="css-wq-thl">
                   <div class="css-wq-txs">
                     <input
@@ -1187,7 +1195,7 @@
                 </div>
               </template>
 
-              <template v-if="item.id === 22">
+              <template v-if="item.id === 23">
                 <div class="css-wq-thl">
                   <div class="css-wq-txs">
                     <input
@@ -1370,10 +1378,31 @@ export default {
           id: 1,
           tag: "DT1-1",
           category: "Development Team",
+          name: "Conflict of Interest Disclosure",
+          question: "Are you Affiliated with the project or own any tokens?",
+          worksteps: [
+            "A. Quesion is asking if you are affiliated with the project (part of the dev team, on payroll, partnered) or own any of it.",
+            "B. If yes, explain in the box below.",
+          ],
+          options: [
+            { id: 1, name: "Yes", value: 0.0 },
+            { id: 2, name: "No", value: 0.0 },
+          ],
+          answer: null,
+          textarea: "",
+          purpose:
+            "This tool is designed so that anyone can create a report for any project they are interested in. From a newcomer learning about crypto for the first time to experienced investors to members of the dev team that want to produce a report and share it with their community. If someone owns the token they create the report for or are part of the team producing them, they have a direct financial interest in the project's success and therefore, they may be more inclined to give a higher score or make things look better than they truly are. It is what we commonly refer to as a conflict of interest. Because of this, we are starting the DYOR Tool with a disclosure where the report creator can explain any relationship they may have with the team or financial interest in the project so that they are completely transparent with the readers. Now, can we guarantee that people will be honest and disclose everything? Of course not. Someone could write whatever they want and it would be very difficult to verify. But there are also a lot of honest people out there who value their credibility and would happily share their interest in the project. This disclosure is for those people.  Lastly, just because someone owns the project doesn't mean they would necessarily make an inaccurate or misleading report.",
+          files: [],
+          images: [],
+          video: [],
+        },
+        {
+          id: 2,
+          tag: "DT2-2",
+          category: "Development Team",
           name: "Read Whitepaper",
           question: "Did you read the whitepaper?",
           worksteps: ["A. Read the whitepaper (usually found on website)."],
-
           options: [
             { id: 1, name: "Yes", value: 0.0 },
             { id: 2, name: "No", value: 0.0 },
@@ -1387,8 +1416,8 @@ export default {
           video: [],
         },
         {
-          id: 2,
-          tag: "DT2-2",
+          id: 3,
+          tag: "DT3-3",
           category: "Development Team",
           name: "Anonymous Team",
           question: "Is the development team anonymous?",
@@ -1410,8 +1439,8 @@ export default {
           video: [],
         },
         {
-          id: 3,
-          tag: "DT3-3",
+          id: 4,
+          tag: "DT4-4",
           category: "Development Team",
           name: "Identity Verification",
           question:
@@ -1439,8 +1468,8 @@ export default {
           video: [],
         },
         {
-          id: 4,
-          tag: "DT4-4",
+          id: 5,
+          tag: "DT5-5",
           category: "Development Team",
           name: "Prior Experience",
           question:
@@ -1464,8 +1493,8 @@ export default {
           video: [],
         },
         {
-          id: 5,
-          tag: "DT5-5",
+          id: 6,
+          tag: "DT6-6",
           category: "Development Team",
           name: "Audit",
           question:
@@ -1491,8 +1520,8 @@ export default {
           video: [],
         },
         {
-          id: 6,
-          tag: "DT6-6",
+          id: 7,
+          tag: "DT7-7",
           category: "Development Team",
           name: "Plagarism",
           question: "Was there any plagiarism in the whitepaper?",
@@ -1515,12 +1544,12 @@ export default {
           video: [],
         },
         {
-          id: 7,
-          tag: "DT7-7",
+          id: 8,
+          tag: "DT8-8",
           category: "Development Team",
           name: "Spelling Errors",
           question:
-            "Are there grammer, spelling, and punctuation errors in the Whitepaper or webpage?",
+            "Are there grammar, spelling, and punctuation errors in the whitepaper or webpage?",
           worksteps: [
             "A. Copy text from whitepaper and website and paste into Grammerly using this link (https://www.grammarly.com/plagiarism-checker).",
             "B. Grammarly is free, but if you do not wish to download it, perform manual review for grammar, spelling, and punctuation errors.",
@@ -1542,8 +1571,8 @@ export default {
           video: [],
         },
         {
-          id: 8,
-          tag: "DT8-8",
+          id: 9,
+          tag: "DT9-9",
           category: "Development Team",
           name: "Whitepaper Length",
           question: "What is the length of the Whitepaper?",
@@ -1565,8 +1594,8 @@ export default {
           video: [],
         },
         {
-          id: 9,
-          tag: "TK1-9",
+          id: 10,
+          tag: "TK1-10",
           category: "Tokenomics",
           name: "Insider Allocation",
           question:
@@ -1600,8 +1629,8 @@ export default {
           video: [],
         },
         {
-          id: 10,
-          tag: "TK2-10",
+          id: 11,
+          tag: "TK2-11",
           category: "Tokenomics",
           name: "Community Allocation",
           question:
@@ -1624,8 +1653,8 @@ export default {
           video: [],
         },
         {
-          id: 11,
-          tag: "TK3-11",
+          id: 12,
+          tag: "TK3-12",
           category: "Tokenomics",
           name: "Vesting",
           question:
@@ -1648,8 +1677,8 @@ export default {
           video: [],
         },
         {
-          id: 12,
-          tag: "TK4-12",
+          id: 13,
+          tag: "TK4-13",
           category: "Tokenomics",
           name: "Locked Policy",
           question:
@@ -1673,8 +1702,8 @@ export default {
           video: [],
         },
         {
-          id: 13,
-          tag: "TK5-13",
+          id: 14,
+          tag: "TK5-14",
           category: "Tokenomics",
           name: "Use Case",
           question:
@@ -1697,8 +1726,8 @@ export default {
           video: [],
         },
         {
-          id: 14,
-          tag: "TK6-14",
+          id: 15,
+          tag: "TK6-15",
           category: "Tokenomics",
           name: "ISO Fee",
           question:
@@ -1724,8 +1753,8 @@ export default {
           video: [],
         },
         {
-          id: 15,
-          tag: "TK7-15",
+          id: 16,
+          tag: "TK7-16",
           category: "Tokenomics",
           name: "Originality",
           question:
@@ -1749,8 +1778,8 @@ export default {
           video: [],
         },
         {
-          id: 16,
-          tag: "CT1-16",
+          id: 17,
+          tag: "CT1-17",
           category: "Community",
           name: "Twitter",
           question: "How many followers does the project have on Twitter?",
@@ -1764,8 +1793,7 @@ export default {
           options: [
             { id: 1, name: "<1000", value: 0.0 },
             { id: 2, name: "1000 to 5000", value: 0.5 },
-            { id: 3, name: "5001 to 10,000", value: 1.0 },
-            { id: 4, name: ">10K", value: 1.5 },
+            { id: 3, name: ">5K", value: 1.0 },
           ],
           answer: null,
           textarea: "",
@@ -1776,8 +1804,8 @@ export default {
           video: [],
         },
         {
-          id: 17,
-          tag: "CT2-17",
+          id: 18,
+          tag: "CT2-18",
           category: "Community",
           name: "Real Followers",
           question:
@@ -1803,8 +1831,8 @@ export default {
           video: [],
         },
         {
-          id: 18,
-          tag: "CT3-18",
+          id: 19,
+          tag: "CT3-19",
           category: "Community",
           name: "Reddit",
           question: "How many subscribers does the project have on Reddit?",
@@ -1817,9 +1845,8 @@ export default {
 
           options: [
             { id: 1, name: "<1000", value: 0.0 },
-            { id: 2, name: "1000 to 10000", value: 0.5 },
-            { id: 3, name: ">10K", value: 1.0 },
-            { id: 4, name: "N/A", value: 0.0 },
+            { id: 2, name: ">1K", value: 0.5 },
+            { id: 3, name: "N/A", value: 0.0 },
           ],
           answer: null,
           textarea: "",
@@ -1830,8 +1857,8 @@ export default {
           video: [],
         },
         {
-          id: 19,
-          tag: "CT4-19",
+          id: 20,
+          tag: "CT4-20",
           category: "Community",
           name: "Subreddit Activity",
           question:
@@ -1843,9 +1870,9 @@ export default {
           ],
 
           options: [
-            { id: 1, name: "Yes", value: 1.0 },
+            { id: 1, name: "Yes", value: 0.5 },
             { id: 2, name: "No", value: 0.0 },
-            { id: 3, name: "N/A", value: 1.0 },
+            { id: 3, name: "N/A", value: 0.5 },
           ],
           answer: null,
           textarea: "",
@@ -1856,8 +1883,8 @@ export default {
           video: [],
         },
         {
-          id: 20,
-          tag: "CT5-20",
+          id: 21,
+          tag: "CT5-21",
           category: "Community",
           name: "Telegram",
           question: "How many subscribers does the project have on Telegram?",
@@ -1870,8 +1897,7 @@ export default {
 
           options: [
             { id: 1, name: "<1000", value: 0.0 },
-            { id: 2, name: "1000 to 10000", value: 0.5 },
-            { id: 3, name: ">10K", value: 1.0 },
+            { id: 2, name: ">1K", value: 0.5 },
             { id: 4, name: "N/A", value: 0.0 },
           ],
           answer: null,
@@ -1883,8 +1909,8 @@ export default {
           video: [],
         },
         {
-          id: 21,
-          tag: "CT6-21",
+          id: 22,
+          tag: "CT6-22",
           category: "Community",
           name: "Telegram Activity",
           question: "Does their Telegram appear to have an active environment?",
@@ -1908,8 +1934,8 @@ export default {
           video: [],
         },
         {
-          id: 22,
-          tag: "CT7-22",
+          id: 23,
+          tag: "CT7-23",
           category: "Community",
           name: "Discord",
           question: "How many members does the project have on discord?",
@@ -1922,7 +1948,7 @@ export default {
           options: [
             { id: 1, name: "<1000", value: 0.0 },
             { id: 2, name: "1000 to 10K", value: 0.5 },
-            { id: 3, name: "10K+", value: 1.5 },
+            { id: 3, name: "10K+", value: 1 },
             { id: 4, name: "N/A", value: 0.0 },
           ],
           answer: null,
@@ -1934,8 +1960,8 @@ export default {
           video: [],
         },
         {
-          id: 23,
-          tag: "CT8-23",
+          id: 24,
+          tag: "CT8-24",
           category: "Community",
           name: "Discord Activity",
           question: "Does their Discord appear to have an active environment?",
@@ -1959,8 +1985,134 @@ export default {
           video: [],
         },
         {
-          id: 24,
-          tag: "MT1-24",
+          id: 25,
+          tag: "CT9-25",
+          category: "Community",
+          name: "Hodlers",
+          question: "How many holders does the token have?",
+          worksteps: [
+            "A. Go to Cexplorer.io/token.",
+            "B. Type the name of the token you are researching into the search bar.",
+            "C. Note the number of hodlers in the box below.",
+            "D. If the token has not started being distributed yet, select N/A",
+          ],
+          options: [
+            { id: 1, name: "<1K", value: 0.0 },
+            { id: 2, name: ">1K", value: 0.5 },
+            { id: 3, name: "N/A", value: 0.5 },
+          ],
+          answer: null,
+          textarea: "",
+          purpose:
+            "This section tries to assess the size and strength of the community behind a token. So far we have been doing that by analyzing the social media accounts people use to support and interact with the project. But many would argue that what really matters here is the number of people that actually hold the token. A project could have 100K Twitter followers but if only 1K people hold the token then those supporters either aren't that into the project or perhaps most of those followers are not real. As discussed, having a big community means you will have lots of people using your product or service, which is important.  Having a large number of holders is also healthy for a project vs having a small number of people own the entire supply. When a few whales own the majority of the supply means they can control the price or if they ever decide to divest from the project, it could crash the price. Therefore, seeing a large number of holders is usually a positive sign for the project you are researching.",
+          files: [],
+          images: [],
+          video: [],
+        },
+        {
+          id: 26,
+          tag: "CT10-26",
+          category: "Community",
+          name: "Partnerships",
+          question:
+            "Do they have any official partnerships with other established projects?",
+          worksteps: [
+            "A. Review the official website for a partners section.",
+            "B. If they have partners listed, try to confirm on the partners participants website that the partnership is mentioned.",
+            "C. If it is not mentioned on the partners website, review discord or Twitter for announcements or mentions of it.",
+            "D. List the partners and any relevant information in the box below.",
+          ],
+
+          options: [
+            { id: 1, name: "Yes", value: 1.0 },
+            { id: 2, name: "No", value: 0.0 },
+          ],
+          answer: null,
+          textarea: "",
+          purpose:
+            "Collaborations with other projects can be a good way of promoting the project and expanding its community. In addition, if other successful or reputable projects are willing to collaborate with them, it shows a level of trust in that project that increases its credibility. So anytime you see high quality collaborations, that is usually a good sign. There will also be many partnerships out there that bring no real value and are more of a marketing ploy. In those instances, while the partnership may be meaningless, it can still be a good sign, as a reputable project would hopefully have vetted someone before becoming partnered with them. ",
+          files: [],
+          images: [],
+          video: [],
+        },
+        {
+          id: 27,
+          tag: "CT11-27",
+          category: "Community",
+          name: "Ambassadors",
+          question: "Do they have an official ambassador program?",
+          worksteps: [
+            "A. Review the official website for an ambassadors section.",
+            "B. If not listed on the website, it still may exist. Review their social medias for mentions of it.",
+            "C. If unable to find there, leave a question in thier Telegram or Discord.",
+            "D. Describe the program in the box below. In particular, are they compensated.",
+          ],
+          options: [
+            { id: 1, name: "Yes", value: 0.5 },
+            { id: 2, name: "No", value: 0.0 },
+          ],
+          answer: null,
+          textarea: "",
+          purpose:
+            "Like most things in this tool, an ambassador program can be a bit of a double-edged sword. On the one hand, having an official group of knowledgeable and passionate people involved in the project who discuss it, write about it, and share it, will increase its outreach. This can be good in attracting new users & investors or creating brand awareness. So for these reasons, having an ambassador program can be seen as a positive thing. On the other hand, paying people to spam about your project can be argued as a type of shilling and can give the impression that something is good or popular when it really just has an army of loud people constantly talking about it. So like most things, you will have to use a bit of judgment to try and determine which case your project falls into. For this question, we are going to give the benefit of the doubt and assume that the program is being used responsibly for a quality project and therefore, increases the overall score. If you feel this is not the case, you can answer it as a no even if it has one, and write your explanation for why you do not think it should be allocated the points. ",
+          files: [],
+          images: [],
+          video: [],
+        },
+        {
+          id: 28,
+          tag: "CT12-28",
+          category: "Community",
+          name: "Banishment",
+          question: "Does the project unfairly ban members from social media?",
+          worksteps: [
+            "A. Join the projects Discord or Telegram.",
+            "B. Locate the appropriate place for general questions.",
+            "C. Tell the community you are researching this project and ask for thier input on the subject.",
+            "D. Summarize your findings in the box below.",
+          ],
+          options: [
+            { id: 1, name: "Yes", value: 0.0 },
+            { id: 2, name: "No", value: 0.5 },
+          ],
+          answer: null,
+          textarea: "",
+          purpose:
+            "Most honest projects will welcome difficult questions as they want to be open and transparent about everything. If a project is quick to ban members who question them, it can be a bad sign that they might not have answers to those questions and do not want others to begin asking them as well. This can be a fine line though. If someone is constantly making things up or purposely trying to undermine a project by spamming its social media with lies to make it look bad, then banning or blocking them could be appropriate. So you will have to use some judgment here to decide between those two cases.",
+          files: [],
+          images: [],
+          video: [],
+        },
+        {
+          id: 29,
+          tag: "CT13-29",
+          category: "Community",
+          name: "Responsiveness",
+          question:
+            "Does the team respond to questions promptly and satisfactorily?",
+          worksteps: [
+            "A. Join the projects Discord or Telegram.",
+            "B. Locate the appropriate place for general questions.",
+            "C. Ask about something that has come up during your research you are unsure of.",
+            "D. Assess if a satisfactory response from a team member or mod is recieved within 24 hours.",
+            "E. Write your question, the teams response, and your assessment in the box below",
+          ],
+          options: [
+            { id: 1, name: "Yes", value: 0.0 },
+            { id: 2, name: "No", value: 0.5 },
+          ],
+          answer: null,
+          textarea: "",
+          purpose:
+            "As mentioned in the previous question, most legitimate projects welcome questions. They want people to learn about what they are offering and encourage people to ask questions about things they are unsure of or want to learn more about. Because of this, many teams will have dedicated moderators for their social media channels as well as their email address who will respond to people's questions. If you find yourself in a project's Discord or Telegram and cannot find someone associated with the team to respond to questions within a reasonable amount of time (usually within 24 hours is reasonable) then that is usually not a strong sign for that project. But this also doesn't mean that responding to questions quickly automatically means the project is legit. There are plenty of shady projects out there which will respond to your questions quickly. But oftentimes, a bad project will not have a lot of substance in the responses they give you. If you are seeing some warning signs while doing your research that you ask about respectfully, and you are unable to get a satisfactory response, that can be seen as a red flag. ",
+          files: [],
+          images: [],
+          video: [],
+        },
+
+        {
+          id: 30,
+          tag: "MT1-30",
           category: "Metrics",
           name: "Fair Launch",
           question:
@@ -1974,7 +2126,6 @@ export default {
           options: [
             { id: 1, name: "Yes", value: 2.0 },
             { id: 2, name: "No", value: 0.0 },
-            { id: 404, name: "Doesn't apply", value: 0.0 },
           ],
           answer: null,
           textarea: "",
@@ -1985,23 +2136,20 @@ export default {
           video: [],
         },
         {
-          id: 25,
-          tag: "MT2-25",
+          id: 31,
+          tag: "MT2-31",
           category: "Metrics",
           name: "Market cap",
-          question: "What is the current market cap of the project?",
+          question: "What is the current diluted market cap of the project?",
           worksteps: [
-            "A. Utilize CoinGecko.com to obtain market cap. Cross reference against CoinMarketcap.com to nensure they match.",
-            "B. If they do not match, review several sources as use what the majority of sources are reporting.",
-            "C. Smaller market cap projects are typically riskier than larger market cap projects. However, smaller market cap projects also have the potential for greater returns, especially if its an established business model where competitors have significantly larger market caps. Both factors should be considered by potential investors to meet their specific goals.",
-            "D. Note the market cap in the box below.",
+            "A. Utilize CoinMarketcap.com to obtain market cap.",
+            "B. Smaller market cap projects are typically riskier than larger market cap projects. However, smaller market cap projects also have the potential for greater returns, especially if its an established business model where competitors have significantly larger market caps. Both factors should be considered by potential investors to meet their specific goals.",
+            "C. Note the market cap in the box below.",
           ],
-
           options: [
-            { id: 1, name: "<50 Million", value: 0.0 },
-            { id: 2, name: "50 to 100 Million", value: 0.5 },
-            { id: 3, name: "100 Million +", value: 1.0 },
-            { id: 404, name: "Doesn't apply", value: 0.0 },
+            { id: 1, name: "<5 Million", value: 0.0 },
+            { id: 2, name: "5 to 10 Million", value: 0.5 },
+            { id: 3, name: "10 Million +", value: 1.0 },
           ],
           answer: null,
           textarea: "",
@@ -2012,21 +2160,20 @@ export default {
           video: [],
         },
         {
-          id: 26,
-          tag: "MT3-26",
+          id: 32,
+          tag: "MT3-32",
           category: "Metrics",
           name: "Volume",
           question: "What is the daily trading volume of the Token ?",
           worksteps: [
-            "A. Utilize CoinGecko.com to obtain daily trading volume. Check 3 different days and use the average volume from those 3 days.",
+            "A. Utilize CoinMarketcap.com  to obtain daily trading volume. Check 3 different days and use the average volume from those 3 days.",
             "B. Note the market cap in the box below.",
           ],
           options: [
-            { id: 1, name: "<1 Million", value: 0.0 },
-            { id: 2, name: "1 to 5 Million", value: 0.5 },
-            { id: 3, name: "5 Million +", value: 1.0 },
+            { id: 1, name: "<1 Thousand", value: 0.0 },
+            { id: 2, name: "1 Thousand to 50 Thousand", value: 0.5 },
+            { id: 3, name: "50 Thousand +", value: 1.0 },
             { id: 4, name: "N/A", value: 1.0 },
-            { id: 404, name: "Doesn't apply", value: 0.0 },
           ],
           answer: null,
           textarea: "",
@@ -2037,13 +2184,13 @@ export default {
           video: [],
         },
         {
-          id: 27,
-          tag: "MT4-27",
+          id: 33,
+          tag: "MT4-33",
           category: "Metrics",
           name: "CEX",
           question: "Is the token listed on large  centralized exchanges?",
           worksteps: [
-            "A. Utilize CoinGecko.com and type in the token ticker symbol.",
+            "A. Utilize Coinmarketcap.com and type in the token ticker symbol. ",
             "B. Scroll to the bottom of the page where it lists the top exchanges by volume.",
             "C. Review the exchanges listed. Large centralized exchanges would be Coinbase, KuCoin, Kraken, Binance, FTX, Huobi, Gate.io.",
             "D. Note the exchanges in the box.",
@@ -2051,7 +2198,6 @@ export default {
           options: [
             { id: 1, name: "Yes", value: 1.0 },
             { id: 2, name: "No", value: 0.0 },
-            { id: 404, name: "Doesn't apply", value: 0.0 },
           ],
           answer: null,
           textarea: "",
@@ -2205,11 +2351,6 @@ export default {
       this.currentQuestion = [];
     },
     async nextAnswerQuestion() {
-      if (this.currentQuestion[0].answer === 404) {
-        this.answeredQuestion[24].answer = 404;
-        this.answeredQuestion[25].answer = 404;
-        this.answeredQuestion[26].answer = 404;
-      }
       this.checkCorrectQuestion();
       this.answeredQuestion[this.numberQuestion[0]] =
         this.currentQuestion.pop();
@@ -2240,26 +2381,6 @@ export default {
       const pp = { re: this.conclusion.re, pe: this.conclusion.pe };
       this.$store.commit("modifyPersonal", pp);
 
-      if (this.answeredQuestion[23].answer === 404) {
-        this.answeredQuestion[24].answer = 404;
-        this.answeredQuestion[25].answer = 404;
-        this.answeredQuestion[26].answer = 404;
-      }
-      if (this.answeredQuestion[24].answer === 404) {
-        this.answeredQuestion[23].answer = 404;
-        this.answeredQuestion[25].answer = 404;
-        this.answeredQuestion[26].answer = 404;
-      }
-      if (this.answeredQuestion[25].answer === 404) {
-        this.answeredQuestion[23].answer = 404;
-        this.answeredQuestion[24].answer = 404;
-        this.answeredQuestion[26].answer = 404;
-      }
-      if (this.answeredQuestion[26].answer === 404) {
-        this.answeredQuestion[23].answer = 404;
-        this.answeredQuestion[24].answer = 404;
-        this.answeredQuestion[25].answer = 404;
-      }
       this.checkCorrectQuestion();
       this.progressWorkData.push(this.currentQuestion[0].id);
       this.answeredQuestion[this.numberQuestion[0]] = this.currentQuestion[0];
@@ -2322,7 +2443,7 @@ export default {
         document.getElementById("create-report").disabled = true;
         await axios({
           method: "post",
-          url: "https://api.dyortool.io/v1/report/send",
+          url: "https://api.dyortool.io/v1/report/sendx",
           data: params,
           headers: { "content-type": "application/json" },
         })
@@ -2993,11 +3114,11 @@ export default {
 }
 
 .css-wq-got {
-  width: 200px;
   padding: 0.5rem;
   box-sizing: border-box;
   z-index: 10;
-  right: -222px;
+  right: 0;
+  margin-right: 1rem;
   position: absolute;
   background: #deecfd;
   border: 1px solid var(--border-primary);
@@ -3007,11 +3128,10 @@ export default {
   flex-direction: column;
   box-shadow: 0px 0px 30px var(--border-primary);
 }
-
 .css-work-project-wrap {
-  width: 331px;
-  max-width: 331px;
-  min-width: 331px;
+  width: 320px;
+  max-width: 320px;
+  min-width: 320px;
   caret-color: transparent;
   color: #ffffff;
   line-height: 1.9;
@@ -3224,6 +3344,7 @@ export default {
   padding: 1rem;
   background: white;
   border-radius: 5px;
+  align-items: center;
   position: relative;
   cursor: pointer;
   box-shadow: 1px 1px 20px var(--border-primary);
