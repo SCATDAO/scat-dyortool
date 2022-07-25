@@ -1042,12 +1042,12 @@
                 <span class="dot"></span>
               </button>
               <template v-if="!visualHelper.evaluate">
-                <div class="css-wq-got" @click="visualHelper.evaluate = !visualHelper.evaluate">
+                <div
+                  class="css-wq-got"
+                  @click="visualHelper.evaluate = !visualHelper.evaluate"
+                >
                   <div class="box box--left"></div>
-                  <div
-                    class="css-wq-gtt"
-                    
-                  >
+                  <div class="css-wq-gtt">
                     <svg
                       class="icon"
                       width="16"
@@ -2418,6 +2418,8 @@ export default {
       let userData = this.$store.getters.sendMeAtribute;
 
       userData["hh"] = Math.floor(Math.random() * 10000);
+
+      userData["vr"] = 1;
 
       this.beforeEncodeProcess.push(userData);
       this.answeredQuestion.forEach((e) =>
