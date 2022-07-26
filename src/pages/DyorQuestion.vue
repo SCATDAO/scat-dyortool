@@ -2126,6 +2126,7 @@ export default {
           options: [
             { id: 1, name: "Yes", value: 2.0 },
             { id: 2, name: "No", value: 0.0 },
+            { id: 404, name: "Doesn't apply", value: 0.0 },
           ],
           answer: null,
           textarea: "",
@@ -2150,6 +2151,7 @@ export default {
             { id: 1, name: "<5 Million", value: 0.0 },
             { id: 2, name: "5 to 10 Million", value: 0.5 },
             { id: 3, name: "10 Million +", value: 1.0 },
+            { id: 404, name: "Doesn't apply", value: 0.0 },
           ],
           answer: null,
           textarea: "",
@@ -2174,6 +2176,7 @@ export default {
             { id: 2, name: "1 Thousand to 50 Thousand", value: 0.5 },
             { id: 3, name: "50 Thousand +", value: 1.0 },
             { id: 4, name: "N/A", value: 1.0 },
+            { id: 404, name: "Doesn't apply", value: 0.0 },
           ],
           answer: null,
           textarea: "",
@@ -2198,6 +2201,7 @@ export default {
           options: [
             { id: 1, name: "Yes", value: 1.0 },
             { id: 2, name: "No", value: 0.0 },
+            { id: 404, name: "Doesn't apply", value: 0.0 },
           ],
           answer: null,
           textarea: "",
@@ -2351,6 +2355,12 @@ export default {
       this.currentQuestion = [];
     },
     async nextAnswerQuestion() {
+      if (this.currentQuestion[0].answer === 404) {
+        this.answeredQuestion[29].answer = 404;
+        this.answeredQuestion[30].answer = 404;
+        this.answeredQuestion[31].answer = 404;
+        this.answeredQuestion[32].answer = 404;
+      }
       this.checkCorrectQuestion();
       this.answeredQuestion[this.numberQuestion[0]] =
         this.currentQuestion.pop();
@@ -2380,7 +2390,28 @@ export default {
     createNewReport() {
       const pp = { re: this.conclusion.re, pe: this.conclusion.pe };
       this.$store.commit("modifyPersonal", pp);
+      if (this.answeredQuestion[29].answer === 404) {
+        this.answeredQuestion[30].answer = 404;
+        this.answeredQuestion[31].answer = 404;
+        this.answeredQuestion[32].answer = 404;
+      }
+      if (this.answeredQuestion[30].answer === 404) {
+        this.answeredQuestion[29].answer = 404;
+        this.answeredQuestion[31].answer = 404;
+        this.answeredQuestion[32].answer = 404;
+      }
 
+      if (this.answeredQuestion[31].answer === 404) {
+        this.answeredQuestion[30].answer = 404;
+        this.answeredQuestion[29].answer = 404;
+        this.answeredQuestion[32].answer = 404;
+      }
+
+      if (this.answeredQuestion[32].answer === 404) {
+        this.answeredQuestion[29].answer = 404;
+        this.answeredQuestion[30].answer = 404;
+        this.answeredQuestion[31].answer = 404;
+      }
       this.checkCorrectQuestion();
       this.progressWorkData.push(this.currentQuestion[0].id);
       this.answeredQuestion[this.numberQuestion[0]] = this.currentQuestion[0];
@@ -2445,7 +2476,7 @@ export default {
         document.getElementById("create-report").disabled = true;
         await axios({
           method: "post",
-          url: "https://api.dyortool.io/v1/report/sendx",
+          url: "https://api.dyortool.io/v1/report/send",
           data: params,
           headers: { "content-type": "application/json" },
         })
