@@ -2308,6 +2308,9 @@ export default {
     remainingQuestion() {
       let remaining = [];
       for (const element of this.answeredQuestion) {
+        if (element.answer === 405) {
+          this.answeredQuestion[element.id - 1].answer = null;
+        }
         if (element.answer === null) {
           remaining.push({
             id: element.id,
@@ -2327,7 +2330,7 @@ export default {
       return this.currentQuestion[0].purpose.split(/\r?\n/);
     },
     async nextGlassButton() {
-      this.currentQuestion[0].answer = 0;
+      this.currentQuestion[0].answer = 405;
     },
     createNewIdenticon() {
       const hashCode = function (s) {
@@ -2453,16 +2456,14 @@ export default {
       userData["vr"] = 1;
 
       this.beforeEncodeProcess.push(userData);
-      this.answeredQuestion.forEach((e) =>
+      this.answeredQuestion.forEach((e) => {
         this.beforeEncodeProcess.push({
           id: e.id,
           an: e.answer,
           ta: e.textarea,
           ed: e.input,
-        })
-      );
-
-      console.log(this.beforeEncodeProcess);
+        });
+      });
 
       const bestialEncoder = new BestialEncoder();
       const resultEncoder = bestialEncoder.encodeByValue(
