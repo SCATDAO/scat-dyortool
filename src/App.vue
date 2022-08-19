@@ -236,7 +236,7 @@ li {
 
 @media (max-width: 1441px) {
   html {
-    font-size: 80%;
+    font-size: 90%;
   }
 }
 

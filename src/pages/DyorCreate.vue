@@ -1,5 +1,5 @@
 <template>
-  <div class="css-dyor-create-wrap">
+  <div class="css-cp-wrap">
     <template v-if="isLoading">
       <div class="css-kq2 k0c">
         <div class="lds-fcs">
@@ -9,7 +9,7 @@
         </div>
       </div>
     </template>
-    <header class="css-dyor-create-hdc">
+    <header class="css-cp-hdc">
       <router-link to="/" style="display: flex; align-items: baseline">
         <svg
           id="logo-white"
@@ -310,8 +310,8 @@
         </svg>
       </router-link>
     </header>
-    <div class="css-dyor-create-ndw">
-      <div class="css-dyor-create-ndf">
+    <div class="css-cp-ndw">
+      <div class="css-cp-ndf">
         <router-link class="logo-blue" to="/">
           <svg
             id="logo-blue"
@@ -611,19 +611,18 @@
             </g>
           </svg>
         </router-link>
-        <div class="css-dyor-create-nxs">
-          <div class="css-dyor-create-nsk">
-            <div class="css-dyor-create-ndt">Setting your project</div>
-            <div class="css-dyor-create-sdt">
-              Fill out the following form with details of the project
+        <div class="css-cp-nxs">
+          <div class="css-cp-nsk">
+            <div class="css-cp-sdt">
+              Fill out the following form with details of the project you want.
             </div>
           </div>
         </div>
-        <div class="css-dyor-create-faw">
-          <div class="css-dyor-create-nsc">
-            <div class="css-dyor-create-nst">
-              Search<span class="css-dyor-create-sba">*</span>
-              <span class="css-dyor-create-xsa" :class="{ active: errors.pn }"
+        <div class="css-cp-faw">
+          <div class="css-cp-nsc">
+            <div class="css-cp-nst">
+              Name:
+              <span class="css-cp-xsa" :class="{ active: errors.pn }"
                 >Must not be empty or greater than 50 length</span
               >
             </div>
@@ -631,7 +630,7 @@
               id="tableTradeSearch"
               name="query"
               autocomplete="off"
-              class="css-dyor-create-nii"
+              class="css-cp-nii"
               type="text"
               placeholder="Project's name"
               v-model="pn"
@@ -692,99 +691,99 @@
             </template>
           </div>
 
-          <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">
-              Symbol<span class="css-dyor-create-sba">*</span>
-              <span class="css-dyor-create-xsa" :class="{ active: errors.ps }"
+          <div class="css-cp-nsi">
+            <div class="css-cp-nst">
+              Symbol:
+              <span class="css-cp-xsa" :class="{ active: errors.ps }"
                 >Must not be empty or greater than 20 length</span
               >
             </div>
             <input
-              class="css-dyor-create-nii"
+              class="css-cp-nii"
               v-model="ps"
               type="text"
               placeholder="Token Symbol"
             />
           </div>
-          <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">
-              Description<span class="css-dyor-create-sba">*</span>
-              <span class="css-dyor-create-xsa" :class="{ active: errors.pd }"
+          <div class="css-cp-nsi">
+            <div class="css-cp-nst">
+              Description:
+              <span class="css-cp-xsa" :class="{ active: errors.pd }"
                 >Must not be empty or greater than 200 length</span
               >
             </div>
             <input
-              class="css-dyor-create-nii"
+              class="css-cp-nii"
               v-model="pd"
               type="text"
               placeholder="Short description"
             />
           </div>
-          <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">
-              Category<span class="css-dyor-create-sba">*</span>
-              <span class="css-dyor-create-xsa" :class="{ active: errors.pc }"
+          <div class="css-cp-nsi">
+            <div class="css-cp-nst">
+              Category:
+              <span class="css-cp-xsa" :class="{ active: errors.pc }"
                 >Must not be empty or greater than 100 length</span
               >
             </div>
             <input
-              class="css-dyor-create-nii"
+              class="css-cp-nii"
               v-model="pc"
               type="text"
               placeholder="DEX, NFT, stablecoin, etc..."
             />
           </div>
-          <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">
-              Website<span class="css-dyor-create-sba">*</span>
-              <span class="css-dyor-create-xsa" :class="{ active: errors.pw }"
+          <div class="css-cp-nsi">
+            <div class="css-cp-nst">
+              Website:
+              <span class="css-cp-xsa" :class="{ active: errors.pw }"
                 >Must not be empty or greater than 50 length</span
               >
             </div>
             <input
-              class="css-dyor-create-nii"
+              class="css-cp-nii"
               v-model="pw"
               type="text"
               placeholder="www.example.com"
             />
           </div>
 
-          <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">
-              Github/Repository<span class="css-dyor-create-sba">*</span>
-              <span class="css-dyor-create-xsa" :class="{ active: errors.pr }"
+          <div class="css-cp-nsi">
+            <div class="css-cp-nst">
+              Repository:
+              <span class="css-cp-xsa" :class="{ active: errors.pr }"
                 >Must not be empty or greater than 100 length</span
               >
             </div>
             <input
-              class="css-dyor-create-nii"
+              class="css-cp-nii"
               v-model="pr"
               type="text"
               placeholder="Code repository link"
             />
           </div>
-          <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">
-              Your Nickname<span class="css-dyor-create-sba">*</span>
-              <span class="css-dyor-create-xsa" :class="{ active: errors.an }"
+          <div class="css-cp-nsi">
+            <div class="css-cp-nst">
+              Your Nickname:
+              <span class="css-cp-xsa" :class="{ active: errors.an }"
                 >Must not be empty or greater than 16 length</span
               >
             </div>
             <input
-              class="css-dyor-create-nii"
+              class="css-cp-nii"
               v-model="an"
               type="text"
               placeholder="Your name ..."
             />
           </div>
-          <div class="css-dyor-create-nsi">
-            <div class="css-dyor-create-nst">
-              Logo<span class="css-dyor-create-sba">*</span>
-              <span class="css-dyor-create-xsa" :class="{ active: errors.pl }"
+          <div class="css-cp-nsi">
+            <div class="css-cp-nst">
+              Logo
+              <span class="css-cp-xsa" :class="{ active: errors.pl }"
                 >Please upload the logo of the project</span
               >
             </div>
-            <div class="css-dyor-create-sla">
+            <div class="css-cp-sla">
               <my-upload
                 field="img"
                 @crop-success="cropSuccess"
@@ -800,9 +799,9 @@
                 img-format="png"
               ></my-upload>
 
-              <div class="css-dyor-create-ixw">
-                <div class="css-dyor-create-stx" :class="{ active: pl }">
-                  <div class="css-dyor-create-str" id="canvas-wrapper">
+              <div class="css-cp-ixw">
+                <div class="css-cp-stx" :class="{ active: pl }">
+                  <div class="css-cp-str" id="canvas-wrapper">
                     <template v-if="!isFetching">
                       <img :src="pl" alt="" />
                     </template>
@@ -817,7 +816,7 @@
                     </template>
                   </div>
                 </div>
-                <div class="css-dyor-create-bwp">
+                <div class="css-cp-bwp">
                   <button class="css-upload-button" @click="toggleShow">
                     Upload logo
                   </button>
@@ -825,14 +824,12 @@
               </div>
             </div>
           </div>
-          <div class="css-dyor-create-nsl"></div>
+          <div class="css-cp-nsl"></div>
         </div>
-        <button class="css-dyor-create-asa" @click="nextResearch()">
-          Let's go !
-        </button>
+        <button class="css-cp-asa" @click="nextResearch()">Let's go !</button>
         <template v-if="isDisclaimerKnown === false">
-          <div class="css-dyor-create-cgj">
-            <span class="css-dyor-create-cjs">Disclaimer</span>
+          <div class="css-cp-cgj">
+            <span class="css-cp-cjs">Disclaimer</span>
             <span>
               DYOR Tool is meant to help users learn about investing. Using the
               tool does not guarantee that your investments will be profitable
@@ -848,13 +845,13 @@
               recommend that you seek advice from a professional before making
               any investments.
             </span>
-            <div class="css-dyor-create-csj">
+            <div class="css-cp-csj">
               <button @click="isDisclaimerKnown = null">Decline</button>
               <button @click="newReportNext()">Accept</button>
             </div>
           </div>
         </template>
-        <div class="css-dyor-create-csh"></div>
+        <div class="css-cp-csh"></div>
       </div>
     </div>
   </div>
@@ -873,10 +870,10 @@ columns.forEach(function (key) {
 
 export default {
   mounted() {
-    this.inputScanner()
+    this.inputScanner();
   },
   async created() {
-    this.updateData();
+    //this.updateData();
   },
   components: {
     "my-upload": myUpload,
@@ -918,7 +915,7 @@ export default {
       isDeployed: false,
       isSelected: false,
       isUploaded: false,
-      isLoading: true,
+      isLoading: false,
       isFetching: false,
     };
   },
@@ -1020,7 +1017,7 @@ export default {
 
     async updateLogo(element) {
       this.isFetching = true;
-      
+
       this.$nextTick(() => {
         setTimeout(async () => {
           try {
@@ -1035,7 +1032,6 @@ export default {
           }
         }, 1000);
       });
-      
     },
     deployDropdown(b) {
       this.isDeployed = b;
@@ -1143,7 +1139,7 @@ export default {
   fill: var(--complementary-color-blue);
 }
 
-.css-dyor-create-cgj {
+.css-cp-cgj {
   width: calc(100% - 6rem);
   margin-top: 10%;
   box-sizing: border-box;
@@ -1151,7 +1147,7 @@ export default {
   text-align: justify;
   background: #fff;
   border: 1px solid var(--complementary-color-blue);
-  border-radius: 8px;
+  border-radius: 6px;
   position: absolute;
   z-index: 1;
   color: var(--text-color-secondary);
@@ -1160,31 +1156,31 @@ export default {
   box-shadow: 0px 0px 20px var(--border-primary);
 }
 
-.css-dyor-create-csj {
+.css-cp-csj {
   display: flex;
   justify-content: flex-end;
   margin-left: auto;
   margin-top: 1rem;
 }
 
-.css-dyor-create-csj button {
+.css-cp-csj button {
   padding: 10px 14px;
   margin-left: 1rem;
   cursor: pointer;
   letter-spacing: 0.3px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid transparent;
   background: var(--complementary-color-blue);
   color: #fff;
 }
 
-.css-dyor-create-cjs {
+.css-cp-cjs {
   font-weight: 700;
   color: var(--text-color-primary);
   margin-bottom: 1rem;
 }
 
-.css-dyor-create-nfd {
+.css-cp-nfd {
   display: flex;
   justify-content: space-between;
 }
@@ -1230,7 +1226,7 @@ export default {
   padding: 1rem 4rem;
   color: var(--complementary-color-blue);
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
 }
@@ -1289,27 +1285,27 @@ export default {
     height: 32px;
   }
 }
-.css-dyor-create-ixw {
+.css-cp-ixw {
   display: flex;
   width: 100%;
   align-items: center;
   box-sizing: border-box;
 }
 
-.css-dyor-create-hdc {
+.css-cp-hdc {
   display: none;
 }
 
-.css-dyor-create-bwp {
+.css-cp-bwp {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
 }
-.css-dyor-create-ari {
+.css-cp-ari {
   height: 100px;
   width: 100px;
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   background-size: contain;
   border: 1px solid var(--border-primary);
@@ -1326,7 +1322,7 @@ export default {
   z-index: -1;
 }
 
-.css-dyor-create-wrap {
+.css-cp-wrap {
   width: 100%;
   max-width: 100vw;
   height: 100vh;
@@ -1338,13 +1334,13 @@ export default {
   scroll-behavior: smooth;
 }
 
-.css-dyor-create-sla {
+.css-cp-sla {
   display: flex;
   align-items: center;
   margin-top: 1rem;
 }
 
-.css-dyor-create-header {
+.css-cp-header {
   background: var(--base-color-white-primary);
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
   height: 64px;
@@ -1353,27 +1349,29 @@ export default {
   align-items: center;
 }
 
-.css-dyor-create-ndw {
+.css-cp-ndw {
   width: 100%;
   display: flex;
   justify-content: center;
   box-sizing: border-box;
   padding: 1rem 0;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='250' preserveAspectRatio='none' viewBox='0 0 1440 250'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1009%26quot%3b)' fill='none'%3e%3crect width='1440' height='250' x='0' y='0' fill='rgba(0%2c 105%2c 245%2c 1)'%3e%3c/rect%3e%3cpath d='M26 250L276 0L487.5 0L237.5 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M256.6 250L506.6 0L763.1 0L513.1 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M504.20000000000005 250L754.2 0L848.7 0L598.7 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M755.8000000000001 250L1005.8000000000001 0L1308.8000000000002 0L1058.8000000000002 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M1408 250L1158 0L834 0L1084 250z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3cpath d='M1187.4 250L937.4000000000001 0L760.4000000000001 0L1010.4000000000001 250z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3cpath d='M921.8 250L671.8 0L611.8 0L861.8 250z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3cpath d='M693.1999999999999 250L443.19999999999993 0L348.69999999999993 0L598.6999999999999 250z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3cpath d='M1314.694065799721 250L1440 124.69406579972103L1440 250z' fill='url(%23SvgjsLinearGradient1010)'%3e%3c/path%3e%3cpath d='M0 250L125.30593420027897 250L 0 124.69406579972103z' fill='url(%23SvgjsLinearGradient1011)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1009'%3e%3crect width='1440' height='250' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='0%25' y1='100%25' x2='100%25' y2='0%25' id='SvgjsLinearGradient1010'%3e%3cstop stop-color='rgba(0%2c 100%2c 240%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(0%2c 100%2c 240%2c 1)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='100%25' y1='100%25' x2='0%25' y2='0%25' id='SvgjsLinearGradient1011'%3e%3cstop stop-color='rgba(0%2c 100%2c 240%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(0%2c 100%2c 240%2c 1)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: linear-gradient(
+    45deg,
+    rgba(0, 105, 245, 1) 0%,
+    rgba(64, 78, 237, 1) 100%
+  );
 }
 
 .css-logo {
   cursor: pointer;
 }
-.css-dyor-create-asa {
+.css-cp-asa {
   height: 3rem;
   min-height: 3rem;
   max-height: 3rem;
   background: var(--complementary-color-blue);
   border: var(--complementary-color-blue);
-  border-radius: 8px;
+  border-radius: 6px;
   color: #ffffff;
   font-weight: 600;
   font-size: var(--text-size-primary);
@@ -1381,15 +1379,15 @@ export default {
   margin-top: 2rem;
 }
 
-.css-dyor-create-asa:hover {
+.css-cp-asa:hover {
   transition: ease-in 0.3s;
   opacity: 0.9;
 }
 
-.css-dyor-create-ndf {
-  width: 700px;
-  min-width: 700px;
-  max-width: 700px;
+.css-cp-ndf {
+  width: auto;
+  min-width: 625px;
+  max-width: 625px;
   height: 100%;
   display: flex;
   border-radius: 8px;
@@ -1401,19 +1399,19 @@ export default {
   position: relative;
 }
 
-.css-dyor-create-sdt {
-  margin-top: 0.5rem;
+.css-cp-sdt {
+  font-size: var(--text-size-third);
 }
 
-.css-dyor-create-nst {
+.css-cp-nst {
   display: flex;
   align-items: flex-end;
 }
 
-.css-dyor-create-str {
+.css-cp-str {
   width: 100px;
   height: 100px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--border-primary);
   justify-content: center;
   display: flex;
@@ -1421,7 +1419,7 @@ export default {
   align-items: center;
 }
 
-.css-dyor-create-str img {
+.css-cp-str img {
   width: 80px;
   height: 80px;
 }
@@ -1429,92 +1427,81 @@ export default {
   color: var(--complementary-color-blue);
 }
 
-.css-dyor-create-sba {
-  font-size: 12px;
-  margin-left: 6px;
-  color: red;
-}
-
-.css-dyor-create-xsa {
+.css-cp-xsa {
   display: none;
   margin-left: auto;
 }
-.css-dyor-create-xsa.active {
+.css-cp-xsa.active {
   color: red;
   opacity: 0.8;
   display: initial;
   font-size: var(--text-size-secondary);
 }
 
-.css-dyor-create-ndt {
-  color: var(--text-color-primary);
-  font-size: var(--text-size-third);
-  font-weight: 600;
-}
-
-.css-dyor-create-nxs {
+.css-cp-nxs {
   display: flex;
   align-items: flex-start;
   margin-top: 2rem;
   justify-content: space-between;
 }
 
-.css-dyor-create-stx {
-  border-radius: 8px;
+.css-cp-stx {
+  border-radius: 6px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='SVGRoot' width='100px' height='100px' version='1.1' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cfilter id='filter3322' x='-.00012001' y='-.00012' width='1.0002' height='1.0002' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='0.005'/%3E%3C/filter%3E%3C/defs%3E%3Cg fill='%230069f5'%3E%3Crect x='-.18634' y='5e-7' width='99.999' height='100' filter='url(%23filter3322)' opacity='.1' stroke-width='0'/%3E%3Cpath d='m36.529 33.792h26.117c3.6061 0 6.5294 2.9233 6.5294 6.5294v19.588c0 3.6061-2.9233 6.5294-6.5294 6.5294h-26.117c-3.6061 0-6.5294-2.9233-6.5294-6.5294v-19.588c0-3.6061 2.9233-6.5294 6.5294-6.5294zm-2.1765 26.117h19.588l-9.7941-13.059zm23.941-6.5294c3.6061 0 6.5294-2.9233 6.5294-6.5294 0-3.6061-2.9233-6.5294-6.5294-6.5294-3.6061 0-6.5294 2.9233-6.5294 6.5294 0 3.6061 2.9233 6.5294 6.5294 6.5294z' opacity='.8' stroke-width='2.1765'/%3E%3C/g%3E%3C/svg%3E%0A");
 }
-.css-dyor-create-stx.active {
-  border-radius: 8px;
+.css-cp-stx.active {
+  border-radius: 6px;
   background: none;
   cursor: default;
 }
 
-.css-dyor-create-nsi,
-.css-dyor-create-nsc {
+.css-cp-nsi,
+.css-cp-nsc {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
 }
 
-.css-dyor-create-nsc {
+.css-cp-nsc {
   position: relative;
   box-sizing: border-box;
 }
 
-.css-dyor-create-nsl {
+.css-cp-nsl {
   margin-top: 2rem;
 }
 
-.css-dyor-create-faw {
+.css-cp-faw {
   margin-top: 1rem;
 }
 
-.css-dyor-create-nii {
+.css-cp-nii {
   width: auto;
   height: 3rem;
   padding: 0 1rem;
   color: var(--text-color-secondary);
   border: 1px solid var(--border-primary);
-  border-radius: 8px;
-  margin-top: 1rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  outline: none;
 }
 
-.css-dyor-create-nii::placeholder {
+.css-cp-nii::placeholder {
   opacity: 0.5;
   letter-spacing: 0.01em;
   font-size: var(--text-size-secondary);
 }
 
-.css-dyor-create-nii::-moz-placeholder {
+.css-cp-nii::-moz-placeholder {
   opacity: 0.5;
   font-size: var(--text-size-secondary);
 }
-.css-dyor-create-nii::-webkit-input-placeholder {
+.css-cp-nii::-webkit-input-placeholder {
   opacity: 0.5;
   font-size: var(--text-size-secondary);
 }
 
-.css-dyor-create-nii:focus-within::placeholder {
+.css-cp-nii:focus-within::placeholder {
   opacity: 0;
 }
 .css-trade-history-wrp {
@@ -1522,7 +1509,7 @@ export default {
   border: 1px solid var(--border-primary);
   height: 600px;
   background: var(--base-color-white-primary);
-  border-radius: 8px;
+  border-radius: 6px;
   position: absolute;
   margin-top: 6rem;
   z-index: 1;
@@ -1550,7 +1537,7 @@ td {
     width: 100%;
   }
 
-  .css-dyor-create-ndw {
+  .css-cp-ndw {
     width: 100%;
     display: flex;
     background: var(--complementary-color-blue);
@@ -1568,11 +1555,11 @@ td {
     background: red;
   }
 
-  .css-dyor-create-nxs {
+  .css-cp-nxs {
     margin-top: 0;
   }
 
-  .css-dyor-create-hdc {
+  .css-cp-hdc {
     background: var(--complementary-color-blue);
     height: 64px;
     display: flex;
@@ -1581,12 +1568,12 @@ td {
     padding: 0 10%;
   }
 
-  .css-dyor-create-csh {
+  .css-cp-csh {
     width: 100%;
     height: 100px;
     display: flex;
   }
-  .css-dyor-create-ndf {
+  .css-cp-ndf {
     min-width: 300px;
     box-sizing: content-box;
     box-shadow: none;
@@ -1595,7 +1582,7 @@ td {
     border-top-left-radius: 16px;
   }
 
-  .css-dyor-create-header {
+  .css-cp-header {
     background: var(--complementary-color-blue);
     box-shadow: none;
   }
@@ -1708,16 +1695,6 @@ th.active .arrow {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 4px solid #fff;
-}
-
-#tableTradeSearch {
-  background: transparent;
-  border: none;
-  outline: none;
-  color: var(--ui-text-primary);
-  border-radius: 8px;
-  padding: 0 1rem;
-  border: 1px solid var(--border-primary);
 }
 
 #tableTradeSearch::placeholder {

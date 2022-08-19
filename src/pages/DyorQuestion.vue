@@ -3,7 +3,7 @@
     class="css-main-flex-wrap"
     :class="{ active: showSummary || visualHelper.purpose }"
   >
-    <header class="css-work-project-her" :class="{ active: workspace }">
+    <header class="css-w-p-her" :class="{ active: workspace }">
       <router-link to="/" style="display: flex; align-items: baseline">
         <svg
           id="logo-blue"
@@ -336,35 +336,32 @@
       </div>
     </header>
     <div class="css-work-tool-wrap">
-      <div class="css-work-project-wpr">
-        <div class="css-work-project-wrap" :class="{ active: workspace }">
-          <div class="css-work-project-title" @click="workspace = !workspace">
+      <div class="css-w-p-wpr">
+        <div class="css-w-p-wrap" :class="{ active: workspace }">
+          <div class="css-w-p-title" @click="workspace = !workspace">
             <b>Audit progress</b>
           </div>
-          <div class="css-work-project-arw">
-            <div class="css-work-project-ari">
-              <div class="css-work-project-awp">
+          <div class="css-w-p-arw">
+            <div class="css-w-p-ari">
+              <div class="css-w-p-awp">
                 <img :src="newAudit.pl" alt="" />
               </div>
             </div>
           </div>
-          <div class="css-work-project-legend">
-            <div class="css-work-project-name">
+          <div class="css-w-p-legend">
+            <div class="css-w-p-name">
               <b>{{ newAudit.pn }}</b>
             </div>
-            <div class="css-work-project-tag">
+            <div class="css-w-p-tag">
               <span>{{ newAudit.pc }}</span>
             </div>
-            <div class="css-work-project-tag" style="text-transform: lowercase">
+            <div class="css-w-p-tag" style="text-transform: lowercase">
               <span>{{ newAudit.pw }}</span>
             </div>
           </div>
-          <div
-            class="css-work-project-sbe"
-            @click="isRetrayed[0] = !isRetrayed[0]"
-          >
+          <div class="css-w-p-sbe" @click="isRetrayed[0] = !isRetrayed[0]">
             <svg
-              class="css-work-project-dar"
+              class="css-w-p-dar"
               :class="{ active: !isRetrayed[0] }"
               isRetrayed
               viewBox="0 0 1024 1024"
@@ -382,11 +379,11 @@
               {{ workProgramCategory["developmentTeam"].length }}
             </span>
           </div>
-          <ul class="css-work-project-ul" :class="{ active: isRetrayed[0] }">
+          <ul class="css-w-p-ul" :class="{ active: isRetrayed[0] }">
             <li
               v-for="category in workProgramCategory['developmentTeam']"
               :key="category"
-              class="css-work-project-uli"
+              class="css-w-p-uli"
               :class="{
                 active: progressWorkData.includes(category.id),
               }"
@@ -395,12 +392,9 @@
               {{ category.name }}
             </li>
           </ul>
-          <div
-            class="css-work-project-sbe"
-            @click="isRetrayed[1] = !isRetrayed[1]"
-          >
+          <div class="css-w-p-sbe" @click="isRetrayed[1] = !isRetrayed[1]">
             <svg
-              class="css-work-project-dar"
+              class="css-w-p-dar"
               :class="{ active: !isRetrayed[1] }"
               isRetrayed
               viewBox="0 0 1024 1024"
@@ -417,11 +411,11 @@
               {{ workProgramCategory["tokenomics"].length }}</span
             >
           </div>
-          <ul class="css-work-project-ul" :class="{ active: isRetrayed[1] }">
+          <ul class="css-w-p-ul" :class="{ active: isRetrayed[1] }">
             <li
               v-for="category in workProgramCategory['tokenomics']"
               :key="category"
-              class="css-work-project-uli"
+              class="css-w-p-uli"
               :class="{
                 active: progressWorkData.includes(category.id),
               }"
@@ -430,12 +424,9 @@
               {{ category.name }}
             </li>
           </ul>
-          <div
-            class="css-work-project-sbe"
-            @click="isRetrayed[2] = !isRetrayed[2]"
-          >
+          <div class="css-w-p-sbe" @click="isRetrayed[2] = !isRetrayed[2]">
             <svg
-              class="css-work-project-dar"
+              class="css-w-p-dar"
               :class="{ active: !isRetrayed[2] }"
               isRetrayed
               viewBox="0 0 1024 1024"
@@ -452,11 +443,11 @@
               {{ workProgramCategory["community"].length }}</span
             >
           </div>
-          <ul class="css-work-project-ul" :class="{ active: isRetrayed[2] }">
+          <ul class="css-w-p-ul" :class="{ active: isRetrayed[2] }">
             <li
               v-for="category in workProgramCategory['community']"
               :key="category"
-              class="css-work-project-uli"
+              class="css-w-p-uli"
               :class="{
                 active: progressWorkData.includes(category.id),
               }"
@@ -465,12 +456,9 @@
               {{ category.name }}
             </li>
           </ul>
-          <div
-            class="css-work-project-sbe"
-            @click="isRetrayed[3] = !isRetrayed[3]"
-          >
+          <div class="css-w-p-sbe" @click="isRetrayed[3] = !isRetrayed[3]">
             <svg
-              class="css-work-project-dar"
+              class="css-w-p-dar"
               :class="{ active: !isRetrayed[3] }"
               isRetrayed
               viewBox="0 0 1024 1024"
@@ -487,11 +475,11 @@
               {{ workProgramCategory["metrics"].length }}</span
             >
           </div>
-          <ul class="css-work-project-ul" :class="{ active: isRetrayed[3] }">
+          <ul class="css-w-p-ul" :class="{ active: isRetrayed[3] }">
             <li
               v-for="category in workProgramCategory['metrics']"
               :key="category"
-              class="css-work-project-uli"
+              class="css-w-p-uli"
               :class="{
                 active: progressWorkData.includes(category.id),
               }"
@@ -501,7 +489,7 @@
             </li>
           </ul>
 
-          <div class="css-work-project-scc"></div>
+          <div class="css-w-p-scc"></div>
         </div>
       </div>
       <div
@@ -716,7 +704,7 @@
                   <div class="css-wq-fcc">
                     <div class="css-wq-fsc">
                       <svg
-                        class="css-work-project-dar"
+                        class="css-w-p-dar"
                         isRetrayed=""
                         viewBox="0 0 1024 1024"
                         data-v-365b8594=""
@@ -934,8 +922,8 @@
               >
                 <svg
                   id="SVGRoot"
-                  width="18px"
-                  height="18px"
+                  width="20px"
+                  height="20px"
                   version="1.1"
                   viewBox="0 0 16 16"
                 >
@@ -1060,7 +1048,7 @@
                         d="M512 64a448 448 0 110 896.064A448 448 0 01512 64zm67.2 275.072c33.28 0 60.288-23.104 60.288-57.344s-27.072-57.344-60.288-57.344c-33.28 0-60.16 23.104-60.16 57.344s26.88 57.344 60.16 57.344zM590.912 699.2c0-6.848 2.368-24.64 1.024-34.752l-52.608 60.544c-10.88 11.456-24.512 19.392-30.912 17.28a12.992 12.992 0 01-8.256-14.72l87.68-276.992c7.168-35.136-12.544-67.2-54.336-71.296-44.096 0-108.992 44.736-148.48 101.504 0 6.784-1.28 23.68.064 33.792l52.544-60.608c10.88-11.328 23.552-19.328 29.952-17.152a12.8 12.8 0 017.808 16.128L388.48 728.576c-10.048 32.256 8.96 63.872 55.04 71.04 67.84 0 107.904-43.648 147.456-100.416z"
                       ></path>
                     </svg>
-                    <span><b> Click here to evaluate the question.</b></span>
+                    <span>Click here to evaluate the question.</span>
                   </div>
                 </div>
               </template>
@@ -2631,10 +2619,9 @@ export default {
 
 .css-8802 {
   border-radius: 8px;
-  font-weight: 600;
   cursor: pointer;
   padding: 0.75rem;
-  background: #0069f5;
+  background: #23272a;
   color: #ffffff;
   border: none;
 }
@@ -2746,7 +2733,7 @@ export default {
   text-align: center;
   color: var(--complementary-color-blue);
 }
-.css-work-project-awp {
+.css-w-p-awp {
   display: flex;
   justify-content: center;
 }
@@ -2757,7 +2744,7 @@ export default {
   align-items: center;
   justify-content: flex-end;
 }
-.css-work-project-awp img {
+.css-w-p-awp img {
   width: 80px;
   height: 80px;
 }
@@ -2964,7 +2951,7 @@ export default {
 .css-wq-fpl {
   width: 100%;
   height: 100%;
-  background: rgba(114, 115, 132, 0.3);
+  background: rgba(114, 115, 132, 0.2);
   z-index: 11;
   display: flex;
   position: absolute;
@@ -3118,7 +3105,6 @@ export default {
 
 .css-wq-gtt {
   color: var(--complementary-color-blue);
-  font-weight: 500;
   display: flex;
   align-items: center;
   font-size: var(--text-size-secondary);
@@ -3162,7 +3148,7 @@ export default {
   flex-direction: column;
   box-shadow: 0px 0px 30px var(--border-primary);
 }
-.css-work-project-wrap {
+.css-w-p-wrap {
   width: 320px;
   max-width: 320px;
   min-width: 320px;
@@ -3255,7 +3241,7 @@ export default {
   margin-right: 1rem !important;
 }
 
-.css-work-project-her {
+.css-w-p-her {
   height: 64px;
   display: flex;
   align-items: center;
@@ -3265,7 +3251,7 @@ export default {
 }
 
 .css-wq-legend {
-  font-weight: bold;
+  font-weight: 500;
   padding: 0 20%;
   line-height: 2rem;
   text-align: center;
@@ -3339,9 +3325,9 @@ export default {
 .css-wq-note {
   padding: 1rem;
   margin-top: 3rem;
-  background: var(--color-soft-blue);
+  border: 1px solid var(--border-primary);
   border-radius: 5px;
-  color: var(--complementary-color-blue);
+  color: var(--text-color-secondary);
   display: block;
   line-height: 1.75;
   overflow-y: auto;
@@ -3384,29 +3370,29 @@ export default {
   box-shadow: 1px 1px 20px var(--border-primary);
 }
 
-.css-work-project-title {
+.css-w-p-title {
   padding: 0 2rem;
   margin-top: 1rem;
   font-size: var(--text-size-title);
   opacity: 0;
 }
 
-.css-work-project-ul.active {
+.css-w-p-ul.active {
   height: 0;
   overflow: hidden;
 }
 
-.css-work-project-dar {
+.css-w-p-dar {
   margin-right: 5px;
   width: 0.6rem;
   height: 0.6rem;
 }
 
-.css-work-project-dar.active {
+.css-w-p-dar.active {
   transform: rotate(90deg);
 }
 
-.css-work-project-sbe {
+.css-w-p-sbe {
   padding: 0 2rem;
   margin-top: 1rem;
   display: flex;
@@ -3414,18 +3400,18 @@ export default {
   align-items: center;
 }
 
-.css-work-project-sbe span {
+.css-w-p-sbe span {
   margin-left: 30px;
   margin-left: auto;
 }
 
-.css-work-project-arw {
+.css-w-p-arw {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
 }
 
-.css-work-project-ari {
+.css-w-p-ari {
   height: 100px;
   width: 100px;
   background: var(--base-color-white-primary);
@@ -3436,7 +3422,7 @@ export default {
   box-shadow: var(--shadow-blue);
 }
 
-.css-work-project-upl {
+.css-w-p-upl {
   opacity: 0.5;
   margin-top: 10px;
   width: 40px;
@@ -3445,11 +3431,11 @@ export default {
   border-radius: 5px;
 }
 
-.css-work-project-upl:hover {
+.css-w-p-upl:hover {
   opacity: 0.7;
 }
 
-.css-work-project-upli {
+.css-w-p-upli {
   width: 200px;
   height: 80px;
   z-index: 15;
@@ -3461,38 +3447,38 @@ export default {
   opacity: 0;
 }
 
-.css-work-project-legend {
+.css-w-p-legend {
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
-.css-work-project-scc {
+.css-w-p-scc {
   height: 130px;
 }
-.css-work-project-name {
+.css-w-p-name {
   text-align: center;
   text-transform: capitalize;
 }
 
-.css-work-project-ul {
+.css-w-p-ul {
   cursor: pointer;
   list-style: none;
 }
 
-.css-work-project-uli {
+.css-w-p-uli {
   padding-left: 3.5rem;
   border-left: 4px solid rgba(255, 255, 255, 0);
   transition: 0.1s;
 }
 
-.css-work-project-uli:focus {
+.css-w-p-uli:focus {
   background: transparent;
   font-weight: bold;
 }
 
-.css-work-project-uli:hover {
+.css-w-p-uli:hover {
   font-weight: bold;
   border-left: 4px solid rgba(255, 255, 255, 0.3);
   animation-name: xtrans;
@@ -3510,7 +3496,7 @@ export default {
   }
 }
 
-.css-work-project-uli.active::before {
+.css-w-p-uli.active::before {
   list-style-type: none;
   color: #00f569;
   display: inline-block;
@@ -3519,17 +3505,17 @@ export default {
   margin-left: -1em;
 }
 
-.css-work-project-avatar-des {
+.css-w-p-avatar-des {
   display: block;
   text-align: center;
 }
 
-.css-work-project-project {
+.css-w-p-project {
   display: flex;
   color: var(--base-color-black-primary);
 }
 
-.css-work-project-tag {
+.css-w-p-tag {
   display: flex;
   justify-content: center;
   text-transform: capitalize;
@@ -3561,7 +3547,7 @@ export default {
   }
 
   .css-wq-note {
-    font-size: var(--text-size-secondary);
+    font-size: var(--text-size-primary);
   }
 
   .css-wq-txs {
@@ -3628,7 +3614,7 @@ export default {
     fill: #fff;
   }
 
-  .css-work-project-wpr {
+  .css-w-p-wpr {
     display: none;
   }
 
@@ -3640,7 +3626,7 @@ export default {
     display: none;
   }
 
-  .css-work-project-her {
+  .css-w-p-her {
     background: var(--complementary-color-blue);
     border: none;
   }
@@ -3687,7 +3673,7 @@ export default {
     top: 50px;
   }
 
-  .css-work-project-wrapper {
+  .css-w-p-wrapper {
     background: rgba(0, 0, 0, 0.4);
     width: 100%;
     height: 100%;
@@ -3696,7 +3682,7 @@ export default {
     z-index: 40;
   }
 
-  .css-work-project-wrap {
+  .css-w-p-wrap {
     width: 280px;
     min-width: 280px;
     z-index: 20;

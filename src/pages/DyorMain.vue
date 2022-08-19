@@ -325,8 +325,8 @@
           </div>
         </router-link>
         <router-link to="/create">
-          <button class="css-work-main-xkb">Dapp scheme</button>
-          <button class="css-work-main-xkb">NFT scheme</button>
+          <button class="css-work-main-xkb">DAPP</button>
+          <button class="css-work-main-xkb">NFT</button>
         </router-link>
 
         <button class="css-work-main-bwa">
@@ -749,7 +749,6 @@ export default {
   },
   components: { LibraryWrap },
 };
-// background: #3d4144;
 </script>
 
 <style scoped>
