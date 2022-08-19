@@ -19,8 +19,8 @@ html, body{
 }
 
 :root {
-  --text-color-primary: #001737;
-  --text-color-secondary: #727384;
+  --text-color-primary: rgb(15, 20, 25);
+  --text-color-secondary: rgb(83, 100, 113);
 
   --text-size-secondary: 0.8rem;
   --text-size-primary: 1rem;
@@ -51,7 +51,11 @@ html, body{
 * {
   margin: 0;
   padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
+
+
 
 header {
   width: 100%;
@@ -76,8 +80,10 @@ li {
   margin-top: 0.5rem;
 }
 
+
+
 #app {
-  font-family: 'Nunito Sans', sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: start;
