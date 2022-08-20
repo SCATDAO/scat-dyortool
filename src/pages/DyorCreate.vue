@@ -873,7 +873,7 @@ export default {
     this.inputScanner();
   },
   async created() {
-    //this.updateData();
+    this.updateData();
   },
   components: {
     "my-upload": myUpload,
@@ -915,7 +915,7 @@ export default {
       isDeployed: false,
       isSelected: false,
       isUploaded: false,
-      isLoading: false,
+      isLoading: true,
       isFetching: false,
     };
   },
@@ -1505,7 +1505,7 @@ export default {
   opacity: 0;
 }
 .css-trade-history-wrp {
-  width: calc(700px - 6rem);
+  width: calc(625px - 6rem);
   border: 1px solid var(--border-primary);
   height: 600px;
   background: var(--base-color-white-primary);

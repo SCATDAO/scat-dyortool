@@ -325,7 +325,7 @@
           </div>
         </router-link>
         <router-link to="/create">
-          <button class="css-work-main-xkb">DAPP</button>
+          <button class="css-work-main-xkb">Dapp</button>
           <button class="css-work-main-xkb">NFT</button>
         </router-link>
 
