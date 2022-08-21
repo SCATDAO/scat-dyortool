@@ -13,16 +13,17 @@ const store = createStore({
         pp: "",
       },
       nft_scheme: {
-        project_name: "",
-        description: "",
-        website: "",
-        discord: "",
-        twitter: "",
-        number_in_circulation: "",
-        whitelist: "",
-        number_per_mint: "",
-        mint_date: "",
-        nickname: "",
+        project_name: "Name",
+        description: "Empty",
+        website: "Website",
+        discord: "Empty",
+        twitter: "Empty",
+        number_in_circulation: "Empty",
+        whitelist: "Empty",
+        number_per_mint: "Empty",
+        mint_date: "Empty",
+        nickname: "Nickname",
+        project_logo: "Empty"
       },
       answeredQuestion: null,
     };
@@ -42,8 +43,8 @@ const store = createStore({
     },
   },
   getters: {
-    sendMeAtribute(state) {
-      return state.newAudit;
+    getAuditInfo(state) {
+      return state.nft_scheme;
     },
     sendMeAnswered(state) {
       return state.answeredQuestion;

@@ -636,7 +636,7 @@
               v-model="pn"
             />
             <template v-if="isDeployed">
-              <div class="css-trade-history-wrp" id="tableD">
+              <div class="css-t-h-wrp" id="tableD">
                 <div
                   class="css-trade-history-scl"
                   @click="isDeployed = false"
@@ -1504,7 +1504,7 @@ export default {
 .css-cp-nii:focus-within::placeholder {
   opacity: 0;
 }
-.css-trade-history-wrp {
+.css-t-h-wrp {
   width: calc(625px - 6rem);
   border: 1px solid var(--border-primary);
   height: 600px;
@@ -1525,7 +1525,7 @@ td {
 }
 
 @media (max-width: 600px) {
-  .css-trade-history-wrp {
+  .css-t-h-wrp {
     width: 100%;
     position: inherit;
     margin-top: 1rem;

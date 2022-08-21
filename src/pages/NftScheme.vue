@@ -30,7 +30,7 @@
           <div class="css-cp-nsc">
             <div class="css-cp-nst">
               Project Name:
-              <span class="css-cp-xsa" :class="{ active: errors.pn }"
+              <span class="css-cp-xsa" :class="{ active: errors.project_name }"
                 >Must not be empty or greater than 50 length</span
               >
             </div>
@@ -41,10 +41,10 @@
               class="css-cp-nii"
               type="text"
               placeholder="Project's name"
-              v-model="pn"
+              v-model="form.project_name"
             />
             <template v-if="dropdown_visible">
-              <div class="css-trade-history-wrp" id="tableD">
+              <div class="css-t-h-wrp" id="tableD">
                 <div
                   class="css-trade-history-scl"
                   @click="deployDropdown(false)"
@@ -101,13 +101,13 @@
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
               Description:
-              <span class="css-cp-xsa" :class="{ active: errors.pd }"
+              <span class="css-cp-xsa" :class="{ active: errors.description }"
                 >Must not be empty or greater than 200 length</span
               >
             </div>
             <input
               class="css-cp-nii"
-              v-model="pd"
+              v-model="form.description"
               type="text"
               placeholder="Short description"
             />
@@ -116,13 +116,13 @@
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
               Website:
-              <span class="css-cp-xsa" :class="{ active: errors.pw }"
+              <span class="css-cp-xsa" :class="{ active: errors.website }"
                 >Must not be empty or greater than 50 length</span
               >
             </div>
             <input
               class="css-cp-nii"
-              v-model="pw"
+              v-model="form.website"
               type="text"
               placeholder="www.example.com"
             />
@@ -131,13 +131,13 @@
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
               Discord:
-              <span class="css-cp-xsa" :class="{ active: errors.ps }"
-                >Must not be empty or greater than 20 length</span
+              <span class="css-cp-xsa" :class="{ active: errors.discord }"
+                >Must not be empty or greater than 50 length</span
               >
             </div>
             <input
               class="css-cp-nii"
-              v-model="ps"
+              v-model="form.discord"
               type="text"
               placeholder="Project's Discord"
             />
@@ -146,13 +146,13 @@
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
               Twitter:
-              <span class="css-cp-xsa" :class="{ active: errors.pc }"
-                >Must not be empty or greater than 100 length</span
+              <span class="css-cp-xsa" :class="{ active: errors.twitter }"
+                >Must not be empty or greater than 50 length</span
               >
             </div>
             <input
               class="css-cp-nii"
-              v-model="pc"
+              v-model="form.twitter"
               type="text"
               placeholder="Project's Twitter"
             />
@@ -161,13 +161,15 @@
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
               Number in Circulation:
-              <span class="css-cp-xsa" :class="{ active: errors.pc }"
-                >Must not be empty or greater than 100 length</span
+              <span
+                class="css-cp-xsa"
+                :class="{ active: errors.number_in_circulation }"
+                >Must not be empty or greater than 50 length</span
               >
             </div>
             <input
               class="css-cp-nii"
-              v-model="pc"
+              v-model="form.number_in_circulation"
               type="text"
               placeholder="Number in Circulation"
             />
@@ -176,28 +178,30 @@
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
               Whitelist:
-              <span class="css-cp-xsa" :class="{ active: errors.pc }"
+              <span class="css-cp-xsa" :class="{ active: errors.whitelist }"
                 >Must not be empty or greater than 100 length</span
               >
             </div>
             <input
               class="css-cp-nii"
-              v-model="pc"
+              v-model="form.whitelist"
               type="text"
-              placeholder="about NFT Whitelisting"
+              placeholder="About NFT Whitelisting"
             />
           </div>
 
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
               Number per Mint:
-              <span class="css-cp-xsa" :class="{ active: errors.pc }"
+              <span
+                class="css-cp-xsa"
+                :class="{ active: errors.number_per_mint }"
                 >Must not be empty or greater than 100 length</span
               >
             </div>
             <input
               class="css-cp-nii"
-              v-model="pc"
+              v-model="form.number_per_mint"
               type="text"
               placeholder="Number per Mint"
             />
@@ -206,13 +210,13 @@
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
               Mint Date:
-              <span class="css-cp-xsa" :class="{ active: errors.pr }"
+              <span class="css-cp-xsa" :class="{ active: errors.mint_date }"
                 >Must not be empty or greater than 100 length</span
               >
             </div>
             <input
               class="css-cp-nii"
-              v-model="pr"
+              v-model="form.mint_date"
               type="text"
               placeholder="Minting Date"
             />
@@ -220,21 +224,21 @@
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
               Your Nickname:
-              <span class="css-cp-xsa" :class="{ active: errors.an }"
-                >Must not be empty or greater than 16 length</span
+              <span class="css-cp-xsa" :class="{ active: errors.nickname }"
+                >Must not be empty or greater than 50 length</span
               >
             </div>
             <input
               class="css-cp-nii"
-              v-model="an"
+              v-model="form.nickname"
               type="text"
-              placeholder="Your name for the report..."
+              placeholder="Your nickname for the report..."
             />
           </div>
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
               Logo
-              <span class="css-cp-xsa" :class="{ active: errors.pl }"
+              <span class="css-cp-xsa" :class="{ active: errors.project_logo }"
                 >Please upload the logo of the project</span
               >
             </div>
@@ -248,9 +252,7 @@
                 :width="80"
                 :height="80"
                 noSquare
-                :langType="langType"
-                :params="params"
-                :headers="headers"
+                :langType="editer_lang"
                 img-format="png"
               ></my-upload>
 
@@ -258,7 +260,7 @@
                 <div class="css-cp-stx" :class="{ active: pl }">
                   <div class="css-cp-str" id="canvas-wrapper">
                     <template v-if="!isFetching">
-                      <img :src="pl" alt="" />
+                      <img :src="this.form.project_logo" alt="" />
                     </template>
 
                     <template v-if="isFetching">
@@ -281,8 +283,10 @@
           </div>
           <div class="css-cp-nsl"></div>
         </div>
-        <button class="css-cp-asa" @click="nextResearch()">Let's go !</button>
-        <template v-if="isDisclaimerKnown === false">
+        <button class="css-cp-asa" @click="checkDataIntegrity()">
+          Let's go !
+        </button>
+        <template v-if="disclaimer === false">
           <div class="css-cp-cgj">
             <span class="css-cp-cjs">Disclaimer</span>
             <span>
@@ -331,18 +335,22 @@ export default {
     this.RunDropdown();
   },
   created() {
-    //this.updateDropdownData();
+    // this.updateDropdownData();
   },
   data() {
     return {
       errors: {
-        pn: false,
-        ps: false,
-        pd: false,
-        pc: false,
-        pw: false,
-        pr: false,
-        an: false,
+        project_name: false,
+        description: false,
+        website: false,
+        discord: false,
+        twitter: false,
+        number_in_circulation: false,
+        whitelist: false,
+        number_per_mint: false,
+        mint_date: false,
+        nickname: false,
+        project_logo: false,
       },
       form: {
         project_name: "",
@@ -355,18 +363,11 @@ export default {
         number_per_mint: "",
         mint_date: "",
         nickname: "",
+        project_logo: "",
       },
-      isDisclaimerKnown: null,
+      disclaimer: null,
       uploading_logo: false,
-      dataRaw: null,
-      params: {
-        token: "123456798",
-        name: "avatar",
-      },
-      langType: "en",
-      headers: {
-        smail: "*_~",
-      },
+      editer_lang: "en",
       imgDataUrl: "",
       tableData: [],
       columns: columns,
@@ -378,7 +379,6 @@ export default {
       pw: "",
       pr: "",
       an: "",
-      pl: "data:image/svg+xml;base64,PHN2ZyBpZD0iU1ZHUm9vdCIgd2lkdGg9IjgwcHgiIGhlaWdodD0iODBweCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgODAgODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8ZyBpZD0iU3RvY2tob2xtLWljb25zLS8tRmlsZXMtLy1VcGxvYWQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI3LjUzNSAyNS45NjkpIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogIDxyZWN0IGlkPSJib3VuZCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CiAgPGcgZmlsbD0iIzAwNjlmNSI+CiAgIDxwYXRoIGQ9Im0yIDEzYzAtMC41IDAuNS0xIDEtMXMxIDAuNSAxIDF2NWMwIDEuMTA0NiAwLjg5NTQzIDIgMiAyaDEyYzEuMTA0NiAwIDItMC44OTU0MyAyLTJ2LTVjMC0wLjU1MjI4IDAuNDQ3NzItMSAxLTFzMSAwLjQ0NzcyIDEgMXY1YzAgMi4yMDkxLTEuNzkwOSA0LTQgNGgtMTJjLTIuMjA5MSAwLTQtMS43OTA5LTQtNHYtNXoiIGZpbGwtcnVsZT0ibm9uemVybyIgb3BhY2l0eT0iLjMiLz4KICAgPHJlY3QgaWQ9IlJlY3RhbmdsZSIgeD0iMTEiIHk9IjIiIHdpZHRoPSIyIiBoZWlnaHQ9IjE0IiByeD0iMSIgb3BhY2l0eT0iLjMiLz4KICAgPHBhdGggZD0ibTEyLjAzNiAzLjM3OC00LjMyOTEgNC4zMjkxYy0wLjM5MDUyIDAuMzkwNTItMS4wMjM3IDAuMzkwNTItMS40MTQyIDBzLTAuMzkwNTItMS4wMjM3IDAtMS40MTQybDUtNWMwLjM3NjA4LTAuMzc2MDggMC45ODA3NC0wLjM5MTk4IDEuMzc2MS0wLjAzNjE4N2w1IDQuNWMwLjQxMDUxIDAuMzY5NDYgMC40NDM3OSAxLjAwMTcgMC4wNzQzMyAxLjQxMjMtMC4zNjk0NiAwLjQxMDUxLTEuMDAxNyAwLjQ0Mzc5LTEuNDEyMyAwLjA3NDMyOXoiIGZpbGwtcnVsZT0ibm9uemVybyIvPgogIDwvZz4KIDwvZz4KPC9zdmc+Cg==",
       dropdown_visible: false,
       isUploaded: false,
       isLoading: false,
@@ -405,8 +405,6 @@ export default {
 
             this.tableData = data;
 
-            console.log(this.tableData);
-
             this.isLoading = false;
           } catch (error) {
             console.log(error);
@@ -417,8 +415,8 @@ export default {
     uploadLogo() {
       this.uploading_logo = !this.uploading_logo;
     },
-    cropSuccess(imgDataUrl, field) {
-      this.pl = imgDataUrl;
+    cropSuccess(img, field) {
+      this.form.project_logo = img;
       this.isUploaded = true;
       console.log("Image loaded", field);
     },
@@ -428,7 +426,7 @@ export default {
       console.log("field: " + field);
     },
     cropUploadFail(status, field) {
-      this.pl = "";
+      this.form.project_logo = "";
       console.log(status);
       console.log("field: " + field);
     },
@@ -468,25 +466,22 @@ export default {
     },
     configProject(element) {
       this.deployDropdown(false);
-      this.pn = element.name;
-      this.pd = element.description;
-      this.pc = element.category.toUpperCase();
+      this.form.project_name = element.name;
+      this.form.description = element.description;
       this.updateLogo(element.name);
-
     },
 
-    async updateLogo(element) {
+    updateLogo(element) {
       this.isFetching = true;
 
       this.$nextTick(() => {
         setTimeout(async () => {
           try {
-            const res = await axios.get(
+            const response = await axios.get(
               `https://api.dyortool.io/v1/logo/searchId/${element}`
             );
-            this.pl = res.data.logo;
+            this.form.project_logo = response.data.logo;
             this.isFetching = false;
-            return res.data.logo;
           } catch (error) {
             console.log(error);
           }
@@ -496,43 +491,50 @@ export default {
     deployDropdown(b) {
       this.dropdown_visible = b;
     },
-    nextResearch() {
+    checkDataIntegrity() {
       if (this.dataValidator()) {
-        this.isDisclaimerKnown = false;
+        this.disclaimer = false;
       }
     },
     changeDisclaimer(e) {
-      this.isDisclaimerKnown = e;
+      this.disclaimer = e;
     },
     dataValidator() {
-      return true;
+      this.errors = {
+        project_name: false,
+        description: false,
+        website: false,
+        discord: false,
+        twitter: false,
+        number_in_circulation: false,
+        whitelist: false,
+        number_per_mint: false,
+        mint_date: false,
+        nickname: false,
+        project_logo: false,
+      };
+      const __ = (a, b) => a.length > 0 && a.length < b;
+
+      if (!__(this.form.project_name, 50)) this.errors.project_name = true;
+      if (!__(this.form.description, 200)) this.errors.description = true;
+      if (!__(this.form.website, 50)) this.errors.website = true;
+      if (!__(this.form.discord, 50)) this.errors.discord = true;
+      if (!__(this.form.twitter, 50)) this.errors.twitter = true;
+      if (!__(this.form.number_in_circulation, 50))
+        this.errors.number_in_circulation = true;
+      if (!__(this.form.whitelist, 100)) this.errors.whitelist = true;
+      if (!__(this.form.number_per_mint, 100))
+        this.errors.number_per_mint = true;
+      if (!__(this.form.mint_date, 100)) this.errors.mint_date = true;
+      if (!__(this.form.nickname, 50)) this.errors.nickname = true;
+      if (!this.form.project_logo) this.errors.project_logo = true;
+
+      if (!this.isFetching) {
+        return !Object.values(this.errors).includes(true) ? true : false;
+      }
     },
     createNewReport() {
-      this.$store.commit("configureNFT", {
-        project_name: this.project_name,
-        description: this.description,
-        website: this.website,
-        discord: this.discord,
-        twitter: this.twitter,
-        number_in_circulation: this.number_in_circulation,
-        whitelist: this.whitelist,
-        number_per_mint: this.number_per_mint,
-        mint_date: this.mint_date,
-        nickname: this.nickname,
-      });
-
-      /*
-      this.$store.commit("setNftCheme", {
-        pn: this.pn,
-        ps: this.ps,
-        pd: this.pd,
-        pc: this.pc,
-        pw: this.pw,
-        pr: this.pr,
-        an: this.an,
-        pl: this.pl,
-        pp: "",
-      }); */
+      this.$store.commit("configureNFT", this.form);
       this.$router.push("/nft");
     },
   },
@@ -832,7 +834,7 @@ export default {
   background: var(--base-color-white-primary);
   box-sizing: border-box;
   padding: 2rem 3rem;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.2);
   position: relative;
 }
 
@@ -860,6 +862,7 @@ export default {
   width: 80px;
   height: 80px;
 }
+
 .css-trade-history-tzx.active {
   color: var(--complementary-color-blue);
 }
@@ -941,7 +944,7 @@ export default {
 .css-cp-nii:focus-within::placeholder {
   opacity: 0;
 }
-.css-trade-history-wrp {
+.css-t-h-wrp {
   width: calc(625px - 6rem);
   border: 1px solid var(--border-primary);
   height: 600px;
@@ -949,6 +952,7 @@ export default {
   border-radius: 6px;
   position: absolute;
   margin-top: 6rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   z-index: 1;
   animation-name: deploy;
   animation-duration: 0.5s;
@@ -962,7 +966,7 @@ td {
 }
 
 @media (max-width: 600px) {
-  .css-trade-history-wrp {
+  .css-t-h-wrp {
     width: 100%;
     position: inherit;
     margin-top: 1rem;
