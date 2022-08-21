@@ -359,11 +359,10 @@
               <span>{{ newAudit.pw }}</span>
             </div>
           </div>
-          <div class="css-w-p-sbe" @click="isRetrayed[0] = !isRetrayed[0]">
+          <div class="css-w-p-sbe" @click="category_visible[0] = !category_visible[0]">
             <svg
               class="css-w-p-dar"
-              :class="{ active: !isRetrayed[0] }"
-              isRetrayed
+              :class="{ active: !category_visible[0] }"
               viewBox="0 0 1024 1024"
               data-v-365b8594=""
             >
@@ -375,60 +374,27 @@
 
             <b>Development Team</b>
             <span
-              >{{ knowWorkProgress("developmentTeam") }} /
-              {{ workProgramCategory["developmentTeam"].length }}
+              >{{ knowWorkProgress("development_team") }} /
+              {{ scheme_category["development_team"].length }}
             </span>
           </div>
-          <ul class="css-w-p-ul" :class="{ active: isRetrayed[0] }">
+          <ul class="css-w-p-ul" :class="{ active: category_visible[0] }">
             <li
-              v-for="category in workProgramCategory['developmentTeam']"
+              v-for="category in scheme_category['development_team']"
               :key="category"
               class="css-w-p-uli"
               :class="{
-                active: progressWorkData.includes(category.id),
+                active: scheme_progress.includes(category.id),
               }"
               @click="clickCurrentQuestion(category.id) & (showSummary = false)"
             >
               {{ category.name }}
             </li>
           </ul>
-          <div class="css-w-p-sbe" @click="isRetrayed[1] = !isRetrayed[1]">
+          <div class="css-w-p-sbe" @click="category_visible[1] = !category_visible[1]">
             <svg
               class="css-w-p-dar"
-              :class="{ active: !isRetrayed[1] }"
-              isRetrayed
-              viewBox="0 0 1024 1024"
-              data-v-365b8594=""
-            >
-              <path
-                fill="currentColor"
-                d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
-              ></path>
-            </svg>
-            <b>Tokenomics</b>
-            <span
-              >{{ knowWorkProgress("tokenomics") }} /
-              {{ workProgramCategory["tokenomics"].length }}</span
-            >
-          </div>
-          <ul class="css-w-p-ul" :class="{ active: isRetrayed[1] }">
-            <li
-              v-for="category in workProgramCategory['tokenomics']"
-              :key="category"
-              class="css-w-p-uli"
-              :class="{
-                active: progressWorkData.includes(category.id),
-              }"
-              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
-            >
-              {{ category.name }}
-            </li>
-          </ul>
-          <div class="css-w-p-sbe" @click="isRetrayed[2] = !isRetrayed[2]">
-            <svg
-              class="css-w-p-dar"
-              :class="{ active: !isRetrayed[2] }"
-              isRetrayed
+              :class="{ active: !category_visible[1] }"
               viewBox="0 0 1024 1024"
               data-v-365b8594=""
             >
@@ -440,27 +406,26 @@
             <b>Community</b>
             <span
               >{{ knowWorkProgress("community") }} /
-              {{ workProgramCategory["community"].length }}</span
+              {{ scheme_category["community"].length }}</span
             >
           </div>
-          <ul class="css-w-p-ul" :class="{ active: isRetrayed[2] }">
+          <ul class="css-w-p-ul" :class="{ active: category_visible[1] }">
             <li
-              v-for="category in workProgramCategory['community']"
+              v-for="category in scheme_category['community']"
               :key="category"
               class="css-w-p-uli"
               :class="{
-                active: progressWorkData.includes(category.id),
+                active: scheme_progress.includes(category.id),
               }"
               @click="clickCurrentQuestion(category.id) & (showSummary = false)"
             >
               {{ category.name }}
             </li>
           </ul>
-          <div class="css-w-p-sbe" @click="isRetrayed[3] = !isRetrayed[3]">
+          <div class="css-w-p-sbe" @click="category_visible[2] = !category_visible[2]">
             <svg
               class="css-w-p-dar"
-              :class="{ active: !isRetrayed[3] }"
-              isRetrayed
+              :class="{ active: !category_visible[2] }"
               viewBox="0 0 1024 1024"
               data-v-365b8594=""
             >
@@ -469,19 +434,50 @@
                 d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
               ></path>
             </svg>
-            <b>ICO Trading Metrics</b>
+            <b>Mint Metrics</b>
             <span
-              >{{ knowWorkProgress("metrics") }} /
-              {{ workProgramCategory["metrics"].length }}</span
+              >{{ knowWorkProgress("mint_metrics") }} /
+              {{ scheme_category["mint_metrics"].length }}</span
             >
           </div>
-          <ul class="css-w-p-ul" :class="{ active: isRetrayed[3] }">
+          <ul class="css-w-p-ul" :class="{ active: category_visible[2] }">
             <li
-              v-for="category in workProgramCategory['metrics']"
+              v-for="category in scheme_category['mint_metrics']"
               :key="category"
               class="css-w-p-uli"
               :class="{
-                active: progressWorkData.includes(category.id),
+                active: scheme_progress.includes(category.id),
+              }"
+              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
+            >
+              {{ category.name }}
+            </li>
+          </ul>
+          <div class="css-w-p-sbe" @click="category_visible[3] = !category_visible[3]">
+            <svg
+              class="css-w-p-dar"
+              :class="{ active: !category_visible[3] }"
+              viewBox="0 0 1024 1024"
+              data-v-365b8594=""
+            >
+              <path
+                fill="currentColor"
+                d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
+              ></path>
+            </svg>
+            <b>Secondary Market</b>
+            <span
+              >{{ knowWorkProgress("secondary_market") }} /
+              {{ scheme_category["secondary_market"].length }}</span
+            >
+          </div>
+          <ul class="css-w-p-ul" :class="{ active: category_visible[3] }">
+            <li
+              v-for="category in scheme_category['secondary_market']"
+              :key="category"
+              class="css-w-p-uli"
+              :class="{
+                active: scheme_progress.includes(category.id),
               }"
               @click="clickCurrentQuestion(category.id) & (showSummary = false)"
             >
@@ -705,7 +701,6 @@
                     <div class="css-wq-fsc">
                       <svg
                         class="css-w-p-dar"
-                        isRetrayed=""
                         viewBox="0 0 1024 1024"
                         data-v-365b8594=""
                         data-v-51f114e2=""
@@ -1345,6 +1340,7 @@
 import axios from "axios";
 import { BestialEncoder } from "bestial-encoder";
 import { saveAs } from "file-saver";
+import { nft_scheme } from "./nft-scheme";
 
 export default {
   data() {
@@ -1361,846 +1357,7 @@ export default {
       errReportGen: false,
       avatarSeed: "",
       numberQuestion: [0, 0],
-      questionList: [
-        {
-          id: 1,
-          tag: "DT1-1",
-          category: "Development Team",
-          name: "Disclosure",
-          question:
-            "Are you Affiliated with the project or own any of the collection?",
-          worksteps: [
-            "A. Quesion is asking if you are affiliated with the project (part of the dev team, on payroll, partnered) or own any of it.",
-            "B. If yes, explain in the box below.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 0.0 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This tool is designed so that anyone can create a report for any project they are interested in. This means that a wide range of people can make them, from a newcomer learning about NFTs for the first time to experienced collectors to members of the dev team that want to produce a report and share with their community. If someone owns the NFTs they create the report for or are part of the team producing them, they have a direct financial interest in the projects success and therefore, they may be more inclined to give a higher score or make things look better than they truly are. Because of this, we are starting the NFT Tool with a disclosure where the report creator can explain any relationship they may have with the team or financial interest in the project so that they are completely transparent with the readers. Now, can we guarantee that people will be honest and disclose everything? Of course not. Someone could write whatever they want and it would be very difficult to verify. But there are also a lot of honest people out there who value their credibility and would happily share their interest in the project. This disclosure is for those people.  Lastly, just because someone owns the project doesn't mean they would necessarily make an inaccurate or misleading report.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 2,
-          tag: "DT2-2",
-          category: "Development Team",
-          name: "Whitepaper",
-          question: "Does the project have a whitepaper?",
-          worksteps: [
-            "A. Check the website to see if the project has a whitepaper.",
-            "B. Read the whitepaper.",
-            "C. Consider including some highlights from the paper in the box below.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 0.5 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "We created a poll for this point and the majority of respondents felt that a whitepaper is a must have for an NFT project with the second highest response being that it is not a deal breaker but it is nice to have. There are some who buy NFTs purely for the art, and there is nothing wrong with that. If it is purely art then a whitepaper is probably not too relevant or important. But there are others who buy NFTs because of utility, use case, roadmap, or other factors. In these instances, having a whitepaper that breaks everything down is important. It should provide all the information that their investor needs to know to make an informed decision. So in these instances, having a solid whitepaper is a good sign for the project.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 3,
-          tag: "DT3-3",
-          category: "Development Team",
-          name: "Website",
-          question:
-            "Is the website updated and reflects the current state of the project?",
-          worksteps: [
-            "A. Confirm that the website is legitimate by confirming it matches the project's official social media.",
-            "B. Check if there are broken links or outdated information.",
-            "C. Use Whois Lookup domain tracker (https://whois.domaintools.com/) to verify the domain authenticity.",
-            "D. Check if the website has up to date links to their various social media channels.",
-            "E. Summarize your findings in the box below.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 1.0 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Although it is important to have social media profiles, a website helps the project look more credible and professional. It allows the team to showcase their product, the team, partnerships, and their commitments, generally through a roadmap. It is also a place where you can promote your social media presence and encourage people to join your network and spread the word, which is extremely important for the success of the project. Things such as poor grammar and spelling, lack of a privacy policy, no reference to social media presence or general errors can greatly affect the credibility of the project, and steer people away from it.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 4,
-          tag: "DT4-4",
-          category: "Development Team",
-          name: "Utility",
-          question:
-            "Can you identify the utility of the project after reading the whitepaper/litepaper and reviewing website info?.",
-          worksteps: [
-            "A. Read the whitepaper and review website info. There is usually a section in both that discusses utility.",
-            "B. Check the roadmap of the project for commitments and goals regarding the utility of the project.",
-            "C. Summarize the utility in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 2.0 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "There are some who buy NFTs purely for the art, and there is nothing wrong with that. But there are others who buy NFTs because of utility. For those who are buying for utility, it can come in many ways. Be it a token distributed to holders of the NFT, tiered airdrops if one holds a minimum amount of NFT of the project, raffles or even whitelist spots on future mints. Utility can even give access to real world events, as it was the case of Bored Apes where all the holder were invited to a yacht party. Utility is something you should consider, so that the long term investors have incentives to hold the NFT, avoiding becoming a buy and dump project. In the end, the projects that will truly last and thrive are the ones with real utility (usefulness). Something that fills a real-world need, solves a problem, does something better than anyone else, etc. Projects that do not can definitely go up a lot in value as we have seen time and time again, but most of the time their shot-term success is driven by hype which can be fleeting and can go as quickly as it comes. So for many, identifying a project with solid utility is a good step in the research process in determining if it is something you should risk your hard-earned money on. So if you read the whitepaper or website and you still have no idea what the use case of the NFT is, chances are it doesn't really have one. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 5,
-          tag: "DT5-5",
-          category: "Development Team",
-          name: "Originality",
-          question:
-            "Is the project an original or is it derivative of another project?",
-          worksteps: [
-            "A. Read the website & whitepaper (if available).",
-            "B. Assess if it is materially similar to other NFT projects you are aware of.",
-            "C. If you are unsure, consider reviewing the projects discord to see if this has been discussed by the community.",
-            "D. Write your explanation in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Derivative", value: 0.0 },
-            { id: 2, name: "Original", value: 1.25 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Many people value originality vs blatant copying of something someone else has already done. This can be a tricky topic, since many things build on top of each other and the lines between copying something and building upon it can become blurred. So this will require you to use a little personal judgment. Does the project look like a copy of something done on another chain like Ethereum? Does the artwork look extremely similar to something else you have already seen? Is the utility it claims the exact same thing that many others have done before? These are all things to be considered when determining if it is derivative or not and can impact others' opinions of the project and therefore, their willingness to invest in it. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 6,
-          tag: "DT6-6",
-          category: "Development Team",
-          name: "Roadmap",
-          question:
-            "Is there an updated roadmap defined for the project with medium to long term planning?",
-          worksteps: [
-            "A. Review project website to check if there is a roadmap section.",
-            "B. If there is a roadmap, confirm that it is updated.",
-            "C. Make sure the goals set on the roadmap seem plausible.",
-            "D. Summarize your findings in the box below.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 1.5 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Having a well-defined roadmap with the team's commitments is important to ensure that the project has a future beyond the minting event. However, the NFT scene is changing rapidly, and having enough medium to long-term goals set on the roadmap is also important. A roadmap without appealing goals can lead to quick money grabs where people will buy and dump, not only making the floor price go down but also increasing the secondary market availability.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 7,
-          tag: "DT7-7",
-          category: "Development Team",
-          name: "Anonymous Team",
-          question:
-            "Is the Team known or has been doxxed by a trusted doxxing platform?",
-          worksteps: [
-            "A. Review project website to check if team is listed. ",
-            "B. Review project discord to check for information regarding the team.",
-            "C. List each member listed in box below or the platform responsible for the doxxing.",
-            "D. Summarize your findings in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 2.0 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Practically all exit scams and rug pulls are performed by anonymous teams. Why do you suppose that is? I think that the simplest answer is that if you are going to commit a crime, it is infinitely easier to get away with it if nobody knows who you are. The exact same reason that bank robbers choose to wear a mask. If you commit fraud and steal millions from investors, the police will hunt you down and you will face consequences for your actions. At the very least, you will be labeled a charlatan and will not be able to easily do the same thing in the future. If you commit fraud and steal millions of investors while remaining completely anonymous, you will never really face any consequences for your actions and will be able to continue doing it again and again. Now, does this mean that any dev team that chooses to remain anonymous is 100% going to commit fraud and steal? Of course not. There are lots of brilliant, hard-working, and trustworthy developers out there that might prefer to be anonymous, and that is their right. But the good teams who choose to remain anonymous are normalizing the practice which leaves the door wide open for the bad teams to steal over and over again. We as a community should not be willing to invest in or use any dApp where the dev team has chosen to be anonymous, as this potential for fraud will always be present. We have no way to sort the trustworthy teams from the untrustworthy and are left in a situation where we are essentially just hoping that people do the right thing.  If a dev team wants us to trust them enough to use and invest in their products, they must give us a reason to trust them. Revealing themselves is a loud and clear message to the investing community that they will do right by us and if they do not, they will suffer the consequences. The good teams who choose to remain anonymous are normalizing the practice which leaves the door wide open for the bad teams to steal over and over again.  Many teams prefer to keep themself anonymous but resort to trusted doxxing platforms in order to assure the community that there is a real team behind the project. These doxxing processes generally consist of complex KYC mechanisms that include features such as video calls, ID confirmation, and other checks, in order to assure the authenticity of the team.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 8,
-          tag: "DT8-8",
-          category: "Development Team",
-          name: "Identity Verification",
-          question: "Can you verify that the Development Team are real people?",
-          worksteps: [
-            "A. List each person obtained in project website in box below",
-            "B. If links to LinkedIn Github, or other websites are provided, click through each link and review the information to determine if it looks genuine. Genuine profiles would likely have a long history, several contacts, current information, recommended skills,  etc.",
-            "C. If no links are provided, you will need to manually search. Begin with Google for general information. Check LinkedIn, Facebook, Instagram, Github, and twitter to see if you can locate a profile that matches each person.",
-            "D. If you have reason to doubt the profiles you have found were authentic, use google image search for each profile picture that was provided. Instructions for using Google search can be found here (https://support.google.com/web search/answer/1325808?hl=en&co=GENIE.Platform%3DDesktop). Ensure image is not a stock photo and can be traced to a matching social media platform. ",
-            "E. For any profiles found using workstep C, perform the review from Workstep B.",
-            "F. If you discover the team info is fake, go back to TD1 and change the answer to Yes",
-            "G. If you are able to find information for core members or a large number of them, it is OK if some others cannot be verified. ",
-            "H. Copy links to supporting information in the box below to support your review.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 0.5 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Simply verifying that there are people listed on the project website is insufficient. It is not unheard of for a team to list fake people on the website to give the appearance they have all revealed their identities when they have not. Because of this, you must do a little work verifying that each person listed is real. Ideally there will be links included with each name and photo in the teams section that direct you to each person's LinkedIn account, Github, Medium, or any other socials that are used to corroborate identity and professional credentials. Many teams will provide these freely because they want to make it easy for you to verify them. If links are not provided, that is frustrating but not necessarily a red flag. Go through the worksteps that are listed here to try to find various social media accounts to confirm their identity and credentials. Even if you do find a LinkedIn account or social media account, that doesn't guarantee that the information is legitimate. Any good scammer would have gone through the trouble of creating a fake identity for each person they listed in the website. You will need to use some of your past experience and common sense to review what is available and determine if it is legitimate. You have likely seems hundreds of LinkedIn profiles or Twitter/IG accounts and can spot things that look funny. Hardly any contacts. A ton of contacts but barely and activity. There are all kinds of things that can appear unusual and are too many to list here, but you will need to review the information and determine if you think it appears legitimate. And typically finding several sources online that can be compared and cross referenced to each other provides additional assurance that the person is real (e.g. has LinkedIn profile with several connections and people who have attested to a certain skill the person has, has a Facebook or IG account with similar pictures that appears legitimate, has a few articles written about them from various third party publications that you are familiar with).  If you do determine that there are people listed in the website but they appear to be fake people, that is going to be a huge red flag. Honesty and reputation are extremely important and a team that is willing to mislead on this would likely be willing to mislead in other areas as well. It is possible that there are reasonable explanations or it is a rare instance where a person has no online presence, but anyone should proceed extremely cautiously if they are having trouble verifying the teams identities. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 9,
-          tag: "DT9-9",
-          category: "Development Team",
-          name: "Plagiarism",
-          question: "Was there any plagiarism in the whitepaper? ",
-          worksteps: [
-            "A. Copy the information in the whitepaper and paste it into the following website (https://www.check-plagiarism.com/).",
-            "B. Note that this site is not perfect. Many of the citations for plagiarism may come from the project itself and should be ignored.",
-            "C. Include a summary of the results into the box below.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 0.0 },
-            { id: 2, name: "No", value: 0.75 },
-            { id: 3, name: "N/A", value: 0.75 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Honesty and reputation are extremely important and a team that is willing to mislead or cheat in one area would likely be willing to mislead and cheat in other areas as well. Stealing someone's ideas and passing them off as your own is very similar to stealing money or assets. So people who have demonstrated they are willing to steal ideas are better off avoided as they might be willing to steal your money/crypto as well. Now does this mean that people should not be leveraging other ideas or knowledge? Of course not, that is one of the things that makes open-source blockchain and tech in general so special. Everyone can learn from one another and build off each other which ultimately speeds. But blindly copying someone else's whitepaper does not really fall under this category. If a team ends up copying large sections of another team's whitepaper without citing their source or giving credit, it is usually a bad sign and something you would want to consider while evaluating the project.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 10,
-          tag: "DT10-10",
-          category: "Development Team",
-          name: "Spelling Errors",
-          question:
-            "Are there grammar, spelling, and punctuation errors in the Whitepaper or webpage?.",
-          worksteps: [
-            "A. Copy text from whitepaper and website and paste into Grammarly using this link (https://www.grammarly.com/plagiarism-checker). ",
-            "B. Grammarly is free, but if you do not wish to download it, perform manual review for grammar, spelling, and punctuation errors.",
-            "C. In general a few small errors are OK. If there are large numbers of grammar spelling and punctuation errors, then answer this question No.",
-            "D. Include a summary of the results into the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 0.0 },
-            { id: 2, name: "No", value: 0.5 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Most serious teams that are truly building something significant take a lot of pride in what they do. They like to make sure that everything is presented as the best version of itself and take the time and effort to review things multiple times with multiple people. As a result of this effort, there usually aren't too many errors to be found. This is contrasted against teams that have hastily put something together as fast as possible to exit scam or rug pull before quickly moving on to the next one. If a team has no real intention of bringing this product to market or sticking around long enough to see it through, they usually aren't spending all the time and energy to ensure everything is perfect. So if you are seeing a whitepaper that is full of spelling, grammar, and punctuation errors, that can be an indication that this team has not taken anything very seriously and may have bad intentions. Of course, this is not a guarantee and it's possible for an amazing project to have plenty of flaws in the whitepaper or a malicious project to have a flawless whitepaper. It is just one of the many things we look at when assessing a project on the whole. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 11,
-          tag: "CT1-11",
-          category: "Community",
-          name: "Twitter",
-          question: "How many followers does the project have on Twitter? ",
-          worksteps: [
-            "A. Check the project website to see if it includes a link to its twitter profile.",
-            "B. If it does not, open twitter and type the project name.",
-            "C. Review results to ensure you are looking at the correct account.",
-            "D. Note the number of followers in the box below (enter an integer only, no commas or letters).",
-          ],
-          options: [
-            { id: 1, name: "<1000", value: 0.0 },
-            { id: 2, name: "1000 to 5000", value: 0.25 },
-            { id: 3, name: ">5K", value: 0.5 },
-            { id: 4, name: "N/A", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "You have likely seen this a hundred times before. There is a project that does nothing, has no use case, and goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are huge determinants in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or projects with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generate new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 12,
-          tag: "CT2-12",
-          category: "Community",
-          name: "Real Followers",
-          question:
-            "For the twitter account, does it appear to have actual followers or bots/paid followers?",
-          worksteps: [
-            "A. Vesting means that all tokens are not immediately available. Instead they are held for a predetermined period of time.",
-            "B. Review white paper, most likely in the tokenomics section, to see if development team or early investor tokens are immediately available to them or are held for a specified time.",
-            "C. If there is a vesting schedule, outline it in the box below.",
-            "D. ",
-            "E. ",
-          ],
-          options: [
-            { id: 1, name: "Bots", value: 0.0 },
-            { id: 2, name: "Real", value: 2.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "As discussed in the last point, community is important to the success of a project. But simply looking at the number of followers is insufficient. This is because there are a LOT of projects out there that have recognized how important a community is to a project, and simply buy thousands of followers to give the appearance that they have a large organic community behind them. Now can a project buy followers and still end up being a good investment? Of course they can. But we have already covered honesty and integrity in the other points, and that still applies here. Most legitimate projects will gain a following organically because they are high quality and people can recognize that. Low-quality projects that don't have much to offer will usually be the culprits in purchasing followers, which are typically the types of investments you would want to avoid.  So doing a little extra leg work in reviewing the posts to see how much actual engagement they get will be a good indicator if the followers are real or not. Someone with 50K followers who gets 5 to 10 likes is probably purchasing them. Someone who has no other people commenting or posting to their page probably doesn't have many real followers. And unfortunately, the really crafty projects who are on top of everything will also buy likes for their posts to avoid being discovered. But those will typically be something you can spot by looking through the people who engaged and seeing how many connections or followers they have. If they are all super low, it's a good chance they are paid bots.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 13,
-          tag: "CT3-13",
-          category: "Community",
-          name: "Discord",
-          question: "How many members does the project have on discord? ",
-          worksteps: [
-            "A. Check the project website to see if it includes an invite link to its Discord.",
-            "B. If it does not, you will need to find an invite link to access the discord server. Check the projects twitter page for this.",
-            "C. Note the number of followers in the box below (enter an integer only, no commas or letters).",
-          ],
-          options: [
-            { id: 1, name: "<1000", value: 0.0 },
-            { id: 2, name: "1000 to 10K", value: 0.25 },
-            { id: 3, name: "10K+", value: 0.5 },
-            { id: 4, name: "N/A", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are huge determinants in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or projects with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generate new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 14,
-          tag: "CT4-14",
-          category: "Community",
-          name: "Discord Activity",
-          question: "Does their Discord appear to have an active environment?",
-          worksteps: [
-            "A. Note the number of members compared to the number of people online. A large percentage of members online suggests an active environment.",
-            "B. Scan the recent activity. If there are several comments  by different accounts each day, this also suggests an active environment.",
-            "C. Comment on activity in box below.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 2.0 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are huge determinants in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or projects with little to no utility. Serious projects will also be affected by the size and strength of the community behind them.  Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generate new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 15,
-          tag: "CT5-15",
-          category: "Community",
-          name: "Collaborations with other projects and giveaways",
-          question:
-            "Does the team promote collaboration events with other projects?",
-          worksteps: [
-            "A. Check on discord if there is a channel dedicated to collaborations.",
-            "B. If so confirm on the collab participants discords if the events are real.",
-            "C. If nothing is listed on Discord, review the project website for partnerships or collaborations.",
-            "D. Note your findings in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 1.0 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Collaborations with other projects are an excellent way of promoting the project and expanding its community. In addition, if other successful or reputable projects are willing to collaborate with them, it shows a level of trust in that project that increases its credibility. So anytime you see high quality collaborations, that is usually a good sign. Here are a few questions you can think through while answering this question to help you put things into context. Feel free to include these answers when you are filling out the text box. How long has this project partnered with the other project? Is the history of their partnership reflected on the project’s website, public and private social media channels like Twitter and Discord, or other platforms? Is there cross-project utility? E.g. Holding another project’s NFTs or associated FTs earns you whitelist spots or NFT discounts, special cross-project 1/1 NFTs airdropped to holder wallets, etc.? Does the project have a track record of delivering on its side of these collaborations? Can this be verified by community members posting about it on social media platforms?",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 16,
-          tag: "CT6-16",
-          category: "Community",
-          name: "Banishment",
-          question:
-            "Does the project unfairly ban members from social media?",
-          worksteps: [
-            "A. Read the whitepaper.",
-            "B. Identify the type primary function of the project. This would be things such as a DEX, lending dApp. NFT minter, etc.",
-            "C. If you are unfamilar with the function of the project, review BuiltonCardano.com and check if there is already a category created.",
-            "D. If it is an existing model,  please describe what the competition is like for this business model and list a few of the major competitors with market cap below.",
-          ],
-          options: [
-            { id: 1, name: "Existing", value: 0.0 },
-            { id: 2, name: "New", value: 0.5 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This point has a few things to be considered. On the one hand, if a project is the first of its kind, it has a first mover advantage and has a better shot at cornering its market due to the fact that it’s the only game in town. As we have seen with Uniswap, Aave, Chainlink, and all the other projects that were the first of its kind, they usually have pretty good staying power and are typically one of if not the most popular project in its niche. \n On the other hand, being completely new can have negatives as its not really an established market, people might not fully understand what they are trying to do, the market might just not be ready for it yet, etc. Those are a lot of uncertainties that can make investing in a totally brand new product a bit risky. But in general, if you have read the whiteppaer and understand its use case, and beieve that it is fulfulling a reall need, there is a good chance that the positives outweigh the negatives when it comes to investing in something brand new.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 17,
-          tag: "CT1-17",
-          category: "Community",
-          name: "Twitter",
-          question: "How many followers does the project have on Twitter?",
-          worksteps: [
-            "A. Check the project website to see if it includes a link to its twitter profile.",
-            "B. If it does not, open twitter and type the project name.",
-            "C. Review results to ensure you are looking at the correct account.",
-            "D. Note the number of followers in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "<1000", value: 0.0 },
-            { id: 2, name: "1000 to 5000", value: 0.5 },
-            { id: 3, name: ">5K", value: 1.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 18,
-          tag: "CT2-18",
-          category: "Community",
-          name: "Real Followers",
-          question:
-            "For the twitter account, does it appear to have actual followers or bots/paid followers?",
-          worksteps: [
-            "A. Review 10 or more tweets from the project and note the number of likes, comments, and retweets it has.",
-            "B. Compare the total number of followers to the average number of likes or comments they receive on posts.",
-            "C. If on average the nuber of likes is less than .5% of the followers, this suggests that the followers are not real. This is not a hard rule so will need to exercise judgement.",
-            "D. Write a summary of your findings in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Bots", value: 0.0 },
-            { id: 2, name: "Real", value: 2.0 },
-            { id: 3, name: "N/A", value: 2.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "As discussed in the last point, community is important to a projects success. But simply looking at the number of followers is insufficient. This is because there are a LOT of projects out there that have recognized how important a community is to a project, and simply buy thousands of followers to give the appearance that they have a large organic community behind them. Now can a project buy followers and still end up being a good investment? Of course they can. But we have already covered honesty and integrity in the other points, and that still applies here. Most legitamite projets will gain a following organically because they are high quality and people can recognize that. Low quality projects that dont have much to offer will usually be the culprits in purchasing followers, which are typically the types of investments you would want to avoid. \n So doing a little extra leg work in reviewing the posts to see how much actual engagement they get will be a good indicator if the followers are real or not. Someone with 50K followers who gets 5 to 10 likes is probably purchainsg them. Someone who has no other people commenting or posting to thier page probably doenst have many real followers. And unfortunately, the really crafty projects who are on top of everything will also buy likes for thier posts to avoid being discovered. But those will typically be soething you can spot by looking through the people who engaged and seeing how many connections or followers they have. If they are all super low, its a good chance they are paid bots.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 19,
-          tag: "CT3-19",
-          category: "Community",
-          name: "Reddit",
-          question: "How many subscribers does the project have on Reddit?",
-          worksteps: [
-            "A. Check the project website to see if it includes a link to its Subreddit.",
-            "B. If it does not, open Reddit and type the project name.",
-            "C. Review results to determine if it is associated with the project or not.",
-            "D. Note the number of followers in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "<1000", value: 0.0 },
-            { id: 2, name: ">1K", value: 0.5 },
-            { id: 3, name: "N/A", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 20,
-          tag: "CT4-20",
-          category: "Community",
-          name: "Subreddit Activity",
-          question:
-            "For the subreddit, does it appear to have an active environment?",
-          worksteps: [
-            "A. Review the subreddit several times over several days at different times. Note the nuber of people online vs the number of members. .1%  or more of members online at any given time is sufficient activity.",
-            "B. Review the last 10 posts. If they are all recent (within the last 2 days) and by different accounts, this also suggests sufficient activity.",
-            "C. Note the number of members below",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 0.5 },
-            { id: 2, name: "No", value: 0.0 },
-            { id: 3, name: "N/A", value: 0.5 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is a very similar concept to the one on Twitter I am copying it here again for your convenience.  As discussed in the last point, community is important to the success of a project. But simply looking at the number of subscribers is insufficient. This is because there are a LOT of projects out there that have recognized how important a community is to a project, and simply buy thousands of subscribers to give the appearance that they have a large organic community behind them. \n Now can a project buy subscribers and still end up being a good investment? Of course they can. But we have already covered honesty and integrity in the other points, and that still applies here. Most legitimate projects will gain a following organically because they are high quality and people can recognize that. Low-quality projects that don't have much to offer will usually be the culprits in purchasing subscribers, which are typically the types of investments you would want to avoid. So doing a little extra leg work in reviewing the posts to see how much actual engagement they get will be a good indicator if the subscribers are real or not. Someone with 50K subscribers who gets 5 to 10 upvotes is probably purchasing them. Someone who has no other people commenting or posting to their page probably doesn't have many real subscribers. And if you only see the same person making posts, that is usually not a good sign. Ideally, you want to look for a wide range of people posting and engaging on posts.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 21,
-          tag: "CT5-21",
-          category: "Community",
-          name: "Telegram",
-          question: "How many subscribers does the project have on Telegram?",
-          worksteps: [
-            "A. Check the project website to see if it includes a link to its Telegram",
-            "B. If it does not, open Telegram and type the project name.",
-            "C. Review results to determine if it is associated with the project or not.",
-            "D. Note the number of members in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "<1000", value: 0.0 },
-            { id: 2, name: ">1K", value: 0.5 },
-            { id: 4, name: "N/A", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesnt just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoptoin than ones with a couple hundred. Not to mantion the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invalubale information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 22,
-          tag: "CT6-22",
-          category: "Community",
-          name: "Telegram Activity",
-          question: "Does their Telegram appear to have an active environment?",
-          worksteps: [
-            "A. Scan the recent activity. If there are several comments  by different accounts each day, this also suggests sufficient activity.",
-            "B. If it is a Telegram that only allows for messages from the Dev team, answer this question with Yes.",
-            "C. Comment on activity in box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 0.5 },
-            { id: 2, name: "No", value: 0.0 },
-            { id: 3, name: "N/A", value: 0.5 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is the exact same concept we have been discussing in this section, so I'm not going to go into too much detail. But essentially, if there are a lot of people subscribed to a Telegram channel but there is nobody talking in it, that is not a good sign. It means either they have purchased those subscribers, or they are real but do not care about the project at all to engage on it. Either way, it is a bad sign and something that you should consider.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 23,
-          tag: "CT7-23",
-          category: "Community",
-          name: "Discord",
-          question: "How many members does the project have on discord?",
-          worksteps: [
-            "A. Check the project website to see if it includes an invite link to its Discord.",
-            "B. If it does not, you will need to find an invite link to access the discord server. Check the projects twitter page for this.",
-            "C. Note the number of members in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "<1000", value: 0.0 },
-            { id: 2, name: "1000 to 10K", value: 0.5 },
-            { id: 3, name: "10K+", value: 1.0 },
-            { id: 4, name: "N/A", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesnt just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoptoin than ones with a couple hundred. Not to mantion the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invalubale information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 24,
-          tag: "CT8-24",
-          category: "Community",
-          name: "Discord Activity",
-          question: "Does their Discord appear to have an active environment?",
-          worksteps: [
-            "A. Note the number of members compared to the number of people online. A large percentage of members online suggests an active environment.",
-            "B. Scan the recent activity. If there are several comments  by different accounts each day, this also suggests an active environment.",
-            "C. Comment on activity in box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 1.0 },
-            { id: 2, name: "No", value: 0.0 },
-            { id: 3, name: "N/A", value: 1.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 25,
-          tag: "CT9-25",
-          category: "Community",
-          name: "Hodlers",
-          question: "How many holders does the token have?",
-          worksteps: [
-            "A. Go to Cexplorer.io/token.",
-            "B. Type the name of the token you are researching into the search bar.",
-            "C. Note the number of hodlers in the box below.",
-            "D. If the token has not started being distributed yet, select N/A",
-          ],
-          options: [
-            { id: 1, name: "<1K", value: 0.0 },
-            { id: 2, name: ">1K", value: 0.5 },
-            { id: 3, name: "N/A", value: 0.5 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This section tries to assess the size and strength of the community behind a token. So far we have been doing that by analyzing the social media accounts people use to support and interact with the project. But many would argue that what really matters here is the number of people that actually hold the token. A project could have 100K Twitter followers but if only 1K people hold the token then those supporters either aren't that into the project or perhaps most of those followers are not real. As discussed, having a big community means you will have lots of people using your product or service, which is important.  Having a large number of holders is also healthy for a project vs having a small number of people own the entire supply. When a few whales own the majority of the supply means they can control the price or if they ever decide to divest from the project, it could crash the price. Therefore, seeing a large number of holders is usually a positive sign for the project you are researching.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 26,
-          tag: "CT10-26",
-          category: "Community",
-          name: "Partnerships",
-          question:
-            "Do they have any official partnerships with other established projects?",
-          worksteps: [
-            "A. Review the official website for a partners section.",
-            "B. If they have partners listed, try to confirm on the partners participants website that the partnership is mentioned.",
-            "C. If it is not mentioned on the partners website, review discord or Twitter for announcements or mentions of it.",
-            "D. List the partners and any relevant information in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 1.0 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Collaborations with other projects can be a good way of promoting the project and expanding its community. In addition, if other successful or reputable projects are willing to collaborate with them, it shows a level of trust in that project that increases its credibility. So anytime you see high quality collaborations, that is usually a good sign. There will also be many partnerships out there that bring no real value and are more of a marketing ploy. In those instances, while the partnership may be meaningless, it can still be a good sign, as a reputable project would hopefully have vetted someone before becoming partnered with them. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 27,
-          tag: "CT11-27",
-          category: "Community",
-          name: "Ambassadors",
-          question: "Do they have an official ambassador program?",
-          worksteps: [
-            "A. Review the official website for an ambassadors section.",
-            "B. If not listed on the website, it still may exist. Review their social medias for mentions of it.",
-            "C. If unable to find there, leave a question in thier Telegram or Discord.",
-            "D. Describe the program in the box below. In particular, are they compensated.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 0.5 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Like most things in this tool, an ambassador program can be a bit of a double-edged sword. On the one hand, having an official group of knowledgeable and passionate people involved in the project who discuss it, write about it, and share it, will increase its outreach. This can be good in attracting new users & investors or creating brand awareness. So for these reasons, having an ambassador program can be seen as a positive thing. On the other hand, paying people to spam about your project can be argued as a type of shilling and can give the impression that something is good or popular when it really just has an army of loud people constantly talking about it. So like most things, you will have to use a bit of judgment to try and determine which case your project falls into. For this question, we are going to give the benefit of the doubt and assume that the program is being used responsibly for a quality project and therefore, increases the overall score. If you feel this is not the case, you can answer it as a no even if it has one, and write your explanation for why you do not think it should be allocated the points. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 28,
-          tag: "CT12-28",
-          category: "Community",
-          name: "Banishment",
-          question: "Does the project unfairly ban members from social media?",
-          worksteps: [
-            "A. Join the projects Discord or Telegram.",
-            "B. Locate the appropriate place for general questions.",
-            "C. Tell the community you are researching this project and ask for thier input on the subject.",
-            "D. Summarize your findings in the box below.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 0.0 },
-            { id: 2, name: "No", value: 0.5 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Most honest projects will welcome difficult questions as they want to be open and transparent about everything. If a project is quick to ban members who question them, it can be a bad sign that they might not have answers to those questions and do not want others to begin asking them as well. This can be a fine line though. If someone is constantly making things up or purposely trying to undermine a project by spamming its social media with lies to make it look bad, then banning or blocking them could be appropriate. So you will have to use some judgment here to decide between those two cases.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 29,
-          tag: "CT13-29",
-          category: "Community",
-          name: "Responsiveness",
-          question:
-            "Does the team respond to questions promptly and satisfactorily?",
-          worksteps: [
-            "A. Join the projects Discord or Telegram.",
-            "B. Locate the appropriate place for general questions.",
-            "C. Ask about something that has come up during your research you are unsure of.",
-            "D. Assess if a satisfactory response from a team member or mod is recieved within 24 hours.",
-            "E. Write your question, the teams response, and your assessment in the box below",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 0.5 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "As mentioned in the previous question, most legitimate projects welcome questions. They want people to learn about what they are offering and encourage people to ask questions about things they are unsure of or want to learn more about. Because of this, many teams will have dedicated moderators for their social media channels as well as their email address who will respond to people's questions. If you find yourself in a project's Discord or Telegram and cannot find someone associated with the team to respond to questions within a reasonable amount of time (usually within 24 hours is reasonable) then that is usually not a strong sign for that project. But this also doesn't mean that responding to questions quickly automatically means the project is legit. There are plenty of shady projects out there which will respond to your questions quickly. But oftentimes, a bad project will not have a lot of substance in the responses they give you. If you are seeing some warning signs while doing your research that you ask about respectfully, and you are unable to get a satisfactory response, that can be seen as a red flag. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-
-        {
-          id: 30,
-          tag: "MT1-30",
-          category: "Metrics",
-          name: "Fair Launch",
-          question:
-            "If the project has had its initial offering, (ISO, IDO, ICO, etc) was it a fair launch?",
-          worksteps: [
-            "NOTE. This section only applies for projects which have had their initial offering and are actively traded. If it has not, skip this section by clicking next until it reaches the end.",
-            "A. Fair launch would describe everyone having equal access to the token and no premine for specific individuals. Instances where certain countries are excluded for legal reasons would not apply.",
-            "B. Google the project initial offering and read news articles and comments regarding how the launch was conducted and perceived.",
-            "C. Summarize results in box below.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 2.0 },
-            { id: 2, name: "No", value: 0.0 },
-            { id: 404, name: "Doesn't apply", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "We already touched on this a bit in the ISO percentage section when discussing projects that attempt to be as fair as possible in different aspects, and the launch is no different. So just like the ISO percentage, this is not really to punish the projects that do not have a fair launch, but more to reward the projects that try to make it as fair as possible. Many people in the crypto community care about fairness, and projects that conduct a fair launch  are generally looked upon favorable and generate some positive attitudes towards it. \n We also talked about tokens being concentrated in early investors/backers can create massive sell pressure at some point when they finally decide to sell. Well projects that had a fair launch have minimized the possibility of these VC/early investors and instead have tokens in the hands of the general community. So for those reasons, we give bonus points to the projects which are extremely fair during their launch.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 31,
-          tag: "MT2-31",
-          category: "Metrics",
-          name: "Market cap",
-          question: "What is the current diluted market cap of the project?",
-          worksteps: [
-            "A. Utilize CoinMarketcap.com to obtain market cap.",
-            "B. Smaller market cap projects are typically riskier than larger market cap projects. However, smaller market cap projects also have the potential for greater returns, especially if its an established business model where competitors have significantly larger market caps. Both factors should be considered by potential investors to meet their specific goals.",
-            "C. Note the market cap in the box below.",
-          ],
-          options: [
-            { id: 1, name: "<5 Million", value: 0.0 },
-            { id: 2, name: "5 to 10 Million", value: 0.5 },
-            { id: 3, name: "10 Million +", value: 1.0 },
-            { id: 404, name: "Doesn't apply", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is another one of those double edged swords that can go in either direction. The smaller a projects market cap, the more room it has to grow. Getting in early on a project when the market cap is at 1 Million means you have the potential for those massive 1000X gains simply due to the fact that the project starts off so small. Similarly, it would be a bit silly to be getting into Bitcoin at a 1 Trillion dollar market cap and be expecting it to 1000X into a quadrillion dollar market cap and be worth more than there are dollars in existence. So when you are researching new projects, paying attention to the market cap can give you an idea of how much room it has to grow. \n Now the other side of the coin is that extremely small market caps are going to be much riskier investments than the larger and more established ones. Going back to our example, the 1 million market cap project has a lot of room to grow, but there is a good chance that your investment can fall to zero and be worth nothing. While Bitcoin isn't going to have its massive gains anymore, the chances of it dropping to zero are much lower (although it is still possible). Different investors will have different goals, but that is the general thought process when looking at a projects market cap. For the purposes of this assessment, we gave more points to the higher market cap because we are more focused on not losing money than we are in gaining money. But when doing your own personal assessments, it would be ok if you care more about the larger gain potential and lean towards a smaller market cap preference.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 32,
-          tag: "MT3-32",
-          category: "Metrics",
-          name: "Volume",
-          question: "What is the daily trading volume of the Token ?",
-          worksteps: [
-            "A. Utilize CoinMarketcap.com  to obtain daily trading volume. Check 3 different days and use the average volume from those 3 days.",
-            "B. Note the market cap in the box below.",
-          ],
-          options: [
-            { id: 1, name: "<1 Thousand", value: 0.0 },
-            { id: 2, name: "1 Thousand to 50 Thousand", value: 0.5 },
-            { id: 3, name: "50 Thousand +", value: 1.0 },
-            { id: 4, name: "N/A", value: 1.0 },
-            { id: 404, name: "Doesn't apply", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Instead of writing my own take, I have copied this information from learncrypto.com as I think it explains it pretty well (https://learncrypto.com/knowledge-base/how-to-trade-crypto/understanding-crypto-trading-volume) Volume is important because it has such a significant impact on price from both an absolute and relative perspective. The total volume traded for a given cryptocurrency has a direct relationship with how volatile it is. Remember, price represents the balance of opinions between buyers and sellers. \n If an equal amount (in terms of volume) is being bought and sold then price will be stable, but stability suggests that people opinion about the price are well informed; this is known as market efficiency. \n Mature markets with significant volume and good price discovery have less volatility. Cryptocurrency is inherently volatile because it is immature and its adoption path is uncertain. Market participants are an unusual mix of recreational investors (holders), miners, speculators and institutional investors each with varying opinions and motivations, with those opinions subject to significant outside influences. \n So when looking at trading a given cryptocurrency, the total volume traded will immediately tell you how volatile it is likely to be. The change in volume over time will also give you a sense of interest in the project. \n  It may seem a bit obvious but in order to trade a particular cryptocurrency it has to be listed on an exchange. Exchanges choose which coins to trade, and being listed on the bigger exchanges can make a huge difference to volume. \n If, for example, you have an opinion about an obscure cryptocurrency and want to buy it at a specific price. The absence of volume is going to make that really hard - there won’t  be enough buyers and sellers, so the difference between the available Offers (buyers) and Bids (sellers) - known as the Spread - will be wide. \n The wider the spread, the less efficient a market and therefore the more volatile. Websites like Coinmarketcap provide historical volume data.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 33,
-          tag: "MT4-33",
-          category: "Metrics",
-          name: "CEX",
-          question: "Is the token listed on large  centralized exchanges?",
-          worksteps: [
-            "A. Utilize Coinmarketcap.com and type in the token ticker symbol. ",
-            "B. Scroll to the bottom of the page where it lists the top exchanges by volume.",
-            "C. Review the exchanges listed. Large centralized exchanges would be Coinbase, KuCoin, Kraken, Binance, FTX, Huobi, Gate.io.",
-            "D. Note the exchanges in the box.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 1.0 },
-            { id: 2, name: "No", value: 0.0 },
-            { id: 404, name: "Doesn't apply", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "We talked about volume in the last point. Well, where do you think most of the volume is coming from in crypto markets? I'd like to tell you it is from decentralized exchanges, but that is just not the case. Perhaps someday it will be, but for now, the tokens and coins listed on centralized exchanges have access to the most liquidity and volume of all the tokens. For this reason, checking if a token is listed on centralized exchanges or not is always worth the effort. If you have found one that is only listed on a decentralized exchange this can be a good thing as the price might get some upward movement if and when it ever gets listed on one. But this is also something that you should take caution of.  \n The shadiest projects out there that are trying to scam you will usually be found exclusively on decentralized exchanges, as they will not meet the more strict criteria to get listed on the centralized ones. Please note that this does not mean listed only on a DEX = shady, that is NOT what we are saying. Many great projects are only found on DEXs/ We are saying that Grimace cion or ElonDogeInuRocket with zero utility meant for quick pump and dumps will likely never make it on a centralized exchange. So to summarize, being only on a DEX can have some upside if it is a solid project, but you should definitely exercise caution as it can be riskier as well. Tokens that have been listed on the big centralized exchanges such as Coinbase, Kraken, Binance, etc. will have access to more liquidity, be more well-vetted, and oftentimes have less risk than a project that only lives on a DEX.",
-          files: [],
-          images: [],
-          video: [],
-        },
-      ],
+      questionList: nft_scheme,
       conclusion: {
         re: "",
         pe: "",
@@ -2208,14 +1365,17 @@ export default {
       tokenPhases: [0],
       inputDelete: [],
       workspace: false,
-      workProgramCategory: {
+      scheme_category: {
         developmentTeam: [],
-        tokenomics: [],
         community: [],
+        tokenomics: [],
         metrics: [],
+        development_team: [],
+        mint_metrics: [],
+        secondary_market: [],
       },
-      progressWorkData: [],
-      isRetrayed: [0, 1, 1, 1],
+      scheme_progress: [],
+      category_visible: [0, 1, 1, 1],
       currentQuestion: [],
       answeredQuestion: [],
       checkedOption: "",
@@ -2252,7 +1412,7 @@ export default {
       const drafts = [
         this.answeredQuestion,
         this.newAudit,
-        this.progressWorkData,
+        this.scheme_progress,
       ];
 
       const today = new Date();
@@ -2283,7 +1443,7 @@ export default {
         this.questionList = questions;
         this.answeredQuestion = questions;
         this.newAudit = general;
-        this.progressWorkData = progress;
+        this.scheme_progress = progress;
         this.$store.commit("modifyAuditData", general);
         this.clickCurrentQuestion(1);
       };
@@ -2405,7 +1565,7 @@ export default {
         this.answeredQuestion[31].answer = 404;
       }
       this.checkCorrectQuestion();
-      this.progressWorkData.push(this.currentQuestion[0].id);
+      this.scheme_progress.push(this.currentQuestion[0].id);
       this.answeredQuestion[this.numberQuestion[0]] = this.currentQuestion[0];
       this.updateDataState();
     },
@@ -2487,7 +1647,7 @@ export default {
     },
     checkCorrectQuestion() {
       return this.currentQuestion[0].answer
-        ? this.progressWorkData.push(this.currentQuestion[0].id)
+        ? this.scheme_progress.push(this.currentQuestion[0].id)
         : false;
     },
     knowCompleteness() {
@@ -2512,12 +1672,12 @@ export default {
     },
     backToWorksteps() {
       this.currentQuestion[0].answer = null;
-      this.removeItemFromArr(this.progressWorkData, this.currentQuestion[0].id);
+      this.removeItemFromArr(this.scheme_progress, this.currentQuestion[0].id);
     },
     knowWorkProgress(step) {
       let acc = 0;
-      this.workProgramCategory[step].forEach((s) => {
-        this.progressWorkData.includes(s.id) ? (acc += 1) : false;
+      this.scheme_category[step].forEach((s) => {
+        this.scheme_progress.includes(s.id) ? (acc += 1) : false;
       });
       return acc;
     },
@@ -2525,25 +1685,25 @@ export default {
       for (const element of this.questionList) {
         switch (element.category) {
           case "Development Team":
-            this.workProgramCategory["developmentTeam"].push({
-              id: element.id,
-              name: element.name,
-            });
-            break;
-          case "Tokenomics":
-            this.workProgramCategory["tokenomics"].push({
+            this.scheme_category["development_team"].push({
               id: element.id,
               name: element.name,
             });
             break;
           case "Community":
-            this.workProgramCategory["community"].push({
+            this.scheme_category["community"].push({
               id: element.id,
               name: element.name,
             });
             break;
-          case "Metrics":
-            this.workProgramCategory["metrics"].push({
+          case "Mint Metrics":
+            this.scheme_category["mint_metrics"].push({
+              id: element.id,
+              name: element.name,
+            });
+            break;
+          case "Secondary Market":
+            this.scheme_category["secondary_market"].push({
               id: element.id,
               name: element.name,
             });
