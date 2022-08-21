@@ -324,8 +324,11 @@
             <span class="tooltiptext">Draft mode</span>
           </div>
         </router-link>
-        <router-link to="/create">
+        <router-link to="/dapp-scheme">
           <button class="css-work-main-xkb">Dapp</button>
+        </router-link>
+
+        <router-link to="/nft-scheme">
           <button class="css-work-main-xkb">NFT</button>
         </router-link>
 
@@ -470,10 +473,10 @@
         </h1>
       </div>
       <div class="css-work-main-bmh">
-        <router-link to="/create">
+        <router-link to="/nft-scheme">
           <button class="css-work-main-xkb" id="css-scanb">NFT</button>
         </router-link>
-        <router-link to="/create">
+        <router-link to="/dapp-scheme">
           <button class="css-work-main-xkb" id="css-scanb">Dapp</button>
         </router-link>
 

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="css-main-flex-wrap"
+    class="css-mf-wrap"
     :class="{ active: summary_visible || helpers.purpose }"
   >
     <header class="css-w-p-her">
@@ -2799,20 +2799,20 @@ export default {
     background: var(--base-color-white-primary);
   }
 
-  .css-main-flex-wrap {
+  .css-mf-wrap {
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
     box-sizing: border-box;
   }
-  .css-main-flex-wrap {
+  .css-mf-wrap {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100vh;
   }
 
-  .css-main-flex-wrap.active {
+  .css-mf-wrap.active {
     overflow-y: hidden;
   }
   .css-wq-gtt span {
