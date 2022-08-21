@@ -1,9 +1,9 @@
 <template>
   <div
     class="css-main-flex-wrap"
-    :class="{ active: showSummary || visualHelper.purpose }"
+    :class="{ active: summary_visible || helpers.purpose }"
   >
-    <header class="css-w-p-her" :class="{ active: workspace }">
+    <header class="css-w-p-her">
       <router-link to="/" style="display: flex; align-items: baseline">
         <svg
           id="logo-blue"
@@ -329,16 +329,16 @@
         </div>
         <div class="css-identicon-wrp">
           <div class="css-identicon" id="identicon">
-            <img :src="avatarSeed" alt="" />
+            <img :src="avatar_seed" alt="" />
           </div>
         </div>
         <span class="css-identicon-wrx">{{ newAudit.an }}</span>
       </div>
     </header>
-    <div class="css-work-tool-wrap">
+    <div class="css-wt-wrap">
       <div class="css-w-p-wpr">
-        <div class="css-w-p-wrap" :class="{ active: workspace }">
-          <div class="css-w-p-title" @click="workspace = !workspace">
+        <div class="css-w-p-wrap">
+          <div class="css-w-p-title">
             <b>Audit progress</b>
           </div>
           <div class="css-w-p-arw">
@@ -359,7 +359,10 @@
               <span>{{ newAudit.pw }}</span>
             </div>
           </div>
-          <div class="css-w-p-sbe" @click="category_visible[0] = !category_visible[0]">
+          <div
+            class="css-w-p-sbe"
+            @click="category_visible[0] = !category_visible[0]"
+          >
             <svg
               class="css-w-p-dar"
               :class="{ active: !category_visible[0] }"
@@ -386,12 +389,17 @@
               :class="{
                 active: scheme_progress.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
+              @click="
+                clickCurrentQuestion(category.id) & (summary_visible = false)
+              "
             >
               {{ category.name }}
             </li>
           </ul>
-          <div class="css-w-p-sbe" @click="category_visible[1] = !category_visible[1]">
+          <div
+            class="css-w-p-sbe"
+            @click="category_visible[1] = !category_visible[1]"
+          >
             <svg
               class="css-w-p-dar"
               :class="{ active: !category_visible[1] }"
@@ -417,12 +425,17 @@
               :class="{
                 active: scheme_progress.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
+              @click="
+                clickCurrentQuestion(category.id) & (summary_visible = false)
+              "
             >
               {{ category.name }}
             </li>
           </ul>
-          <div class="css-w-p-sbe" @click="category_visible[2] = !category_visible[2]">
+          <div
+            class="css-w-p-sbe"
+            @click="category_visible[2] = !category_visible[2]"
+          >
             <svg
               class="css-w-p-dar"
               :class="{ active: !category_visible[2] }"
@@ -448,12 +461,17 @@
               :class="{
                 active: scheme_progress.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
+              @click="
+                clickCurrentQuestion(category.id) & (summary_visible = false)
+              "
             >
               {{ category.name }}
             </li>
           </ul>
-          <div class="css-w-p-sbe" @click="category_visible[3] = !category_visible[3]">
+          <div
+            class="css-w-p-sbe"
+            @click="category_visible[3] = !category_visible[3]"
+          >
             <svg
               class="css-w-p-dar"
               :class="{ active: !category_visible[3] }"
@@ -479,7 +497,9 @@
               :class="{
                 active: scheme_progress.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
+              @click="
+                clickCurrentQuestion(category.id) & (summary_visible = false)
+              "
             >
               {{ category.name }}
             </li>
@@ -490,13 +510,10 @@
       </div>
       <div
         class="css-wq-wrap"
-        :class="{ active: showSummary || visualHelper.purpose }"
+        :class="{ active: summary_visible || helpers.purpose }"
       >
-        <template v-if="visualHelper.purpose">
-          <div
-            class="css-wq-fpl"
-            @click="visualHelper.purpose = !visualHelper.purpose"
-          >
+        <template v-if="helpers.purpose">
+          <div class="css-wq-fpl" @click="helpers.purpose = !helpers.purpose">
             <div class="css-wq-fps">
               <div class="css-wq-fph">
                 <div>
@@ -580,7 +597,7 @@
             </div>
           </div>
         </template>
-        <template v-if="showSummary">
+        <template v-if="summary_visible">
           <div class="css-wq-fpl">
             <div class="css-wq-fyy">
               <div class="css-wq-fph">
@@ -621,7 +638,7 @@
                     </g>
                   </svg>
                 </div>
-                <button @click="showSummary = !showSummary">
+                <button @click="summary_visible = !summary_visible">
                   <svg
                     id="SVGRoot"
                     width="16px"
@@ -666,7 +683,7 @@
                   :key="element"
                   @click="
                     clickCurrentQuestion(element.id) &
-                      (showSummary = !showSummary)
+                      (summary_visible = !summary_visible)
                   "
                 >
                   <span> {{ element.a }} </span> <span> {{ element.b }} </span>
@@ -719,21 +736,21 @@
                       <button
                         @click="modifyPersonal('Positive')"
                         class="positiveb"
-                        :class="{ active: conclusion.re === 'Positive' }"
+                        :class="{ active: audit_info.re === 'Positive' }"
                       >
                         Positive
                       </button>
                       <button
                         @click="modifyPersonal('Negative')"
                         class="negativeb"
-                        :class="{ active: conclusion.re === 'Negative' }"
+                        :class="{ active: audit_info.re === 'Negative' }"
                       >
                         Negative
                       </button>
                       <button
                         @click="modifyPersonal('Neutral')"
                         class="neutralb"
-                        :class="{ active: conclusion.re === 'Neutral' }"
+                        :class="{ active: audit_info.re === 'Neutral' }"
                       >
                         Neutral
                       </button>
@@ -750,7 +767,7 @@
 
                   <div class="css-wq-cko">
                     <textarea
-                      v-model="conclusion.pe"
+                      v-model="audit_info.pe"
                       placeholder="Final Thoughts..."
                     ></textarea>
                   </div>
@@ -766,7 +783,7 @@
 
                 <template v-if="remainingQuestion().length === 0">
                   <div class="css-wq-bfw">
-                    <template v-if="errReportGen">
+                    <template v-if="error_to_send">
                       <div class="css-wq-xcq">
                         <span
                           >There was a problem with the request, please try
@@ -774,19 +791,19 @@
                         >
                       </div>
                     </template>
-                    <template v-if="!isReportCreated">
+                    <template v-if="!report_created">
                       <button
                         class="css-wq-xkx"
                         id="create-report"
                         @click="createNewReport()"
                       >
-                        {{ reportUp }}
+                        {{ send_msg }}
                       </button></template
                     >
-                    <template v-if="isReportCreated">
+                    <template v-if="report_created">
                       <button class="css-wq-xkx" id="css-blue-button">
                         <a
-                          :href="reportLink"
+                          :href="report_link"
                           target="_blank"
                           rel="noopener noreferrer"
                           >Go to Report</a
@@ -802,7 +819,7 @@
         <div class="css-wq-top">
           <div
             class="css-wq-back"
-            v-for="item in currentQuestion"
+            v-for="item in current_"
             :key="item"
             :class="{ active: item.answer != null }"
             @click="backToWorksteps()"
@@ -822,26 +839,24 @@
             </div>
             <span>Back to Worksteps</span>
           </div>
-          <div class="css-wq-id" v-for="item in currentQuestion" :key="item">
+          <div class="css-wq-id" v-for="item in current_" :key="item">
             #{{ item.tag }}
           </div>
         </div>
 
         <div class="css-wq-page">
           <div>
-            <span
-              class="css-wq-pag"
-              v-for="item in currentQuestion"
-              :key="item"
-              >{{ item.id }}</span
-            ><span class="css-wq-div">/</span>{{ numberQuestion[1] }}
+            <span class="css-wq-pag" v-for="item in current_" :key="item">{{
+              item.id
+            }}</span
+            ><span class="css-wq-div">/</span>{{ scheme_counter[1] }}
           </div>
         </div>
 
-        <div class="css-wq-legend" v-for="item in currentQuestion" :key="item">
+        <div class="css-wq-legend" v-for="item in current_" :key="item">
           {{ item.question }}
         </div>
-        <div class="css-wq-answer" v-for="item in currentQuestion" :key="item">
+        <div class="css-wq-answer" v-for="item in current_" :key="item">
           <template v-if="item.answer != null">
             <div class="css-wq-suggest">Select an option</div>
           </template>
@@ -864,7 +879,7 @@
             <div class="css-wq-panel">
               <button
                 class="css-wq-panel-b"
-                @click="visualHelper.purpose = !visualHelper.purpose"
+                @click="helpers.purpose = !helpers.purpose"
               >
                 <svg
                   id="SVGRoot"
@@ -1024,10 +1039,10 @@
 
                 <span class="dot"></span>
               </button>
-              <template v-if="!visualHelper.evaluate">
+              <template v-if="!helpers.evaluate">
                 <div
                   class="css-wq-got"
-                  @click="visualHelper.evaluate = !visualHelper.evaluate"
+                  @click="helpers.evaluate = !helpers.evaluate"
                 >
                   <div class="box box--left"></div>
                   <div class="css-wq-gtt">
@@ -1053,7 +1068,7 @@
             <div class="css-wq-pta">
               <textarea
                 class="css-wq-tex"
-                v-model="currentQuestion[0].textarea"
+                v-model="current_[0].textarea"
               ></textarea>
               <template v-if="item.id === 10">
                 <div class="css-wq-thl">
@@ -1066,20 +1081,20 @@
                     }"
                   >
                     <input
-                      v-model="currentQuestion[0].input[element.id].name"
+                      v-model="current_[0].input[element.id].name"
                       class="css-wq-tss"
                       type="text"
                       placeholder="E.g. Development team"
                     />
                     <input
-                      v-model="currentQuestion[0].input[element.id].per"
+                      v-model="current_[0].input[element.id].per"
                       class="css-wq-tss"
                       style="width: 50%"
                       type="text"
                       placeholder="%"
                     />
 
-                    <template v-if="!tokenPhases[element.id]">
+                    <template v-if="!token_phases[element.id]">
                       <button
                         class="css-wq-bta"
                         @click="createNewInput(element.id)"
@@ -1112,7 +1127,7 @@
                       </button>
                     </template>
 
-                    <template v-if="tokenPhases[element.id]">
+                    <template v-if="token_phases[element.id]">
                       <button
                         class="css-wq-bta"
                         @click="removeAddedInput(element.id)"
@@ -1143,7 +1158,7 @@
                 <div class="css-wq-thl">
                   <div class="css-wq-txs">
                     <input
-                      v-model="currentQuestion[0].input"
+                      v-model="current_[0].input"
                       class="css-wq-tss"
                       type="text"
                       placeholder="Nº Followers"
@@ -1156,7 +1171,7 @@
                 <div class="css-wq-thl">
                   <div class="css-wq-txs">
                     <input
-                      v-model="currentQuestion[0].input"
+                      v-model="current_[0].input"
                       class="css-wq-tss"
                       type="text"
                       placeholder="Nº Followers"
@@ -1169,7 +1184,7 @@
                 <div class="css-wq-thl">
                   <div class="css-wq-txs">
                     <input
-                      v-model="currentQuestion[0].input"
+                      v-model="current_[0].input"
                       class="css-wq-tss"
                       type="text"
                       placeholder="Nº Members"
@@ -1182,7 +1197,7 @@
                 <div class="css-wq-thl">
                   <div class="css-wq-txs">
                     <input
-                      v-model="currentQuestion[0].input"
+                      v-model="current_[0].input"
                       class="css-wq-tss"
                       type="text"
                       placeholder="Nº Members"
@@ -1214,7 +1229,7 @@
             <div
               class="css-wq-arrow"
               id="left-arrow"
-              @click="numberQuestion[0] > 0 ? backAnswerQuestion() : false"
+              @click="scheme_counter[0] > 0 ? backAnswerQuestion() : false"
             >
               <svg
                 id="SVGRoot"
@@ -1248,12 +1263,12 @@
               </svg>
               <span>Back</span>
             </div>
-            <template v-if="currentQuestion[0].id < questionList.length">
+            <template v-if="current_[0].id < question_list.length">
               <div
                 class="css-wq-arrow"
                 id="right-arrow"
                 @click="
-                  numberQuestion[0] < numberQuestion[1] - 1
+                  scheme_counter[0] < scheme_counter[1] - 1
                     ? nextAnswerQuestion()
                     : false
                 "
@@ -1290,7 +1305,7 @@
                 </svg>
               </div>
             </template>
-            <template v-if="currentQuestion[0].id === questionList.length">
+            <template v-if="current_[0].id === question_list.length">
               <div
                 class="css-wq-arrow"
                 id="right-arrow"
@@ -1330,7 +1345,7 @@
             </template>
           </div>
         </div>
-        <div class="css-wq-nac" :class="{ active: visualHelper.purpose }"></div>
+        <div class="css-wq-nac" :class="{ active: helpers.purpose }"></div>
       </div>
     </div>
   </div>
@@ -1352,19 +1367,18 @@ export default {
         pc: "Empty",
         pl: "",
       },
-      selected: "",
-      reportUp: "Create Report",
-      errReportGen: false,
-      avatarSeed: "",
-      numberQuestion: [0, 0],
-      questionList: nft_scheme,
-      conclusion: {
+      audit_info: {
         re: "",
         pe: "",
       },
-      tokenPhases: [0],
+      selected: "",
+      send_msg: "Create Report",
+      error_to_send: false,
+      avatar_seed: "",
+      scheme_counter: [0, 0],
+      question_list: nft_scheme,
+      token_phases: [0],
       inputDelete: [],
-      workspace: false,
       scheme_category: {
         developmentTeam: [],
         community: [],
@@ -1376,44 +1390,42 @@ export default {
       },
       scheme_progress: [],
       category_visible: [0, 1, 1, 1],
-      currentQuestion: [],
-      answeredQuestion: [],
-      checkedOption: "",
-      visualHelper: {
+      current_: [],
+      answered: [],
+      helpers: {
         purpose: false,
         evaluate: false,
         example: false,
       },
-      isReportCreated: false,
-      reportLink: "",
-      beforeEncodeProcess: [],
+      report_created: false,
+      report_link: "",
+      before_encode: [],
       queryInput: [],
-      isFinished: true,
-      showSummary: false,
-      result: "",
-      error: "",
+      summary_visible: false,
     };
   },
   created() {
-    this.numberQuestion[1] = this.questionList.length;
-    this.answeredQuestion = this.questionList;
+    this.configureCounter();
+    this.chargeEmptyAnswered();
     this.changeCurrentQuestion();
     this.chargeListQuestion();
     this.sendMeAtribute();
     this.createNewIdenticon();
   },
   watch: {
-    showSummary() {
-      this.isReportCreated = false;
+    summary_visible() {
+      this.report_created = false;
     },
   },
   methods: {
+    configureCounter() {
+      this.scheme_counter[1] = this.question_list.length;
+    },
+    chargeEmptyAnswered() {
+      this.answered = this.question_list;
+    },
     saveDraftReport() {
-      const drafts = [
-        this.answeredQuestion,
-        this.newAudit,
-        this.scheme_progress,
-      ];
+      const drafts = [this.answered, this.newAudit, this.scheme_progress];
 
       const today = new Date();
       const date =
@@ -1440,8 +1452,8 @@ export default {
       reader.onload = (e) => {
         const [questions, general, progress] = JSON.parse(e.target.result);
 
-        this.questionList = questions;
-        this.answeredQuestion = questions;
+        this.question_list = questions;
+        this.answered = questions;
         this.newAudit = general;
         this.scheme_progress = progress;
         this.$store.commit("modifyAuditData", general);
@@ -1449,16 +1461,16 @@ export default {
       };
     },
     modifyPersonal(element) {
-      this.conclusion.re = element;
+      this.audit_info.re = element;
     },
     summaryLayout() {
-      this.showSummary = !this.showSummary;
+      this.summary_visible = !this.summary_visible;
     },
     remainingQuestion() {
       let remaining = [];
-      for (const element of this.answeredQuestion) {
+      for (const element of this.answered) {
         if (element.answer === 405) {
-          this.answeredQuestion[element.id - 1].answer = null;
+          this.answered[element.id - 1].answer = null;
         }
         if (element.answer === null) {
           remaining.push({
@@ -1476,10 +1488,10 @@ export default {
       }
     },
     splitPurpose() {
-      return this.currentQuestion[0].purpose.split(/\r?\n/);
+      return this.current_[0].purpose.split(/\r?\n/);
     },
     async nextGlassButton() {
-      this.currentQuestion[0].answer = 405;
+      this.current_[0].answer = 405;
     },
     createNewIdenticon() {
       const hashCode = function (s) {
@@ -1490,7 +1502,7 @@ export default {
       };
       const base = this.newAudit.an + this.newAudit.an.length;
 
-      this.avatarSeed = `https://avatars.dicebear.com/api/identicon/${hashCode(
+      this.avatar_seed = `https://avatars.dicebear.com/api/identicon/${hashCode(
         base
       )}.svg`;
     },
@@ -1498,81 +1510,69 @@ export default {
       this.newAudit = this.$store.getters.sendMeAtribute;
     },
     changeCurrentQuestion() {
-      this.currentQuestion.push(this.questionList[this.numberQuestion[0]]);
+      this.current_.push(this.question_list[this.scheme_counter[0]]);
     },
     changeAnswerQuestion(answer) {
-      this.currentQuestion[0].answer = answer;
+      this.current_[0].answer = answer;
     },
     cleanCurrentQuestion() {
-      this.currentQuestion = [];
+      this.current_ = [];
     },
-    async nextAnswerQuestion() {
-      if (this.currentQuestion[0].answer === 404) {
-        this.answeredQuestion[29].answer = 404;
-        this.answeredQuestion[30].answer = 404;
-        this.answeredQuestion[31].answer = 404;
-        this.answeredQuestion[32].answer = 404;
+    setCustomQuestion() {
+      if (this.answered[23].answer === 404) {
+        this.answered[23].answer = 404;
+        this.answered[24].answer = 404;
+        this.answered[25].answer = 404;
+        this.answered[26].answer = 404;
+        this.answered[27].answer = 404;
       }
+    },
+    nextAnswerQuestion() {
+      this.setCustomQuestion();
       this.checkCorrectQuestion();
-      this.answeredQuestion[this.numberQuestion[0]] =
-        this.currentQuestion.pop();
-      this.numberQuestion[0] += 1;
+      this.answered[this.scheme_counter[0]] = this.current_.pop();
+      this.scheme_counter[0] += 1;
       this.changeCurrentQuestion();
     },
     backAnswerQuestion() {
       this.cleanCurrentQuestion();
-      this.numberQuestion[0] -= 1;
-      this.currentQuestion.push(this.answeredQuestion[this.numberQuestion[0]]);
+      this.scheme_counter[0] -= 1;
+      this.current_.push(this.answered[this.scheme_counter[0]]);
     },
     clickCurrentQuestion(num) {
       let number = num - 1;
-      for (const n in this.answeredQuestion) {
+      for (const n in this.answered) {
         if (n.id === number) {
           this.cleanCurrentQuestion();
-          this.currentQuestion.push(this.answeredQuestion[number]);
-          this.numberQuestion[0] = this.currentQuestion[0].id - 1;
+          this.current_.push(this.answered[number]);
+          this.scheme_counter[0] = this.current_[0].id - 1;
         }
         if (n.id != number) {
           this.cleanCurrentQuestion();
-          this.currentQuestion.push(this.questionList[number]);
-          this.numberQuestion[0] = this.currentQuestion[0].id - 1;
+          this.current_.push(this.question_list[number]);
+          this.scheme_counter[0] = this.current_[0].id - 1;
         }
       }
     },
+    updateSchemeProgress() {
+      this.scheme_progress.push(this.current_[0].id);
+    },
+    addAnswered() {
+      this.answered[this.scheme_counter[0]] = this.current_[0];
+    },
     createNewReport() {
-      const pp = { re: this.conclusion.re, pe: this.conclusion.pe };
+      const pp = { re: this.audit_info.re, pe: this.audit_info.pe };
       this.$store.commit("modifyPersonal", pp);
-      if (this.answeredQuestion[29].answer === 404) {
-        this.answeredQuestion[30].answer = 404;
-        this.answeredQuestion[31].answer = 404;
-        this.answeredQuestion[32].answer = 404;
-      }
-      if (this.answeredQuestion[30].answer === 404) {
-        this.answeredQuestion[29].answer = 404;
-        this.answeredQuestion[31].answer = 404;
-        this.answeredQuestion[32].answer = 404;
-      }
-
-      if (this.answeredQuestion[31].answer === 404) {
-        this.answeredQuestion[30].answer = 404;
-        this.answeredQuestion[29].answer = 404;
-        this.answeredQuestion[32].answer = 404;
-      }
-
-      if (this.answeredQuestion[32].answer === 404) {
-        this.answeredQuestion[29].answer = 404;
-        this.answeredQuestion[30].answer = 404;
-        this.answeredQuestion[31].answer = 404;
-      }
+      this.setCustomQuestion();
       this.checkCorrectQuestion();
-      this.scheme_progress.push(this.currentQuestion[0].id);
-      this.answeredQuestion[this.numberQuestion[0]] = this.currentQuestion[0];
+      this.updateSchemeProgress();
+      this.addAnswered();
       this.updateDataState();
     },
     createNewInput(element) {
-      this.tokenPhases[element] = !this.tokenPhases[element];
-      this.tokenPhases.push(0);
-      this.currentQuestion[0].input.push({
+      this.token_phases[element] = !this.token_phases[element];
+      this.token_phases.push(0);
+      this.current_[0].input.push({
         id: element + 1,
         name: "",
         per: "",
@@ -1583,20 +1583,20 @@ export default {
     },
     removeAddedInput(element) {
       this.inputDelete.push(element);
-      this.currentQuestion[0].input[element] = {
+      this.current_[0].input[element] = {
         id: element,
         name: "",
         per: "",
       };
     },
     async updateDataState() {
-      this.$store.commit("newQuestData", this.answeredQuestion);
+      this.$store.commit("newQuestData", this.answered);
       await this.pushNewReport();
     },
     async pushNewReport() {
-      this.beforeEncodeProcess = [];
-      this.errReportGen = false;
-      this.reportLink = "";
+      this.before_encode = [];
+      this.error_to_send = false;
+      this.report_link = "";
 
       let userData = this.$store.getters.sendMeAtribute;
 
@@ -1604,9 +1604,9 @@ export default {
 
       userData["vr"] = 1;
 
-      this.beforeEncodeProcess.push(userData);
-      this.answeredQuestion.forEach((e) => {
-        this.beforeEncodeProcess.push({
+      this.before_encode.push(userData);
+      this.answered.forEach((e) => {
+        this.before_encode.push({
           id: e.id,
           an: e.answer,
           ta: e.textarea,
@@ -1616,14 +1616,14 @@ export default {
 
       const bestialEncoder = new BestialEncoder();
       const resultEncoder = bestialEncoder.encodeByValue(
-        JSON.stringify(this.beforeEncodeProcess)
+        JSON.stringify(this.before_encode)
       );
       try {
         const params = {
           hex: `${resultEncoder}`,
         };
         console.log(params);
-        this.reportUp = "Uploading";
+        this.send_msg = "Uploading";
         document.getElementById("create-report").disabled = true;
         await axios({
           method: "post",
@@ -1632,28 +1632,28 @@ export default {
           headers: { "content-type": "application/json" },
         })
           .then((response) => {
-            this.isReportCreated = !this.isReportCreated;
-            this.reportLink = `https://audits.dyortool.io/report/${response.data.report_id}`;
-            this.reportUp = "Create Report";
+            this.report_created = !this.report_created;
+            this.report_link = `https://audits.dyortool.io/report/${response.data.report_id}`;
+            this.send_msg = "Create Report";
           })
           .catch((error) => {
-            this.errReportGen = !this.errReportGen;
+            this.error_to_send = !this.error_to_send;
             console.log(error.response);
-            this.reportUp = "Create Report";
+            this.send_msg = "Create Report";
           });
       } catch (error) {
         console.log(error);
       }
     },
     checkCorrectQuestion() {
-      return this.currentQuestion[0].answer
-        ? this.scheme_progress.push(this.currentQuestion[0].id)
+      return this.current_[0].answer
+        ? this.scheme_progress.push(this.current_[0].id)
         : false;
     },
     knowCompleteness() {
       let isComplete = false;
       let checkAnswers = [];
-      this.answeredQuestion.forEach((e) => checkAnswers.push(e.answer));
+      this.answered.forEach((e) => checkAnswers.push(e.answer));
       if (checkAnswers.includes(null)) {
         isComplete = false;
       }
@@ -1671,8 +1671,8 @@ export default {
       }
     },
     backToWorksteps() {
-      this.currentQuestion[0].answer = null;
-      this.removeItemFromArr(this.scheme_progress, this.currentQuestion[0].id);
+      this.current_[0].answer = null;
+      this.removeItemFromArr(this.scheme_progress, this.current_[0].id);
     },
     knowWorkProgress(step) {
       let acc = 0;
@@ -1682,7 +1682,7 @@ export default {
       return acc;
     },
     chargeListQuestion() {
-      for (const element of this.questionList) {
+      for (const element of this.question_list) {
         switch (element.category) {
           case "Development Team":
             this.scheme_category["development_team"].push({
@@ -1718,7 +1718,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #css-wq-panel-bl {
   display: flex;
   align-items: flex-start;
@@ -2374,7 +2374,6 @@ export default {
 }
 
 .css-wq-back span {
-  font-weight: bold;
   margin-left: 1rem;
 }
 
@@ -2682,7 +2681,7 @@ export default {
   text-transform: capitalize;
 }
 
-.css-work-tool-wrap {
+.css-wt-wrap {
   display: flex;
 }
 
@@ -2779,7 +2778,7 @@ export default {
     display: none;
   }
 
-  .css-work-tool-wrap {
+  .css-wt-wrap {
     background: var(--complementary-color-blue);
   }
 

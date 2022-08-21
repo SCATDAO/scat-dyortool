@@ -2557,7 +2557,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #css-wq-panel-bl {
   display: flex;
   align-items: flex-start;

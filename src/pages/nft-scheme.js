@@ -604,7 +604,7 @@ export const nft_scheme = [
 
     options: [
       { id: 1, name: "Yes", value: 0.0 },
-      { id: 2, name: "No", value: 404 },
+      { id: 404, name: "No", value: 0.0 },
     ],
     answer: null,
     textarea: "",
@@ -629,7 +629,8 @@ export const nft_scheme = [
     ],
     options: [
       { id: 1, name: "Yes", value: 0.25 },
-      { id: 2, name: "No", value: 404 },
+      { id: 2, name: "No", value: 0.0 },
+      { id: 404, name: "N/A", value: 0.0 },
     ],
     answer: null,
     textarea: "",
@@ -655,6 +656,7 @@ export const nft_scheme = [
       { id: 1, name: "0 to 25%", value: 1.0 },
       { id: 2, name: "26% to 50%", value: 0.75 },
       { id: 3, name: "> 50%", value: 1.5 },
+      { id: 404, name: "N/A", value: 0.0 },
     ],
     answer: null,
     textarea: "",
@@ -681,6 +683,7 @@ export const nft_scheme = [
     options: [
       { id: 1, name: "Yes", value: 1.25 },
       { id: 2, name: "No", value: 404 },
+      { id: 404, name: "N/A", value: 0.0 },
     ],
     answer: null,
     textarea: "",
@@ -705,6 +708,7 @@ export const nft_scheme = [
     options: [
       { id: 1, name: "Yes", value: 2.0 },
       { id: 2, name: "No", value: 404 },
+      { id: 404, name: "N/A", value: 0.0 },
     ],
     answer: null,
     textarea: "",
