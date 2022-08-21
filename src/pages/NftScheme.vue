@@ -11,13 +11,13 @@
     </template>
     <header class="css-cp-hdc">
       <router-link to="/" style="display: flex; align-items: baseline">
-       <img src="../assets/logo-blue.png" alt="">
+        <img src="../assets/logo-blue.png" alt="" />
       </router-link>
     </header>
     <div class="css-cp-ndw">
       <div class="css-cp-ndf">
         <router-link class="logo-blue" to="/">
-               <img id="logo-blue" src="../assets/logo-white.png" alt="">
+          <img id="logo-blue" src="../assets/logo-white.png" alt="" />
         </router-link>
         <div class="css-cp-nxs">
           <div class="css-cp-nsk">
@@ -29,7 +29,7 @@
         <div class="css-cp-faw">
           <div class="css-cp-nsc">
             <div class="css-cp-nst">
-              Name:
+              Project Name:
               <span class="css-cp-xsa" :class="{ active: errors.pn }"
                 >Must not be empty or greater than 50 length</span
               >
@@ -43,11 +43,11 @@
               placeholder="Project's name"
               v-model="pn"
             />
-            <template v-if="isDeployed">
+            <template v-if="dropdown_visible">
               <div class="css-trade-history-wrp" id="tableD">
                 <div
                   class="css-trade-history-scl"
-                  @click="isDeployed = false"
+                  @click="deployDropdown(false)"
                 ></div>
                 <div class="css-trade-history-sub">
                   <span></span>
@@ -98,21 +98,6 @@
               </div>
             </template>
           </div>
-
-          <div class="css-cp-nsi">
-            <div class="css-cp-nst">
-              Symbol:
-              <span class="css-cp-xsa" :class="{ active: errors.ps }"
-                >Must not be empty or greater than 20 length</span
-              >
-            </div>
-            <input
-              class="css-cp-nii"
-              v-model="ps"
-              type="text"
-              placeholder="Token Symbol"
-            />
-          </div>
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
               Description:
@@ -127,20 +112,7 @@
               placeholder="Short description"
             />
           </div>
-          <div class="css-cp-nsi">
-            <div class="css-cp-nst">
-              Category:
-              <span class="css-cp-xsa" :class="{ active: errors.pc }"
-                >Must not be empty or greater than 100 length</span
-              >
-            </div>
-            <input
-              class="css-cp-nii"
-              v-model="pc"
-              type="text"
-              placeholder="DEX, NFT, stablecoin, etc..."
-            />
-          </div>
+
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
               Website:
@@ -158,7 +130,82 @@
 
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
-              Repository:
+              Discord:
+              <span class="css-cp-xsa" :class="{ active: errors.ps }"
+                >Must not be empty or greater than 20 length</span
+              >
+            </div>
+            <input
+              class="css-cp-nii"
+              v-model="ps"
+              type="text"
+              placeholder="Project's Discord"
+            />
+          </div>
+
+          <div class="css-cp-nsi">
+            <div class="css-cp-nst">
+              Twitter:
+              <span class="css-cp-xsa" :class="{ active: errors.pc }"
+                >Must not be empty or greater than 100 length</span
+              >
+            </div>
+            <input
+              class="css-cp-nii"
+              v-model="pc"
+              type="text"
+              placeholder="Project's Twitter"
+            />
+          </div>
+
+          <div class="css-cp-nsi">
+            <div class="css-cp-nst">
+              Number in Circulation:
+              <span class="css-cp-xsa" :class="{ active: errors.pc }"
+                >Must not be empty or greater than 100 length</span
+              >
+            </div>
+            <input
+              class="css-cp-nii"
+              v-model="pc"
+              type="text"
+              placeholder="Number in Circulation"
+            />
+          </div>
+
+          <div class="css-cp-nsi">
+            <div class="css-cp-nst">
+              Whitelist:
+              <span class="css-cp-xsa" :class="{ active: errors.pc }"
+                >Must not be empty or greater than 100 length</span
+              >
+            </div>
+            <input
+              class="css-cp-nii"
+              v-model="pc"
+              type="text"
+              placeholder="about NFT Whitelisting"
+            />
+          </div>
+
+          <div class="css-cp-nsi">
+            <div class="css-cp-nst">
+              Number per Mint:
+              <span class="css-cp-xsa" :class="{ active: errors.pc }"
+                >Must not be empty or greater than 100 length</span
+              >
+            </div>
+            <input
+              class="css-cp-nii"
+              v-model="pc"
+              type="text"
+              placeholder="Number per Mint"
+            />
+          </div>
+
+          <div class="css-cp-nsi">
+            <div class="css-cp-nst">
+              Mint Date:
               <span class="css-cp-xsa" :class="{ active: errors.pr }"
                 >Must not be empty or greater than 100 length</span
               >
@@ -167,7 +214,7 @@
               class="css-cp-nii"
               v-model="pr"
               type="text"
-              placeholder="Code repository link"
+              placeholder="Minting Date"
             />
           </div>
           <div class="css-cp-nsi">
@@ -181,7 +228,7 @@
               class="css-cp-nii"
               v-model="an"
               type="text"
-              placeholder="Your name ..."
+              placeholder="Your name for the report..."
             />
           </div>
           <div class="css-cp-nsi">
@@ -197,7 +244,7 @@
                 @crop-success="cropSuccess"
                 @crop-upload-success="cropUploadSuccess"
                 @crop-upload-fail="cropUploadFail"
-                v-model="show"
+                v-model="uploading_logo"
                 :width="80"
                 :height="80"
                 noSquare
@@ -225,7 +272,7 @@
                   </div>
                 </div>
                 <div class="css-cp-bwp">
-                  <button class="css-upload-button" @click="toggleShow">
+                  <button class="css-upload-button" @click="uploadLogo">
                     Upload logo
                   </button>
                 </div>
@@ -254,8 +301,8 @@
               any investments.
             </span>
             <div class="css-cp-csj">
-              <button @click="isDisclaimerKnown = null">Decline</button>
-              <button @click="newReportNext()">Accept</button>
+              <button @click="changeDisclaimer(null)">Decline</button>
+              <button @click="createNewReport()">Accept</button>
             </div>
           </div>
         </template>
@@ -277,14 +324,14 @@ columns.forEach(function (key) {
 });
 
 export default {
-  mounted() {
-    this.inputScanner();
-  },
-  async created() {
-    //this.updateData();
-  },
   components: {
     "my-upload": myUpload,
+  },
+  mounted() {
+    this.RunDropdown();
+  },
+  created() {
+    //this.updateDropdownData();
   },
   data() {
     return {
@@ -297,8 +344,20 @@ export default {
         pr: false,
         an: false,
       },
+      form: {
+        project_name: "",
+        description: "",
+        website: "",
+        discord: "",
+        twitter: "",
+        number_in_circulation: "",
+        whitelist: "",
+        number_per_mint: "",
+        mint_date: "",
+        nickname: "",
+      },
       isDisclaimerKnown: null,
-      show: false,
+      uploading_logo: false,
       dataRaw: null,
       params: {
         token: "123456798",
@@ -320,23 +379,22 @@ export default {
       pr: "",
       an: "",
       pl: "data:image/svg+xml;base64,PHN2ZyBpZD0iU1ZHUm9vdCIgd2lkdGg9IjgwcHgiIGhlaWdodD0iODBweCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgODAgODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8ZyBpZD0iU3RvY2tob2xtLWljb25zLS8tRmlsZXMtLy1VcGxvYWQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI3LjUzNSAyNS45NjkpIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogIDxyZWN0IGlkPSJib3VuZCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CiAgPGcgZmlsbD0iIzAwNjlmNSI+CiAgIDxwYXRoIGQ9Im0yIDEzYzAtMC41IDAuNS0xIDEtMXMxIDAuNSAxIDF2NWMwIDEuMTA0NiAwLjg5NTQzIDIgMiAyaDEyYzEuMTA0NiAwIDItMC44OTU0MyAyLTJ2LTVjMC0wLjU1MjI4IDAuNDQ3NzItMSAxLTFzMSAwLjQ0NzcyIDEgMXY1YzAgMi4yMDkxLTEuNzkwOSA0LTQgNGgtMTJjLTIuMjA5MSAwLTQtMS43OTA5LTQtNHYtNXoiIGZpbGwtcnVsZT0ibm9uemVybyIgb3BhY2l0eT0iLjMiLz4KICAgPHJlY3QgaWQ9IlJlY3RhbmdsZSIgeD0iMTEiIHk9IjIiIHdpZHRoPSIyIiBoZWlnaHQ9IjE0IiByeD0iMSIgb3BhY2l0eT0iLjMiLz4KICAgPHBhdGggZD0ibTEyLjAzNiAzLjM3OC00LjMyOTEgNC4zMjkxYy0wLjM5MDUyIDAuMzkwNTItMS4wMjM3IDAuMzkwNTItMS40MTQyIDBzLTAuMzkwNTItMS4wMjM3IDAtMS40MTQybDUtNWMwLjM3NjA4LTAuMzc2MDggMC45ODA3NC0wLjM5MTk4IDEuMzc2MS0wLjAzNjE4N2w1IDQuNWMwLjQxMDUxIDAuMzY5NDYgMC40NDM3OSAxLjAwMTcgMC4wNzQzMyAxLjQxMjMtMC4zNjk0NiAwLjQxMDUxLTEuMDAxNyAwLjQ0Mzc5LTEuNDEyMyAwLjA3NDMyOXoiIGZpbGwtcnVsZT0ibm9uemVybyIvPgogIDwvZz4KIDwvZz4KPC9zdmc+Cg==",
-      isDeployed: false,
-      isSelected: false,
+      dropdown_visible: false,
       isUploaded: false,
       isLoading: false,
       isFetching: false,
     };
   },
   methods: {
-    async updateData() {
+    updateDropdownData() {
       this.$nextTick(() => {
         setTimeout(async () => {
           let data = [];
           try {
-            const res = await axios.get(
+            const response = await axios.get(
               `https://us-central1-builtoncardano.cloudfunctions.net/api/projects`
             );
-            data = res.data.map((e) => {
+            data = response.data.map((e) => {
               return {
                 logo: e.logoUrl,
                 name: e.name,
@@ -353,54 +411,48 @@ export default {
           } catch (error) {
             console.log(error);
           }
-        }, 1000);
+        }, 0);
       });
     },
-    resetInputs() {
-      this.ps = "";
-      this.pl = "";
-    },
-    toggleShow() {
-      this.show = !this.show;
+    uploadLogo() {
+      this.uploading_logo = !this.uploading_logo;
     },
     cropSuccess(imgDataUrl, field) {
       this.pl = imgDataUrl;
       this.isUploaded = true;
-      console.log("IMAGE LOADED", field);
+      console.log("Image loaded", field);
     },
 
     cropUploadSuccess(jsonData, field) {
-      console.log("-------- upload success --------");
       console.log(jsonData);
       console.log("field: " + field);
     },
     cropUploadFail(status, field) {
-      console.log("-------- upload fail --------");
       this.pl = "";
       console.log(status);
       console.log("field: " + field);
     },
-    inputScanner() {
+    RunDropdown() {
       let timer;
 
       const waitTime = 500;
 
-      const input = document.querySelector("#tableTradeSearch");
+      const dropdownInput = document.querySelector("#tableTradeSearch");
 
       const tableD = document.querySelector("#tableTradeSearch");
 
-      input.addEventListener("keyup", () => {
+      dropdownInput.addEventListener("keyup", () => {
         clearTimeout(timer);
 
         timer = setTimeout(() => {
           this.deployDropdown(true);
 
           tableD.blur();
-          input.focus();
+          dropdownInput.focus();
         }, waitTime);
       });
 
-      input.addEventListener("click", () => {
+      dropdownInput.addEventListener("click", () => {
         clearTimeout(timer);
         timer = setTimeout(() => {
           this.deployDropdown(true);
@@ -420,7 +472,7 @@ export default {
       this.pd = element.description;
       this.pc = element.category.toUpperCase();
       this.updateLogo(element.name);
-      this.isSelected = true;
+
     },
 
     async updateLogo(element) {
@@ -442,18 +494,35 @@ export default {
       });
     },
     deployDropdown(b) {
-      this.isDeployed = b;
+      this.dropdown_visible = b;
     },
     nextResearch() {
-      if (this.checkData()) {
+      if (this.dataValidator()) {
         this.isDisclaimerKnown = false;
       }
     },
-    acceptDisclaimer() {
-      this.isDisclaimerKnown = true;
+    changeDisclaimer(e) {
+      this.isDisclaimerKnown = e;
     },
-    newReportNext() {
-      this.$store.commit("modifyAuditData", {
+    dataValidator() {
+      return true;
+    },
+    createNewReport() {
+      this.$store.commit("configureNFT", {
+        project_name: this.project_name,
+        description: this.description,
+        website: this.website,
+        discord: this.discord,
+        twitter: this.twitter,
+        number_in_circulation: this.number_in_circulation,
+        whitelist: this.whitelist,
+        number_per_mint: this.number_per_mint,
+        mint_date: this.mint_date,
+        nickname: this.nickname,
+      });
+
+      /*
+      this.$store.commit("setNftCheme", {
         pn: this.pn,
         ps: this.ps,
         pd: this.pd,
@@ -463,48 +532,8 @@ export default {
         an: this.an,
         pl: this.pl,
         pp: "",
-      });
-      this.$router.push("/research");
-    },
-    checkData() {
-      (this.errors = {
-        pn: false,
-        ps: false,
-        pd: false,
-        pc: false,
-        pw: false,
-        pr: false,
-        an: false,
-        pl: false,
-      }),
-        this.pn.length > 0 ? true : (this.errors.pn = true);
-      this.pn.length < 50 ? true : (this.errors.pn = true);
-
-      this.ps.length > 0 ? true : (this.errors.ps = true);
-      this.ps.length < 20 ? true : (this.errors.ps = true);
-
-      this.pd.length > 0 ? true : (this.errors.pd = true);
-      this.pd.length < 200 ? true : (this.errors.pd = true);
-
-      this.pc.length > 0 ? true : (this.errors.pc = true);
-      this.pc.length < 100 ? true : (this.errors.pc = true);
-
-      this.pw.length > 0 ? true : (this.errors.pw = true);
-      this.pw.length < 50 ? true : (this.errors.pw = true);
-
-      this.pr.length > 0 ? true : (this.errors.pr = true);
-      this.pr.length < 100 ? true : (this.errors.pr = true);
-
-      this.an.length > 0 ? true : (this.errors.an = true);
-      this.an.length < 16 ? true : (this.errors.an = true);
-
-      if (!this.isSelected) {
-        this.isUploaded ? true : (this.errors.pl = true);
-      }
-
-      if (!this.isFetching) {
-        return !Object.values(this.errors).includes(true) ? true : false;
-      }
+      }); */
+      this.$router.push("/nft");
     },
   },
   computed: {
