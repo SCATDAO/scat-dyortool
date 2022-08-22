@@ -83,7 +83,6 @@ export const nft_scheme = [
       "B. Check the roadmap of the project for commitments and goals regarding the utility of the project.",
       "C. Summarize the utility in the box below.",
     ],
-
     options: [
       { id: 1, name: "Yes", value: 2.0 },
       { id: 2, name: "No", value: 0.0 },
@@ -286,11 +285,11 @@ export const nft_scheme = [
     question:
       "For the twitter account, does it appear to have actual followers or bots/paid followers?",
     worksteps: [
-      "A. Vesting means that all tokens are not immediately available. Instead they are held for a predetermined period of time.",
-      "B. Review white paper, most likely in the tokenomics section, to see if development team or early investor tokens are immediately available to them or are held for a specified time.",
-      "C. If there is a vesting schedule, outline it in the box below.",
-      "D. ",
-      "E. ",
+      "A. Review 10 or more tweets from the project and note the number of likes, comments, and retweets it has.",
+      "B. Compare the total number of followers to the average number of likes or comments they receive on posts.",
+      "C. If on average the number of likes is less than .5% of the followers, this suggests that the followers are not real. This is not a hard rule so will need to exercise judgement.",
+      "D. Go to socialblade.com and review the follower activity (instructions here https://m.youtube.com/watch?v=9fj8Ng7w21U&feature=youtu.be)",
+      "E. Write a summary of your findings in the box below.",
     ],
     options: [
       { id: 1, name: "Bots", value: 0.0 },
@@ -526,7 +525,7 @@ export const nft_scheme = [
     options: [
       { id: 1, name: "Address drop", value: 0.0 },
       { id: 2, name: "Minting platform/Multi-sig", value: 1.0 },
-      { id: 4, name: "N/A", value: 1.0 },
+      { id: 3, name: "N/A", value: 1.0 },
     ],
     answer: null,
     textarea: "",
@@ -653,7 +652,7 @@ export const nft_scheme = [
     ],
 
     options: [
-      { id: 1, name: "0 to 25%", value: 1.0 },
+      { id: 1, name: "0 to 25%", value: 0.0 },
       { id: 2, name: "26% to 50%", value: 0.75 },
       { id: 3, name: "> 50%", value: 1.5 },
       { id: 404, name: "N/A", value: 0.0 },
@@ -682,7 +681,7 @@ export const nft_scheme = [
     ],
     options: [
       { id: 1, name: "Yes", value: 1.25 },
-      { id: 2, name: "No", value: 404 },
+      { id: 2, name: "No", value: 0.0 },
       { id: 404, name: "N/A", value: 0.0 },
     ],
     answer: null,
@@ -707,7 +706,7 @@ export const nft_scheme = [
     ],
     options: [
       { id: 1, name: "Yes", value: 2.0 },
-      { id: 2, name: "No", value: 404 },
+      { id: 2, name: "No", value: 0.0 },
       { id: 404, name: "N/A", value: 0.0 },
     ],
     answer: null,

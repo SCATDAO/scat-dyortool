@@ -1101,7 +1101,7 @@ export default {
       report_link: "",
       before_encode: [],
       queryInput: [],
-      summary_visible: false,
+      summary_visible: true,
     };
   },
   created() {
@@ -1302,9 +1302,9 @@ export default {
       this.answered.forEach((e) => {
         this.before_encode.push({
           id: e.id,
-          an: e.answer,
-          ta: e.textarea,
-          ed: e.input,
+          answer: e.answer,
+          textarea: e.textarea,
+          input: e.input,
         });
       });
 
@@ -1443,21 +1443,6 @@ export default {
   color: var(--text-color-primary);
   font-weight: bold;
   margin-left: 50px;
-}
-
-.negativeb {
-  border: 1px solid rgba(248, 73, 96, 0.3);
-  color: rgba(248, 73, 96, 1);
-}
-
-.positiveb {
-  border: 1px solid rgba(0, 211, 149, 0.3);
-  color: rgba(0, 211, 149, 1);
-}
-
-.neutralb {
-  color: var(--complementary-color-blue);
-  border: 1px solid var(--color-soft-blue);
 }
 
 .css-8801 {
@@ -1611,14 +1596,15 @@ export default {
 }
 .css-wq-fko button {
   padding: 10px 14px;
-  border-radius: 8px;
+  border-radius: 99px;
   margin-left: 1rem;
   cursor: pointer;
-  background: transparent;
+  background: #23272a;
   transition: 0.3s ease-out;
+  border: none;
+  color: #ffffff;
 }
 .css-wq-fsc {
-  color: var(--text-color-primary);
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -1759,12 +1745,10 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem 0;
   padding: 1rem;
   border-radius: 8px;
   margin-top: 1rem;
   color: var(--complementary-color-blue);
-  border: 1px solid var(--border-primary);
 }
 
 .css-wq-fxx {
@@ -1895,7 +1879,6 @@ export default {
   caret-color: var(--text-color-primary);
   color: var(--text-color-secondary);
   resize: none;
-  font-family: "Nunito", sans-serif;
   font-weight: lighter;
   padding: 1rem;
   box-sizing: border-box;
@@ -1913,7 +1896,7 @@ export default {
   box-sizing: border-box;
   flex-direction: column;
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: 16px;
   overflow-y: auto;
   overflow-x: hidden;
   scroll-behavior: smooth;
