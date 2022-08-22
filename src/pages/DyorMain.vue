@@ -302,7 +302,7 @@
       <div class="css-work-main-xks">
         <div class="css-c0923"></div>
 
-        <router-link to="/research">
+        <router-link to="/dapp-scheme">
           <div class="tooltip">
             <button
               class="css-work-main-xkb"

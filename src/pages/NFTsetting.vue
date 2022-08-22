@@ -260,7 +260,10 @@
                 <div class="css-cp-stx" :class="{ active: pl }">
                   <div class="css-cp-str" id="canvas-wrapper">
                     <template v-if="!isFetching">
-                      <img :src="this.form.project_logo" alt="" />
+                      <img
+                        :src="this.form.project_logo || defaultLogo"
+                        alt=""
+                      />
                     </template>
 
                     <template v-if="isFetching">
@@ -288,7 +291,7 @@
         </button>
         <template v-if="disclaimer === false">
           <div class="css-cp-cgj">
-            <span class="css-cp-cjs">Disclaimer</span>
+            <span class="css-cp-cjs">DISCLAIMER</span>
             <span>
               DYOR Tool is meant to help users learn about investing. Using the
               tool does not guarantee that your investments will be profitable
@@ -335,7 +338,7 @@ export default {
     this.RunDropdown();
   },
   created() {
-    // this.updateDropdownData();
+    this.updateDropdownData();
   },
   data() {
     return {
@@ -383,6 +386,8 @@ export default {
       isUploaded: false,
       isLoading: false,
       isFetching: false,
+      defaultLogo:
+        "data:image/svg+xml;base64,PHN2ZyBpZD0iU1ZHUm9vdCIgd2lkdGg9IjgwcHgiIGhlaWdodD0iODBweCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgODAgODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8ZyBpZD0iU3RvY2tob2xtLWljb25zLS8tRmlsZXMtLy1VcGxvYWQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI3LjUzNSAyNS45NjkpIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogIDxyZWN0IGlkPSJib3VuZCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CiAgPGcgZmlsbD0iIzAwNjlmNSI+CiAgIDxwYXRoIGQ9Im0yIDEzYzAtMC41IDAuNS0xIDEtMXMxIDAuNSAxIDF2NWMwIDEuMTA0NiAwLjg5NTQzIDIgMiAyaDEyYzEuMTA0NiAwIDItMC44OTU0MyAyLTJ2LTVjMC0wLjU1MjI4IDAuNDQ3NzItMSAxLTFzMSAwLjQ0NzcyIDEgMXY1YzAgMi4yMDkxLTEuNzkwOSA0LTQgNGgtMTJjLTIuMjA5MSAwLTQtMS43OTA5LTQtNHYtNXoiIGZpbGwtcnVsZT0ibm9uemVybyIgb3BhY2l0eT0iLjMiLz4KICAgPHJlY3QgaWQ9IlJlY3RhbmdsZSIgeD0iMTEiIHk9IjIiIHdpZHRoPSIyIiBoZWlnaHQ9IjE0IiByeD0iMSIgb3BhY2l0eT0iLjMiLz4KICAgPHBhdGggZD0ibTEyLjAzNiAzLjM3OC00LjMyOTEgNC4zMjkxYy0wLjM5MDUyIDAuMzkwNTItMS4wMjM3IDAuMzkwNTItMS40MTQyIDBzLTAuMzkwNTItMS4wMjM3IDAtMS40MTQybDUtNWMwLjM3NjA4LTAuMzc2MDggMC45ODA3NC0wLjM5MTk4IDEuMzc2MS0wLjAzNjE4N2w1IDQuNWMwLjQxMDUxIDAuMzY5NDYgMC40NDM3OSAxLjAwMTcgMC4wNzQzMyAxLjQxMjMtMC4zNjk0NiAwLjQxMDUxLTEuMDAxNyAwLjQ0Mzc5LTEuNDEyMyAwLjA3NDMyOXoiIGZpbGwtcnVsZT0ibm9uemVybyIvPgogIDwvZz4KIDwvZz4KPC9zdmc+Cg==",
     };
   },
   methods: {
@@ -580,19 +585,18 @@ export default {
 
 .css-cp-cgj {
   width: calc(100% - 6rem);
-  margin-top: 10%;
+  bottom: 10%;
   box-sizing: border-box;
   padding: 2rem;
   text-align: justify;
   background: #fff;
-  border: 1px solid var(--complementary-color-blue);
+  border: 1px solid var(--border-primary);
   border-radius: 6px;
   position: absolute;
   z-index: 1;
-  color: var(--text-color-secondary);
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 20px var(--border-primary);
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.2);
 }
 
 .css-cp-csj {
@@ -887,7 +891,6 @@ export default {
 
 .css-cp-stx {
   border-radius: 6px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='SVGRoot' width='100px' height='100px' version='1.1' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cfilter id='filter3322' x='-.00012001' y='-.00012' width='1.0002' height='1.0002' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='0.005'/%3E%3C/filter%3E%3C/defs%3E%3Cg fill='%230069f5'%3E%3Crect x='-.18634' y='5e-7' width='99.999' height='100' filter='url(%23filter3322)' opacity='.1' stroke-width='0'/%3E%3Cpath d='m36.529 33.792h26.117c3.6061 0 6.5294 2.9233 6.5294 6.5294v19.588c0 3.6061-2.9233 6.5294-6.5294 6.5294h-26.117c-3.6061 0-6.5294-2.9233-6.5294-6.5294v-19.588c0-3.6061 2.9233-6.5294 6.5294-6.5294zm-2.1765 26.117h19.588l-9.7941-13.059zm23.941-6.5294c3.6061 0 6.5294-2.9233 6.5294-6.5294 0-3.6061-2.9233-6.5294-6.5294-6.5294-3.6061 0-6.5294 2.9233-6.5294 6.5294 0 3.6061 2.9233 6.5294 6.5294 6.5294z' opacity='.8' stroke-width='2.1765'/%3E%3C/g%3E%3C/svg%3E%0A");
 }
 .css-cp-stx.active {
   border-radius: 6px;

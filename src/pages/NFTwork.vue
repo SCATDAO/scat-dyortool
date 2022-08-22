@@ -440,21 +440,21 @@
                       <button
                         @click="modifyPersonal('Positive')"
                         class="positiveb"
-                        :class="{ active: audit_opinion.re === 'Positive' }"
+                        :class="{ active: audit_opinion.answer === 'Positive' }"
                       >
                         Positive
                       </button>
                       <button
                         @click="modifyPersonal('Negative')"
                         class="negativeb"
-                        :class="{ active: audit_opinion.re === 'Negative' }"
+                        :class="{ active: audit_opinion.answer === 'Negative' }"
                       >
                         Negative
                       </button>
                       <button
                         @click="modifyPersonal('Neutral')"
                         class="neutralb"
-                        :class="{ active: audit_opinion.re === 'Neutral' }"
+                        :class="{ active: audit_opinion.answer === 'Neutral' }"
                       >
                         Neutral
                       </button>
@@ -471,7 +471,7 @@
 
                   <div class="css-wq-cko">
                     <textarea
-                      v-model="audit_opinion.pe"
+                      v-model="audit_opinion.textarea"
                       placeholder="Final Thoughts..."
                     ></textarea>
                   </div>
@@ -1057,17 +1057,19 @@
 
 <script>
 import axios from "axios";
-import { BestialEncoder } from "bestial-encoder";
 import { saveAs } from "file-saver";
 import { nft_scheme } from "./nft-scheme";
+import { BestialEncoder } from "bestial-encoder";
+
+const bestialEncoder = new BestialEncoder();
 
 export default {
   data() {
     return {
       audit_info: null,
       audit_opinion: {
-        re: "",
-        pe: "",
+        answer: "",
+        textarea: "",
       },
       selected: "",
       send_msg: "Create Report",
@@ -1159,7 +1161,7 @@ export default {
       };
     },
     modifyPersonal(element) {
-      this.audit_opinion.re = element;
+      this.audit_opinion.answer = element;
     },
     summaryLayout() {
       this.summary_visible = !this.summary_visible;
@@ -1206,7 +1208,6 @@ export default {
     },
     getAuditInfo() {
       this.audit_info = this.$store.getters.getAuditInfo;
-      console.log(this.audit_info);
     },
     changeCurrentQuestion() {
       this.current_.push(this.question_list[this.scheme_counter[0]]);
@@ -1228,7 +1229,7 @@ export default {
     },
     nextAnswerQuestion() {
       this.setCustomQuestion();
-      this.checkCorrectQuestion();
+      this.updateProgress();
       this.answered[this.scheme_counter[0]] = this.current_.pop();
       this.scheme_counter[0] += 1;
       this.changeCurrentQuestion();
@@ -1253,20 +1254,19 @@ export default {
         }
       }
     },
-    updateSchemeProgress() {
-      this.scheme_progress.push(this.current_[0].id);
-    },
     addAnswered() {
       this.answered[this.scheme_counter[0]] = this.current_[0];
     },
     createNewReport() {
-      const pp = { re: this.audit_opinion.re, pe: this.audit_opinion.pe };
-      this.$store.commit("modifyPersonal", pp);
       this.setCustomQuestion();
-      this.checkCorrectQuestion();
-      this.updateSchemeProgress();
+      this.updateProgress();
       this.addAnswered();
-      this.updateDataState();
+      this.pushNewReport();
+    },
+    updateProgress() {
+      return this.current_[0].answer
+        ? this.scheme_progress.push(this.current_[0].id)
+        : false;
     },
     createNewInput(element) {
       this.token_phases[element] = !this.token_phases[element];
@@ -1288,22 +1288,17 @@ export default {
         per: "",
       };
     },
-    async updateDataState() {
-      this.$store.commit("newQuestData", this.answered);
-      await this.pushNewReport();
-    },
     async pushNewReport() {
       this.before_encode = [];
       this.error_to_send = false;
       this.report_link = "";
 
-      let userData = this.$store.getters.sendMeAtribute;
+      this.audit_info["audit_opinion"] = this.audit_opinion;
 
-      userData["hh"] = Math.floor(Math.random() * 10000);
+      this.audit_info["nid"] = Math.floor(Math.random() * 10000);
 
-      userData["vr"] = 1;
+      this.before_encode.push(this.audit_info);
 
-      this.before_encode.push(userData);
       this.answered.forEach((e) => {
         this.before_encode.push({
           id: e.id,
@@ -1313,15 +1308,17 @@ export default {
         });
       });
 
-      const bestialEncoder = new BestialEncoder();
       const resultEncoder = bestialEncoder.encodeByValue(
         JSON.stringify(this.before_encode)
       );
+
+      console.log(this.before_encode);
+
       try {
         const params = {
           hex: `${resultEncoder}`,
         };
-        console.log(params);
+
         this.send_msg = "Uploading";
         document.getElementById("create-report").disabled = true;
         await axios({
@@ -1344,11 +1341,7 @@ export default {
         console.log(error);
       }
     },
-    checkCorrectQuestion() {
-      return this.current_[0].answer
-        ? this.scheme_progress.push(this.current_[0].id)
-        : false;
-    },
+
     knowCompleteness() {
       let isComplete = false;
       let checkAnswers = [];
