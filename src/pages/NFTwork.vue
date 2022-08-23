@@ -1060,7 +1060,7 @@ export default {
         secondary_market: [],
       },
       scheme_progress: [],
-      category_visible: [0, 1, 1, 1],
+      category_visible: [1, 1, 1, 1],
       current_: [],
       answered: [],
       helpers: {
@@ -1662,7 +1662,6 @@ export default {
   padding: 1rem 2rem;
   box-sizing: border-box;
   margin-top: auto;
-  border-top: 1px solid var(--border-a);
 }
 
 .css-wq-xkx {
@@ -1776,6 +1775,7 @@ export default {
   scroll-behavior: smooth;
   box-sizing: border-box;
   position: relative;
+  scroll-behavior: smooth;
 }
 
 .css-wq-wrap.active {
@@ -1996,6 +1996,68 @@ export default {
   scroll-behavior: smooth;
 }
 
+.css-w-p-wrap::-webkit-scrollbar {
+  width: 5px;
+}
+
+.css-w-p-wrap::-webkit-scrollbar-track {
+  background: var(--background-b);
+}
+
+.css-w-p-wrap::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  height: 30px;
+}
+
+.css-w-p-wrap::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+
+
+
+
+.css-wq-wrap::-webkit-scrollbar {
+  width: 5px;
+}
+
+.css-wq-wrap::-webkit-scrollbar-track {
+  background: var(--background-b);
+}
+
+.css-wq-wrap::-webkit-scrollbar-thumb {
+  background: #ffffff;
+}
+
+.css-wq-wrap::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .css-wq-got::before {
   content: "";
   position: absolute;
@@ -2034,8 +2096,7 @@ export default {
 }
 
 .css-wq-back div {
-  width: 40px;
-  height: 40px;
+  padding: 5px;
   background: var(--background-b);
   border-radius: 5px;
   display: flex;
@@ -2096,7 +2157,7 @@ export default {
 }
 
 .css-wq-pag {
-  color: var(--complementary-color-blue);
+  color: var(--text-a);
 }
 
 .css-wq-div {

@@ -49,6 +49,11 @@ body {
   --border-primary: #e9f1fc;
 
   --shadow-blue: 0 0 25px rgba(26, 108, 225, 0.1);
+  --blue: linear-gradient(
+    45deg,
+    rgba(0, 105, 245, 1) 0%,
+    rgba(64, 78, 237, 1) 100%
+  );
 }
 
 .theme-light {
@@ -97,7 +102,7 @@ body {
 
   --background-a: #20242e;
   --background-b: #272b35;
-  --background-c:#20242e;
+  --background-c: #20242e;
 
   --shadow-a: 0 5px 40px rgba(0, 0, 0, 0.25);
 
