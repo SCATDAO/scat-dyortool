@@ -5,7 +5,7 @@
   >
     <header class="css-w-p-her">
       <router-link to="/" style="display: flex; align-items: baseline">
-        <img src="../assets/logo-white.png" alt="" />
+        <img id="logo-blue" src="../assets/logo.svg" alt="" />
       </router-link>
 
       <div class="css-work-tool-haw">
@@ -1423,11 +1423,7 @@ export default {
 }
 
 #right-arrow {
-  background: linear-gradient(
-    22.58deg,
-    rgba(0, 80, 220, 1) 0%,
-    rgba(0, 105, 245, 1) 100%
-  );
+  background: var(--blue)
 }
 #right-arrow:hover {
   transition: ease-in 0.1s;
@@ -2035,29 +2031,6 @@ export default {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .css-wq-got::before {
   content: "";
   position: absolute;
@@ -2179,6 +2152,7 @@ export default {
   align-items: center;
   margin-top: 1rem;
   box-shadow: var(--shadow-a);
+  border: 1px solid transparent;
 }
 
 .css-wq-answer-item.active {
