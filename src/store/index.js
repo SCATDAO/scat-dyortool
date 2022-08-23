@@ -23,7 +23,7 @@ const store = createStore({
         number_per_mint: "Empty",
         mint_date: "Empty",
         nickname: "Nickname",
-        project_logo: "Empty"
+        project_logo: ""
       },
       answeredQuestion: null,
     };

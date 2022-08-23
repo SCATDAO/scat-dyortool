@@ -1488,7 +1488,6 @@ export default {
 
 .css-cp-nii::placeholder {
   opacity: 0.5;
-  letter-spacing: 0.01em;
   font-size: var(--text-size-secondary);
 }
 

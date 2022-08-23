@@ -755,6 +755,22 @@ export default {
 </script>
 
 <style scoped>
+
+
+header {
+  width: 100%;
+  min-width: 100%;
+  min-height: 64px;
+  max-height: 64px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 1.5rem;
+  z-index: 10;
+  padding: 0 10%;
+}
+
 .css-work-main-wrap {
   width: 100%;
   max-width: 100vw;

@@ -11,12 +11,15 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap');
-
-html, body{
-  height: 100%  !important;
+html,
+body {
+  height: 100% !important;
 }
+@import "primevue/resources/primevue.min.css";
+
+@import "primeicons/primeicons.css";
 
 :root {
   --text-color-primary: rgb(15, 20, 25);
@@ -48,31 +51,71 @@ html, body{
   --shadow-blue: 0 0 25px rgba(26, 108, 225, 0.1);
 }
 
+.theme-light {
+  --text-a: rgb(15, 20, 25);
+  --text-b: rgb(83, 100, 113);
+  --text-c: #7a7d82;
+  --text-w: #ffffff;
+
+  --background-a: #ffffff;
+  --background-b: #fafafa;
+  --background-c: linear-gradient(
+    45deg,
+    rgba(0, 105, 245, 1) 0%,
+    rgba(64, 78, 237, 1) 100%
+  );
+
+  --shadow-a: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+  --border-a: #e9f1fc;
+
+  --button-a: #23272a;
+}
+
+.theme-dark {
+  --text-a: #ffffff;
+  --text-b: #b0b3b8;
+  --text-c: #7a7d82;
+  --text-w: #ffffff;
+
+  --background-a: #1a1a1b;
+  --background-b: #272729;
+  --background-c: #1a1a1b;
+
+  --shadow-a: 0 5px 40px rgba(0, 0, 0, 0.3);
+
+  --border-a: #3a3b3c;
+
+  --button-a: #404eed;
+}
+
+.theme-blue {
+  --text-a: #ffffff;
+  --text-b: #b0b3b8;
+  --text-c: #7a7d82;
+  --text-w: #ffffff;
+
+  --background-a: #20242e;
+  --background-b: #272b35;
+  --background-c:#20242e;
+
+  --shadow-a: 0 5px 40px rgba(0, 0, 0, 0.25);
+
+  --border-a: rgba(255, 255, 255, 0.1);
+
+  --button-a: #404eed;
+}
+
 * {
   margin: 0;
   padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-textarea{
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-}
-
-header {
-  width: 100%;
-  min-width: 100%;
-  height: 64px;
-  min-height: 64px;
-  max-height: 64px;
-  display: flex;
-  align-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  padding: 0 1.5rem;
-  z-index: 10;
-  padding: 0 10%;
 }
 
 ol {
@@ -83,10 +126,7 @@ li {
   margin-top: 0.5rem;
 }
 
-
-
 #app {
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: start;
@@ -105,7 +145,6 @@ li {
   animation-name: deploy;
   animation-duration: 1s;
   -webkit-tap-highlight-color: transparent;
-
 }
 
 @keyframes deploy {
@@ -229,7 +268,6 @@ li {
 .css-left-panel-button button {
   opacity: 0;
 }
-
 
 @media (max-width: 1921px) {
   html {
