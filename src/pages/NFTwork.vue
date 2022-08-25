@@ -850,7 +850,7 @@ export default {
           .then((response) => {
             console.log(response.data);
             this.report_created = !this.report_created;
-            this.report_link = `https://audits.dyortool.io/report/${response.data.seed}`;
+            this.report_link = `http://localhost:8081/report/${response.data.id}`;
             this.send_msg = "Create Report";
           })
           .catch((error) => {
@@ -1124,17 +1124,17 @@ export default {
   align-items: center;
   padding: 1rem;
   border-radius: 8px;
-  background: rgb(239, 243, 244);
+  background: var(--background-b);
 }
 .css-wq-fko button {
   padding: 10px 14px;
   border-radius: 99px;
   margin-left: 1rem;
   cursor: pointer;
-  background: #23272a;
+  background: var(--background-a);
   transition: 0.3s ease-out;
-  border: none;
-  color: #ffffff;
+  border: 1px solid var(--border-a);
+  color: var(--text-a);
 }
 .css-wq-fsc {
   font-weight: 600;
@@ -1278,7 +1278,6 @@ export default {
   padding: 1rem;
   border-radius: 8px;
   margin-top: 1rem;
-  color: var(--complementary-color-blue);
 }
 
 .css-wq-fxx {
@@ -1413,7 +1412,8 @@ export default {
   padding: 1rem;
   box-sizing: border-box;
   border-radius: 8px;
-  border: 1px solid var(--border-primary);
+  border: 1px solid var(--border-a);
+  background: var(--background-b);
 }
 
 .css-wq-fps,

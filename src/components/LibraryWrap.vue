@@ -8,13 +8,11 @@
     <Transition>
       <div class="css-h7832">
         <template v-if="navTab === 'dyor'">
-          <p>
-            - Designed to give you the knowledge and resources to holistically
-            assess a project. Useful for all investors who want to methodically
-            research a project and share the results with others. $7.7 billion
-            was stolen in crypto scams in 2021. Do Your Own Research so this
-            doesn’t happen to you.
-          </p>
+          Designed to give you the knowledge and resources to holistically
+          assess a project. Useful for all investors who want to methodically
+          research a project and share the results with others. $7.7 billion was
+          stolen in crypto scams in 2021. Do Your Own Research so this doesn’t
+          happen to you.
           <p class="sb62">What is DYOR?</p>
           <p>
             Do your own research is a phrase that gets thrown around a lot in
@@ -173,7 +171,7 @@ export default {
 .css-8c943 {
   width: 100%;
   height: 100%;
-  border-radius: 16px;
+  border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -185,8 +183,9 @@ export default {
 
 .css-h7832 {
   color: #ffffff;
-  padding: 1rem 2rem;
+  padding: 1rem;
   height: 100%;
+  margin: 1rem;
   max-height: 80%;
   max-height: 300px;
   display: inline-block;
