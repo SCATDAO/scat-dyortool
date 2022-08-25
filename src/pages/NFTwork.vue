@@ -831,7 +831,7 @@ export default {
         JSON.stringify(this.before_encode)
       );
 
-      console.log(this.before_encode);
+      console.log(this.before_encode, resultEncoder);
 
       try {
         const params = {
@@ -840,6 +840,7 @@ export default {
         };
 
         this.send_msg = "Uploading";
+
         document.getElementById("create-report").disabled = true;
         await axios({
           method: "post",
@@ -855,11 +856,11 @@ export default {
           })
           .catch((error) => {
             this.error_to_send = !this.error_to_send;
-            console.log(error.response);
+            console.error(error.response);
             this.send_msg = "Create Report";
           });
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     },
 
@@ -1405,8 +1406,8 @@ export default {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  caret-color: var(--text-color-primary);
-  color: var(--text-color-secondary);
+  caret-color: var(--text-a);
+  color: var(--text-a);
   resize: none;
   font-weight: lighter;
   padding: 1rem;
