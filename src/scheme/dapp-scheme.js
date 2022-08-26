@@ -511,7 +511,7 @@ export const dapp_scheme = [
     options: [
       { id: 1, name: "<1000", value: 0.0 },
       { id: 2, name: ">1K", value: 0.5 },
-      { id: 4, name: "N/A", value: 0.0 },
+      { id: 3, name: "N/A", value: 0.0 },
     ],
     answer: null,
     textarea: "",
@@ -706,8 +706,8 @@ export const dapp_scheme = [
       "E. Write your question, the teams response, and your assessment in the box below",
     ],
     options: [
-      { id: 1, name: "Yes", value: 0.0 },
-      { id: 2, name: "No", value: 0.5 },
+      { id: 1, name: "Yes", value: 0.5 },
+      { id: 2, name: "No", value: 0.0 },
     ],
     answer: null,
     textarea: "",
@@ -720,7 +720,7 @@ export const dapp_scheme = [
   {
     id: 30,
     tag: "MT1-30",
-    category: "Metrics",
+    category: "Trading Metrics",
     name: "Fair Launch",
     question:
       "If the project has had its initial offering, (ISO, IDO, ICO, etc) was it a fair launch?",
@@ -746,7 +746,7 @@ export const dapp_scheme = [
   {
     id: 31,
     tag: "MT2-31",
-    category: "Metrics",
+    category: "Trading Metrics",
     name: "Market cap",
     question: "What is the current diluted market cap of the project?",
     worksteps: [
@@ -771,7 +771,7 @@ export const dapp_scheme = [
   {
     id: 32,
     tag: "MT3-32",
-    category: "Metrics",
+    category: "Trading Metrics",
     name: "Volume",
     question: "What is the daily trading volume of the Token ?",
     worksteps: [
@@ -796,7 +796,7 @@ export const dapp_scheme = [
   {
     id: 33,
     tag: "MT4-33",
-    category: "Metrics",
+    category: "Trading Metrics",
     name: "CEX",
     question: "Is the token listed on large  centralized exchanges?",
     worksteps: [

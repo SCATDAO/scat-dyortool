@@ -69,7 +69,7 @@
               <b>{{ audit_info.project_name }}</b>
             </div>
             <div class="css-w-p-tag">
-              <span>{{ audit_info.category}}</span>
+              <span>{{ audit_info.category }}</span>
             </div>
             <div class="css-w-p-tag" style="text-transform: lowercase">
               <span>{{ audit_info.website }}</span>
@@ -127,15 +127,15 @@
                 d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
               ></path>
             </svg>
-            <b>Community</b>
+            <b>Tokenomics</b>
             <span
-              >{{ knowWorkProgress("community") }} /
-              {{ scheme_category["community"].length }}</span
+              >{{ knowWorkProgress("tokenomics") }} /
+              {{ scheme_category["tokenomics"].length }}</span
             >
           </div>
           <ul class="css-w-p-ul" :class="{ active: category_visible[1] }">
             <li
-              v-for="category in scheme_category['community']"
+              v-for="category in scheme_category['tokenomics']"
               :key="category"
               class="css-w-p-uli"
               :class="{
@@ -163,15 +163,15 @@
                 d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
               ></path>
             </svg>
-            <b>Mint Metrics</b>
+            <b>Community</b>
             <span
-              >{{ knowWorkProgress("mint_metrics") }} /
-              {{ scheme_category["mint_metrics"].length }}</span
+              >{{ knowWorkProgress("community") }} /
+              {{ scheme_category["community"].length }}</span
             >
           </div>
           <ul class="css-w-p-ul" :class="{ active: category_visible[2] }">
             <li
-              v-for="category in scheme_category['mint_metrics']"
+              v-for="category in scheme_category['community']"
               :key="category"
               class="css-w-p-uli"
               :class="{
@@ -199,15 +199,15 @@
                 d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
               ></path>
             </svg>
-            <b>Secondary Market</b>
+            <b>Trading Metrics</b>
             <span
-              >{{ knowWorkProgress("secondary_market") }} /
-              {{ scheme_category["secondary_market"].length }}</span
+              >{{ knowWorkProgress("trading_metrics") }} /
+              {{ scheme_category["trading_metrics"].length }}</span
             >
           </div>
           <ul class="css-w-p-ul" :class="{ active: category_visible[3] }">
             <li
-              v-for="category in scheme_category['secondary_market']"
+              v-for="category in scheme_category['trading_metrics']"
               :key="category"
               class="css-w-p-uli"
               :class="{
@@ -487,7 +487,14 @@
                 v-model="current_[0].textarea"
               ></textarea>
 
-              <template v-if="item.id === 11 || item.id === 13">
+              <template
+                v-if="
+                  item.id === 17 ||
+                  item.id === 19 ||
+                  item.id === 21 ||
+                  item.id === 23
+                "
+              >
                 <div class="css-wq-thl">
                   <div class="css-wq-txs">
                     <input
@@ -586,13 +593,10 @@ export default {
       token_phases: [0],
       inputDelete: [],
       scheme_category: {
-        developmentTeam: [],
         community: [],
         tokenomics: [],
-        metrics: [],
         development_team: [],
-        mint_metrics: [],
-        secondary_market: [],
+        trading_metrics: [],
       },
       scheme_progress: [],
       category_visible: [1, 1, 1, 1],
@@ -726,7 +730,7 @@ export default {
       )}.svg`;
     },
     getAuditInfo() {
-      this.audit_info = this.$store.getters.getAuditInfo;
+      this.audit_info = this.$store.getters.getAuditInfoDAPP;
     },
     changeCurrentQuestion() {
       this.current_.push(this.question_list[this.scheme_counter[0]]);
@@ -904,20 +908,20 @@ export default {
               name: element.name,
             });
             break;
+          case "Tokenomics":
+            this.scheme_category["tokenomics"].push({
+              id: element.id,
+              name: element.name,
+            });
+            break;
           case "Community":
             this.scheme_category["community"].push({
               id: element.id,
               name: element.name,
             });
             break;
-          case "Mint Metrics":
-            this.scheme_category["mint_metrics"].push({
-              id: element.id,
-              name: element.name,
-            });
-            break;
-          case "Secondary Market":
-            this.scheme_category["secondary_market"].push({
+          case "Trading Metrics":
+            this.scheme_category["trading_metrics"].push({
               id: element.id,
               name: element.name,
             });

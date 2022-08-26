@@ -23,21 +23,17 @@ const store = createStore({
         number_per_mint: "Empty",
         mint_date: "Empty",
         nickname: "Nickname",
-        project_logo: ""
+        project_logo: "",
       },
-
       dapp_scheme: {
         project_name: "Name",
         description: "Empty",
         website: "Website",
-        discord: "Empty",
-        twitter: "Empty",
-        number_in_circulation: "Empty",
-        whitelist: "Empty",
-        number_per_mint: "Empty",
-        mint_date: "Empty",
+        category: "Empty",
+        symbol: "Empty",
+        repository: "Empty",
         nickname: "Nickname",
-        project_logo: ""
+        project_logo: "",
       },
       answeredQuestion: null,
     };
@@ -47,11 +43,11 @@ const store = createStore({
       state.newAudit = payload;
     },
 
-    configureDAPP(state, payload){
+    configureDAPP(state, payload) {
       state.dapp_scheme = payload;
     },
 
-    configureNFT(state, payload){
+    configureNFT(state, payload) {
       state.nft_scheme = payload;
     },
     newQuestData(state, payload) {
@@ -62,8 +58,11 @@ const store = createStore({
     },
   },
   getters: {
-    getAuditInfo(state) {
+    getAuditInfoNFT(state) {
       return state.nft_scheme;
+    },
+    getAuditInfoDAPP(state) {
+      return state.dapp_scheme;
     },
     sendMeAnswered(state) {
       return state.answeredQuestion;

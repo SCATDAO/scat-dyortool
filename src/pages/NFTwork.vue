@@ -586,10 +586,7 @@ export default {
       token_phases: [0],
       inputDelete: [],
       scheme_category: {
-        developmentTeam: [],
         community: [],
-        tokenomics: [],
-        metrics: [],
         development_team: [],
         mint_metrics: [],
         secondary_market: [],
@@ -726,7 +723,7 @@ export default {
       )}.svg`;
     },
     getAuditInfo() {
-      this.audit_info = this.$store.getters.getAuditInfo;
+      this.audit_info = this.$store.getters.getAuditInfoNFT;
     },
     changeCurrentQuestion() {
       this.current_.push(this.question_list[this.scheme_counter[0]]);
