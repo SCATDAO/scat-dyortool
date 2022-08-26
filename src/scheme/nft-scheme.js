@@ -548,7 +548,6 @@ export const nft_scheme = [
       "D. Check the website to see when the minting date is/was and note how much time passed between founding date and mint.",
       "E. If the collection has not set a date yet, mark this question as N/A.",
     ],
-
     options: [
       { id: 1, name: "< 14 days", value: 0.0 },
       { id: 2, name: "15 days to 45 days", value: 0.25 },
@@ -650,11 +649,10 @@ export const nft_scheme = [
       "B. Check on second market websites such as CNFT.Tools or CNFT Jungle for the number of items in the collection and the corresponding number of holders. Make sure it is the correct policy ID.",
       "C. Confirm the numbers above on a blockchain scan tool through the policy ID of the collection.",
     ],
-
     options: [
       { id: 1, name: "0 to 25%", value: 0.0 },
       { id: 2, name: "26% to 50%", value: 0.75 },
-      { id: 3, name: "> 50%", value: 1.5 },
+      { id: 3, name: ">50%", value: 1.5 },
       { id: 404, name: "N/A", value: 0.0 },
     ],
     answer: null,
