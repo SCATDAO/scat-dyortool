@@ -1,8 +1,9 @@
 <template>
   <div class="css-cp-wrap">
-    <template v-if="isLoading">
-      <div class="css-kq2 k0c">
-        <div class="lds-fcs">
+    <template v-if="loader_visible">
+      <div class="k0c">
+        <div class="lds-ring">
+          <div></div>
           <div></div>
           <div></div>
           <div></div>
@@ -11,13 +12,13 @@
     </template>
     <header class="css-cp-hdc">
       <router-link to="/" style="display: flex; align-items: baseline">
-        <img src="../assets/logo-blue.png" alt="" />
+        <img src="../assets/white-logo.svg" alt="" />
       </router-link>
     </header>
     <div class="css-cp-ndw">
       <div class="css-cp-ndf">
         <router-link class="logo-blue" to="/">
-          <img id="logo-blue" src="../assets/logo-white.png" alt="" />
+          <img src="../assets/logo.svg" alt="" />
         </router-link>
         <div class="css-cp-nxs">
           <div class="css-cp-nsk">
@@ -29,7 +30,7 @@
         <div class="css-cp-faw">
           <div class="css-cp-nsc">
             <div class="css-cp-nst">
-              Project Name:
+              Project name:
               <span class="css-cp-xsa" :class="{ active: errors.project_name }"
                 >Must not be empty or greater than 50 length</span
               >
@@ -62,7 +63,7 @@
                           :key="key"
                           @click="sortBy(key)"
                           class="css-trade-history-tzx"
-                          :class="{ active: sortKey == key }"
+                          :class="{ active: sort_key == key }"
                         >
                           {{ capitalize(key) }}
                           <span
@@ -160,7 +161,7 @@
 
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
-              Number in Circulation:
+              Number in circulation:
               <span
                 class="css-cp-xsa"
                 :class="{ active: errors.number_in_circulation }"
@@ -192,7 +193,7 @@
 
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
-              Number per Mint:
+              Number per mint:
               <span
                 class="css-cp-xsa"
                 :class="{ active: errors.number_per_mint }"
@@ -209,7 +210,7 @@
 
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
-              Mint Date:
+              Mint date:
               <span class="css-cp-xsa" :class="{ active: errors.mint_date }"
                 >Must not be empty or greater than 100 length</span
               >
@@ -223,7 +224,7 @@
           </div>
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
-              Your Nickname:
+              Your nickname:
               <span class="css-cp-xsa" :class="{ active: errors.nickname }"
                 >Must not be empty or greater than 50 length</span
               >
@@ -259,14 +260,14 @@
               <div class="css-cp-ixw">
                 <div class="css-cp-stx" :class="{ active: pl }">
                   <div class="css-cp-str" id="canvas-wrapper">
-                    <template v-if="!isFetching">
+                    <template v-if="!fetching_image">
                       <img
                         :src="this.form.project_logo || defaultLogo"
                         alt=""
                       />
                     </template>
 
-                    <template v-if="isFetching">
+                    <template v-if="fetching_image">
                       <div class="lds-ring">
                         <div></div>
                         <div></div>
@@ -335,10 +336,10 @@ export default {
     "my-upload": myUpload,
   },
   mounted() {
-    this.RunDropdown();
+    this.enableDropdown();
   },
   created() {
-    this.updateDropdownData();
+    this.updateData();
   },
   data() {
     return {
@@ -371,27 +372,18 @@ export default {
       disclaimer: null,
       uploading_logo: false,
       editer_lang: "en",
-      imgDataUrl: "",
-      tableData: [],
+      project_data: [],
       columns: columns,
-      sortKey: "",
-      pn: "",
-      ps: "",
-      pd: "",
-      pc: "",
-      pw: "",
-      pr: "",
-      an: "",
+      sort_key: "",
       dropdown_visible: false,
-      isUploaded: false,
-      isLoading: false,
-      isFetching: false,
+      loader_visible: true,
+      fetching_image: false,
       defaultLogo:
         "data:image/svg+xml;base64,PHN2ZyBpZD0iU1ZHUm9vdCIgd2lkdGg9IjgwcHgiIGhlaWdodD0iODBweCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgODAgODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8ZyBpZD0iU3RvY2tob2xtLWljb25zLS8tRmlsZXMtLy1VcGxvYWQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI3LjUzNSAyNS45NjkpIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogIDxyZWN0IGlkPSJib3VuZCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CiAgPGcgZmlsbD0iIzAwNjlmNSI+CiAgIDxwYXRoIGQ9Im0yIDEzYzAtMC41IDAuNS0xIDEtMXMxIDAuNSAxIDF2NWMwIDEuMTA0NiAwLjg5NTQzIDIgMiAyaDEyYzEuMTA0NiAwIDItMC44OTU0MyAyLTJ2LTVjMC0wLjU1MjI4IDAuNDQ3NzItMSAxLTFzMSAwLjQ0NzcyIDEgMXY1YzAgMi4yMDkxLTEuNzkwOSA0LTQgNGgtMTJjLTIuMjA5MSAwLTQtMS43OTA5LTQtNHYtNXoiIGZpbGwtcnVsZT0ibm9uemVybyIgb3BhY2l0eT0iLjMiLz4KICAgPHJlY3QgaWQ9IlJlY3RhbmdsZSIgeD0iMTEiIHk9IjIiIHdpZHRoPSIyIiBoZWlnaHQ9IjE0IiByeD0iMSIgb3BhY2l0eT0iLjMiLz4KICAgPHBhdGggZD0ibTEyLjAzNiAzLjM3OC00LjMyOTEgNC4zMjkxYy0wLjM5MDUyIDAuMzkwNTItMS4wMjM3IDAuMzkwNTItMS40MTQyIDBzLTAuMzkwNTItMS4wMjM3IDAtMS40MTQybDUtNWMwLjM3NjA4LTAuMzc2MDggMC45ODA3NC0wLjM5MTk4IDEuMzc2MS0wLjAzNjE4N2w1IDQuNWMwLjQxMDUxIDAuMzY5NDYgMC40NDM3OSAxLjAwMTcgMC4wNzQzMyAxLjQxMjMtMC4zNjk0NiAwLjQxMDUxLTEuMDAxNyAwLjQ0Mzc5LTEuNDEyMyAwLjA3NDMyOXoiIGZpbGwtcnVsZT0ibm9uemVybyIvPgogIDwvZz4KIDwvZz4KPC9zdmc+Cg==",
     };
   },
   methods: {
-    updateDropdownData() {
+    updateData() {
       this.$nextTick(() => {
         setTimeout(async () => {
           let data = [];
@@ -408,9 +400,9 @@ export default {
               };
             });
 
-            this.tableData = data;
+            this.project_data = data;
 
-            this.isLoading = false;
+            this.loader_visible = false;
           } catch (error) {
             console.log(error);
           }
@@ -422,7 +414,6 @@ export default {
     },
     cropSuccess(img, field) {
       this.form.project_logo = img;
-      this.isUploaded = true;
       console.log("Image loaded", field);
     },
 
@@ -435,38 +426,36 @@ export default {
       console.log(status);
       console.log("field: " + field);
     },
-    RunDropdown() {
+    enableDropdown() {
       let timer;
 
-      const waitTime = 500;
+      const wait_time = 500;
 
-      const dropdownInput = document.querySelector("#tableTradeSearch");
+      const dropdown_input = document.querySelector("#tableTradeSearch");
 
-      const tableD = document.querySelector("#tableTradeSearch");
-
-      dropdownInput.addEventListener("keyup", () => {
+      dropdown_input.addEventListener("keyup", () => {
         clearTimeout(timer);
 
         timer = setTimeout(() => {
           this.deployDropdown(true);
 
-          tableD.blur();
-          dropdownInput.focus();
-        }, waitTime);
+          dropdown_input.blur();
+          dropdown_input.focus();
+        }, wait_time);
       });
 
-      dropdownInput.addEventListener("click", () => {
+      dropdown_input.addEventListener("click", () => {
         clearTimeout(timer);
         timer = setTimeout(() => {
           this.deployDropdown(true);
-        }, waitTime);
+        }, wait_time);
       });
     },
     capitalize(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);
     },
     sortBy(key) {
-      this.sortKey = key;
+      this.sort_key = key;
       this.sortOrders[key] = this.sortOrders[key] * -1;
     },
     configProject(element) {
@@ -477,7 +466,7 @@ export default {
     },
 
     updateLogo(element) {
-      this.isFetching = true;
+      this.fetching_image = true;
 
       this.$nextTick(() => {
         setTimeout(async () => {
@@ -486,7 +475,7 @@ export default {
               `https://api.dyortool.io/v1/logo/searchId/${element}`
             );
             this.form.project_logo = response.data.logo;
-            this.isFetching = false;
+            this.fetching_image = false;
           } catch (error) {
             console.log(error);
           }
@@ -534,7 +523,7 @@ export default {
       if (!__(this.form.nickname, 50)) this.errors.nickname = true;
       if (!this.form.project_logo) this.errors.project_logo = true;
 
-      if (!this.isFetching) {
+      if (!this.fetching_image) {
         return !Object.values(this.errors).includes(true) ? true : false;
       }
     },
@@ -545,25 +534,26 @@ export default {
   },
   computed: {
     filteredCoins() {
-      const sortKey = this.sortKey;
-      const filterKey = this.pn && this.pn.toLowerCase();
-      const order = this.sortOrders[sortKey] || 1;
-      let tableData = this.tableData;
+      const sort_key = this.sort_key;
+      const filterKey =
+        this.form.project_name && this.form.project_name.toLowerCase();
+      const order = this.sortOrders[sort_key] || 1;
+      let project_data = this.project_data;
       if (filterKey) {
-        tableData = tableData.filter(function (row) {
+        project_data = project_data.filter(function (row) {
           return Object.keys(row).some(function (key) {
             return String(row[key]).toLowerCase().indexOf(filterKey) > -1;
           });
         });
       }
-      if (sortKey) {
-        tableData = tableData.slice().sort(function (a, b) {
-          a = a[sortKey];
-          b = b[sortKey];
+      if (sort_key) {
+        project_data = project_data.slice().sort(function (a, b) {
+          a = a[sort_key];
+          b = b[sort_key];
           return (a === b ? 0 : a > b ? 1 : -1) * order;
         });
       }
-      return tableData;
+      return project_data;
     },
     sortOrders() {
       const columnSortOrders = {};
@@ -578,11 +568,7 @@ export default {
 };
 </script>
 
-<style scoped>
-#logo-blue {
-  fill: var(--complementary-color-blue);
-}
-
+<style>
 .css-cp-cgj {
   width: calc(100% - 6rem);
   bottom: 10%;
@@ -678,56 +664,56 @@ export default {
   left: 0;
   top: 0;
   bottom: 0;
-
   background: rgba(0, 0, 0, 0.5);
 }
 
 .k0c {
   z-index: 30;
   position: fixed;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
   height: 100vh;
   justify-content: center;
   display: flex;
   align-items: center;
 }
 
-.lds-fcs {
+.k0c .lds-ring {
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 44px;
+  height: 44px;
 }
-.lds-fcs div {
-  display: inline-block;
+.k0c .lds-ring div {
+  box-sizing: border-box;
+  display: block;
   position: absolute;
-  left: 8px;
-  width: 16px;
-  background: #ffffff;
-  animation: lds-fcs 1.1s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  width: 44px;
+  height: 44px;
+  margin: 8px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
 }
-.lds-fcs div:nth-child(1) {
-  left: 8px;
-  animation-delay: -0.24s;
+.k0c .lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
 }
-.lds-fcs div:nth-child(2) {
-  left: 32px;
-  animation-delay: -0.12s;
+.k0c .lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
 }
-.lds-fcs div:nth-child(3) {
-  left: 56px;
-  animation-delay: 0;
+.k0c .lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
 }
-@keyframes lds-fcs {
+@keyframes lds-ring {
   0% {
-    top: 8px;
-    height: 64px;
+    transform: rotate(0deg);
   }
-  50%,
   100% {
-    top: 24px;
-    height: 32px;
+    transform: rotate(360deg);
   }
 }
+
 .css-cp-ixw {
   display: flex;
   width: 100%;
@@ -930,7 +916,7 @@ export default {
 }
 
 .css-cp-nii::placeholder {
-  opacity: 0.5;
+  opacity: 0.4;
   font-size: var(--text-size-secondary);
 }
 
@@ -991,11 +977,9 @@ td {
   #logo-white {
     fill: #fff;
   }
-  #logo-blue {
-    display: none;
-  }
+
   .logo-blue {
-    background: red;
+ display: none;
   }
 
   .css-cp-nxs {
@@ -1005,6 +989,8 @@ td {
   .css-cp-hdc {
     background: var(--complementary-color-blue);
     height: 64px;
+    max-height: 64px;
+    min-height: 64px;
     display: flex;
     align-items: center;
     justify-content: space-between;

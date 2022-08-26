@@ -1,310 +1,25 @@
 <template>
   <div
-    class="css-main-flex-wrap"
-    :class="{ active: showSummary || visualHelper.purpose }"
+    class="css-mf-wrap"
+    :class="{ active: summary_visible || helpers.purpose }"
   >
-    <header class="css-w-p-her" :class="{ active: workspace }">
+    <header class="css-w-p-her">
       <router-link to="/" style="display: flex; align-items: baseline">
-        <svg
-          id="logo-blue"
-          width="120px"
-          height="24px"
-          version="1.1"
-          viewBox="0 0 120 24"
-          fill="#070a0e"
-        >
-          <g transform="matrix(.10159 0 0 .10159 -5.4495 -4.4501)">
-            <g>
-              <path
-                class="st2"
-                d="m120.1 266.5h-62.5v-139.7h62.5c9.7 0 18.8 1.8 27.4 5.5 8.5 3.7 16 8.6 22.3 14.9 6.4 6.3 11.4 13.7 15 22.2 3.7 8.5 5.5 17.6 5.5 27.2s-1.8 18.7-5.5 27.2-8.7 15.9-15 22.2c-6.4 6.3-13.8 11.3-22.3 14.9-8.6 3.8-17.7 5.6-27.4 5.6zm-4.4-105.7h-21.4v71.6h21.4c5 0 9.7-0.9 14.1-2.8s8.2-4.4 11.4-7.7c3.2-3.2 5.8-7 7.6-11.4 1.9-4.4 2.8-9 2.8-14 0-4.9-0.9-9.6-2.8-14s-4.4-8.2-7.6-11.4-7.1-5.8-11.4-7.7c-4.3-1.6-9-2.6-14.1-2.6z"
-              />
-              <path
-                class="st2"
-                d="m271.8 218.4v48.1h-39.8v-48.1l-48.8-91.4h43.9l24.8 48.6 24.7-48.6h43.9z"
-              />
-              <path
-                class="st2"
-                d="m387.7 270.8c-10.3 0-20-1.9-29-5.8-9-3.8-16.9-9.1-23.6-15.8s-12-14.5-15.9-23.5-5.9-18.6-5.9-28.8 1.9-19.8 5.9-28.8c3.9-9 9.2-16.8 15.9-23.5s14.6-11.9 23.6-15.8 18.7-5.8 29-5.8c10.2 0 19.8 2 28.9 5.8 9.1 3.9 16.9 9.2 23.7 15.8 6.7 6.7 12 14.5 15.9 23.5s5.9 18.6 5.9 28.8-2 19.8-5.9 28.8-9.2 16.8-15.9 23.5-14.6 11.9-23.7 15.8c-9 3.9-18.7 5.8-28.9 5.8zm0-112.1c-5.3 0-10.2 1.1-14.7 3.2s-8.4 4.9-11.6 8.4-5.8 7.5-7.7 12.1-2.8 9.5-2.8 14.7c0 5 0.9 9.9 2.8 14.6s4.4 8.8 7.7 12.2c3.2 3.5 7.1 6.3 11.6 8.4s9.4 3.2 14.7 3.2 10.2-1 14.7-3.2c4.5-2.1 8.4-4.9 11.6-8.4s5.8-7.6 7.7-12.2c1.9-4.7 2.8-9.5 2.8-14.6 0-5.2-0.9-10-2.8-14.7-1.9-4.6-4.4-8.7-7.7-12.1-3.2-3.5-7.1-6.3-11.6-8.4-4.5-2.2-9.4-3.2-14.7-3.2z"
-              />
-              <path
-                class="st2"
-                d="m566.1 266.5-24.3-43.2h-23.6l0.2 43.2h-38.5v-139.7h70c3.4 0 6.8 0.6 10.3 1.9s6.8 2.9 10.1 5c3.2 2.1 6.2 4.5 9 7.1s5.1 5.3 7 8.1c2.4 3.5 4.2 7.5 5.5 12.2 1.3 4.6 1.9 9 1.9 13.2 0 7-1.6 13.4-4.9 19.4-3.2 6-7.7 11-13.5 15.1l32.8 57.6h-42zm-27.2-108.5h-21.8v30h21.8c2.2 0 4.2-0.4 6.1-1.2s3.6-1.8 5-3.2 2.6-3 3.4-4.7c0.8-1.8 1.3-3.8 1.3-5.9s-0.4-4.1-1.3-5.9c-0.8-1.8-2-3.4-3.4-4.7-1.4-1.4-3.1-2.4-5-3.2s-3.9-1.2-6.1-1.2z"
-              />
-              <path
-                class="st2"
-                d="m796.3 161.4h-38.3v105.1h-38v-105.1h-38.3l-2.5-2.5v-32h119.7v32z"
-              />
-              <path
-                class="st2"
-                d="m1120.5 266.5v-139.7h38.7v105.1h73.4v34.6z"
-              />
-              <path
-                class="st3"
-                d="m917.6 127.4c-8.8-4.4-17.9-7-27.3-7.8s-18.9 0.2-28.3 3.1c-5.4 1.6-10.6 3.9-15.5 6.8l-57.7-68.8c-3.7-4.4-10.2-5-14.6-1.3l-4.2 3.6c-4.4 3.7-5 10.2-1.3 14.6l57.8 68.9c-0.7 0.8-1.3 1.6-2 2.5-8 9.6-12.2 24.8-12.2 24.8-1.2 4.4-2.1 8.8-2.5 13.4-0.9 9.4 0.1 18.8 2.9 28.2s7.5 18 14 25.8c6.6 7.8 14.2 13.9 23 18.3s17.9 7 27.3 7.8 18.8-0.2 28.2-3.1c9.4-2.8 18-7.6 25.9-14.2 7.8-6.6 14-14.2 18.4-23 4.5-8.8 7.1-17.9 8-27.3s-0.1-18.8-2.9-28.2-7.5-18-14-25.8c-6.6-7.8-14.2-13.9-23-18.3zm14 50.9c1.9 6.4 2.6 12.9 2 19.2s-2.4 12.6-5.5 18.6c-3 5.8-7.2 11.1-12.5 15.5-5.4 4.5-11.2 7.7-17.4 9.6-6.4 1.9-12.9 2.7-19.2 2.1-6.3-0.5-12.6-2.3-18.5-5.3-5.8-2.9-11-7-15.4-12.3-4.4-5.2-7.6-11.1-9.4-17.2-1.9-6.4-2.6-12.9-2-19.2 0.6-6.4 2.4-12.7 5.4-18.8 2.9-5.8 7.1-11 12.4-15.5 5.3-4.4 11.1-7.6 17.4-9.5 6.5-2 13-2.7 19.4-2.1 6.3 0.5 12.6 2.3 18.6 5.3 5.8 2.9 10.9 7 15.3 12.3 4.4 5.4 7.6 11.2 9.4 17.3z"
-              />
-              <path
-                class="st4"
-                d="m884.1 143.1c6.9 0 13.4 1.3 19.4 3.9 6.2 2.7 11.7 6.3 16.3 10.8 4.5 4.5 8.1 9.9 10.8 16 2.6 5.9 3.9 12.4 3.9 19.3s-1.3 13.3-3.9 19.3c-2.7 6.1-6.3 11.5-10.8 16s-9.9 8.1-16.1 10.7c-6 2.6-12.6 3.9-19.5 3.9-7 0-13.6-1.3-19.6-3.8-6.2-2.6-11.6-6.2-16.1-10.7s-8.1-9.9-10.8-16c-2.6-5.9-3.9-12.4-3.9-19.3 0-6.8 1.3-13.3 3.9-19.3 2.7-6.1 6.3-11.5 10.8-16 4.6-4.5 10-8.2 16.2-10.9 5.9-2.6 12.4-3.9 19.4-3.9m0-12c-8.6 0-16.8 1.6-24.2 4.9-7.6 3.3-14.3 7.8-19.9 13.3-5.6 5.6-10.1 12.2-13.4 19.7-3.2 7.4-4.9 15.5-4.9 24s1.6 16.6 4.9 24c3.3 7.6 7.8 14.2 13.4 19.7 5.6 5.6 12.3 10 19.8 13.2s15.6 4.8 24.3 4.8c8.5 0 16.7-1.6 24.2-4.8 7.6-3.2 14.3-7.7 19.9-13.2 5.6-5.6 10.1-12.2 13.4-19.7 3.2-7.4 4.9-15.5 4.9-24s-1.6-16.6-4.9-24c-3.3-7.6-7.8-14.2-13.4-19.7-5.6-5.6-12.3-10.1-20-13.3-7.5-3.3-15.6-4.9-24.1-4.9z"
-              />
-              <g>
-                <path
-                  class="st5"
-                  d="m882.5 183.8c-0.1-2.5-2-4.6-4.6-4.6-2.4 0-4.7 2.1-4.6 4.6s2 4.6 4.6 4.6c2.5-0.1 4.8-2.2 4.6-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m894.4 183.8c-0.1-2.5-2-4.6-4.6-4.6-2.4 0-4.7 2.1-4.6 4.6s2 4.6 4.6 4.6c2.5-0.1 4.8-2.2 4.6-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m900 194c-0.1-2.5-2-4.6-4.6-4.6-2.4 0-4.7 2.1-4.6 4.6s2 4.6 4.6 4.6c2.5-0.1 4.7-2.1 4.6-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m894.3 204.2c-0.1-2.5-2-4.6-4.6-4.6-2.4 0-4.7 2.1-4.6 4.6s2 4.6 4.6 4.6c2.4 0 4.7-2.1 4.6-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m882.4 204c-0.1-2.5-2-4.6-4.6-4.6-2.4 0-4.7 2.1-4.6 4.6s2 4.6 4.6 4.6c2.4 0 4.7-2.1 4.6-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m876.8 194.2c-0.1-2.5-2-4.6-4.6-4.6-2.4 0-4.7 2.1-4.6 4.6s2 4.6 4.6 4.6c2.4-0.1 4.7-2.2 4.6-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m901.2 181c-3.8 0-3.8 5.9 0 5.9s3.8-5.9 0-5.9z"
-                />
-                <path
-                  class="st5"
-                  d="m883.9 170.8c-3.8 0-3.8 5.9 0 5.9 3.8-0.1 3.8-5.9 0-5.9z"
-                />
-                <path
-                  class="st5"
-                  d="m866.5 181c-3.8 0-3.8 5.9 0 5.9 3.7 0 3.7-5.9 0-5.9z"
-                />
-                <path
-                  class="st5"
-                  d="m866.5 201.1c-3.8 0-3.8 5.9 0 5.9 3.7 0 3.7-5.9 0-5.9z"
-                />
-                <path
-                  class="st5"
-                  d="m883.9 211.1c-3.8 0-3.8 5.9 0 5.9s3.8-5.9 0-5.9z"
-                />
-                <path
-                  class="st5"
-                  d="m901.2 201.3c-3.8 0-3.8 5.9 0 5.9 3.8-0.1 3.8-5.9 0-5.9z"
-                />
-                <path
-                  class="st5"
-                  d="m896.8 169.2c-2.9 0-2.9 4.6 0 4.6s2.9-4.6 0-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m870.9 169.4c-2.9 0-2.9 4.6 0 4.6s3-4.6 0-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m857.9 191.7c-2.9 0-2.9 4.6 0 4.6s2.9-4.6 0-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m870.7 214.2c-2.9 0-2.9 4.6 0 4.6 3 0 3-4.6 0-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m909.8 191.7c-2.9 0-2.9 4.6 0 4.6s2.9-4.6 0-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m911.5 176c-2.5 0-2.5 3.9 0 3.9s2.5-3.9 0-3.9z"
-                />
-                <path
-                  class="st5"
-                  d="m883.9 224c-2.5 0-2.5 3.9 0 3.9s2.6-3.9 0-3.9z"
-                />
-                <path
-                  class="st5"
-                  d="m896.6 214.2c-2.9 0-2.9 4.6 0 4.6s2.9-4.6 0-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m883.9 160c-2.5 0-2.5 3.9 0 3.9 2.5 0.1 2.6-3.9 0-3.9z"
-                />
-                <path
-                  class="st5"
-                  d="m856 175.9c-2.5 0-2.5 3.9 0 3.9 2.6 0 2.6-3.9 0-3.9z"
-                />
-                <path
-                  class="st5"
-                  d="m856.2 208c-2.5 0-2.5 3.9 0 3.9s2.5-3.9 0-3.9z"
-                />
-                <path
-                  class="st5"
-                  d="m911.5 208.2c-2.5 0-2.5 3.9 0 3.9s2.5-3.9 0-3.9z"
-                />
-                <path
-                  class="st5"
-                  d="m919.1 192.6c-1.8 0-1.8 2.8 0 2.8s1.8-2.8 0-2.8z"
-                />
-                <path
-                  class="st5"
-                  d="m901.2 162.1c-1.8 0-1.8 2.8 0 2.8s1.9-2.8 0-2.8z"
-                />
-                <path
-                  class="st5"
-                  d="m866.3 162.3c-1.8 0-1.8 2.8 0 2.8s1.8-2.8 0-2.8z"
-                />
-                <path
-                  class="st5"
-                  d="m848.8 192.6c-1.8 0-1.8 2.8 0 2.8s1.8-2.8 0-2.8z"
-                />
-                <path
-                  class="st5"
-                  d="m866.3 222.9c-1.8 0-1.8 2.8 0 2.8s1.8-2.8 0-2.8z"
-                />
-                <path
-                  class="st5"
-                  d="m901.2 222.7c-1.8 0-1.8 2.8 0 2.8s1.9-2.8 0-2.8z"
-                />
-              </g>
-              <path
-                class="st3"
-                d="m979.4 145.7c-6.6 7.8-11.2 16.4-14 25.8s-3.8 18.8-2.9 28.2 3.5 18.5 8 27.3 10.6 16.4 18.4 23c7.9 6.6 16.5 11.4 25.9 14.2s18.8 3.9 28.2 3.1 18.5-3.4 27.3-7.8 16.4-10.5 23-18.3 11.2-16.4 14-25.8 3.8-18.8 2.9-28.2c-0.4-4.5-1.3-9-2.5-13.4 0 0-4.2-15.2-12.2-24.8-0.6-0.8-1.3-1.7-2-2.5l57.8-68.9c3.7-4.4 3.1-10.9-1.3-14.6l-4.2-3.6c-4.4-3.7-10.9-3.1-14.6 1.3l-57.7 68.8c-4.9-2.9-10.1-5.1-15.5-6.8-9.4-2.8-18.9-3.9-28.3-3.1s-18.5 3.4-27.3 7.8-16.4 10.5-23 18.3zm18.4 15.4c4.4-5.3 9.6-9.4 15.3-12.3 6-3 12.2-4.8 18.6-5.3s12.9 0.2 19.4 2.1c6.3 1.9 12.1 5.1 17.4 9.5 5.3 4.5 9.5 9.7 12.4 15.5 3 6.1 4.9 12.4 5.4 18.8 0.6 6.3-0.1 12.8-2 19.2-1.9 6.2-5 12-9.4 17.2s-9.6 9.4-15.4 12.3c-6 3-12.2 4.8-18.5 5.3-6.4 0.5-12.8-0.2-19.2-2.1-6.2-1.9-12.1-5.1-17.4-9.6-5.3-4.4-9.5-9.7-12.5-15.5-3.1-6-4.9-12.2-5.5-18.6-0.6-6.3 0.1-12.8 2-19.2 1.8-6.2 5-12 9.4-17.3z"
-              />
-              <path
-                class="st6"
-                d="m1035.9 143.1c7 0 13.5 1.3 19.4 3.9 6.2 2.7 11.7 6.3 16.2 10.9 4.5 4.5 8.1 9.8 10.8 16 2.6 5.9 3.9 12.4 3.9 19.3 0 6.8-1.3 13.3-3.9 19.3-2.7 6.1-6.3 11.5-10.8 16s-9.9 8.1-16.1 10.7c-6 2.5-12.5 3.8-19.6 3.8-6.9 0-13.5-1.3-19.5-3.9-6.2-2.6-11.6-6.2-16.1-10.7s-8.1-9.9-10.8-16c-2.6-5.9-3.9-12.4-3.9-19.3s1.3-13.3 3.9-19.3c2.7-6.1 6.3-11.5 10.8-16s10-8.2 16.3-10.8c6-2.6 12.5-3.9 19.4-3.9m0-12c-8.5 0-16.6 1.6-24.1 4.9-7.6 3.3-14.4 7.8-20 13.3-5.6 5.6-10.1 12.2-13.4 19.7-3.2 7.4-4.9 15.5-4.9 24s1.6 16.6 4.9 24c3.3 7.6 7.8 14.2 13.4 19.7s12.3 10 19.9 13.2c7.5 3.2 15.7 4.8 24.2 4.8 8.6 0 16.8-1.6 24.3-4.8 7.6-3.2 14.2-7.7 19.8-13.2 5.6-5.6 10.1-12.2 13.4-19.7 3.2-7.4 4.9-15.5 4.9-24s-1.6-16.6-4.9-24c-3.3-7.5-7.8-14.2-13.4-19.7-5.6-5.6-12.3-10.1-19.9-13.3-7.4-3.3-15.6-4.9-24.2-4.9z"
-              />
-              <g>
-                <path
-                  class="st5"
-                  d="m1037.4 183.8c0.1-2.5 2-4.6 4.6-4.6 2.4 0 4.7 2.1 4.6 4.6s-2 4.6-4.6 4.6c-2.4-0.1-4.7-2.2-4.6-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m1025.5 183.8c0.1-2.5 2-4.6 4.6-4.6 2.4 0 4.7 2.1 4.6 4.6s-2 4.6-4.6 4.6c-2.4-0.1-4.7-2.2-4.6-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m1020 194c0.1-2.5 2-4.6 4.6-4.6 2.4 0 4.7 2.1 4.6 4.6s-2 4.6-4.6 4.6c-2.5-0.1-4.7-2.1-4.6-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m1025.7 204.2c0.1-2.5 2-4.6 4.6-4.6 2.4 0 4.7 2.1 4.6 4.6s-2 4.6-4.6 4.6c-2.4 0-4.7-2.1-4.6-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m1037.6 204c0.1-2.5 2-4.6 4.6-4.6 2.4 0 4.7 2.1 4.6 4.6s-2 4.6-4.6 4.6c-2.4 0-4.7-2.1-4.6-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m1043.2 194.2c0.1-2.5 2-4.6 4.6-4.6 2.4 0 4.7 2.1 4.6 4.6s-2 4.6-4.6 4.6c-2.4-0.1-4.7-2.2-4.6-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m1018.8 181c3.8 0 3.8 5.9 0 5.9s-3.8-5.9 0-5.9z"
-                />
-                <path
-                  class="st5"
-                  d="m1036 170.8c3.8 0 3.8 5.9 0 5.9-3.7-0.1-3.7-5.9 0-5.9z"
-                />
-                <path
-                  class="st5"
-                  d="m1053.5 181c3.8 0 3.8 5.9 0 5.9-3.7 0-3.7-5.9 0-5.9z"
-                />
-                <path
-                  class="st5"
-                  d="m1053.5 201.1c3.8 0 3.8 5.9 0 5.9-3.7 0-3.7-5.9 0-5.9z"
-                />
-                <path
-                  class="st5"
-                  d="m1036 211.1c3.8 0 3.8 5.9 0 5.9-3.7 0-3.7-5.9 0-5.9z"
-                />
-                <path
-                  class="st5"
-                  d="m1018.8 201.3c3.8 0 3.8 5.9 0 5.9-3.8-0.1-3.8-5.9 0-5.9z"
-                />
-                <path
-                  class="st5"
-                  d="m1023.2 169.2c2.9 0 2.9 4.6 0 4.6s-2.9-4.6 0-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m1049.1 169.4c2.9 0 2.9 4.6 0 4.6-3 0-3-4.6 0-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m1062.1 191.7c2.9 0 2.9 4.6 0 4.6s-3-4.6 0-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m1049.3 214.2c2.9 0 2.9 4.6 0 4.6-3 0-3-4.6 0-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m1010.2 191.7c2.9 0 2.9 4.6 0 4.6s-2.9-4.6 0-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m1008.5 176c2.5 0 2.5 3.9 0 3.9s-2.5-3.9 0-3.9z"
-                />
-                <path
-                  class="st5"
-                  d="m1036 224c2.5 0 2.5 3.9 0 3.9s-2.5-3.9 0-3.9z"
-                />
-                <path
-                  class="st5"
-                  d="m1023.4 214.2c2.9 0 2.9 4.6 0 4.6s-2.9-4.6 0-4.6z"
-                />
-                <path
-                  class="st5"
-                  d="m1036 160c2.5 0 2.5 3.9 0 3.9-2.5 0.1-2.5-3.9 0-3.9z"
-                />
-                <path
-                  class="st5"
-                  d="m1063.9 175.9c2.5 0 2.5 3.9 0 3.9s-2.5-3.9 0-3.9z"
-                />
-                <path
-                  class="st5"
-                  d="m1063.8 208c2.5 0 2.5 3.9 0 3.9-2.6 0-2.6-3.9 0-3.9z"
-                />
-                <path
-                  class="st5"
-                  d="m1008.5 208.2c2.5 0 2.5 3.9 0 3.9s-2.5-3.9 0-3.9z"
-                />
-                <path
-                  class="st5"
-                  d="m1000.9 192.6c1.8 0 1.8 2.8 0 2.8s-1.8-2.8 0-2.8z"
-                />
-                <path
-                  class="st5"
-                  d="m1018.8 162.1c1.8 0 1.8 2.8 0 2.8-1.9 0-1.9-2.8 0-2.8z"
-                />
-                <path
-                  class="st5"
-                  d="m1053.7 162.3c1.8 0 1.8 2.8 0 2.8s-1.8-2.8 0-2.8z"
-                />
-                <path
-                  class="st5"
-                  d="m1071.2 192.6c1.8 0 1.8 2.8 0 2.8s-1.8-2.8 0-2.8z"
-                />
-                <path
-                  class="st5"
-                  d="m1053.7 222.9c1.8 0 1.8 2.8 0 2.8s-1.8-2.8 0-2.8z"
-                />
-                <path
-                  class="st5"
-                  d="m1018.8 222.7c1.8 0 1.8 2.8 0 2.8-1.9 0-1.9-2.8 0-2.8z"
-                />
-              </g>
-            </g>
-          </g>
-        </svg>
+        <img id="logo-blue" src="../assets/logo.svg" alt="" />
       </router-link>
 
       <div class="css-work-tool-haw">
+        <button class="css-3489" @click="toggleTheme()">
+          <i
+            class="pi"
+            :class="{
+              'pi-sun': themeState[1] === 0,
+              'pi-moon': themeState[1] === 1,
+              'pi-moon b': themeState[1] === 2,
+            }"
+          ></i>
+        </button>
+
         <div class="css-8801">
           {{ selected }}
           <label
@@ -312,8 +27,8 @@
             class="css-8802"
             style="
               background: transparent;
-              border: 1px solid #0069f5;
-              color: #0069f5;
+              border: 1px solid var(--border-a);
+              color: var(--text-a);
             "
           >
             Load Draft
@@ -329,41 +44,44 @@
         </div>
         <div class="css-identicon-wrp">
           <div class="css-identicon" id="identicon">
-            <img :src="avatarSeed" alt="" />
+            <img :src="avatar_link" alt="" />
           </div>
         </div>
-        <span class="css-identicon-wrx">{{ newAudit.an }}</span>
+        <span class="css-identicon-wrx">{{ audit_info.nickname }}</span>
       </div>
     </header>
-    <div class="css-work-tool-wrap">
+
+    <div class="css-wt-wrap">
       <div class="css-w-p-wpr">
-        <div class="css-w-p-wrap" :class="{ active: workspace }">
-          <div class="css-w-p-title" @click="workspace = !workspace">
+        <div class="css-w-p-wrap">
+          <div class="css-w-p-title">
             <b>Audit progress</b>
           </div>
           <div class="css-w-p-arw">
             <div class="css-w-p-ari">
               <div class="css-w-p-awp">
-                <img :src="newAudit.pl" alt="" />
+                <img :src="audit_info.project_logo || defaultLogo" alt="" />
               </div>
             </div>
           </div>
           <div class="css-w-p-legend">
             <div class="css-w-p-name">
-              <b>{{ newAudit.pn }}</b>
+              <b>{{ audit_info.project_name }}</b>
             </div>
             <div class="css-w-p-tag">
-              <span>{{ newAudit.pc }}</span>
+              <span>{{ audit_info.category}}</span>
             </div>
             <div class="css-w-p-tag" style="text-transform: lowercase">
-              <span>{{ newAudit.pw }}</span>
+              <span>{{ audit_info.website }}</span>
             </div>
           </div>
-          <div class="css-w-p-sbe" @click="isRetrayed[0] = !isRetrayed[0]">
+          <div
+            class="css-w-p-sbe"
+            @click="category_visible[0] = !category_visible[0]"
+          >
             <svg
               class="css-w-p-dar"
-              :class="{ active: !isRetrayed[0] }"
-              isRetrayed
+              :class="{ active: !category_visible[0] }"
               viewBox="0 0 1024 1024"
               data-v-365b8594=""
             >
@@ -375,60 +93,32 @@
 
             <b>Development Team</b>
             <span
-              >{{ knowWorkProgress("developmentTeam") }} /
-              {{ workProgramCategory["developmentTeam"].length }}
+              >{{ knowWorkProgress("development_team") }} /
+              {{ scheme_category["development_team"].length }}
             </span>
           </div>
-          <ul class="css-w-p-ul" :class="{ active: isRetrayed[0] }">
+          <ul class="css-w-p-ul" :class="{ active: category_visible[0] }">
             <li
-              v-for="category in workProgramCategory['developmentTeam']"
+              v-for="category in scheme_category['development_team']"
               :key="category"
               class="css-w-p-uli"
               :class="{
-                active: progressWorkData.includes(category.id),
+                active: scheme_progress.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
+              @click="
+                clickCurrentQuestion(category.id) & (summary_visible = false)
+              "
             >
               {{ category.name }}
             </li>
           </ul>
-          <div class="css-w-p-sbe" @click="isRetrayed[1] = !isRetrayed[1]">
+          <div
+            class="css-w-p-sbe"
+            @click="category_visible[1] = !category_visible[1]"
+          >
             <svg
               class="css-w-p-dar"
-              :class="{ active: !isRetrayed[1] }"
-              isRetrayed
-              viewBox="0 0 1024 1024"
-              data-v-365b8594=""
-            >
-              <path
-                fill="currentColor"
-                d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
-              ></path>
-            </svg>
-            <b>Tokenomics</b>
-            <span
-              >{{ knowWorkProgress("tokenomics") }} /
-              {{ workProgramCategory["tokenomics"].length }}</span
-            >
-          </div>
-          <ul class="css-w-p-ul" :class="{ active: isRetrayed[1] }">
-            <li
-              v-for="category in workProgramCategory['tokenomics']"
-              :key="category"
-              class="css-w-p-uli"
-              :class="{
-                active: progressWorkData.includes(category.id),
-              }"
-              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
-            >
-              {{ category.name }}
-            </li>
-          </ul>
-          <div class="css-w-p-sbe" @click="isRetrayed[2] = !isRetrayed[2]">
-            <svg
-              class="css-w-p-dar"
-              :class="{ active: !isRetrayed[2] }"
-              isRetrayed
+              :class="{ active: !category_visible[1] }"
               viewBox="0 0 1024 1024"
               data-v-365b8594=""
             >
@@ -440,27 +130,31 @@
             <b>Community</b>
             <span
               >{{ knowWorkProgress("community") }} /
-              {{ workProgramCategory["community"].length }}</span
+              {{ scheme_category["community"].length }}</span
             >
           </div>
-          <ul class="css-w-p-ul" :class="{ active: isRetrayed[2] }">
+          <ul class="css-w-p-ul" :class="{ active: category_visible[1] }">
             <li
-              v-for="category in workProgramCategory['community']"
+              v-for="category in scheme_category['community']"
               :key="category"
               class="css-w-p-uli"
               :class="{
-                active: progressWorkData.includes(category.id),
+                active: scheme_progress.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
+              @click="
+                clickCurrentQuestion(category.id) & (summary_visible = false)
+              "
             >
               {{ category.name }}
             </li>
           </ul>
-          <div class="css-w-p-sbe" @click="isRetrayed[3] = !isRetrayed[3]">
+          <div
+            class="css-w-p-sbe"
+            @click="category_visible[2] = !category_visible[2]"
+          >
             <svg
               class="css-w-p-dar"
-              :class="{ active: !isRetrayed[3] }"
-              isRetrayed
+              :class="{ active: !category_visible[2] }"
               viewBox="0 0 1024 1024"
               data-v-365b8594=""
             >
@@ -469,21 +163,59 @@
                 d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
               ></path>
             </svg>
-            <b>ICO Trading Metrics</b>
+            <b>Mint Metrics</b>
             <span
-              >{{ knowWorkProgress("metrics") }} /
-              {{ workProgramCategory["metrics"].length }}</span
+              >{{ knowWorkProgress("mint_metrics") }} /
+              {{ scheme_category["mint_metrics"].length }}</span
             >
           </div>
-          <ul class="css-w-p-ul" :class="{ active: isRetrayed[3] }">
+          <ul class="css-w-p-ul" :class="{ active: category_visible[2] }">
             <li
-              v-for="category in workProgramCategory['metrics']"
+              v-for="category in scheme_category['mint_metrics']"
               :key="category"
               class="css-w-p-uli"
               :class="{
-                active: progressWorkData.includes(category.id),
+                active: scheme_progress.includes(category.id),
               }"
-              @click="clickCurrentQuestion(category.id) & (showSummary = false)"
+              @click="
+                clickCurrentQuestion(category.id) & (summary_visible = false)
+              "
+            >
+              {{ category.name }}
+            </li>
+          </ul>
+          <div
+            class="css-w-p-sbe"
+            @click="category_visible[3] = !category_visible[3]"
+          >
+            <svg
+              class="css-w-p-dar"
+              :class="{ active: !category_visible[3] }"
+              viewBox="0 0 1024 1024"
+              data-v-365b8594=""
+            >
+              <path
+                fill="currentColor"
+                d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
+              ></path>
+            </svg>
+            <b>Secondary Market</b>
+            <span
+              >{{ knowWorkProgress("secondary_market") }} /
+              {{ scheme_category["secondary_market"].length }}</span
+            >
+          </div>
+          <ul class="css-w-p-ul" :class="{ active: category_visible[3] }">
+            <li
+              v-for="category in scheme_category['secondary_market']"
+              :key="category"
+              class="css-w-p-uli"
+              :class="{
+                active: scheme_progress.includes(category.id),
+              }"
+              @click="
+                clickCurrentQuestion(category.id) & (summary_visible = false)
+              "
             >
               {{ category.name }}
             </li>
@@ -494,77 +226,17 @@
       </div>
       <div
         class="css-wq-wrap"
-        :class="{ active: showSummary || visualHelper.purpose }"
+        :class="{ active: summary_visible || helpers.purpose }"
       >
-        <template v-if="visualHelper.purpose">
-          <div
-            class="css-wq-fpl"
-            @click="visualHelper.purpose = !visualHelper.purpose"
-          >
+        <template v-if="helpers.purpose">
+          <div class="css-wq-fpl" @click="helpers.purpose = !helpers.purpose">
             <div class="css-wq-fps">
               <div class="css-wq-fph">
                 <div>
                   <span> Why This Matters?</span>
-                  <svg
-                    id="SVGRoot"
-                    width="16px"
-                    height="16px"
-                    version="1.1"
-                    viewBox="0 0 16 16"
-                  >
-                    <g
-                      id="Stockholm-icons-/-General-/-Shield-protected"
-                      transform="matrix(.65766 0 0 .65766 .082673 .13227)"
-                      fill="none"
-                      fill-rule="evenodd"
-                    >
-                      <rect id="bound" width="24" height="24" />
-                      <path
-                        d="m3.4259 2.7346 8.3765-1.5706c0.26738-0.050133 0.54175-0.050133 0.80912 0l8.3765 1.5706v10.189c0 3.2209-1.6592 6.2145-4.3905 7.9216l-3.8088 2.3805c-0.35593 0.22246-0.80756 0.22246-1.1635 0l-3.8088-2.3805c-2.7313-1.7071-4.3905-4.7007-4.3905-7.9216z"
-                        fill="#0069f5"
-                        opacity=".3"
-                        stroke-width="1.0976"
-                      />
-                      <path
-                        id="Combined-Shape"
-                        d="m14.951 10.418c0.6062 0 1.0976 0.49143 1.0976 1.0976v3.2929c0 0.6062-0.49143 1.0976-1.0976 1.0976h-5.4882c-0.6062 0-1.0976-0.49143-1.0976-1.0976v-3.2929c0-0.60621 0.49143-1.0976 1.0976-1.0976v-0.54882c0-1.5155 1.2286-2.7441 2.7441-2.7441 1.5155 0 2.7441 1.2286 2.7441 2.7441zm-2.7441-2.1953c-0.90931 0-1.6464 0.73714-1.6464 1.6464v0.54882h3.2929v-0.54882c0-0.90931-0.73714-1.6464-1.6464-1.6464z"
-                        fill="#0069f5"
-                        stroke-width="1.0976"
-                      />
-                    </g>
-                  </svg>
                 </div>
                 <button>
-                  <svg
-                    id="SVGRoot"
-                    width="16px"
-                    height="16px"
-                    version="1.1"
-                    viewBox="0 0 16 16"
-                  >
-                    <g
-                      id="Stockholm-icons-/-Navigation-/-Close"
-                      transform="translate(-4.016 -3.7816)"
-                      fill="none"
-                      fill-rule="evenodd"
-                    >
-                      <g
-                        id="Group"
-                        transform="rotate(-45 14.828 5.1716)"
-                        fill="#727384"
-                      >
-                        <rect y="7" width="16" height="2" rx="1" />
-                        <rect
-                          id="Rectangle-185-Copy"
-                          transform="rotate(90,8,8)"
-                          y="7"
-                          width="16"
-                          height="2"
-                          rx="1"
-                        />
-                      </g>
-                    </g>
-                  </svg>
+                  <i class="pi pi-times"></i>
                 </button>
               </div>
               <div class="css-wq-fpx">
@@ -584,84 +256,22 @@
             </div>
           </div>
         </template>
-        <template v-if="showSummary">
+        <template v-if="summary_visible">
           <div class="css-wq-fpl">
             <div class="css-wq-fyy">
               <div class="css-wq-fph">
                 <div>
-                  <span>Summary</span>
-                  <svg
-                    id="SVGRoot"
-                    width="16px"
-                    height="16px"
-                    version="1.1"
-                    viewBox="0 0 16 16"
-                  >
-                    <g
-                      id="Stockholm-icons-/-General-/-Shield-protected"
-                      transform="matrix(.65766 0 0 .65766 .082673 .13227)"
-                      fill="none"
-                      fill-rule="evenodd"
-                    >
-                      <rect id="bound" width="24" height="24" />
-                      <g
-                        id="Stockholm-icons-/-General-/-Shield-check"
-                        transform="matrix(1.1027 0 0 1.1027 -.96743 -1.7585)"
-                        fill="none"
-                        fill-rule="evenodd"
-                      >
-                        <rect width="24" height="24" />
-                        <path
-                          d="m4 4 7.6314-1.4309c0.2436-0.045674 0.49356-0.045674 0.73715 0l7.6314 1.4309v9.283c0 2.9344-1.5117 5.6618-4 7.217l-3.47 2.1688c-0.32427 0.20267-0.73573 0.20267-1.06 0l-3.47-2.1688c-2.4883-1.5552-4-4.2826-4-7.217z"
-                          fill="#0069f5"
-                          opacity=".3"
-                        />
-                        <path
-                          id="check-path"
-                          d="m11.175 14.75c-0.23958 0-0.47917-0.09583-0.67083-0.2875l-1.9167-1.9167c-0.38333-0.38333-0.38333-0.95833 0-1.3417 0.38333-0.38333 1.0062-0.38333 1.3417 0l1.2458 1.2458 3.1625-3.1625c0.38333-0.38333 0.95833-0.38333 1.3417 0s0.38333 0.95833 0 1.3417l-3.8333 3.8333c-0.19167 0.19167-0.43125 0.2875-0.67083 0.2875z"
-                          fill="#0069f5"
-                        />
-                      </g>
-                    </g>
-                  </svg>
+                  <span style="margin-right: 0.5rem">Summary</span>
+                  <i class="pi pi-folder"></i>
                 </div>
-                <button @click="showSummary = !showSummary">
-                  <svg
-                    id="SVGRoot"
-                    width="16px"
-                    height="16px"
-                    version="1.1"
-                    viewBox="0 0 16 16"
-                  >
-                    <g
-                      id="Stockholm-icons-/-Navigation-/-Close"
-                      transform="translate(-4.016 -3.7816)"
-                      fill="none"
-                      fill-rule="evenodd"
-                    >
-                      <g
-                        id="Group"
-                        transform="rotate(-45 14.828 5.1716)"
-                        fill="#727384"
-                      >
-                        <rect y="7" width="16" height="2" rx="1" />
-                        <rect
-                          id="Rectangle-185-Copy"
-                          transform="rotate(90,8,8)"
-                          y="7"
-                          width="16"
-                          height="2"
-                          rx="1"
-                        />
-                      </g>
-                    </g>
-                  </svg>
+                <button @click="summary_visible = !summary_visible">
+                  <i class="pi pi-times"></i>
                 </button>
               </div>
 
               <div class="css-wq-fpx">
                 <div class="css-wq-fyx">
-                  <span class="css-wq-fzz">List of remaining questions</span>
+                  <span class="css-wq-fzz">Remaining questions</span>
                   <span>{{ remainingQuestion().length }}</span>
                 </div>
                 <div
@@ -670,42 +280,19 @@
                   :key="element"
                   @click="
                     clickCurrentQuestion(element.id) &
-                      (showSummary = !showSummary)
+                      (summary_visible = !summary_visible)
                   "
                 >
                   <span> {{ element.a }} </span> <span> {{ element.b }} </span>
                   <span> {{ element.c }} </span>
-                  <span
-                    ><svg
-                      id="SVGRoot"
-                      width="16px"
-                      height="16px"
-                      version="1.1"
-                      viewBox="0 0 16 16"
-                    >
-                      <g
-                        id="Stockholm-icons-/-Communication-/-Reply-all"
-                        transform="matrix(.65974 0 0 .65974 .18642 .10193)"
-                        fill="none"
-                        fill-rule="evenodd"
-                      >
-                        <rect width="24" height="24" />
-                        <path
-                          id="Shape"
-                          d="m21.022 18.094c0-0.82031 0.17578-4.0576-2.3779-6.626-1.7188-1.7285-4.291-2.0283-7.3672-2.165v-4.3069c0-0.41421-0.33579-0.75-0.75-0.75-0.18631 0-0.36595 0.069345-0.50394 0.19453l-7.1401 6.4777c-0.30678 0.27832-0.32985 0.75263-0.051533 1.0594 0.014608 0.0161 0.029909 0.03156 0.045861 0.04633l7.1401 6.6125c0.30391 0.28145 0.77843 0.26324 1.0599-0.04066 0.1284-0.13864 0.19973-0.32064 0.19973-0.50961v-4.2832c1.9531 0.05371 3.3444 0.17795 4.6084 0.58008 1.82 0.57902 3.2266 2.2218 4.2196 4.9283l-1.6e-5 6e-6c0.10836 0.29534 0.38952 0.49166 0.70412 0.49166h0.21786c0-0.49316-0.0049-1.2744-0.0049-1.709z"
-                          fill="#86898d"
-                          fill-rule="nonzero"
-                        />
-                      </g>
-                    </svg>
-                  </span>
+
+                  <span> <i class="pi pi-arrow-circle-left"></i></span>
                 </div>
                 <template v-if="remainingQuestion().length === 0">
                   <div class="css-wq-fcc">
                     <div class="css-wq-fsc">
                       <svg
                         class="css-w-p-dar"
-                        isRetrayed=""
                         viewBox="0 0 1024 1024"
                         data-v-365b8594=""
                         data-v-51f114e2=""
@@ -724,21 +311,21 @@
                       <button
                         @click="modifyPersonal('Positive')"
                         class="positiveb"
-                        :class="{ active: conclusion.re === 'Positive' }"
+                        :class="{ active: audit_opinion.answer === 'Positive' }"
                       >
                         Positive
                       </button>
                       <button
                         @click="modifyPersonal('Negative')"
                         class="negativeb"
-                        :class="{ active: conclusion.re === 'Negative' }"
+                        :class="{ active: audit_opinion.answer === 'Negative' }"
                       >
                         Negative
                       </button>
                       <button
                         @click="modifyPersonal('Neutral')"
                         class="neutralb"
-                        :class="{ active: conclusion.re === 'Neutral' }"
+                        :class="{ active: audit_opinion.answer === 'Neutral' }"
                       >
                         Neutral
                       </button>
@@ -755,7 +342,7 @@
 
                   <div class="css-wq-cko">
                     <textarea
-                      v-model="conclusion.pe"
+                      v-model="audit_opinion.textarea"
                       placeholder="Final Thoughts..."
                     ></textarea>
                   </div>
@@ -771,7 +358,7 @@
 
                 <template v-if="remainingQuestion().length === 0">
                   <div class="css-wq-bfw">
-                    <template v-if="errReportGen">
+                    <template v-if="error_to_send">
                       <div class="css-wq-xcq">
                         <span
                           >There was a problem with the request, please try
@@ -779,19 +366,19 @@
                         >
                       </div>
                     </template>
-                    <template v-if="!isReportCreated">
+                    <template v-if="!report_created">
                       <button
                         class="css-wq-xkx"
                         id="create-report"
                         @click="createNewReport()"
                       >
-                        {{ reportUp }}
+                        {{ send_msg }}
                       </button></template
                     >
-                    <template v-if="isReportCreated">
+                    <template v-if="report_created">
                       <button class="css-wq-xkx" id="css-blue-button">
                         <a
-                          :href="reportLink"
+                          :href="report_link"
                           target="_blank"
                           rel="noopener noreferrer"
                           >Go to Report</a
@@ -807,7 +394,7 @@
         <div class="css-wq-top">
           <div
             class="css-wq-back"
-            v-for="item in currentQuestion"
+            v-for="item in current_"
             :key="item"
             :class="{ active: item.answer != null }"
             @click="backToWorksteps()"
@@ -820,33 +407,30 @@
                 style="transform: rotate(180deg)"
               >
                 <path
-                  fill="var(--complementary-color-blue)"
+                  fill="var(--text-a)"
                   d="M754.752 480H160a32 32 0 1 0 0 64h594.752L521.344 777.344a32 32 0 0 0 45.312 45.312l288-288a32 32 0 0 0 0-45.312l-288-288a32 32 0 1 0-45.312 45.312L754.752 480z"
                 ></path>
               </svg>
             </div>
-            <span>Back to Worksteps</span>
           </div>
-          <div class="css-wq-id" v-for="item in currentQuestion" :key="item">
+          <div class="css-wq-id" v-for="item in current_" :key="item">
             #{{ item.tag }}
           </div>
         </div>
 
         <div class="css-wq-page">
           <div>
-            <span
-              class="css-wq-pag"
-              v-for="item in currentQuestion"
-              :key="item"
-              >{{ item.id }}</span
-            ><span class="css-wq-div">/</span>{{ numberQuestion[1] }}
+            <span class="css-wq-pag" v-for="item in current_" :key="item">{{
+              item.id
+            }}</span
+            ><span class="css-wq-div">/</span>{{ scheme_counter[1] }}
           </div>
         </div>
 
-        <div class="css-wq-legend" v-for="item in currentQuestion" :key="item">
+        <div class="css-wq-legend" v-for="item in current_" :key="item">
           {{ item.question }}
         </div>
-        <div class="css-wq-answer" v-for="item in currentQuestion" :key="item">
+        <div class="css-wq-answer" v-for="item in current_" :key="item">
           <template v-if="item.answer != null">
             <div class="css-wq-suggest">Select an option</div>
           </template>
@@ -869,50 +453,9 @@
             <div class="css-wq-panel">
               <button
                 class="css-wq-panel-b"
-                @click="visualHelper.purpose = !visualHelper.purpose"
+                @click="helpers.purpose = !helpers.purpose"
               >
-                <svg
-                  id="SVGRoot"
-                  width="16px"
-                  height="16px"
-                  version="1.1"
-                  viewBox="0 0 16 16"
-                >
-                  <g
-                    id="Stockholm-icons-/-General-/-Clipboard"
-                    transform="matrix(.66381 0 0 .66381 -.021402 .031252)"
-                    fill="none"
-                    fill-rule="evenodd"
-                  >
-                    <rect width="24" height="24" />
-                    <g fill="#0069f5">
-                      <path
-                        d="m8 3v0.5c0 0.82843 0.67157 1.5 1.5 1.5h5c0.82843 0 1.5-0.67157 1.5-1.5v-0.5h2c1.1046 0 2 0.89543 2 2v16c0 1.1046-0.89543 2-2 2h-12c-1.1046 0-2-0.89543-2-2v-16c0-1.1046 0.89543-2 2-2z"
-                        opacity=".3"
-                      />
-                      <path
-                        d="m11 2c0-0.55228 0.44772-1 1-1s1 0.44772 1 1h1.5c0.27614 0 0.5 0.22386 0.5 0.5v1c0 0.27614-0.22386 0.5-0.5 0.5h-5c-0.27614 0-0.5-0.22386-0.5-0.5v-1c0-0.27614 0.22386-0.5 0.5-0.5z"
-                      />
-                      <rect
-                        x="7"
-                        y="10"
-                        width="5"
-                        height="2"
-                        rx="1"
-                        opacity=".3"
-                      />
-                      <rect
-                        id="Rectangle-152-Copy"
-                        x="7"
-                        y="14"
-                        width="9"
-                        height="2"
-                        rx="1"
-                        opacity=".3"
-                      />
-                    </g>
-                  </g>
-                </svg>
+                <i class="pi pi-book"></i>
               </button>
 
               <button
@@ -920,134 +463,17 @@
                 id="css-wq-panel-bl"
                 @click="nextGlassButton()"
               >
-                <svg
-                  id="SVGRoot"
-                  width="20px"
-                  height="20px"
-                  version="1.1"
-                  viewBox="0 0 16 16"
-                >
-                  <g transform="matrix(.033329 0 0 .033329 -.67907 -.47141)">
-                    <path
-                      d="m193.69 281.29v0.61225c-3.9514 3.6214-6.4904 8.9988-9.3937 13.469-6.3349 9.7518-12.571 19.569-18.802 29.388-19.461 30.667-38.761 61.51-58.745 91.837-7.8557 11.922-15.456 24.044-23.068 36.123-3.0857 4.8961-8.4123 10.646-9.1837 16.531-1.6396 12.496 17.411 23.13 27.356 26.058 3.9318 1.1578 9.2768 1.7002 12.833-0.77387 3.908-2.7196 6.3735-8.4624 8.8555-12.427 5.512-8.8041 11.077-17.589 16.695-26.327 21.696-33.747 43.188-67.645 64.505-101.63 6.5498-10.443 13.303-20.762 19.821-31.225 3.1764-5.1 7.4076-10.302 9.5363-15.918 35.249 13.671 73.6 16.071 109.59 3.2498 74.411-26.507 116.95-110.12 93.27-185.7-5.8751-18.756-14.964-36.071-27.27-51.429-13.476-16.819-30.906-30.149-50.082-39.879-56.39-28.612-130.64-16.379-174.43 29.48-46.21 48.392-56.042 122.3-22.88 180.6 7.8172 13.744 18.33 28.763 31.397 37.959m88.163-221.45c11.736-1.6723 25.305-0.21992 36.735 2.5869 24.813 6.0932 46.799 20.059 62.156 40.699 29.667 39.871 28.22 100.72-5.7771 137.76-7.7988 8.4949-16.675 16.599-26.991 21.992-12.171 6.3612-24.798 11.596-38.571 13.408-23.125 3.0428-47.991-0.41022-68.571-11.713-55.751-30.618-73.431-104.46-38.368-157.16 7.5826-11.396 17.79-21.884 29.184-29.541 15.14-10.175 32.297-15.478 50.204-18.03m9.8774 39.632c-4.6653 2.6155-0.26082 9.2535 4.1137 6.6974 4.2649-2.4918 0.17875-9.1041-4.1137-6.6974m-33.143 3.6576c-3.6772 0.0539-3.5162 5.5206 0 5.7845 3.8137 0.28592 3.6845-5.8378 0-5.7845m69.814-0.0545c-3.8761 0.34959-3.1629 6.281 0.57674 5.888 3.7678-0.39613 3.3031-6.2388-0.57674-5.888m-61.24 13.937c-5.9407 1.0555-4.7652 10.421 1.2214 9.5247 6.1402-0.91899 4.7638-10.588-1.2214-9.5247m52.041 0.0251c-6.4218 0.68265-5.1049 10.536 1.219 9.502 5.8365-0.95327 4.6775-10.129-1.219-9.502m-25.716 3.6337c-7.4547 0.41571-6.9025 11.883 0.61163 11.363 7.2031-0.49898 6.5412-11.761-0.61163-11.363m-56.873 10.638c-4.4082 2.4178-0.90859 9.259 3.54 7.1063 4.7768-2.3112 1.1988-9.7059-3.54-7.1063m110.23 0c-4.2882 2.4692-0.23019 9.6882 4.1045 6.7929 4.0941-2.7355 0.21857-9.2829-4.1045-6.7929m-66.213 5.1894c-13.139 1.9286-9.4592 21.379 3.6735 19.143 11.719-1.9947 8.1135-20.873-3.6735-19.143m23.878 0c-13.135 1.8435-10.18 21.234 3.0612 19.15 11.794-1.8557 8.5665-20.782-3.0612-19.15m-46.528 4.3586c-7.2172 1.1755-5.4912 12.31 1.8337 11.106 7.29-1.1982 5.3688-12.28-1.8337-11.106m69.794 0c-7.3794 1.1559-5.67 12.362 1.8336 11.106 7.1064-1.1896 5.1429-12.199-1.8336-11.106m-60.612 16.544c-11.772 3.5676-6.2915 21.88 5.5096 18.617 12.487-3.4518 6.8455-22.362-5.5096-18.617m47.142-0.0557c-11.959 3.1414-6.3802 22.133 5.5102 18.673 12.313-3.5829 6.8596-21.923-5.5102-18.673m-74.658 5.1863c-5.1019 2.7643-1.088 11.118 4.2226 8.4349 5.8231-2.9412 1.3806-11.472-4.2226-8.4349m103.47-4.6e-4c-5.1036 2.7833-1.0182 11.064 4.2226 8.4355 5.8158-2.9174 1.4517-11.531-4.2226-8.4355m-120 1.1896c-3.5553 0.79469-2.3467 6.2467 1.1584 5.7839 3.7427-0.49347 2.4398-6.5884-1.1584-5.7839m139.62-0.0735c-3.6765 1.1388-1.9157 6.8449 1.7082 5.7778 3.6766-1.0824 1.977-6.919-1.7082-5.7778m-83.33 13.887c-12.326 2.9761-7.208 21.862 4.898 18.939 12.32-2.9749 7.3672-21.901-4.898-18.939m23.265 0.071c-11.916 3.5951-6.5835 22.339 5.5102 18.705 12.16-3.6539 6.5865-22.355-5.5102-18.705m-45.909 3.731c-6.9196 2.6914-2.6669 13.439 4.2649 10.723 6.7837-2.6578 2.6479-13.411-4.2649-10.723m69.796 2e-3c-6.9166 2.6308-2.6939 13.502 4.2502 10.558 6.6257-2.8096 2.4018-13.088-4.2502-10.558m-89.928 13.645c-4.3029 2.4122-1.0059 9.3368 3.5253 7.1082 4.7584-2.34 1.1792-9.7457-3.5253-7.1082m110.21 0c-4.3041 2.4784-0.20999 9.5608 4.1045 6.7776 4.1437-2.6737 0.20387-9.2584-4.1045-6.7776m-55.184 6.5578c-6.8994 2.6835-2.6915 13.503 4.2502 10.559 6.671-2.8292 2.5365-13.199-4.2502-10.559m-25.697 5.512c-5.7336 2.2512-2.1594 11.151 3.6196 8.8824 5.7337-2.2512 2.1594-11.151-3.6196-8.8824m51.437 0.17326c-5.3455 2.8757-1.1608 11.268 4.2166 8.4416 5.583-2.9345 1.26-11.388-4.2166-8.4416m-59.39 17.107c-3.5553 0.7947-2.3467 6.2468 1.1584 5.7839 3.7427-0.49408 2.4398-6.5884-1.1584-5.7839m69.827-0.0735c-3.6686 1.1363-1.939 6.8222 1.7082 5.6927 3.6686-1.1363 1.939-6.8223-1.7082-5.6927m-36.105 2.5598c-4.2318 2.381-0.92449 9.2155 3.5553 7.1064 4.8392-2.2782 1.1204-9.7378-3.5553-7.1064z"
-                      fill="#3063ef"
-                    />
-                    <g fill="#3063ee">
-                      <path
-                        d="m291.73 226.82c-4.2318 2.381-0.92449 9.2155 3.5553 7.1064 4.8392-2.2782 1.1204-9.7378-3.5553-7.1064z"
-                      />
-                      <path
-                        d="m327.84 224.26c-3.6686 1.1363-1.939 6.8222 1.7082 5.6927 3.6686-1.1363 1.939-6.8223-1.7082-5.6927"
-                      />
-                      <path
-                        d="m258.01 224.33c-3.5553 0.7947-2.3467 6.2468 1.1584 5.7839 3.7427-0.49408 2.4398-6.5884-1.1584-5.7839"
-                      />
-                      <path
-                        d="m317.4 207.22c-5.3455 2.8757-1.1608 11.268 4.2166 8.4416 5.583-2.9345 1.26-11.388-4.2166-8.4416"
-                      />
-                      <path
-                        d="m265.97 207.05c-5.7336 2.2512-2.1594 11.151 3.6196 8.8824 5.7337-2.2512 2.1594-11.151-3.6196-8.8824"
-                      />
-                      <path
-                        d="m291.66 201.54c-6.8994 2.6835-2.6915 13.503 4.2502 10.559 6.671-2.8292 2.5365-13.199-4.2502-10.559"
-                      />
-                      <path
-                        d="m346.85 194.98c-4.3041 2.4784-0.20999 9.5608 4.1045 6.7776 4.1437-2.6737 0.20387-9.2584-4.1045-6.7776"
-                      />
-                      <path
-                        d="m236.63 194.98c-4.3029 2.4122-1.0059 9.3368 3.5253 7.1082 4.7584-2.34 1.1792-9.7457-3.5253-7.1082"
-                      />
-                      <path
-                        d="m326.56 181.34c-6.9166 2.6308-2.6939 13.502 4.2502 10.558 6.6257-2.8096 2.4018-13.088-4.2502-10.558"
-                      />
-                      <path
-                        d="m256.76 181.33c-6.9196 2.6914-2.6669 13.439 4.2649 10.723 6.7837-2.6578 2.6479-13.411-4.2649-10.723"
-                      />
-                      <path
-                        d="m302.67 177.6c-11.916 3.5951-6.5835 22.339 5.5102 18.705 12.16-3.6539 6.5865-22.355-5.5102-18.705"
-                      />
-                      <path
-                        d="m279.41 177.53c-12.326 2.9761-7.208 21.862 4.898 18.939 12.32-2.9749 7.3672-21.901-4.898-18.939"
-                      />
-                      <path
-                        d="m362.74 163.65c-3.6765 1.1388-1.9157 6.8449 1.7082 5.7778 3.6766-1.0824 1.977-6.919-1.7082-5.7778"
-                      />
-                      <path
-                        d="m223.11 163.72c-3.5553 0.79469-2.3467 6.2467 1.1584 5.7839 3.7427-0.49347 2.4398-6.5884-1.1584-5.7839"
-                      />
-                      <path
-                        d="m343.12 162.53c-5.1036 2.7833-1.0182 11.064 4.2226 8.4355 5.8158-2.9174 1.4517-11.531-4.2226-8.4355"
-                      />
-                      <path
-                        d="m239.65 162.53c-5.1019 2.7643-1.088 11.118 4.2226 8.4349 5.8231-2.9412 1.3806-11.472-4.2226-8.4349"
-                      />
-                      <path
-                        d="m314.31 157.34c-11.959 3.1414-6.3802 22.133 5.5102 18.673 12.313-3.5829 6.8596-21.923-5.5102-18.673"
-                      />
-                      <path
-                        d="m267.16 157.4c-11.772 3.5676-6.2915 21.88 5.5096 18.617 12.487-3.4518 6.8455-22.362-5.5096-18.617"
-                      />
-                      <path
-                        d="m327.78 140.86c-7.3794 1.1559-5.67 12.362 1.8336 11.106 7.1064-1.1896 5.1429-12.199-1.8336-11.106"
-                      />
-                      <path
-                        d="m257.98 140.86c-7.2172 1.1755-5.4912 12.31 1.8337 11.106 7.29-1.1982 5.3688-12.28-1.8337-11.106"
-                      />
-                      <path
-                        d="m304.51 136.5c-13.135 1.8435-10.18 21.234 3.0612 19.15 11.794-1.8557 8.5665-20.782-3.0612-19.15"
-                      />
-                      <path
-                        d="m280.63 136.5c-13.139 1.9286-9.4592 21.379 3.6735 19.143 11.719-1.9947 8.1135-20.873-3.6735-19.143"
-                      />
-                      <path
-                        d="m346.85 131.31c-4.2882 2.4692-0.23019 9.6882 4.1045 6.7929 4.0941-2.7355 0.21857-9.2829-4.1045-6.7929"
-                      />
-                      <path
-                        d="m236.62 131.31c-4.4082 2.4178-0.90859 9.259 3.54 7.1063 4.7768-2.3112 1.1988-9.7059-3.54-7.1063"
-                      />
-                      <path
-                        d="m293.49 120.67c-7.4547 0.41571-6.9025 11.883 0.61163 11.363 7.2031-0.49898 6.5412-11.761-0.61163-11.363"
-                      />
-                      <path
-                        d="m319.21 117.04c-6.4218 0.68265-5.1049 10.536 1.219 9.502 5.8365-0.95327 4.6775-10.129-1.219-9.502"
-                      />
-                      <path
-                        d="m267.17 117.01c-5.9407 1.0555-4.7652 10.421 1.2214 9.5247 6.1402-0.91899 4.7638-10.588-1.2214-9.5247"
-                      />
-                      <path
-                        d="m328.41 103.07c-3.8761 0.34959-3.1629 6.281 0.57674 5.888 3.7678-0.39613 3.3031-6.2388-0.57674-5.888"
-                      />
-                      <path
-                        d="m258.59 103.13c-3.6772 0.0539-3.5162 5.5206 0 5.7845 3.8137 0.28592 3.6845-5.8378 0-5.7845"
-                      />
-                      <path
-                        d="m291.73 99.47c-4.6653 2.6155-0.26082 9.2535 4.1137 6.6974 4.2649-2.4918 0.17875-9.1041-4.1137-6.6974"
-                      />
-                    </g>
-                  </g>
-                </svg>
-
+                <img src="../assets/glass.svg" alt="" />
                 <span class="dot"></span>
               </button>
-              <template v-if="!visualHelper.evaluate">
+              <template v-if="!helpers.evaluate">
                 <div
                   class="css-wq-got"
-                  @click="visualHelper.evaluate = !visualHelper.evaluate"
+                  @click="helpers.evaluate = !helpers.evaluate"
                 >
                   <div class="box box--left"></div>
                   <div class="css-wq-gtt">
-                    <svg
-                      class="icon"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 1024 1024"
-                      data-v-042ca774=""
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M512 64a448 448 0 110 896.064A448 448 0 01512 64zm67.2 275.072c33.28 0 60.288-23.104 60.288-57.344s-27.072-57.344-60.288-57.344c-33.28 0-60.16 23.104-60.16 57.344s26.88 57.344 60.16 57.344zM590.912 699.2c0-6.848 2.368-24.64 1.024-34.752l-52.608 60.544c-10.88 11.456-24.512 19.392-30.912 17.28a12.992 12.992 0 01-8.256-14.72l87.68-276.992c7.168-35.136-12.544-67.2-54.336-71.296-44.096 0-108.992 44.736-148.48 101.504 0 6.784-1.28 23.68.064 33.792l52.544-60.608c10.88-11.328 23.552-19.328 29.952-17.152a12.8 12.8 0 017.808 16.128L388.48 728.576c-10.048 32.256 8.96 63.872 55.04 71.04 67.84 0 107.904-43.648 147.456-100.416z"
-                      ></path>
-                    </svg>
+                    <i class="pi pi-info-circle"></i>
                     <span>Click here to evaluate the question.</span>
                   </div>
                 </div>
@@ -1058,139 +484,17 @@
             <div class="css-wq-pta">
               <textarea
                 class="css-wq-tex"
-                v-model="currentQuestion[0].textarea"
+                v-model="current_[0].textarea"
               ></textarea>
-              <template v-if="item.id === 10">
-                <div class="css-wq-thl">
-                  <div
-                    class="css-wq-ths"
-                    v-for="element in item.input"
-                    :key="element"
-                    :class="{
-                      active: knowInputDelete(element.id),
-                    }"
-                  >
-                    <input
-                      v-model="currentQuestion[0].input[element.id].name"
-                      class="css-wq-tss"
-                      type="text"
-                      placeholder="E.g. Development team"
-                    />
-                    <input
-                      v-model="currentQuestion[0].input[element.id].per"
-                      class="css-wq-tss"
-                      style="width: 50%"
-                      type="text"
-                      placeholder="%"
-                    />
 
-                    <template v-if="!tokenPhases[element.id]">
-                      <button
-                        class="css-wq-bta"
-                        @click="createNewInput(element.id)"
-                      >
-                        <svg
-                          id="SVGRoot"
-                          width="8px"
-                          height="8px"
-                          version="1.1"
-                          viewBox="0 0 8 8"
-                        >
-                          <g
-                            id="Stockholm-icons-/-Navigation-/-Plus"
-                            transform="matrix(.49767 0 0 .49767 -1.9907 -1.9639)"
-                            fill="#727384"
-                            fill-rule="evenodd"
-                          >
-                            <rect x="4" y="11" width="16" height="2" rx="1" />
-                            <rect
-                              id="Rectangle-185-Copy"
-                              transform="rotate(90,12,12)"
-                              x="4"
-                              y="11"
-                              width="16"
-                              height="2"
-                              rx="1"
-                            />
-                          </g>
-                        </svg>
-                      </button>
-                    </template>
-
-                    <template v-if="tokenPhases[element.id]">
-                      <button
-                        class="css-wq-bta"
-                        @click="removeAddedInput(element.id)"
-                      >
-                        <svg
-                          id="SVGRoot"
-                          width="8px"
-                          height="8px"
-                          version="1.1"
-                          viewBox="0 0 8 8"
-                        >
-                          <g
-                            id="Stockholm-icons-/-Navigation-/-Plus"
-                            transform="matrix(.49767 0 0 .49767 -1.9907 -1.9639)"
-                            fill="#727384"
-                            fill-rule="evenodd"
-                          >
-                            <rect x="4" y="11" width="16" height="2" rx="1" />
-                          </g>
-                        </svg>
-                      </button>
-                    </template>
-                  </div>
-                </div>
-              </template>
-
-              <template v-if="item.id === 17">
+              <template v-if="item.id === 11 || item.id === 13">
                 <div class="css-wq-thl">
                   <div class="css-wq-txs">
                     <input
-                      v-model="currentQuestion[0].input"
+                      v-model="current_[0].input"
                       class="css-wq-tss"
                       type="text"
-                      placeholder="Nº Followers"
-                    />
-                  </div>
-                </div>
-              </template>
-
-              <template v-if="item.id === 19">
-                <div class="css-wq-thl">
-                  <div class="css-wq-txs">
-                    <input
-                      v-model="currentQuestion[0].input"
-                      class="css-wq-tss"
-                      type="text"
-                      placeholder="Nº Followers"
-                    />
-                  </div>
-                </div>
-              </template>
-
-              <template v-if="item.id === 21">
-                <div class="css-wq-thl">
-                  <div class="css-wq-txs">
-                    <input
-                      v-model="currentQuestion[0].input"
-                      class="css-wq-tss"
-                      type="text"
-                      placeholder="Nº Members"
-                    />
-                  </div>
-                </div>
-              </template>
-
-              <template v-if="item.id === 23">
-                <div class="css-wq-thl">
-                  <div class="css-wq-txs">
-                    <input
-                      v-model="currentQuestion[0].input"
-                      class="css-wq-tss"
-                      type="text"
-                      placeholder="Nº Members"
+                      placeholder="Nº members or followers"
                     />
                   </div>
                 </div>
@@ -1219,123 +523,38 @@
             <div
               class="css-wq-arrow"
               id="left-arrow"
-              @click="numberQuestion[0] > 0 ? backAnswerQuestion() : false"
+              @click="scheme_counter[0] > 0 ? backAnswerQuestion() : false"
             >
-              <svg
-                id="SVGRoot"
-                width="24px"
-                height="24px"
-                data-v-51f114e2=""
-                version="1.1"
-                style="transform: rotate(180deg)"
-                viewBox="0 0 24 24"
-              >
-                <g
-                  transform="translate(-5.7242 -.032203)"
-                  fill="#727384"
-                  stroke-width="1.0666"
-                  data-v-51f114e2=""
-                >
-                  <path
-                    d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
-                    fill="#727384"
-                    fill-opacity=".0"
-                    data-v-51f114e2=""
-                  />
-                </g>
-                <g fill="#727384" stroke-width="1.0666" data-v-51f114e2="">
-                  <path
-                    d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
-                    fill="#727384"
-                    data-v-51f114e2=""
-                  />
-                </g>
-              </svg>
+              <i class="pi pi-chevron-left"></i>
               <span>Back</span>
             </div>
-            <template v-if="currentQuestion[0].id < questionList.length">
+            <template v-if="current_[0].id < question_list.length">
               <div
                 class="css-wq-arrow"
                 id="right-arrow"
                 @click="
-                  numberQuestion[0] < numberQuestion[1] - 1
+                  scheme_counter[0] < scheme_counter[1] - 1
                     ? nextAnswerQuestion()
                     : false
                 "
               >
                 <span>Next</span>
-                <svg
-                  id="SVGRoot"
-                  width="24px"
-                  height="24px"
-                  data-v-51f114e2=""
-                  version="1.1"
-                  viewBox="0 0 24 24"
-                >
-                  <g
-                    transform="translate(-5.7242 -.032203)"
-                    fill="#fff"
-                    stroke-width="1.0666"
-                    data-v-51f114e2=""
-                  >
-                    <path
-                      d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
-                      fill="#fff"
-                      fill-opacity=".0"
-                      data-v-51f114e2=""
-                    />
-                  </g>
-                  <g fill="#fff" stroke-width="1.0666" data-v-51f114e2="">
-                    <path
-                      d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
-                      fill="#fff"
-                      data-v-51f114e2=""
-                    />
-                  </g>
-                </svg>
+                <i class="pi pi-chevron-right"></i>
               </div>
             </template>
-            <template v-if="currentQuestion[0].id === questionList.length">
+            <template v-if="current_[0].id === question_list.length">
               <div
                 class="css-wq-arrow"
                 id="right-arrow"
                 @click="summaryLayout()"
               >
                 <span>Next</span>
-                <svg
-                  id="SVGRoot"
-                  width="24px"
-                  height="24px"
-                  data-v-51f114e2=""
-                  version="1.1"
-                  viewBox="0 0 24 24"
-                >
-                  <g
-                    transform="translate(-5.7242 -.032203)"
-                    fill="#fff"
-                    stroke-width="1.0666"
-                    data-v-51f114e2=""
-                  >
-                    <path
-                      d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
-                      fill="#fff"
-                      fill-opacity=".0"
-                      data-v-51f114e2=""
-                    />
-                  </g>
-                  <g fill="#fff" stroke-width="1.0666" data-v-51f114e2="">
-                    <path
-                      d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
-                      fill="#fff"
-                      data-v-51f114e2=""
-                    />
-                  </g>
-                </svg>
+                <i class="pi pi-chevron-right"></i>
               </div>
             </template>
           </div>
         </div>
-        <div class="css-wq-nac" :class="{ active: visualHelper.purpose }"></div>
+        <div class="css-wq-nac" :class="{ active: helpers.purpose }"></div>
       </div>
     </div>
   </div>
@@ -1343,916 +562,89 @@
 
 <script>
 import axios from "axios";
-import { BestialEncoder } from "bestial-encoder";
 import { saveAs } from "file-saver";
+import { dapp_scheme } from "../scheme/dapp-scheme";
+import { BestialEncoder } from "bestial-encoder";
+
+const bestialEncoder = new BestialEncoder();
 
 export default {
   data() {
     return {
-      newAudit: {
-        an: "Empty",
-        pn: "Empty",
-        pw: "Empty",
-        pc: "Empty",
-        pl: "",
+      themes: { 0: "theme-light", 1: "theme-dark", 2: "theme-blue" },
+      audit_info: null,
+      audit_opinion: {
+        answer: "",
+        textarea: "",
       },
       selected: "",
-      reportUp: "Create Report",
-      errReportGen: false,
-      avatarSeed: "",
-      numberQuestion: [0, 0],
-      questionList: [
-        {
-          id: 1,
-          tag: "DT1-1",
-          category: "Development Team",
-          name: "Conflict of Interest Disclosure",
-          question: "Are you Affiliated with the project or own any tokens?",
-          worksteps: [
-            "A. Quesion is asking if you are affiliated with the project (part of the dev team, on payroll, partnered) or own any of it.",
-            "B. If yes, explain in the box below.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 0.0 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This tool is designed so that anyone can create a report for any project they are interested in. From a newcomer learning about crypto for the first time to experienced investors to members of the dev team that want to produce a report and share it with their community. If someone owns the token they create the report for or are part of the team producing them, they have a direct financial interest in the project's success and therefore, they may be more inclined to give a higher score or make things look better than they truly are. It is what we commonly refer to as a conflict of interest. Because of this, we are starting the DYOR Tool with a disclosure where the report creator can explain any relationship they may have with the team or financial interest in the project so that they are completely transparent with the readers. Now, can we guarantee that people will be honest and disclose everything? Of course not. Someone could write whatever they want and it would be very difficult to verify. But there are also a lot of honest people out there who value their credibility and would happily share their interest in the project. This disclosure is for those people.  Lastly, just because someone owns the project doesn't mean they would necessarily make an inaccurate or misleading report.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 2,
-          tag: "DT2-2",
-          category: "Development Team",
-          name: "Read Whitepaper",
-          question: "Did you read the whitepaper?",
-          worksteps: ["A. Read the whitepaper (usually found on website)."],
-          options: [
-            { id: 1, name: "Yes", value: 0.0 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "There are not points awarded for this section that will affect the scoring. But we wanted to include this as your first point of research on your journey to properly evaluating a project because it is important and it will aide you in answering many of the subsequent questions. You have likely been told to read the whitepaper several times on social media or by friends and there is good reason. The whitepaper is meant to contain all the information you need to understand the project. It can give background, a breakdown how  it functions, information on the tokenomics, and anything else the writers decided to include in it. \n But as important and beneficial as this step can be, I have always gotten the impression that very few people actually do it. I have also gotten the impression that many people who tell you to read the whitepaper do not seem to have done it themselves. Now you might be thinking, a lot of this stuff is beyond my understanding so why even bother? Well first of all, you might be surprised. There are some extremely technical papers out there, but there are also a lot of easy to understand ones as well. Or it may be a situation where pieces of it are confusing but large chunks of it are within your wheelhouse. That's OK friend.\n Try and read it anyways. Google is your friend and if there is something you do not understand you can always read up on it our create a post on Reddit to learn more. And I promise you that while you may start out having difficulties, the more you do and the more you stick with it, the better you will become. This is how learning works and being lousy at something is usually the first step to being great at something. So bite the bullet, give it a shot, and I think you will be surprised at how much you are actually able to absorb. Good luck.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 3,
-          tag: "DT3-3",
-          category: "Development Team",
-          name: "Anonymous Team",
-          question: "Is the development team anonymous?",
-          worksteps: [
-            "A. Review project website to check if team is listed.",
-            "B. List each member listed in box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 0.0 },
-            { id: 2, name: "No", value: 4.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Practically all exit scams and rug pulls are performed by anonymous teams. Why do you suppose that is? I think that the simplest answer is that if you are going to commit a crime, it is infinitely easier to get away with it if nobody knows who you are. The exact same reason that bank robbers choose to wear a mask. If you commit fraud and steal millions from investors, the police will hunt you down and you will face consequences for your actions. At the very least, you will be labeled a charlatan and will not be able to easily do the same thing in the future. If you commit fraud and steal millions of investors while remaining completely anonymous, you will never really face any consequences for your actions and will be able to continue doing it again and again.\n Now, does this mean that any dev team that chooses to remain anonymous is 100% going to commit fraud and steal? Of course not. There are lots of brilliant, hard working, and trustworthy developers out there that might prefer to be anonymous, and that is their right. But the good teams who choose to remain anonymous are normalizing the practice which leaves the door wide open for the bad teams to steal over and over again. We as a community should not be willing to invest in or use any dApp where the dev team has chosen to be anonymous, as this potential for fraud will always be present. We have no way to sort the trustworthy teams from the untrustworthy and are left in a situation where we are essentially just hoping that people do the right thing.\n If a dev team wants us to trust them enough to use and invest in their products, they must give us a reason to trust them. Revealing themselves is a loud and clear message to the investing community that they will do right by us and if they do not, they will suffer the consequences. The good teams who choose to remain anonymous are normalizing the practice which leaves the door wide open for the bad teams to steal over and over again. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 4,
-          tag: "DT4-4",
-          category: "Development Team",
-          name: "Identity Verification",
-          question:
-            "Can you verify that each member of the Development team is a real person?",
-          worksteps: [
-            "A. List each person obtained in project website in box below.",
-            "B. If links to LinkedIn Github, or other websites are provided, click through each link and review the information to determine if it looks genuine. Genuine profiles would likely have a long history, several contacts, current information, recommended skills,  etc",
-            "C. If no links are provided, you will need to manually search. Begin with Google for general information. Check Linkedin, Facebook, Instagram, Github, and twitter to see if you can locate a profile that matches each person.",
-            "D. If you have reason to doubt the profiles you have found were authentic, use google image serch for each profile picture that was provided. Instructions for using Google search can be found here (https://support.google.com/websearch/answer/1325808?hl=en&co=GENIE.Platform%3DDesktop). Ensure image is not a stock photo and can be traced to a matching social media platform. ",
-            "E. For any profiles found using workstep C, perform the review from Workstep B.",
-            "F. If you discover the team info is fake, go back to TD1-1 and change the answer to Yes.",
-            "G. Save links to supporting information in this workstep to support your review.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 2.0 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Simply verifying that there are people listed on the project website is insufficient. It is not unheard of for a team to list fake people on the website to give the appearance they have all revealed their identities when they have not. Because of this, you must do a little work verifying that each person listed is real. Ideally there will be links included with each name and photo in the teams section that direct you to each persons LinkedIn account, Github, Medium, or any other socials that are used to corroborate identity and professional credentials. Many teams will provide these freely because they want to make it easy for you to verify them. If links are not provided, that is frustrating but not necessarily a red flag. Go through the worksteps that are listed here to try to find various social media accounts to confirm their identity and credentials. \n Even if you do find a LinkedIn account or social media account, that doesn't guarantee that the information is legitimate. Any good scammer would have gone through the trouble of creating a fake identity for each person they listed in the website. You will need to use some of your past experience and common sense to review what is available and determine if it is legitimate. You have likely seems hundreds of LinkedIn profiles or Twitter/IG accounts and can spot things that look funny. Hardly any contacts. A ton of contacts but barely and activity. There are all kinds of things that can appear unusual and are too many to list here, but you will need to review the information and determine if you think it appears legitimate. And typically finding several sources online that can be compared and cross referenced to each other provides additional assurance that the person is real (e.g. has LinkedIn profile with several connections and people who have attested to a certain skill the person has, has a Facebook or IG account with similar pictures that appears legitimate, has a few articles written about them from various third party publications that you are familiar with). \n If you do determine that there are people listed in the website but they appear to be fake people, that is going to be a huge red flag. Honesty and reputation are extremely important and a team that is willing to mislead on this would likely be willing to mislead in other areas as well. It is possible that there are reasonable explanations or it is a rare instance where a person has no online presence, but anyone should proceed extremely cautiously if they are having trouble verifying the teams identities. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 5,
-          tag: "DT5-5",
-          category: "Development Team",
-          name: "Prior Experience",
-          question:
-            "Does the Dev team have the proper experience to execute this project? ",
-          worksteps: [
-            "A. Review linkedIn profiles found in Question 2 for background and credentials of team",
-            "B. For each position, check if education and work experience is relevant to role in project. If they have Education, work experience, or Code repositories to demonstrate their experience in their field, that is adequate for this question.",
-            "C. List each team member in the box below along with a description of their experience and assessment if it is relevant.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 0.5 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Prior experience is extremely valuable in assessing if something is going to be successful going forward. As they say, the best way to predict the future is to study the past. So having a team that has a successful history with blockchain or previous start ups suggests that they will have success with the project you are currently researching. Blockchain is also a very new and fast paced industry, so having a team with experience navigating it makes it more likely that they will be successful. Now does this mean that just because someone was successful in the past it is a guarantee they will always be successful? Of course not. Each project needs to be assessed on its own mertis independent of the last, but having that prior experience to leverage will usually provide an edge and increase the chances of its success. \n It is also important to research prior experience becuase of anything negative that might turn up. Just like prior positive exerience being a good indicator that the current project will be successful, prior negative experience is just as good an indicator that you might want to avoid. Was someone on the team invovled in some type of fraud or illegal behavior in the past? Have they relseased a prdocut that is getting large amounts of complaints from thier users or investors? This is all information that you can use to assess if the current project they are working on will have a similar outcome. Just remember that the past helps us assess the future, but it doesnt gaurantee anything, positive or negative. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 6,
-          tag: "DT6-6",
-          category: "Development Team",
-          name: "Audit",
-          question:
-            "Has the project successfully completed an audit by a reputable service provider?",
-          worksteps: [
-            "A. Scroll through the project website to see if they have a section on their audit status and if they have a link to the audit report.",
-            "B. If it is not mentioned on the website, google the project name and the word audit. If it is popular, there are likely areticles written about it that will pop up.",
-            "C. If nothing is found in the first two steps, try scrolling through their twitter feed, as it will usually be announced there.",
-            "D. If nothing is found still, ask a direct question on their twitter, telegram, or discord and someone will be able to point you towards it.",
-            "E. If the audit was found, list the name of the auditor and the date of completion in the box below. If the audit report is available include a link to it as well.",
-            "F. If you are unfamilar with the auditor, Google them and see what results turn up to determine if they are reputable  (If there are complaints about them. If there are other projects you are familiar with audited by them. Etc.)",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 1.0 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "A third party audit by a reputable independent service provider is a crucial step in establishing trust with potential investors and users. It is important to have people who are not affiliated with the project review the code who can attest that it is free from any bugs, exploits, or vulnerabilities. Just think about this rationally for a second, how much would you trust the dev team if they say they have looked everything over and it is safe to use? You can see how there is a conflict of interest here because the dev team could be the ones who have programmed the application to do something malicious, so taking their word for it is probably not a great idea.\n There are also instances where the dev team has not done anything wrong intentionally, but they still could have programmed in things that could harm investors accidently. By having a fresh set of eyes reviewing their work, you have a good chance at finding things that the original team may have overlooked.  It is also important that you assess the people who are performing the audits. Reputation is important and the firms that do a good job will have built a solid reputation for themselves. If it is one you have never heard of or cannot find any information about online, you would usually have less faith in that audit work. \n Now does this mean that if it has an audit it is 100% safe to use? Unfortunately no. Read any audit report and there will be plenty of disclaimers about how any audit only provides limited assurance and they themselves will not guarantee the safety of the application. So while not 100%, it is still a good sign that the dev team cares about their product and wants to make sure its safe to use, and professionals have reviewed it and hopefully caught anything major. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 7,
-          tag: "DT7-7",
-          category: "Development Team",
-          name: "Plagarism",
-          question: "Was there any plagiarism in the whitepaper?",
-          worksteps: [
-            "A. Copy the information in the whitepaper and paste it into the following website (https://www.check-plagiarism.com/).",
-            "B. Include a copy of the results into the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 0.0 },
-            { id: 2, name: "No", value: 1.0 },
-            { id: 3, name: "N/A", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "As mentioned in #2, honesty and reputation are extremely important and a team that is willing to mislead or cheat in one area would likely be willing to mislead and cheat in other areas as well. Stealing someone's ideas and passing them off as your own is very similar to stealing money or assets. So people who have demonstrated they are willing to steal ideas are better off avoided as they might be willing to steal your money/crypto as well. \n Now does this mean that people should not be leveraging other ideas or knowledge? Of course not, that is one of the things that makes open source blockchain and tech in general so special. Everyone can learn from one another and build off each other which ultimately speeds. But blindly copying someone else's whitepaper does not really fall under this category. If a team ends up copying large sections of another teams whitepaper without citing their source or giving credit, it is usually a bad sign and something you would want to consider while evaluating the project. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 8,
-          tag: "DT8-8",
-          category: "Development Team",
-          name: "Spelling Errors",
-          question:
-            "Are there grammar, spelling, and punctuation errors in the whitepaper or webpage?",
-          worksteps: [
-            "A. Copy text from whitepaper and website and paste into Grammerly using this link (https://www.grammarly.com/plagiarism-checker).",
-            "B. Grammarly is free, but if you do not wish to download it, perform manual review for grammar, spelling, and punctuation errors.",
-            "C. Include a summary of the results into the box below.",
-            "D. In general a few small errors are OK. If there are large numbers of grammer spelling and punctuation errors, then answer this question No.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 0.0 },
-            { id: 2, name: "No", value: 1.0 },
-            { id: 3, name: "N/A", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Most serious teams that are truly building something significant take a lot of pride in what they do. They like to make sure that everything is presented as the best version of itself and take the time and effort to review things multiple times with multiple people. As a result of this effort, there usually arent too many errors to be found. This is contrasted against teams that have hastilly put something together as fast as possible to exit scam or rug pull before quickly moving on to the next one. \n If a team has no real intention of brining this product to market or sticking around long enough to see it through, they usually arent spending all the time and energy to ensure everything is perfect. So if you are seeing a whitepaper that is full of spelling, grammar, and punctuation errors, that can be an indication that this team has not taken anything very seriously and may have bad intentions. Of course this is not a guarantee and its possible for an amazing project to have plenty of flaws in the whitepaper or a malicious project to have a flawless whitepaper. It is just one of the many things we look at when assessing a project on the whole. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 9,
-          tag: "DT9-9",
-          category: "Development Team",
-          name: "Whitepaper Length",
-          question: "What is the length of the Whitepaper?",
-          worksteps: [
-            "A. Open Whitepaper. Count number of pages.",
-            "B. Note number of pages in box below and any thoughts or observations you may have.",
-          ],
-          options: [
-            { id: 1, name: "0 to 5 pages", value: 0.0 },
-            { id: 2, name: "6 to 15 pages", value: 0.2 },
-            { id: 3, name: ">15 Pages", value: 0.5 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This point should be taken with a large grain of salt and will also be subjective to the type of project. A next generation lending application with lots of features and specs should obviously be a longer whitepaper than whatever your favorite new dog coin is (if it even has a whitepaper). At the end of the day, quality over quantity is what is important and simply printing out a hundred pages of garbage is not very impressive or useful. But this is one of many data points that you can use to assess how serious or legitimate the project appears. Having a few pages of fluff is a warning sign that this might not be a very serious project, which increases the chances of an exit scam or rug pull. Having many pages that comprehensively explains all aspects of the project is a good sign that it is a serious project and the team is actually busy at work building something useful.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 10,
-          tag: "TK1-10",
-          category: "Tokenomics",
-          name: "Insider Allocation",
-          question:
-            "What portion of the tokens are held by the Development team or early investors?",
-          worksteps: [
-            "A. Review whitepaper and website for token allocation information",
-            "B. Provide a breakdown of what percent belongs to each major group in the box below as follows:",
-            "C. In the first box on the left type the category name (e.g. Development Team, Advisors, Treasury, etc).",
-            "D. In the next box type in the percentage as an integer without a percentage sign (e.g. 10, 15, 80).",
-            "E. Click the plus sign on the right to add as many rows as you need until all the data is captured.",
-          ],
-
-          options: [
-            { id: 1, name: "0% to 15%", value: 3.0 },
-            { id: 2, name: "16% to 25%", value: 2.0 },
-            { id: 3, name: ">25%", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          input: [
-            {
-              id: 0,
-              name: "",
-              per: "",
-            },
-          ],
-          purpose:
-            "Having huge portions of the token supply held by a small number of insiders is usually undesirable due to the selling pressure it can put on the token which can harm you as an investor. Team members or venture capitalists who got in extremely early and were able to acquire tokens for 1/1000 of the price you are able to acquire them for are going to want to sell at some point and lock in their gains. In order to sell these tokens, they will need sufficient liquidity from other people who are buying the token. Many projects can have large market caps, but if there is not a large amount of liquidity, any purchase or sale of the token can cause large fluctuations in price. In instances where teams and insiders want to exit their positions and cash out, this can cause the price to crash on the smaller investors who purchased the tokens at higher prices. \n Having large portions of tokens held by the team and insiders is also undesirable due to the centralized control that it means for the project. Decentralization is an important concept in blockchain and there are many different layers and aspects of decentralization to consider. One of those aspects is having this control over a large amount of supply held by a small number of people. Many project have governance features where 1 token = 1 vote and holders can propose changes, vote on those changes, and essentially control the project going forward. If you have large numbers of tokens concentrated in a few hands, they will essentially be able to control the project going forward, which is the antithesis of what most crypto projects are hoping to achieve.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 11,
-          tag: "TK2-11",
-          category: "Tokenomics",
-          name: "Community Allocation",
-          question:
-            "What portion of tokens will be available to the general public either through sale or rewards ?",
-          worksteps: [
-            "A. With the tokenomics information collected in the previous question (TK1), indicate what percentage is allocated to the general public through sale or rewards.",
-            "B. Provide the information in the box below",
-          ],
-          options: [
-            { id: 1, name: "0% to 49%", value: 0.0 },
-            { id: 2, name: "50% to 75%", value: 0.5 },
-            { id: 3, name: ">75%", value: 1.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Go back and re-read step #8, as it's essentially the same explanation, or I guess the mirror image of it. Just like having large numbers of tokens held by a few insiders can be bad, having a large number of tokens spread out across a large number of people is good. Explanations of sell pressure and decentralization both apply.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 12,
-          tag: "TK3-12",
-          category: "Tokenomics",
-          name: "Vesting",
-          question:
-            "For tokens reserved for development team and early investors, is there a vesting schedule?",
-          worksteps: [
-            "A. Vesting means that all tokens are not immediately available. Instead they are held for a predetermined period of time.",
-            "B. Review white paper, most likely in the tokenomics section, to see if development team or early investor tokens are immediately available to them or are held for a specified time.",
-            "C. If there is a vesting schedule, outline it in the box below.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 1.5 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Lets start by describing what vesting is. According to Investopedia 'Being fully vested means a person has rights to the full amount of some benefit, most commonly employee benefits such as stock options, profit sharing, or retirement benefits. Benefits that must be fully vested benefits often accrue to employees each year, but they only become the employee's property according to a vesting schedule.Vesting may occur on a gradual schedule, such as 25 percent per year, or on a 'cliff' schedule where 100 percent of benefits vest at a set time, such as four years after the award date. Fully vested may be compared with partially vested. \n To give an example in the crpyrto world, the dev team might have 20% of all tokens reserved for themselves. As already discussed in #8, this can create a large amount of selling pressure if all the tokens were unlocked at once. It also can create concerns that there might be more work that needs to be done but now that the teams tokens are all unlocked, they could just take the money and run. To alleviate these concerns, a team can implement a vesting schedule so that not all of these tokens are available immediately. It can be vested over 4 years and 1/4 of the tokens are unlocked each year. It can be vested over 2 years where all the tokens are available at once at the end of the two years. Or anything that the team decides they want to do. By having a vesting schedule in place that makes sense, it is a clear signal to investors that tokens will not be massively dumped on them and that the team is in it for the long haul.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 13,
-          tag: "TK4-13",
-          category: "Tokenomics",
-          name: "Locked Policy",
-          question:
-            "Is the token minting policy locked so that no changes can be made?",
-          worksteps: [
-            "A. Obtain the policy ID from project website. You may have to look around, but most minted tokens will list the policy on the website so you know you are getting the right token.",
-            "B. Copy policy into pool.pm",
-            "C. Under policy, ensure there is a lock symbol which signifies that policy is locked and cannot be changed (closed lock icon signifies locked policy).",
-            "D. Copy in policy ID and note if policy is locked in box below.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 1.5 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Ask an Bitcoin Maxi why they love Bitcoin so much and there is a good chance one of their respnoses will be 'fixed and unchanging monetary policy'. They are not wrong about this being a good feature, as it ensures that everyone know the rules and can plan accordingly. You know how many tokens exist and know if more can be created. Most people wouldn't be too thrilled if the makers of the token they just purchased decided to mint trillions more which dilute the value of the ones they currently hold. You can make sure this is not possible if the policy is locked and can no longer be changed. If that is the case, then whatever the rules are when the tokens were minted will always apply and you do not run the risk of this being altered later down the line. \n It is also worth noting that each policy ID is unique to that token. It is possible to have 100 different tokens all with the same name, ticket symbol, and icon image. Some scammers might try to trick you by listing a copied token for sale on a DEX which appears to be the same (same name and ticket). But no matter what, the policy ID cannot be copied. It is a good practice to check the policy ID which is usually listed on the website and ensure you are purchasing the correct tokens.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 14,
-          tag: "TK5-14",
-          category: "Tokenomics",
-          name: "Use Case",
-          question:
-            "Do you clearly understand the use case after reading the whitepaper and reviewing website info?",
-          worksteps: [
-            "A. Read the whitepaper and review website info. There is usually a section in both that discusses token use case/utility.",
-            "B. After reviewing, do you uderstand the purpose of this project and its token? Is it a governance token that is used to make chages to the protocol. Is it a utility token that pays for transaction fees? Does it have some sort of functionality?",
-            "C. Summarize the use case in the box below.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 2.0 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "In the end, the projects that will truly last and thrive are the ones with real utility (usefulness). Something that fills a real world need, solves a problem, does something better than anyone else, etc. Projects that do not can definetly go up a lot in value as we have seen time and time again, but most of the time thier shot term success is driven by hype which can be fleeting and can go as quickly as it comes. So for many, identifying a project with a solid use case is a good step in the research proccess in determining if it is something you should risk your hard earned money on. Even the most technical projects should be able to explain what they are doing in a way that the average person can understand, so if you read the whitepaper and you still have no idea what the use case of the token or project is, chances are it doesnt really have one.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 15,
-          tag: "TK6-15",
-          category: "Tokenomics",
-          name: "ISO Fee",
-          question:
-            "If the project utilizes an Initial Stake Offering, what is the percentage they charge?",
-          worksteps: [
-            "A. Review the project website, twitter page, discord, or twitter. ISO information and ticker should be listed somewhere.",
-            "B. Look up ticker and check the costs listed for the stake pool.",
-            "C. Some projects allow several SPOs to assist with this and they all may charge different fees. In that case try and determine what the majority of pools are using.",
-            "D. Summarize results in box below.",
-          ],
-
-          options: [
-            { id: 1, name: "0% to 3%", value: 0.5 },
-            { id: 2, name: ">3%", value: 0.0 },
-            { id: 3, name: "N/A", value: 0.5 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is another one of the more subjective points and shoud be taken with a grain of salt. Overall, if a pool is transparent about the fee structure they are charging and not misleading anybody, that is not a problem and each investor can decide for themselves if they want to proceed. So this is not really to punish the projects that decide to keep a larger percentage of the staking rewards for themselves, but more to reward the projects that try to make it as fair as possible. Many peopole in the crypto community care about fairness, and projects that conduct an ISO in a manner that helps smaller pools and doesnt gouge supporters are generally looked upon favorable and generate some positive attitudes towards it. \n So for that reason, we give a small number of bonus points to the projects which are extremely fair during thier ISO.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 16,
-          tag: "TK7-16",
-          category: "Tokenomics",
-          name: "Originality",
-          question:
-            "Is the project an already existing business model or the first of its kind?",
-          worksteps: [
-            "A. Read the whitepaper.",
-            "B. Identify the type primary function of the project. This would be things such as a DEX, lending dApp. NFT minter, etc.",
-            "C. If you are unfamilar with the function of the project, review BuiltonCardano.com and check if there is already a category created.",
-            "D. If it is an existing model,  please describe what the competition is like for this business model and list a few of the major competitors with market cap below.",
-          ],
-          options: [
-            { id: 1, name: "Existing", value: 0.0 },
-            { id: 2, name: "New", value: 0.5 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This point has a few things to be considered. On the one hand, if a project is the first of its kind, it has a first mover advantage and has a better shot at cornering its market due to the fact that it’s the only game in town. As we have seen with Uniswap, Aave, Chainlink, and all the other projects that were the first of its kind, they usually have pretty good staying power and are typically one of if not the most popular project in its niche. \n On the other hand, being completely new can have negatives as its not really an established market, people might not fully understand what they are trying to do, the market might just not be ready for it yet, etc. Those are a lot of uncertainties that can make investing in a totally brand new product a bit risky. But in general, if you have read the whiteppaer and understand its use case, and beieve that it is fulfulling a reall need, there is a good chance that the positives outweigh the negatives when it comes to investing in something brand new.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 17,
-          tag: "CT1-17",
-          category: "Community",
-          name: "Twitter",
-          question: "How many followers does the project have on Twitter?",
-          worksteps: [
-            "A. Check the project website to see if it includes a link to its twitter profile.",
-            "B. If it does not, open twitter and type the project name.",
-            "C. Review results to ensure you are looking at the correct account.",
-            "D. Note the number of followers in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "<1000", value: 0.0 },
-            { id: 2, name: "1000 to 5000", value: 0.5 },
-            { id: 3, name: ">5K", value: 1.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 18,
-          tag: "CT2-18",
-          category: "Community",
-          name: "Real Followers",
-          question:
-            "For the twitter account, does it appear to have actual followers or bots/paid followers?",
-          worksteps: [
-            "A. Review 10 or more tweets from the project and note the number of likes, comments, and retweets it has.",
-            "B. Compare the total number of followers to the average number of likes or comments they receive on posts.",
-            "C. If on average the nuber of likes is less than .5% of the followers, this suggests that the followers are not real. This is not a hard rule so will need to exercise judgement.",
-            "D. Write a summary of your findings in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Bots", value: 0.0 },
-            { id: 2, name: "Real", value: 2.0 },
-            { id: 3, name: "N/A", value: 2.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "As discussed in the last point, community is important to a projects success. But simply looking at the number of followers is insufficient. This is because there are a LOT of projects out there that have recognized how important a community is to a project, and simply buy thousands of followers to give the appearance that they have a large organic community behind them. Now can a project buy followers and still end up being a good investment? Of course they can. But we have already covered honesty and integrity in the other points, and that still applies here. Most legitamite projets will gain a following organically because they are high quality and people can recognize that. Low quality projects that dont have much to offer will usually be the culprits in purchasing followers, which are typically the types of investments you would want to avoid. \n So doing a little extra leg work in reviewing the posts to see how much actual engagement they get will be a good indicator if the followers are real or not. Someone with 50K followers who gets 5 to 10 likes is probably purchainsg them. Someone who has no other people commenting or posting to thier page probably doenst have many real followers. And unfortunately, the really crafty projects who are on top of everything will also buy likes for thier posts to avoid being discovered. But those will typically be soething you can spot by looking through the people who engaged and seeing how many connections or followers they have. If they are all super low, its a good chance they are paid bots.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 19,
-          tag: "CT3-19",
-          category: "Community",
-          name: "Reddit",
-          question: "How many subscribers does the project have on Reddit?",
-          worksteps: [
-            "A. Check the project website to see if it includes a link to its Subreddit.",
-            "B. If it does not, open Reddit and type the project name.",
-            "C. Review results to determine if it is associated with the project or not.",
-            "D. Note the number of followers in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "<1000", value: 0.0 },
-            { id: 2, name: ">1K", value: 0.5 },
-            { id: 3, name: "N/A", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 20,
-          tag: "CT4-20",
-          category: "Community",
-          name: "Subreddit Activity",
-          question:
-            "For the subreddit, does it appear to have an active environment?",
-          worksteps: [
-            "A. Review the subreddit several times over several days at different times. Note the nuber of people online vs the number of members. .1%  or more of members online at any given time is sufficient activity.",
-            "B. Review the last 10 posts. If they are all recent (within the last 2 days) and by different accounts, this also suggests sufficient activity.",
-            "C. Note the number of members below",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 0.5 },
-            { id: 2, name: "No", value: 0.0 },
-            { id: 3, name: "N/A", value: 0.5 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is a very similar concept to the one on Twitter I am copying it here again for your convenience.  As discussed in the last point, community is important to the success of a project. But simply looking at the number of subscribers is insufficient. This is because there are a LOT of projects out there that have recognized how important a community is to a project, and simply buy thousands of subscribers to give the appearance that they have a large organic community behind them. \n Now can a project buy subscribers and still end up being a good investment? Of course they can. But we have already covered honesty and integrity in the other points, and that still applies here. Most legitimate projects will gain a following organically because they are high quality and people can recognize that. Low-quality projects that don't have much to offer will usually be the culprits in purchasing subscribers, which are typically the types of investments you would want to avoid. So doing a little extra leg work in reviewing the posts to see how much actual engagement they get will be a good indicator if the subscribers are real or not. Someone with 50K subscribers who gets 5 to 10 upvotes is probably purchasing them. Someone who has no other people commenting or posting to their page probably doesn't have many real subscribers. And if you only see the same person making posts, that is usually not a good sign. Ideally, you want to look for a wide range of people posting and engaging on posts.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 21,
-          tag: "CT5-21",
-          category: "Community",
-          name: "Telegram",
-          question: "How many subscribers does the project have on Telegram?",
-          worksteps: [
-            "A. Check the project website to see if it includes a link to its Telegram",
-            "B. If it does not, open Telegram and type the project name.",
-            "C. Review results to determine if it is associated with the project or not.",
-            "D. Note the number of members in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "<1000", value: 0.0 },
-            { id: 2, name: ">1K", value: 0.5 },
-            { id: 4, name: "N/A", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesnt just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoptoin than ones with a couple hundred. Not to mantion the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invalubale information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 22,
-          tag: "CT6-22",
-          category: "Community",
-          name: "Telegram Activity",
-          question: "Does their Telegram appear to have an active environment?",
-          worksteps: [
-            "A. Scan the recent activity. If there are several comments  by different accounts each day, this also suggests sufficient activity.",
-            "B. If it is a Telegram that only allows for messages from the Dev team, answer this question with Yes.",
-            "C. Comment on activity in box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 0.5 },
-            { id: 2, name: "No", value: 0.0 },
-            { id: 3, name: "N/A", value: 0.5 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is the exact same concept we have been discussing in this section, so I'm not going to go into too much detail. But essentially, if there are a lot of people subscribed to a Telegram channel but there is nobody talking in it, that is not a good sign. It means either they have purchased those subscribers, or they are real but do not care about the project at all to engage on it. Either way, it is a bad sign and something that you should consider.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 23,
-          tag: "CT7-23",
-          category: "Community",
-          name: "Discord",
-          question: "How many members does the project have on discord?",
-          worksteps: [
-            "A. Check the project website to see if it includes an invite link to its Discord.",
-            "B. If it does not, you will need to find an invite link to access the discord server. Check the projects twitter page for this.",
-            "C. Note the number of members in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "<1000", value: 0.0 },
-            { id: 2, name: "1000 to 10K", value: 0.5 },
-            { id: 3, name: "10K+", value: 1.0 },
-            { id: 4, name: "N/A", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesnt just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoptoin than ones with a couple hundred. Not to mantion the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invalubale information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 24,
-          tag: "CT8-24",
-          category: "Community",
-          name: "Discord Activity",
-          question: "Does their Discord appear to have an active environment?",
-          worksteps: [
-            "A. Note the number of members compared to the number of people online. A large percentage of members online suggests an active environment.",
-            "B. Scan the recent activity. If there are several comments  by different accounts each day, this also suggests an active environment.",
-            "C. Comment on activity in box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 1.0 },
-            { id: 2, name: "No", value: 0.0 },
-            { id: 3, name: "N/A", value: 1.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is a very similar concept to the one on Twitter. I am copying it here again for your convenience. You have likely seen this a hundred times before. There is a meme coin that does nothing, has no use case, and it goes up 30,000 percent in a year. I would like to tell you that only quality projects go up in value but that is far from the case. Hype and marketing are a huge determinant in a project rising in value, and a large part of that is due to the community that is behind the project. And this doesn't just apply to meme coins or project with little to no utility. Serious projects will also be affected by the size and strength of the community behind them. \n Adoption is key to success and survival, and chains or tokens with millions or supporters are already further along in terms of adoption than ones with a couple hundred. Not to mention the projects with a million people behind them are constantly writing, posting, and talking about the projects which generates new interest from others who might not have been familiar with it yet. So taking a look at the size and quality of a community behind any crypto project will usually give you invaluable information on if it will be a wise investment or not. But these can always be manipulated, which we cover in the next point.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 25,
-          tag: "CT9-25",
-          category: "Community",
-          name: "Hodlers",
-          question: "How many holders does the token have?",
-          worksteps: [
-            "A. Go to Cexplorer.io/token.",
-            "B. Type the name of the token you are researching into the search bar.",
-            "C. Note the number of hodlers in the box below.",
-            "D. If the token has not started being distributed yet, select N/A",
-          ],
-          options: [
-            { id: 1, name: "<1K", value: 0.0 },
-            { id: 2, name: ">1K", value: 0.5 },
-            { id: 3, name: "N/A", value: 0.5 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This section tries to assess the size and strength of the community behind a token. So far we have been doing that by analyzing the social media accounts people use to support and interact with the project. But many would argue that what really matters here is the number of people that actually hold the token. A project could have 100K Twitter followers but if only 1K people hold the token then those supporters either aren't that into the project or perhaps most of those followers are not real. As discussed, having a big community means you will have lots of people using your product or service, which is important.  Having a large number of holders is also healthy for a project vs having a small number of people own the entire supply. When a few whales own the majority of the supply means they can control the price or if they ever decide to divest from the project, it could crash the price. Therefore, seeing a large number of holders is usually a positive sign for the project you are researching.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 26,
-          tag: "CT10-26",
-          category: "Community",
-          name: "Partnerships",
-          question:
-            "Do they have any official partnerships with other established projects?",
-          worksteps: [
-            "A. Review the official website for a partners section.",
-            "B. If they have partners listed, try to confirm on the partners participants website that the partnership is mentioned.",
-            "C. If it is not mentioned on the partners website, review discord or Twitter for announcements or mentions of it.",
-            "D. List the partners and any relevant information in the box below.",
-          ],
-
-          options: [
-            { id: 1, name: "Yes", value: 1.0 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Collaborations with other projects can be a good way of promoting the project and expanding its community. In addition, if other successful or reputable projects are willing to collaborate with them, it shows a level of trust in that project that increases its credibility. So anytime you see high quality collaborations, that is usually a good sign. There will also be many partnerships out there that bring no real value and are more of a marketing ploy. In those instances, while the partnership may be meaningless, it can still be a good sign, as a reputable project would hopefully have vetted someone before becoming partnered with them. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 27,
-          tag: "CT11-27",
-          category: "Community",
-          name: "Ambassadors",
-          question: "Do they have an official ambassador program?",
-          worksteps: [
-            "A. Review the official website for an ambassadors section.",
-            "B. If not listed on the website, it still may exist. Review their social medias for mentions of it.",
-            "C. If unable to find there, leave a question in thier Telegram or Discord.",
-            "D. Describe the program in the box below. In particular, are they compensated.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 0.5 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Like most things in this tool, an ambassador program can be a bit of a double-edged sword. On the one hand, having an official group of knowledgeable and passionate people involved in the project who discuss it, write about it, and share it, will increase its outreach. This can be good in attracting new users & investors or creating brand awareness. So for these reasons, having an ambassador program can be seen as a positive thing. On the other hand, paying people to spam about your project can be argued as a type of shilling and can give the impression that something is good or popular when it really just has an army of loud people constantly talking about it. So like most things, you will have to use a bit of judgment to try and determine which case your project falls into. For this question, we are going to give the benefit of the doubt and assume that the program is being used responsibly for a quality project and therefore, increases the overall score. If you feel this is not the case, you can answer it as a no even if it has one, and write your explanation for why you do not think it should be allocated the points. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 28,
-          tag: "CT12-28",
-          category: "Community",
-          name: "Banishment",
-          question: "Does the project unfairly ban members from social media?",
-          worksteps: [
-            "A. Join the projects Discord or Telegram.",
-            "B. Locate the appropriate place for general questions.",
-            "C. Tell the community you are researching this project and ask for thier input on the subject.",
-            "D. Summarize your findings in the box below.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 0.0 },
-            { id: 2, name: "No", value: 0.5 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Most honest projects will welcome difficult questions as they want to be open and transparent about everything. If a project is quick to ban members who question them, it can be a bad sign that they might not have answers to those questions and do not want others to begin asking them as well. This can be a fine line though. If someone is constantly making things up or purposely trying to undermine a project by spamming its social media with lies to make it look bad, then banning or blocking them could be appropriate. So you will have to use some judgment here to decide between those two cases.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 29,
-          tag: "CT13-29",
-          category: "Community",
-          name: "Responsiveness",
-          question:
-            "Does the team respond to questions promptly and satisfactorily?",
-          worksteps: [
-            "A. Join the projects Discord or Telegram.",
-            "B. Locate the appropriate place for general questions.",
-            "C. Ask about something that has come up during your research you are unsure of.",
-            "D. Assess if a satisfactory response from a team member or mod is recieved within 24 hours.",
-            "E. Write your question, the teams response, and your assessment in the box below",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 0.5 },
-            { id: 2, name: "No", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "As mentioned in the previous question, most legitimate projects welcome questions. They want people to learn about what they are offering and encourage people to ask questions about things they are unsure of or want to learn more about. Because of this, many teams will have dedicated moderators for their social media channels as well as their email address who will respond to people's questions. If you find yourself in a project's Discord or Telegram and cannot find someone associated with the team to respond to questions within a reasonable amount of time (usually within 24 hours is reasonable) then that is usually not a strong sign for that project. But this also doesn't mean that responding to questions quickly automatically means the project is legit. There are plenty of shady projects out there which will respond to your questions quickly. But oftentimes, a bad project will not have a lot of substance in the responses they give you. If you are seeing some warning signs while doing your research that you ask about respectfully, and you are unable to get a satisfactory response, that can be seen as a red flag. ",
-          files: [],
-          images: [],
-          video: [],
-        },
-
-        {
-          id: 30,
-          tag: "MT1-30",
-          category: "Metrics",
-          name: "Fair Launch",
-          question:
-            "If the project has had its initial offering, (ISO, IDO, ICO, etc) was it a fair launch?",
-          worksteps: [
-            "NOTE. This section only applies for projects which have had their initial offering and are actively traded. If it has not, skip this section by clicking next until it reaches the end.",
-            "A. Fair launch would describe everyone having equal access to the token and no premine for specific individuals. Instances where certain countries are excluded for legal reasons would not apply.",
-            "B. Google the project initial offering and read news articles and comments regarding how the launch was conducted and perceived.",
-            "C. Summarize results in box below.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 2.0 },
-            { id: 2, name: "No", value: 0.0 },
-            { id: 404, name: "Doesn't apply", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "We already touched on this a bit in the ISO percentage section when discussing projects that attempt to be as fair as possible in different aspects, and the launch is no different. So just like the ISO percentage, this is not really to punish the projects that do not have a fair launch, but more to reward the projects that try to make it as fair as possible. Many people in the crypto community care about fairness, and projects that conduct a fair launch  are generally looked upon favorable and generate some positive attitudes towards it. \n We also talked about tokens being concentrated in early investors/backers can create massive sell pressure at some point when they finally decide to sell. Well projects that had a fair launch have minimized the possibility of these VC/early investors and instead have tokens in the hands of the general community. So for those reasons, we give bonus points to the projects which are extremely fair during their launch.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 31,
-          tag: "MT2-31",
-          category: "Metrics",
-          name: "Market cap",
-          question: "What is the current diluted market cap of the project?",
-          worksteps: [
-            "A. Utilize CoinMarketcap.com to obtain market cap.",
-            "B. Smaller market cap projects are typically riskier than larger market cap projects. However, smaller market cap projects also have the potential for greater returns, especially if its an established business model where competitors have significantly larger market caps. Both factors should be considered by potential investors to meet their specific goals.",
-            "C. Note the market cap in the box below.",
-          ],
-          options: [
-            { id: 1, name: "<5 Million", value: 0.0 },
-            { id: 2, name: "5 to 10 Million", value: 0.5 },
-            { id: 3, name: "10 Million +", value: 1.0 },
-            { id: 404, name: "Doesn't apply", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "This is another one of those double edged swords that can go in either direction. The smaller a projects market cap, the more room it has to grow. Getting in early on a project when the market cap is at 1 Million means you have the potential for those massive 1000X gains simply due to the fact that the project starts off so small. Similarly, it would be a bit silly to be getting into Bitcoin at a 1 Trillion dollar market cap and be expecting it to 1000X into a quadrillion dollar market cap and be worth more than there are dollars in existence. So when you are researching new projects, paying attention to the market cap can give you an idea of how much room it has to grow. \n Now the other side of the coin is that extremely small market caps are going to be much riskier investments than the larger and more established ones. Going back to our example, the 1 million market cap project has a lot of room to grow, but there is a good chance that your investment can fall to zero and be worth nothing. While Bitcoin isn't going to have its massive gains anymore, the chances of it dropping to zero are much lower (although it is still possible). Different investors will have different goals, but that is the general thought process when looking at a projects market cap. For the purposes of this assessment, we gave more points to the higher market cap because we are more focused on not losing money than we are in gaining money. But when doing your own personal assessments, it would be ok if you care more about the larger gain potential and lean towards a smaller market cap preference.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 32,
-          tag: "MT3-32",
-          category: "Metrics",
-          name: "Volume",
-          question: "What is the daily trading volume of the Token ?",
-          worksteps: [
-            "A. Utilize CoinMarketcap.com  to obtain daily trading volume. Check 3 different days and use the average volume from those 3 days.",
-            "B. Note the market cap in the box below.",
-          ],
-          options: [
-            { id: 1, name: "<1 Thousand", value: 0.0 },
-            { id: 2, name: "1 Thousand to 50 Thousand", value: 0.5 },
-            { id: 3, name: "50 Thousand +", value: 1.0 },
-            { id: 4, name: "N/A", value: 1.0 },
-            { id: 404, name: "Doesn't apply", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "Instead of writing my own take, I have copied this information from learncrypto.com as I think it explains it pretty well (https://learncrypto.com/knowledge-base/how-to-trade-crypto/understanding-crypto-trading-volume) Volume is important because it has such a significant impact on price from both an absolute and relative perspective. The total volume traded for a given cryptocurrency has a direct relationship with how volatile it is. Remember, price represents the balance of opinions between buyers and sellers. \n If an equal amount (in terms of volume) is being bought and sold then price will be stable, but stability suggests that people opinion about the price are well informed; this is known as market efficiency. \n Mature markets with significant volume and good price discovery have less volatility. Cryptocurrency is inherently volatile because it is immature and its adoption path is uncertain. Market participants are an unusual mix of recreational investors (holders), miners, speculators and institutional investors each with varying opinions and motivations, with those opinions subject to significant outside influences. \n So when looking at trading a given cryptocurrency, the total volume traded will immediately tell you how volatile it is likely to be. The change in volume over time will also give you a sense of interest in the project. \n  It may seem a bit obvious but in order to trade a particular cryptocurrency it has to be listed on an exchange. Exchanges choose which coins to trade, and being listed on the bigger exchanges can make a huge difference to volume. \n If, for example, you have an opinion about an obscure cryptocurrency and want to buy it at a specific price. The absence of volume is going to make that really hard - there won’t  be enough buyers and sellers, so the difference between the available Offers (buyers) and Bids (sellers) - known as the Spread - will be wide. \n The wider the spread, the less efficient a market and therefore the more volatile. Websites like Coinmarketcap provide historical volume data.",
-          files: [],
-          images: [],
-          video: [],
-        },
-        {
-          id: 33,
-          tag: "MT4-33",
-          category: "Metrics",
-          name: "CEX",
-          question: "Is the token listed on large  centralized exchanges?",
-          worksteps: [
-            "A. Utilize Coinmarketcap.com and type in the token ticker symbol. ",
-            "B. Scroll to the bottom of the page where it lists the top exchanges by volume.",
-            "C. Review the exchanges listed. Large centralized exchanges would be Coinbase, KuCoin, Kraken, Binance, FTX, Huobi, Gate.io.",
-            "D. Note the exchanges in the box.",
-          ],
-          options: [
-            { id: 1, name: "Yes", value: 1.0 },
-            { id: 2, name: "No", value: 0.0 },
-            { id: 404, name: "Doesn't apply", value: 0.0 },
-          ],
-          answer: null,
-          textarea: "",
-          purpose:
-            "We talked about volume in the last point. Well, where do you think most of the volume is coming from in crypto markets? I'd like to tell you it is from decentralized exchanges, but that is just not the case. Perhaps someday it will be, but for now, the tokens and coins listed on centralized exchanges have access to the most liquidity and volume of all the tokens. For this reason, checking if a token is listed on centralized exchanges or not is always worth the effort. If you have found one that is only listed on a decentralized exchange this can be a good thing as the price might get some upward movement if and when it ever gets listed on one. But this is also something that you should take caution of.  \n The shadiest projects out there that are trying to scam you will usually be found exclusively on decentralized exchanges, as they will not meet the more strict criteria to get listed on the centralized ones. Please note that this does not mean listed only on a DEX = shady, that is NOT what we are saying. Many great projects are only found on DEXs/ We are saying that Grimace cion or ElonDogeInuRocket with zero utility meant for quick pump and dumps will likely never make it on a centralized exchange. So to summarize, being only on a DEX can have some upside if it is a solid project, but you should definitely exercise caution as it can be riskier as well. Tokens that have been listed on the big centralized exchanges such as Coinbase, Kraken, Binance, etc. will have access to more liquidity, be more well-vetted, and oftentimes have less risk than a project that only lives on a DEX.",
-          files: [],
-          images: [],
-          video: [],
-        },
-      ],
-      conclusion: {
-        re: "",
-        pe: "",
-      },
-      tokenPhases: [0],
+      send_msg: "Submit",
+      error_to_send: false,
+      avatar_link: "",
+      scheme_counter: [0, 0],
+      question_list: dapp_scheme,
+      token_phases: [0],
       inputDelete: [],
-      workspace: false,
-      workProgramCategory: {
+      scheme_category: {
         developmentTeam: [],
-        tokenomics: [],
         community: [],
+        tokenomics: [],
         metrics: [],
+        development_team: [],
+        mint_metrics: [],
+        secondary_market: [],
       },
-      progressWorkData: [],
-      isRetrayed: [0, 1, 1, 1],
-      currentQuestion: [],
-      answeredQuestion: [],
-      checkedOption: "",
-      visualHelper: {
+      scheme_progress: [],
+      category_visible: [1, 1, 1, 1],
+      current_: [],
+      answered: [],
+      helpers: {
         purpose: false,
         evaluate: false,
         example: false,
       },
-      isReportCreated: false,
-      reportLink: "",
-      beforeEncodeProcess: [],
+      report_created: false,
+      report_link: "",
+      before_encode: [],
       queryInput: [],
-      isFinished: true,
-      showSummary: false,
-      result: "",
-      error: "",
+      summary_visible: true,
+      themeState: [0],
+      defaultLogo:
+        "data:image/png;base64,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",
     };
   },
   created() {
-    this.numberQuestion[1] = this.questionList.length;
-    this.answeredQuestion = this.questionList;
+    this.toggleTheme();
+    this.configureCounter();
+    this.chargeEmptyAnswered();
     this.changeCurrentQuestion();
     this.chargeListQuestion();
-    this.sendMeAtribute();
+    this.getAuditInfo();
     this.createNewIdenticon();
   },
   watch: {
-    showSummary() {
-      this.isReportCreated = false;
+    summary_visible() {
+      this.report_created = false;
     },
   },
   methods: {
+    toggleTheme() {
+      this.themeState[1] < 2 ? this.themeState[1]++ : (this.themeState[1] = 0);
+
+      this.themeState[0] = this.themes[this.themeState[1]];
+
+      localStorage.setItem("theme", this.themeState[1]);
+
+      document.documentElement.className = this.themes[this.themeState[1]];
+    },
+    configureCounter() {
+      this.scheme_counter[1] = this.question_list.length;
+    },
+    chargeEmptyAnswered() {
+      this.answered = this.question_list;
+    },
     saveDraftReport() {
-      const drafts = [
-        this.answeredQuestion,
-        this.newAudit,
-        this.progressWorkData,
-      ];
+      const drafts = [this.answered, this.audit_info, this.scheme_progress];
 
       const today = new Date();
       const date =
@@ -2263,7 +655,7 @@ export default {
         today.getDate();
       const time = today.getHours() + "h-" + today.getMinutes() + "m-";
 
-      const fileName = `${this.newAudit.pn.toUpperCase()} - ${
+      const fileName = `${this.audit_info.project_name.toUpperCase()} - ${
         date + "--" + time
       }.json`;
 
@@ -2279,25 +671,25 @@ export default {
       reader.onload = (e) => {
         const [questions, general, progress] = JSON.parse(e.target.result);
 
-        this.questionList = questions;
-        this.answeredQuestion = questions;
-        this.newAudit = general;
-        this.progressWorkData = progress;
+        this.question_list = questions;
+        this.answered = questions;
+        this.audit_info = general;
+        this.scheme_progress = progress;
         this.$store.commit("modifyAuditData", general);
         this.clickCurrentQuestion(1);
       };
     },
     modifyPersonal(element) {
-      this.conclusion.re = element;
+      this.audit_opinion.answer = element;
     },
     summaryLayout() {
-      this.showSummary = !this.showSummary;
+      this.summary_visible = !this.summary_visible;
     },
     remainingQuestion() {
       let remaining = [];
-      for (const element of this.answeredQuestion) {
+      for (const element of this.answered) {
         if (element.answer === 405) {
-          this.answeredQuestion[element.id - 1].answer = null;
+          this.answered[element.id - 1].answer = null;
         }
         if (element.answer === null) {
           remaining.push({
@@ -2315,10 +707,10 @@ export default {
       }
     },
     splitPurpose() {
-      return this.currentQuestion[0].purpose.split(/\r?\n/);
+      return this.current_[0].purpose.split(/\r?\n/);
     },
     async nextGlassButton() {
-      this.currentQuestion[0].answer = 405;
+      this.current_[0].answer = 405;
     },
     createNewIdenticon() {
       const hashCode = function (s) {
@@ -2327,91 +719,78 @@ export default {
           return a & a;
         }, 0);
       };
-      const base = this.newAudit.an + this.newAudit.an.length;
+      const base = this.audit_info.nickname + this.audit_info.nickname.length;
 
-      this.avatarSeed = `https://avatars.dicebear.com/api/identicon/${hashCode(
+      this.avatar_link = `https://avatars.dicebear.com/api/identicon/${hashCode(
         base
       )}.svg`;
     },
-    sendMeAtribute() {
-      this.newAudit = this.$store.getters.sendMeAtribute;
+    getAuditInfo() {
+      this.audit_info = this.$store.getters.getAuditInfo;
     },
     changeCurrentQuestion() {
-      this.currentQuestion.push(this.questionList[this.numberQuestion[0]]);
+      this.current_.push(this.question_list[this.scheme_counter[0]]);
     },
     changeAnswerQuestion(answer) {
-      this.currentQuestion[0].answer = answer;
+      this.current_[0].answer = answer;
     },
     cleanCurrentQuestion() {
-      this.currentQuestion = [];
+      this.current_ = [];
     },
-    async nextAnswerQuestion() {
-      if (this.currentQuestion[0].answer === 404) {
-        this.answeredQuestion[29].answer = 404;
-        this.answeredQuestion[30].answer = 404;
-        this.answeredQuestion[31].answer = 404;
-        this.answeredQuestion[32].answer = 404;
+    setCustomQuestion() {
+      if (this.answered[23].answer === 404) {
+        this.answered[23].answer = 404;
+        this.answered[24].answer = 404;
+        this.answered[25].answer = 404;
+        this.answered[26].answer = 404;
+        this.answered[27].answer = 404;
       }
-      this.checkCorrectQuestion();
-      this.answeredQuestion[this.numberQuestion[0]] =
-        this.currentQuestion.pop();
-      this.numberQuestion[0] += 1;
+    },
+    nextAnswerQuestion() {
+      this.setCustomQuestion();
+      this.updateProgress();
+      this.answered[this.scheme_counter[0]] = this.current_.pop();
+      this.scheme_counter[0] += 1;
       this.changeCurrentQuestion();
     },
     backAnswerQuestion() {
       this.cleanCurrentQuestion();
-      this.numberQuestion[0] -= 1;
-      this.currentQuestion.push(this.answeredQuestion[this.numberQuestion[0]]);
+      this.scheme_counter[0] -= 1;
+      this.current_.push(this.answered[this.scheme_counter[0]]);
     },
     clickCurrentQuestion(num) {
       let number = num - 1;
-      for (const n in this.answeredQuestion) {
+      for (const n in this.answered) {
         if (n.id === number) {
           this.cleanCurrentQuestion();
-          this.currentQuestion.push(this.answeredQuestion[number]);
-          this.numberQuestion[0] = this.currentQuestion[0].id - 1;
+          this.current_.push(this.answered[number]);
+          this.scheme_counter[0] = this.current_[0].id - 1;
         }
         if (n.id != number) {
           this.cleanCurrentQuestion();
-          this.currentQuestion.push(this.questionList[number]);
-          this.numberQuestion[0] = this.currentQuestion[0].id - 1;
+          this.current_.push(this.question_list[number]);
+          this.scheme_counter[0] = this.current_[0].id - 1;
         }
       }
     },
+    addAnswered() {
+      this.answered[this.scheme_counter[0]] = this.current_[0];
+    },
     createNewReport() {
-      const pp = { re: this.conclusion.re, pe: this.conclusion.pe };
-      this.$store.commit("modifyPersonal", pp);
-      if (this.answeredQuestion[29].answer === 404) {
-        this.answeredQuestion[30].answer = 404;
-        this.answeredQuestion[31].answer = 404;
-        this.answeredQuestion[32].answer = 404;
-      }
-      if (this.answeredQuestion[30].answer === 404) {
-        this.answeredQuestion[29].answer = 404;
-        this.answeredQuestion[31].answer = 404;
-        this.answeredQuestion[32].answer = 404;
-      }
-
-      if (this.answeredQuestion[31].answer === 404) {
-        this.answeredQuestion[30].answer = 404;
-        this.answeredQuestion[29].answer = 404;
-        this.answeredQuestion[32].answer = 404;
-      }
-
-      if (this.answeredQuestion[32].answer === 404) {
-        this.answeredQuestion[29].answer = 404;
-        this.answeredQuestion[30].answer = 404;
-        this.answeredQuestion[31].answer = 404;
-      }
-      this.checkCorrectQuestion();
-      this.progressWorkData.push(this.currentQuestion[0].id);
-      this.answeredQuestion[this.numberQuestion[0]] = this.currentQuestion[0];
-      this.updateDataState();
+      this.setCustomQuestion();
+      this.updateProgress();
+      this.addAnswered();
+      this.pushNewReport();
+    },
+    updateProgress() {
+      return this.current_[0].answer
+        ? this.scheme_progress.push(this.current_[0].id)
+        : false;
     },
     createNewInput(element) {
-      this.tokenPhases[element] = !this.tokenPhases[element];
-      this.tokenPhases.push(0);
-      this.currentQuestion[0].input.push({
+      this.token_phases[element] = !this.token_phases[element];
+      this.token_phases.push(0);
+      this.current_[0].input.push({
         id: element + 1,
         name: "",
         per: "",
@@ -2422,77 +801,73 @@ export default {
     },
     removeAddedInput(element) {
       this.inputDelete.push(element);
-      this.currentQuestion[0].input[element] = {
+      this.current_[0].input[element] = {
         id: element,
         name: "",
         per: "",
       };
     },
-    async updateDataState() {
-      this.$store.commit("newQuestData", this.answeredQuestion);
-      await this.pushNewReport();
-    },
     async pushNewReport() {
-      this.beforeEncodeProcess = [];
-      this.errReportGen = false;
-      this.reportLink = "";
+      this.before_encode = [];
+      this.error_to_send = false;
+      this.report_link = "";
 
-      let userData = this.$store.getters.sendMeAtribute;
+      this.audit_info["audit_opinion"] = this.audit_opinion;
 
-      userData["hh"] = Math.floor(Math.random() * 10000);
+      this.audit_info["nid"] = Math.floor(Math.random() * 10000);
 
-      userData["vr"] = 1;
+      this.before_encode.push(this.audit_info);
 
-      this.beforeEncodeProcess.push(userData);
-      this.answeredQuestion.forEach((e) => {
-        this.beforeEncodeProcess.push({
+      this.answered.forEach((e) => {
+        this.before_encode.push({
           id: e.id,
-          an: e.answer,
-          ta: e.textarea,
-          ed: e.input,
+          answer: e.answer,
+          textarea: e.textarea,
+          input: e.input,
         });
       });
 
-      const bestialEncoder = new BestialEncoder();
       const resultEncoder = bestialEncoder.encodeByValue(
-        JSON.stringify(this.beforeEncodeProcess)
+        JSON.stringify(this.before_encode)
       );
+
+      console.log(this.before_encode, resultEncoder);
+
       try {
         const params = {
+          scheme: "dapp",
           hex: `${resultEncoder}`,
         };
-        console.log(params)
-        this.reportUp = "Uploading";
+
+        this.send_msg = "Uploading";
+
         document.getElementById("create-report").disabled = true;
         await axios({
           method: "post",
-          url: "http://localhost:8000/v1/report/send",
+          url: "http://localhost:8000/v1/report/create-report",
           data: params,
           headers: { "content-type": "application/json" },
         })
           .then((response) => {
-            this.isReportCreated = !this.isReportCreated;
-            this.reportLink = `https://audits.dyortool.io/report/${response.data.report_id}`;
-            this.reportUp = "Create Report";
+            console.log(response.data);
+            this.report_created = !this.report_created;
+            this.report_link = `http://localhost:8081/report/${response.data.id}`;
+            this.send_msg = "Create Report";
           })
           .catch((error) => {
-            this.errReportGen = !this.errReportGen;
-            console.log(error.response);
-            this.reportUp = "Create Report";
+            this.error_to_send = !this.error_to_send;
+            console.error(error.response);
+            this.send_msg = "Create Report";
           });
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     },
-    checkCorrectQuestion() {
-      return this.currentQuestion[0].answer
-        ? this.progressWorkData.push(this.currentQuestion[0].id)
-        : false;
-    },
+
     knowCompleteness() {
       let isComplete = false;
       let checkAnswers = [];
-      this.answeredQuestion.forEach((e) => checkAnswers.push(e.answer));
+      this.answered.forEach((e) => checkAnswers.push(e.answer));
       if (checkAnswers.includes(null)) {
         isComplete = false;
       }
@@ -2510,39 +885,39 @@ export default {
       }
     },
     backToWorksteps() {
-      this.currentQuestion[0].answer = null;
-      this.removeItemFromArr(this.progressWorkData, this.currentQuestion[0].id);
+      this.current_[0].answer = null;
+      this.removeItemFromArr(this.scheme_progress, this.current_[0].id);
     },
     knowWorkProgress(step) {
       let acc = 0;
-      this.workProgramCategory[step].forEach((s) => {
-        this.progressWorkData.includes(s.id) ? (acc += 1) : false;
+      this.scheme_category[step].forEach((s) => {
+        this.scheme_progress.includes(s.id) ? (acc += 1) : false;
       });
       return acc;
     },
     chargeListQuestion() {
-      for (const element of this.questionList) {
+      for (const element of this.question_list) {
         switch (element.category) {
           case "Development Team":
-            this.workProgramCategory["developmentTeam"].push({
-              id: element.id,
-              name: element.name,
-            });
-            break;
-          case "Tokenomics":
-            this.workProgramCategory["tokenomics"].push({
+            this.scheme_category["development_team"].push({
               id: element.id,
               name: element.name,
             });
             break;
           case "Community":
-            this.workProgramCategory["community"].push({
+            this.scheme_category["community"].push({
               id: element.id,
               name: element.name,
             });
             break;
-          case "Metrics":
-            this.workProgramCategory["metrics"].push({
+          case "Mint Metrics":
+            this.scheme_category["mint_metrics"].push({
+              id: element.id,
+              name: element.name,
+            });
+            break;
+          case "Secondary Market":
+            this.scheme_category["secondary_market"].push({
               id: element.id,
               name: element.name,
             });
@@ -2558,6 +933,23 @@ export default {
 </script>
 
 <style scoped>
+.pi-moon {
+  color: var(--text-a);
+}
+.b {
+  color: rgba(245, 105, 0, 0.5);
+}
+
+.css-3489 {
+  background: transparent;
+  padding: 0.75rem;
+  display: flex;
+  margin-right: 1rem;
+  border: 1px solid var(--border-a);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 #css-wq-panel-bl {
   display: flex;
   align-items: flex-start;
@@ -2569,11 +961,8 @@ export default {
 }
 
 #right-arrow {
-  background: linear-gradient(
-    22.58deg,
-    rgba(0, 80, 220, 1) 0%,
-    rgba(0, 105, 245, 1) 100%
-  );
+  background: var(--blue);
+  color: #ffffff;
 }
 #right-arrow:hover {
   transition: ease-in 0.1s;
@@ -2581,36 +970,17 @@ export default {
 }
 
 #right-arrow span {
-  color: #ffffff;
-  font-weight: bold;
   margin-right: 50px;
 }
 
 #left-arrow span {
-  color: var(--text-color-primary);
-  font-weight: bold;
   margin-left: 50px;
-}
-
-.negativeb {
-  border: 1px solid rgba(248, 73, 96, 0.3);
-  color: rgba(248, 73, 96, 1);
-}
-
-.positiveb {
-  border: 1px solid rgba(0, 211, 149, 0.3);
-  color: rgba(0, 211, 149, 1);
-}
-
-.neutralb {
-  color: var(--complementary-color-blue);
-  border: 1px solid var(--color-soft-blue);
 }
 
 .css-8801 {
   display: flex;
   align-items: center;
-  margin-right: 3rem;
+  margin-right: 1rem;
 }
 
 .css-8801 label {
@@ -2622,8 +992,8 @@ export default {
   border-radius: 8px;
   cursor: pointer;
   padding: 0.75rem;
-  background: #23272a;
-  color: #ffffff;
+  background: var(--button-a);
+  color: var(--text-w);
   border: none;
 }
 
@@ -2686,7 +1056,7 @@ export default {
 
 .css-identicon-wrp {
   border: 1px solid var(--border-primary);
-  padding: 10px;
+  padding: 5px;
   border-radius: 50%;
   background: var(--base-color-white-primary);
 }
@@ -2716,8 +1086,9 @@ export default {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  caret-color: var(--text-color-primary);
-  color: var(--text-color-primary);
+  caret-color: var(--text-a);
+  color: var(--text-a);
+  background: var(--background-b);
   resize: none;
   font-weight: lighter;
   padding: 0.5rem;
@@ -2726,9 +1097,9 @@ export default {
 }
 
 .css-wq-xcq {
-  background: var(--base-color-white-secondary);
   border-radius: 8px;
   width: 100%;
+  background: var(--background-b);
   padding: 1rem;
   text-align: center;
   color: var(--complementary-color-blue);
@@ -2754,25 +1125,26 @@ export default {
   align-items: center;
   padding: 1rem;
   border-radius: 8px;
-  border: 1px solid var(--border-primary);
+  background: var(--background-b);
 }
 .css-wq-fko button {
   padding: 10px 14px;
-  border-radius: 8px;
+  border-radius: 99px;
   margin-left: 1rem;
   cursor: pointer;
-  background: transparent;
+  background: var(--background-a);
   transition: 0.3s ease-out;
+  border: 1px solid var(--border-a);
+  color: var(--text-a);
 }
 .css-wq-fsc {
-  color: var(--text-color-primary);
   font-weight: 600;
   display: flex;
   align-items: center;
 }
 
 .css-wq-pta {
-  border: 1px solid var(--border-primary);
+  border: 1px solid var(--border-a);
   border-radius: 5px;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
@@ -2784,7 +1156,7 @@ export default {
   overflow-y: auto;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  background: var(--base-color-white-primary);
+  background: var(--background-b);
   display: flex;
   flex-direction: column;
 }
@@ -2818,18 +1190,16 @@ export default {
   display: flex;
   align-items: center;
   bottom: 200px;
-  background: var(--base-color-white-primary);
+  background: var(--background-a);
   padding: 1rem 2rem;
   box-sizing: border-box;
   margin-top: auto;
-  border-top: 1px solid var(--border-primary);
 }
 
 .css-wq-xkx {
   background: var(--color-soft-blue);
   border: none;
   cursor: pointer;
-  letter-spacing: 0.3px;
   outline: none;
   margin-left: 1rem;
   font-weight: 700;
@@ -2854,8 +1224,8 @@ export default {
 }
 
 .css-wq-fpb {
-  border: 1px solid var(--border-primary);
-  color: var(--text-color-primary);
+  border: 1px solid var(--border-a);
+  color: var(--text-a);
   padding: 1rem;
   align-items: center;
   border-radius: 8px;
@@ -2906,21 +1276,15 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem 0;
   padding: 1rem;
   border-radius: 8px;
   margin-top: 1rem;
-  color: var(--complementary-color-blue);
-  border: 1px solid var(--border-primary);
 }
 
 .css-wq-fxx {
   color: var(--text-color-primary);
   font-size: var(--text-size-third);
   font-weight: 600;
-}
-
-.css-wq-fzz {
 }
 
 .css-wq-ths {
@@ -2942,6 +1306,7 @@ export default {
   scroll-behavior: smooth;
   box-sizing: border-box;
   position: relative;
+  scroll-behavior: smooth;
 }
 
 .css-wq-wrap.active {
@@ -2968,13 +1333,14 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 2rem;
-  color: var(--text-color-primary);
+  color: var(--text-a);
   font-weight: bold;
   justify-content: space-between;
 }
 
 .css-wq-fph button {
   cursor: pointer;
+  color: inherit;
 }
 
 .css-wq-fph div {
@@ -2992,7 +1358,8 @@ export default {
 }
 
 .css-wq-fpx {
-  border-top: 1px solid var(--border-primary);
+  border-top: 1px solid var(--border-a);
+  color: var(--text-b);
   padding: 0 2rem;
   padding-bottom: 1rem;
   overflow-y: auto;
@@ -3039,15 +1406,15 @@ export default {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  caret-color: var(--text-color-primary);
-  color: var(--text-color-secondary);
+  caret-color: var(--text-a);
+  color: var(--text-a);
   resize: none;
-  font-family: "Nunito", sans-serif;
   font-weight: lighter;
   padding: 1rem;
   box-sizing: border-box;
   border-radius: 8px;
-  border: 1px solid var(--border-primary);
+  border: 1px solid var(--border-a);
+  background: var(--background-b);
 }
 
 .css-wq-fps,
@@ -3064,7 +1431,7 @@ export default {
   overflow-y: auto;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  background: var(--base-color-white-primary);
+  background: var(--background-a);
 }
 
 .css-wq-fyy {
@@ -3104,7 +1471,7 @@ export default {
 }
 
 .css-wq-gtt {
-  color: var(--complementary-color-blue);
+  color: var(--text-a);
   display: flex;
   align-items: center;
   font-size: var(--text-size-secondary);
@@ -3128,9 +1495,8 @@ export default {
 
 .css-work-tool-haw span {
   margin-left: 10px;
-
   text-transform: lowercase;
-  color: var(--text-color-primary);
+  color: var(--text-a);
 }
 
 .css-wq-got {
@@ -3140,13 +1506,13 @@ export default {
   right: 0;
   margin-right: 1rem;
   position: absolute;
-  background: #deecfd;
-  border: 1px solid var(--border-primary);
+  background: var(--background-b);
+  border: 1px solid var(--border-a);
   border-radius: 8px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 30px var(--border-primary);
+  box-shadow: var(--shadow-a);
 }
 .css-w-p-wrap {
   width: 320px;
@@ -3156,14 +1522,44 @@ export default {
   color: #ffffff;
   line-height: 1.9;
   height: 100vh;
-  background: linear-gradient(
-    22.58deg,
-    rgba(0, 80, 220, 1) 0%,
-    rgba(0, 105, 245, 1) 100%
-  );
+  background: var(--background-c);
+  border-right: 1px solid var(--border-a);
   overflow-y: auto;
   overflow-x: hidden;
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
+}
+
+.css-w-p-wrap::-webkit-scrollbar {
+  width: 5px;
+}
+
+.css-w-p-wrap::-webkit-scrollbar-track {
+  background: var(--background-b);
+}
+
+.css-w-p-wrap::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  height: 30px;
+}
+
+.css-w-p-wrap::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.css-wq-wrap::-webkit-scrollbar {
+  width: 5px;
+}
+
+.css-wq-wrap::-webkit-scrollbar-track {
+  background: var(--background-b);
+}
+
+.css-wq-wrap::-webkit-scrollbar-thumb {
+  background: #ffffff;
+}
+
+.css-wq-wrap::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .css-wq-got::before {
@@ -3173,7 +1569,7 @@ export default {
 }
 
 .css-wq-panel {
-  background: var(--base-color-white-primary);
+  background: var(--background-b);
   height: 3rem;
   padding: 0 1rem;
   border-radius: 5px;
@@ -3181,7 +1577,7 @@ export default {
   border-bottom-right-radius: 0px;
   margin-top: 1rem;
   display: flex;
-  border: 1px solid var(--border-primary);
+  border: 1px solid var(--border-a);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -3189,31 +1585,30 @@ export default {
 }
 
 .css-wq-panel-b {
-  background: transparent;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  background: var(--color-soft-blue);
+  background: var(--button-a);
+  color: var(--text-w);
 }
 
 .css-wq-back.active {
   opacity: 1;
   cursor: pointer;
-  color: var(--complementary-color-blue);
+  color: var(--text-a);
 }
 
 .css-wq-back div {
-  width: 40px;
-  height: 40px;
-  background: var(--color-soft-blue);
+  padding: 5px;
+  background: var(--background-b);
   border-radius: 5px;
   display: flex;
+  border: 1px solid var(--border-a);
   justify-content: center;
 }
 
 .css-wq-back span {
-  font-weight: bold;
   margin-left: 1rem;
 }
 
@@ -3227,6 +1622,7 @@ export default {
   display: flex;
   margin-top: 1rem;
   font-weight: bold;
+  color: var(--text-b);
 }
 
 .css-wq-evaluate {
@@ -3242,12 +1638,16 @@ export default {
 }
 
 .css-w-p-her {
-  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 3rem;
-  border: 1px solid var(--border-primary);
+  height: 54px;
+  min-height: 54px;
+  max-height: 54px;
+  border: none;
+  border-bottom: 1px solid var(--border-a);
+  background: var(--background-a);
 }
 
 .css-wq-legend {
@@ -3255,13 +1655,13 @@ export default {
   padding: 0 20%;
   line-height: 2rem;
   text-align: center;
-  color: var(--text-color-primary);
+  color: var(--text-a);
   font-size: var(--text-size-title);
   margin-top: 2rem;
 }
 
 .css-wq-pag {
-  color: var(--complementary-color-blue);
+  color: var(--text-a);
 }
 
 .css-wq-div {
@@ -3273,7 +1673,7 @@ export default {
 }
 
 .css-wq-answer-item {
-  background: #ffffff;
+  background: var(--background-b);
   height: 72px;
   min-height: 72px;
   max-height: 72px;
@@ -3282,7 +1682,7 @@ export default {
   display: flex;
   align-items: center;
   margin-top: 1rem;
-  box-shadow: 1px 1px 20px var(--border-primary);
+  box-shadow: var(--shadow-a);
   border: 1px solid transparent;
 }
 
@@ -3292,7 +1692,7 @@ export default {
 }
 
 .css-wq-item-label {
-  color: var(--text-color-primary);
+  color: var(--text-a);
   font-weight: bold;
 }
 
@@ -3320,14 +1720,16 @@ export default {
 .css-wq-suggest {
   text-align: center;
   line-height: 4rem;
+  color: var(--text-b);
 }
 
 .css-wq-note {
   padding: 1rem;
   margin-top: 3rem;
   border-radius: 5px;
-  background: var(--color-soft-blue);
-  color: var(--complementary-color-blue);
+  background: var(--background-b);
+  border: 1px solid var(--border-a);
+  color: var(--text-a);
   display: block;
   line-height: 1.75;
   overflow-y: auto;
@@ -3341,9 +1743,10 @@ export default {
 
 .css-wq-id {
   padding: 5px;
-  background: var(--color-soft-blue);
+  background: var(--background-b);
   border-radius: 5px;
-  color: var(--complementary-color-blue);
+  color: var(--text-a);
+  border: 1px solid var(--border-a);
 }
 
 .css-wq-bpf {
@@ -3362,12 +1765,14 @@ export default {
 .css-wq-arrow {
   display: flex;
   padding: 1rem;
-  background: white;
+  background: var(--background-b);
   border-radius: 5px;
   align-items: center;
   position: relative;
   cursor: pointer;
-  box-shadow: 1px 1px 20px var(--border-primary);
+  box-shadow: var(--shadow-a);
+  color: var(--text-a);
+  font-weight: 600;
 }
 
 .css-w-p-title {
@@ -3412,8 +1817,7 @@ export default {
 }
 
 .css-w-p-ari {
-  height: 100px;
-  width: 100px;
+  padding: 5px;
   background: var(--base-color-white-primary);
   border-radius: 8px;
   display: flex;
@@ -3521,8 +1925,9 @@ export default {
   text-transform: capitalize;
 }
 
-.css-work-tool-wrap {
+.css-wt-wrap {
   display: flex;
+  background: var(--background-a);
 }
 
 @media (max-width: 600px) {
@@ -3576,14 +1981,10 @@ export default {
     margin: 0;
   }
   #right-arrow span {
-    color: #ffffff;
-    font-weight: bold;
     margin-right: 40px;
   }
 
   #left-arrow span {
-    color: var(--text-color-primary);
-    font-weight: bold;
     margin-left: 40px;
   }
   .css-wq-fpl {
@@ -3618,7 +2019,7 @@ export default {
     display: none;
   }
 
-  .css-work-tool-wrap {
+  .css-wt-wrap {
     background: var(--complementary-color-blue);
   }
 
@@ -3639,20 +2040,20 @@ export default {
     background: var(--base-color-white-primary);
   }
 
-  .css-main-flex-wrap {
+  .css-mf-wrap {
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
     box-sizing: border-box;
   }
-  .css-main-flex-wrap {
+  .css-mf-wrap {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100vh;
   }
 
-  .css-main-flex-wrap.active {
+  .css-mf-wrap.active {
     overflow-y: hidden;
   }
   .css-wq-gtt span {

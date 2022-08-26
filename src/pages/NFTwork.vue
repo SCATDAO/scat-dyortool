@@ -563,7 +563,7 @@
 <script>
 import axios from "axios";
 import { saveAs } from "file-saver";
-import { nft_scheme } from "./nft-scheme";
+import { nft_scheme } from "../scheme/nft-scheme";
 import { BestialEncoder } from "bestial-encoder";
 
 const bestialEncoder = new BestialEncoder();
