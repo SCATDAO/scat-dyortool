@@ -17,6 +17,9 @@ html,
 body {
   height: 100% !important;
 }
+
+@import "styles/theme.css";
+
 @import "primevue/resources/primevue.min.css";
 
 @import "primeicons/primeicons.css";
@@ -116,6 +119,8 @@ body {
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  caret-color: var(--text-a);
 }
 
 textarea {

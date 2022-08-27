@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.25.0",
     "bestial-encoder": "^1.0.9",
+    "chart.js": "^3.9.1",
     "core-js": "^3.6.5",
     "file-saver": "^2.0.5",
     "node-polyfill-webpack-plugin": "^1.1.4",

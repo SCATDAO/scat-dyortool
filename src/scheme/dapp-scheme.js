@@ -234,13 +234,6 @@ export const dapp_scheme = [
     ],
     answer: null,
     textarea: "",
-    input: [
-      {
-        id: 0,
-        name: "",
-        per: "",
-      },
-    ],
     purpose:
       "Having huge portions of the token supply held by a small number of insiders is usually undesirable due to the selling pressure it can put on the token which can harm you as an investor. Team members or venture capitalists who got in extremely early and were able to acquire tokens for 1/1000 of the price you are able to acquire them for are going to want to sell at some point and lock in their gains. In order to sell these tokens, they will need sufficient liquidity from other people who are buying the token. Many projects can have large market caps, but if there is not a large amount of liquidity, any purchase or sale of the token can cause large fluctuations in price. In instances where teams and insiders want to exit their positions and cash out, this can cause the price to crash on the smaller investors who purchased the tokens at higher prices. \n Having large portions of tokens held by the team and insiders is also undesirable due to the centralized control that it means for the project. Decentralization is an important concept in blockchain and there are many different layers and aspects of decentralization to consider. One of those aspects is having this control over a large amount of supply held by a small number of people. Many project have governance features where 1 token = 1 vote and holders can propose changes, vote on those changes, and essentially control the project going forward. If you have large numbers of tokens concentrated in a few hands, they will essentially be able to control the project going forward, which is the antithesis of what most crypto projects are hoping to achieve.",
     files: [],
