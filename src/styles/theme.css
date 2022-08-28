@@ -4559,10 +4559,12 @@
   background: var(--background-a);
   color: var(--text-a);
   border: 0 none;
+  overflow-y: scroll;
   width: 20rem;
   border-left: 1px solid var(--border-a);
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.1);
 }
+
 .p-sidebar .p-sidebar-header {
   padding: 1rem;
 }
