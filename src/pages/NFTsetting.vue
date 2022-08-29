@@ -258,7 +258,7 @@
               ></my-upload>
 
               <div class="css-cp-ixw">
-                <div class="css-cp-stx" :class="{ active: pl }">
+                <div class="css-cp-stx" :class="{ active: form.project_logo }">
                   <div class="css-cp-str" id="canvas-wrapper">
                     <template v-if="!fetching_image">
                       <img
@@ -322,6 +322,7 @@
 
 <script>
 import axios from "axios";
+
 import myUpload from "vue-image-crop-upload-responsive";
 
 const columns = ["logo", "name", "description"];
@@ -383,6 +384,7 @@ export default {
     };
   },
   methods: {
+    testa() {},
     updateData() {
       this.$nextTick(() => {
         setTimeout(async () => {
@@ -472,8 +474,10 @@ export default {
         setTimeout(async () => {
           try {
             const response = await axios.get(
-              `https://api.dyortool.io/v1/logo/searchId/${element}`
+              `http://192.168.1.3:8000/1.1/logo/report-logo/${element}`
             );
+
+
             this.form.project_logo = response.data.logo;
             this.fetching_image = false;
           } catch (error) {
@@ -979,7 +983,7 @@ td {
   }
 
   .logo-blue {
- display: none;
+    display: none;
   }
 
   .css-cp-nxs {

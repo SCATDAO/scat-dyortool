@@ -692,8 +692,6 @@ export default {
       avatar_link: "",
       scheme_counter: [0, 0],
       question_list: dapp_scheme,
-      token_phases: [0],
-      inputDelete: [],
       scheme_category: {
         community: [],
         tokenomics: [],
@@ -713,7 +711,6 @@ export default {
       report_created: false,
       report_link: "",
       before_encode: [],
-      queryInput: [],
       summary_visible: false,
       theme_state: [],
       chip_data: [],
@@ -1035,14 +1032,14 @@ export default {
         document.getElementById("create-report").disabled = true;
         await axios({
           method: "post",
-          url: "http://localhost:8000/v1/report/create-report",
+          url: "http://192.168.1.3:8000/1.1/report/create-report",
           data: params,
           headers: { "content-type": "application/json" },
         })
           .then((response) => {
             console.log(response.data);
             this.report_created = !this.report_created;
-            this.report_link = `http://localhost:8081/report/${response.data.id}`;
+            this.report_link = `http://192.168.1.3:8081/report/${response.data.id}`;
             this.send_msg = "Create Report";
           })
           .catch((error) => {
@@ -1478,21 +1475,23 @@ export default {
 }
 
 .css-wq-tss {
-  border: 1px solid var(--border-primary);
+  border: 1px solid var(--border-a);
   width: 100%;
   height: 40px;
   display: flex;
   border-radius: 5px;
   padding: 0 1rem;
   margin: 0 1rem;
-  color: var(--text-color-secondary);
+  color: var(--text-a);
+  background: var(--background-b);
 }
 
 .css-wq-tss::placeholder {
-  color: var(--text-color-secondary);
+  color: var(--text-a);
   letter-spacing: 0.2px;
   opacity: 0.5;
 }
+
 
 .css-wq-fyx {
   display: flex;
@@ -2094,13 +2093,6 @@ export default {
   }
 }
 
-.css-w-p-uli::before {
-  list-style-type: none;
-  color: #00f569;
-  display: inline-block;
-  width: 1.5em;
-  margin-left: -1em;
-}
 
 .css-w-p-avatar-des {
   display: block;
