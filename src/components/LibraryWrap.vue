@@ -86,7 +86,46 @@
         </template>
 
         <template v-if="navTab === 'library'">
-          <p>a</p>
+          <table>
+            <thead>
+              <tr class="css-trade-history-txz">
+                <th
+                  v-for="key in columns"
+                  :key="key"
+                  @click="sortBy(key)"
+                  class="css-trade-history-tzx"
+                  :class="{ active: sort_key == key }"
+                >
+                  {{ capitalize(key) }}
+                  <span
+                    class="arrow"
+                    :class="sortOrders[key] > 0 ? 'asc' : 'dsc'"
+                  >
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="entry in filteredCoins"
+                :key="entry"
+                @click="configProject(entry)"
+              >
+                <td v-for="key in columns" :key="key">
+                  <template v-if="key === 'logo'">
+                    <img
+                      style="width: 50px; height: 50px"
+                      :src="entry[key]"
+                      alt=""
+                    />
+                  </template>
+                  <template v-if="key !== 'logo'">
+                    {{ entry[key] }}
+                  </template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </template>
 
         <template v-if="navTab === 'info'">
@@ -126,19 +165,78 @@
 </template>
 
 <script>
+const columns = ["logo", "name", "description"];
+
+const sorted = {};
+columns.forEach(function (key) {
+  sorted[key] = 1;
+});
+
 export default {
   data() {
     return {
-      navTab: "dyor",
+      form: {
+        project_name: "a",
+      },
+      columns: columns,
+      navTab: "library",
       library: "library",
+      sort_key: "",
+      project_data: [
+        {
+          name: "a",
+          description: "e",
+          logo: "e",
+        },
+      ],
     };
   },
   methods: {
+    sortBy(key) {
+      this.sort_key = key;
+      this.sortOrders[key] = this.sortOrders[key] * -1;
+    },
     changeTab(e) {
       this.navTab = e;
     },
+    capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    },
   },
-}; // background: #3d4144;
+  computed: {
+    filteredCoins() {
+      const sort_key = this.sort_key;
+      const filterKey =
+        this.form.project_name && this.form.project_name.toLowerCase();
+      const order = this.sortOrders[sort_key] || 1;
+      let project_data = this.project_data;
+      if (filterKey) {
+        project_data = project_data.filter(function (row) {
+          return Object.keys(row).some(function (key) {
+            return String(row[key]).toLowerCase().indexOf(filterKey) > -1;
+          });
+        });
+      }
+      if (sort_key) {
+        project_data = project_data.slice().sort(function (a, b) {
+          a = a[sort_key];
+          b = b[sort_key];
+          return (a === b ? 0 : a > b ? 1 : -1) * order;
+        });
+      }
+      return project_data;
+    },
+    sortOrders() {
+      const columnSortOrders = {};
+
+      this.columns.forEach(function (key) {
+        columnSortOrders[key] = 1;
+      });
+
+      return columnSortOrders;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -171,7 +269,7 @@ export default {
 .css-8c943 {
   width: 100%;
   height: 100%;
-  border-radius: 8px;
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;

@@ -11,8 +11,6 @@ export default {
 </script>
 
 <style>
-
-
 html,
 body {
   height: 100% !important;
@@ -57,6 +55,25 @@ body {
     rgba(0, 105, 245, 1) 0%,
     rgba(64, 78, 237, 1) 100%
   );
+
+  --text-a: #0f1419;
+  --text-b: #536471;
+  --text-c: #7a7d82;
+  --text-w: #ffffff;
+
+  --background-a: #ffffff;
+  --background-b: #fafafa;
+  --background-c: linear-gradient(
+    45deg,
+    rgba(0, 105, 245, 1) 0%,
+    rgba(64, 78, 237, 1) 100%
+  );
+
+  --shadow-a: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+  --border-a: #e9f1fc;
+
+  --button-a: #23272a;
 }
 
 .theme-light {

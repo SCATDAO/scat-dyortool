@@ -477,7 +477,6 @@ export default {
               `http://192.168.1.3:8000/1.1/logo/report-logo/${element}`
             );
 
-
             this.form.project_logo = response.data.logo;
             this.fetching_image = false;
           } catch (error) {
@@ -827,7 +826,7 @@ export default {
   flex-direction: column;
   background: var(--base-color-white-primary);
   box-sizing: border-box;
-  padding: 2rem 3rem;
+  padding: 2rem 2rem;
   box-shadow: 0 5px 40px rgba(0, 0, 0, 0.2);
   position: relative;
 }
