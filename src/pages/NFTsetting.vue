@@ -602,7 +602,7 @@ export default {
   letter-spacing: 0.3px;
   border-radius: 6px;
   border: 1px solid transparent;
-  background: var(--complementary-color-blue);
+  background: var(--blue-a);
   color: #fff;
 }
 
@@ -656,7 +656,7 @@ export default {
 .css-upload-button {
   background: var(--color-soft-blue);
   padding: 1rem 4rem;
-  color: var(--complementary-color-blue);
+  color: var(--blue-a);
   border: none;
   border-radius: 6px;
   font-weight: 600;
@@ -801,8 +801,8 @@ export default {
   height: 3rem;
   min-height: 3rem;
   max-height: 3rem;
-  background: var(--complementary-color-blue);
-  border: var(--complementary-color-blue);
+  background: var(--blue-a);
+  border: var(--blue-a);
   border-radius: 6px;
   color: #ffffff;
   font-weight: 600;
@@ -826,7 +826,7 @@ export default {
   flex-direction: column;
   background: var(--base-color-white-primary);
   box-sizing: border-box;
-  padding: 2rem 2rem;
+  padding: 2rem 2.5rem;
   box-shadow: 0 5px 40px rgba(0, 0, 0, 0.2);
   position: relative;
 }
@@ -857,7 +857,7 @@ export default {
 }
 
 .css-trade-history-tzx.active {
-  color: var(--complementary-color-blue);
+  color: var(--blue-a);
 }
 
 .css-cp-xsa {
@@ -972,7 +972,7 @@ td {
   .css-cp-ndw {
     width: 100%;
     display: flex;
-    background: var(--complementary-color-blue);
+    background: var(--blue-a);
     padding: 0;
     box-sizing: border-box;
   }
@@ -990,7 +990,7 @@ td {
   }
 
   .css-cp-hdc {
-    background: var(--complementary-color-blue);
+    background: var(--blue-a);
     height: 64px;
     max-height: 64px;
     min-height: 64px;
@@ -1015,7 +1015,7 @@ td {
   }
 
   .css-cp-header {
-    background: var(--complementary-color-blue);
+    background: var(--blue-a);
     box-shadow: none;
   }
 }

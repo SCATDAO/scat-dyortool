@@ -1,26 +1,25 @@
 <template>
-  <div class="css-work-main-wrap">
-    <header class="css-work-main-header">
+  <div class="css-w-m-wrap">
+    <header class="css-w-m-header">
       <router-link to="/">
         <img id="logo-blue" src="../assets/white-logo.svg" alt="" />
       </router-link>
-      <div class="css-work-main-xks">
+      <div class="css-w-m-xks">
         <div class="css-c0923"></div>
 
         <router-link to="/dapp-scheme">
-          <button class="css-work-main-xkb">Dapp</button>
+          <button class="css-w-m-xkb">Dapp</button>
         </router-link>
 
         <router-link to="/nft-scheme">
-          <button class="css-work-main-xkb">NFT</button>
+          <button class="css-w-m-xkb">NFT</button>
         </router-link>
-
-        <button class="css-work-main-bwa">
-          <a href="https://audits.dyortool.io">Scan QR</a>
-        </button>
+        <a href="https://audits.dyortool.io" target="_blank">
+          <button class="css-w-m-xkb">Scan QR</button>
+        </a>
       </div>
-      <div class="css-work-main-hah">
-        <button class="css-work-main-hhb" @click="showMiniPanel()">
+      <div class="css-w-m-hah">
+        <button class="css-w-m-hhb" @click="showMiniPanel()">
           <svg id="hdots" width="18" height="18" viewBox="0 0 16 10">
             <g fill="#fff" fill-rule="evenodd">
               <rect y="8" width="16" height="2" rx="1"></rect>
@@ -30,7 +29,7 @@
           </svg>
         </button>
         <template v-if="miniPanel">
-          <div class="css-work-main-hth">
+          <div class="css-w-m-hth">
             <ul>
               <li>
                 <a href="https://www.scatdao.com/contact" target="blank">
@@ -92,85 +91,60 @@
                 </a>
               </li>
             </ul>
-            <div class="css-work-main-swp" @click="touchZone()"></div>
+            <div class="css-w-m-swp" @click="touchZone()"></div>
           </div>
         </template>
       </div>
     </header>
-
-    <div class="css-work-main-banner">
-      <div class="css-work-main-bnt">
-        <div class="css-work-main-bxs">
-          <div class="css-work-main-bzs">
-            <div class="css-work-main-biz"></div>
-            <div class="css-work-main-bzi">
-              <div>NEW</div>
+    <div class="css-232a">
+      <div class="css-436c">
+        <div class="css-w-m-banner">
+          <div class="css-w-m-bnt">
+            <div class="css-w-m-bxs">
+              <div class="css-w-m-bzs">
+                <div class="css-w-m-biz"></div>
+                <div class="css-w-m-bzi">
+                  <div>NEW</div>
+                </div>
+              </div>
+              <div class="css-w-m-bri">
+                <div>
+                  <a href="https://www.scatdao.com/contact" target="blank"
+                    >Become a Smart Contract Auditor - ISPO live
+                  </a>
+                </div>
+                <div>
+                  <i class="pi pi-angle-double-right"></i>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="css-work-main-bri">
-            <div>
-              <a href="https://www.scatdao.com/contact" target="blank"
-                >Become a Smart Contract Auditor - ISPO live
-              </a>
-            </div>
-            <div>
-              <svg
-                id="SVGRoot"
-                width="24px"
-                height="24px"
-                data-v-51f114e2=""
-                version="1.1"
-                viewBox="0 0 24 24"
+            <h1>
+              <span>
+                <span class="css-w-m-btx">
+                  Do Your Own Research is a tool for evaluating
+                </span>
+                Dapps, Tokens, NFT and Blockchain projects</span
               >
-                <g
-                  transform="translate(-5.7242 -.032203)"
-                  fill="#fff"
-                  stroke-width="1.0666"
-                  data-v-51f114e2=""
-                >
-                  <path
-                    d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
-                    fill="#fff"
-                    fill-opacity=".5"
-                    data-v-51f114e2=""
-                  />
-                </g>
-                <g fill="#fff" stroke-width="1.0666" data-v-51f114e2="">
-                  <path
-                    d="m11.967 17.73c-0.41656 0.41656-0.41656 1.092 0 1.5085 0.41656 0.41656 1.092 0.41656 1.5085 0l6.4-6.4c0.40382-0.40382 0.41795-1.0541 0.03206-1.475l-5.8667-6.4c-0.39808-0.43426-1.0729-0.4636-1.5071-0.065525-0.43426 0.39807-0.4636 1.0728-0.06552 1.5071l5.1766 5.6472z"
-                    fill="#fff"
-                    data-v-51f114e2=""
-                  />
-                </g>
-              </svg>
-            </div>
+            </h1>
+          </div>
+          <div class="css-w-m-bmh">
+            <router-link to="/nft-scheme">
+              <button class="css-w-m-xkb" id="css-scanb">NFT</button>
+            </router-link>
+            <router-link to="/dapp-scheme">
+              <button class="css-w-m-xkb" id="css-scanb">Dapp</button>
+            </router-link>
+
+            <button class="css-w-m-bwa" id="css-scanb">
+              <a href="https://audits.dyortool.io">Scan QR</a>
+            </button>
           </div>
         </div>
-        <h1>
-          <span>
-            <span class="css-work-main-btx">
-              Do Your Own Research is a tool for evaluating
-            </span>
-            Dapps, Tokens, NFT and Blockchain projects</span
-          >
-        </h1>
-      </div>
-      <div class="css-work-main-bmh">
-        <router-link to="/nft-scheme">
-          <button class="css-work-main-xkb" id="css-scanb">NFT</button>
-        </router-link>
-        <router-link to="/dapp-scheme">
-          <button class="css-work-main-xkb" id="css-scanb">Dapp</button>
-        </router-link>
-
-        <button class="css-work-main-bwa" id="css-scanb">
-          <a href="https://audits.dyortool.io">Scan QR</a>
-        </button>
-      </div>
-    </div>
-    <div class="css-work-main-ses">
-      <div class="css-work-main-sss">
-        <LibraryWrap />
+        <div class="css-w-m-ses">
+          <div class="css-w-m-sss">
+            <LibraryWrap />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -218,7 +192,7 @@ header {
   padding: 0 10%;
 }
 
-.css-work-main-wrap {
+.css-w-m-wrap {
   width: 100%;
   max-width: 100vw;
   height: 100vh;
@@ -235,12 +209,12 @@ header {
   scroll-behavior: smooth;
 }
 
-.css-work-main-banner {
+.css-w-m-banner {
   width: 100%;
-  height: 100%;
+  height: 300px;
+  min-height: 300px;
   display: flex;
   align-items: center;
-  padding: 0 10%;
   box-sizing: border-box;
   z-index: 1;
   justify-content: space-between;
@@ -253,10 +227,10 @@ header {
   color: white;
   fill: white;
 }
-.css-work-main-bmh {
+.css-w-m-bmh {
   display: none;
 }
-.css-work-main-qrw {
+.css-w-m-qrw {
   border: 1px solid var(--border-primary);
   border-radius: 6px;
   width: fit-content;
@@ -289,24 +263,24 @@ header {
   visibility: visible;
 }
 
-.css-work-main-bxs {
+.css-w-m-bxs {
   display: flex;
   align-items: flex-end;
   margin-bottom: 2rem;
 }
 
-.css-work-main-bzs {
+.css-w-m-bzs {
   display: flex;
   flex-direction: column;
 }
 
-.css-work-main-biz {
+.css-w-m-biz {
   height: 5px;
   width: 50px;
   background: #fff;
 }
 
-.css-work-main-bzi {
+.css-w-m-bzi {
   margin-top: 10px;
   text-align: center;
   color: var(--text-color-primary);
@@ -318,15 +292,15 @@ header {
   padding: 0.3em;
 }
 
-.css-work-main-bzi div {
+.css-w-m-bzi div {
   margin-left: 0.3em;
 }
 
-.css-work-main-bwa {
+.css-w-m-bwa {
   border-radius: 99px;
   padding: 10px 14px;
   margin-left: 1rem;
-  background: #23272a;
+  background: var(--button-a);
   border: none;
   color: #fff;
   font-weight: 600;
@@ -335,18 +309,18 @@ header {
   white-space: nowrap;
 }
 
-.css-work-main-bwa:hover {
+.css-w-m-bwa:hover {
   transition: ease-in 0.3s;
   background: hsla(0, 0%, 100%, 0.4);
 }
 
-.css-work-main-bwa a {
+.css-w-m-bwa a {
   padding: 10px 14px;
   color: #fff;
   white-space: nowrap;
   text-decoration: none;
 }
-.css-work-main-bri {
+.css-w-m-bri {
   color: #fff;
   padding-left: 1rem;
   display: flex;
@@ -354,50 +328,58 @@ header {
   align-items: center;
 }
 
-.css-work-main-bri a {
+.css-w-m-bri a {
   text-decoration: none;
   color: #fff;
 }
 
-.css-work-main-btx {
+.css-w-m-btx {
   font-weight: 100 !important;
 }
 
-.css-work-main-bri div {
+.css-w-m-bri div {
   color: #fff;
   padding-left: 1rem;
   display: flex;
   align-items: center;
 }
-.css-work-main-ses {
+.css-232a {
+  justify-content: center;
+  display: flex;
+}
+.css-436c {
   width: 100%;
+  max-width: 1300px;
   height: 100%;
+  padding: 0 10%;
+}
+.css-w-m-ses {
+  width: 100%;
   padding: 1rem;
-  padding: 1% 10%;
   box-sizing: border-box;
 }
 
-.css-work-main-sss {
-  height: 100%;
+.css-w-m-sss {
+  margin-top: auto;
   display: flex;
 }
 
-.css-work-main-xks {
+.css-w-m-xks {
   display: flex;
 }
 
-.css-work-main-xkb {
-  padding: 0.75rem;
+.css-w-m-xkb {
+  padding: 0.75rem 1rem;
   border-radius: 99px;
   margin-left: 1rem;
-  background: #23272a;
+  background: var(--button-a);
   color: #ffffff;
   border: none;
   font-weight: 600;
   cursor: pointer;
 }
 
-.css-work-main-xkb:hover {
+.css-w-m-xkb:hover {
   transition: ease-in 0.3s;
   background: hsla(0, 0%, 100%, 0.4);
 }
@@ -407,26 +389,26 @@ header {
   margin-right: 1rem;
 }
 
-.css-work-main-bnt {
+.css-w-m-bnt {
   display: flex;
   text-align: center;
   flex-direction: column;
 }
 
-.css-work-main-bnt span {
+.css-w-m-bnt span {
   font-size: var(--text-size-sixth);
   line-height: 5rem;
   font-weight: 500;
   color: #ffffff;
 }
 
-.css-work-main-gtx {
+.css-w-m-gtx {
   display: flex;
   text-align: center;
   flex-direction: column;
 }
 
-.css-work-main-gtx span {
+.css-w-m-gtx span {
   color: #fff;
   border: 1px solid var(--border-primary);
   padding: 14px 10px;
@@ -435,13 +417,13 @@ header {
   white-space: nowrap;
 }
 
-.css-work-main-header {
+.css-w-m-header {
   height: 64px;
-  padding: 0 10%;
+  padding: 0 3rem;
   justify-content: space-between;
 }
 
-.css-work-main-hah {
+.css-w-m-hah {
   display: none;
 }
 
@@ -536,7 +518,7 @@ header {
     image-rendering: pixelated;
   }
 
-  .css-work-main-swp {
+  .css-w-m-swp {
     width: 1000%;
     height: 1000%;
     background: transparent;
@@ -548,10 +530,10 @@ header {
     right: 0;
   }
 
-  .css-work-main-ssi {
+  .css-w-m-ssi {
     color: #fff;
   }
-  .css-work-main-bmh {
+  .css-w-m-bmh {
     display: flex;
     width: 100%;
     padding: 0 10%;
@@ -559,7 +541,7 @@ header {
     box-sizing: border-box;
   }
 
-  .css-work-main-bmh button {
+  .css-w-m-bmh button {
     padding: 1rem;
     cursor: pointer;
     border-radius: 99px;
@@ -571,13 +553,13 @@ header {
     background: rgba(255, 255, 255, 0.2);
   }
 
-  .css-work-main-banner {
+  .css-w-m-banner {
     flex-direction: column;
     padding: 0;
     height: unset;
   }
 
-  .css-work-main-hth {
+  .css-w-m-hth {
     background: var(--base-color-white-primary);
     width: 200px;
     height: 150px;
@@ -592,7 +574,7 @@ header {
     animation-duration: 0.5s;
   }
 
-  .css-work-main-hth ul {
+  .css-w-m-hth ul {
     padding: 5px 14px;
     width: inherit;
     height: inherit;
@@ -603,56 +585,56 @@ header {
     box-sizing: border-box;
   }
 
-  .css-work-main-hth li {
+  .css-w-m-hth li {
     -webkit-tap-highlight-color: transparent;
   }
 
-  .css-work-main-hth a {
+  .css-w-m-hth a {
     text-decoration: none;
     color: var(--text-color-primary);
     display: flex;
     align-items: center;
   }
 
-  .css-work-main-hth span {
+  .css-w-m-hth span {
     margin-left: 10px;
   }
 
-  .css-work-main-bnt {
+  .css-w-m-bnt {
     width: 100%;
     padding: 0 10%;
     margin-top: 1rem;
     box-sizing: border-box;
   }
 
-  .css-work-main-bnt span {
+  .css-w-m-bnt span {
     font-size: var(--text-size-fourth);
     line-height: 1.8em;
   }
 
-  .css-work-main-xks {
+  .css-w-m-xks {
     display: none;
   }
 
-  .css-work-main-bri {
+  .css-w-m-bri {
     margin-bottom: 0;
   }
 
   #gradient-canvas {
     height: 100vh !important;
   }
-  .css-work-main-sss {
+  .css-w-m-sss {
     border: none;
     background: var(--complementary-color-blue);
     flex-direction: column;
   }
 
-  .css-work-main-hah {
+  .css-w-m-hah {
     display: initial;
     position: relative;
   }
 
-  .css-work-main-hhb {
+  .css-w-m-hhb {
     background: none;
     border: none;
     outline: none;
@@ -661,12 +643,12 @@ header {
     -webkit-tap-highlight-color: transparent;
   }
 
-  .css-work-main-hhb:hover {
+  .css-w-m-hhb:hover {
     transition: ease-in 0.3s;
     opacity: 0.9;
   }
 
-  .css-work-main-ses {
+  .css-w-m-ses {
     padding: 0;
     border-radius: 0;
     background: var(--base-color-white-primary);

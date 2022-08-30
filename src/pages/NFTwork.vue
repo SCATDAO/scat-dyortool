@@ -1008,7 +1008,7 @@ export default {
 
 .neutralb:hover {
   color: #fff;
-  background: var(--complementary-color-blue);
+  background: var(--blue-a);
 }
 
 .negativeb.active {
@@ -1023,11 +1023,11 @@ export default {
 
 .neutralb.active {
   color: #fff;
-  background: var(--complementary-color-blue);
+  background: var(--blue-a);
 }
 
 .dot {
-  background: var(--complementary-color-blue);
+  background: var(--blue-a);
   height: 6px;
   width: 6px;
   margin-left: 5px;
@@ -1040,7 +1040,7 @@ export default {
 }
 
 #logo-blue {
-  fill: var(--complementary-color-blue);
+  fill: var(--blue-a);
   margin-bottom: 5px;
 }
 
@@ -1101,7 +1101,7 @@ export default {
   background: var(--background-b);
   padding: 1rem;
   text-align: center;
-  color: var(--complementary-color-blue);
+  color: var(--blue-a);
 }
 .css-w-p-awp {
   display: flex;
@@ -1203,7 +1203,7 @@ export default {
   font-weight: 700;
   white-space: nowrap;
   border-radius: 8px;
-  color: var(--complementary-color-blue);
+  color: var(--blue-a);
 }
 
 #create-report {
@@ -1211,7 +1211,7 @@ export default {
 }
 
 #css-blue-button {
-  background: var(--complementary-color-blue);
+  background: var(--blue-a);
 }
 
 .css-wq-xkx a {
@@ -1625,7 +1625,7 @@ export default {
 }
 
 .css-wq-evaluate {
-  background: var(--complementary-color-blue) !important;
+  background: var(--blue-a) !important;
   border: none;
   border-radius: 5px;
   padding: 10px 14px;
@@ -1830,7 +1830,7 @@ export default {
   margin-top: 10px;
   width: 40px;
   height: 40px;
-  border: 1.1px dashed var(--complementary-color-blue);
+  border: 1.1px dashed var(--blue-a);
   border-radius: 5px;
 }
 
@@ -2015,7 +2015,7 @@ export default {
   }
 
   .css-wt-wrap {
-    background: var(--complementary-color-blue);
+    background: var(--blue-a);
   }
 
   .css-identicon-wrx {
@@ -2023,7 +2023,7 @@ export default {
   }
 
   .css-w-p-her {
-    background: var(--complementary-color-blue);
+    background: var(--blue-a);
     border: none;
   }
 

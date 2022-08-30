@@ -43,7 +43,9 @@ body {
 
   --complementary-color-green: #7fedca;
   --complementary-color-yellow: #fac292;
-  --complementary-color-blue: #0069f5;
+  --complementary-color-blue: red;
+
+  --blue-a: #0069f5;
 
   --color-soft-blue: rgba(0, 105, 245, 0.1);
 
@@ -68,6 +70,7 @@ body {
     rgba(0, 105, 245, 1) 0%,
     rgba(64, 78, 237, 1) 100%
   );
+  --background-d: #23272a;
 
   --shadow-a: 0 5px 10px rgba(0, 0, 0, 0.1);
 
@@ -136,7 +139,7 @@ body {
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
+  text-rendering: geometricPrecision;
   caret-color: var(--text-a);
 }
 *::-webkit-scrollbar {
@@ -171,22 +174,13 @@ li {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: start;
   color: var(--text-color-secondary);
   text-rendering: geometricPrecision;
   image-rendering: optimizeQuality;
-  width: 100vw;
-  height: 100vh;
-  max-width: 100vw;
-  min-width: 100vw;
-  min-height: 100vh;
-  max-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  -webkit-tap-highlight-color: transparent;
   line-height: 1.5;
   animation-name: deploy;
   animation-duration: 1s;
-  -webkit-tap-highlight-color: transparent;
 }
 
 @keyframes deploy {
@@ -325,7 +319,7 @@ li {
 
 @media (max-width: 1025px) {
   html {
-    font-size: 60%;
+    font-size: 80%;
   }
 }
 
