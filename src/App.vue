@@ -60,6 +60,8 @@ body {
 
   --red: rgba(231, 54, 107, 1);
 
+  --transition-a: ease-in 0.2s;
+
   --text-a: #0f1419;
   --text-b: #536471;
   --text-c: #7a7d82;
@@ -143,21 +145,6 @@ body {
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   text-rendering: geometricPrecision;
   caret-color: var(--text-a);
-}
-*::-webkit-scrollbar {
-  width: 5px;
-}
-
-*::-webkit-scrollbar-track {
-  background: var(--background-b);
-}
-
-*::-webkit-scrollbar-thumb {
-  background: #ffffff;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }
 
 textarea {

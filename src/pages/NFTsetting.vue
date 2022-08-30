@@ -588,6 +588,7 @@ export default {
   box-shadow: 0 5px 40px rgba(0, 0, 0, 0.2);
 }
 
+
 .css-cp-csj {
   display: flex;
   justify-content: flex-end;

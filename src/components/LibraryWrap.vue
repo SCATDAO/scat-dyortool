@@ -1,9 +1,12 @@
 <template>
   <div class="css-546h">
     <div class="css-h7ek">
-      <button @click="changeTab('library')">LIBRARY</button>
-      <button @click="changeTab('dyor')">DYOR</button>
-      <button @click="changeTab('info')">AUDIT</button>
+      <button @click="changeTab('library')">
+        <i class="pi pi-folder-open"></i>
+      </button>
+      <button @click="changeTab('library')">
+        <i class="pi pi-shield"></i>
+      </button>
       <div class="css-312h">
         <i class="pi pi-search"></i>
         <input
@@ -11,7 +14,7 @@
           autocomplete="off"
           type="text"
           placeholder="Search name"
-          v-model="form.project_name"
+          v-model="filter_key"
         />
       </div>
     </div>
@@ -55,10 +58,21 @@
                         >{{ entry[key] }}</span
                       >
                     </template>
-
-                    <template v-if="key !== 'scheme'">
-                      {{ entry[key] }}
+                    <template v-if="key === 'summary'">
+                      <span
+                        class="css-843s"
+                        :class="{
+                          positive: entry[key] === 'positive',
+                          neutral: entry[key] === 'neutral',
+                          negative: entry[key] === 'negative',
+                        }"
+                      >
+                        <i class="pi pi-summary"></i>
+                      </span>
                     </template>
+                    <template v-if="key !== 'scheme'">
+                      {{ entry[key] }}</template
+                    >
 
                     <template v-if="key === 'total_percentage'"> % </template>
                   </td>
@@ -90,6 +104,7 @@ const columns = [
   "total_score",
   "total_percentage",
   "author",
+  "summary",
   "date",
 ];
 
@@ -131,6 +146,7 @@ export default {
                 total_percentage: e.total_percentage,
                 total_score: e.total_score,
                 author: e.author,
+                summary: "neutral",
                 date: new Date(e.date).toISOString().split("T")[0],
               };
             });
@@ -201,6 +217,16 @@ th {
   background: rgba(61, 65, 68, 0.2);
 }
 
+.css-843s.positive {
+  color: #00f569;
+}
+.css-843s.neutral {
+  color: var(--blue-a);
+}
+.css-843s.negative {
+  color: var(--red);
+}
+
 .arrow.asc {
   color: green;
 }
@@ -219,7 +245,7 @@ th {
 }
 
 .css-347i.dapp {
-  background: var(--blue);
+  background: var(--blue-a);
 }
 
 .css-549h {
@@ -272,7 +298,7 @@ th {
   align-items: center;
   color: #ffffff;
   margin: 0.5rem;
-  margin-right: 2rem;
+
   margin-left: auto;
 }
 .css-312h input {
@@ -319,7 +345,7 @@ th {
   width: 100%;
   height: 100%;
   min-height: 500px;
-  max-height: 550px;
+  max-height: 500px;
   border-radius: 16px;
   overflow: hidden;
   display: flex;
@@ -328,8 +354,6 @@ th {
   background: var(--background-d);
   align-items: center;
   border-bottom: 10px solid transparent;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
   box-shadow: 0 5px 40px rgba(0, 0, 0, 0.2);
 }
 

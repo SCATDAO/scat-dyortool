@@ -20,74 +20,42 @@
       </div>
       <div class="css-w-m-hah">
         <button class="css-w-m-hhb" @click="showMiniPanel()">
-          <svg id="hdots" width="18" height="18" viewBox="0 0 16 10">
-            <g fill="#fff" fill-rule="evenodd">
-              <rect y="8" width="16" height="2" rx="1"></rect>
-              <rect y="4" width="16" height="2" rx="1"></rect>
-              <rect width="16" height="2" rx="1"></rect>
-            </g>
-          </svg>
+          <i class="pi pi-bars"></i>
         </button>
         <template v-if="miniPanel">
           <div class="css-w-m-hth">
             <ul>
               <li>
                 <a href="https://www.scatdao.com/contact" target="blank">
-                  <svg
-                    id="becAud"
-                    width="24px"
-                    height="24px"
-                    version="1.1"
-                    opacity=".1"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="m7.1722 7.8693a4.7341 4.7341 0 1 0 9.4682 0 4.7341 4.7341 0 1 0-9.4682 0zm11.497 12.85h-14.202a0.6763 0.6763 0 0 1-0.6763-0.6763v-2.0289a3.3815 3.3815 0 0 1 3.3815-3.3815h9.4682a3.3815 3.3815 0 0 1 3.3815 3.3815v2.0289a0.6763 0.6763 0 0 1-0.6763 0.6763z"
-                      fill="var(--text-color-secondary);"
-                      stroke-width=".021134"
-                    />
-                  </svg>
-
-                  <div><span>Become an auditor</span></div>
+                  <div><span>Contact</span></div>
                 </a>
               </li>
               <li>
                 <a href="https://www.scatdao.com/dyor-tool" target="blank">
-                  <svg
-                    id="learnB"
-                    width="24px"
-                    height="24px"
-                    version="1.1"
-                    viewBox="0 0 24 24"
-                    opacity=".1"
-                  >
-                    <path
-                      d="m13.514 3.2535v6.5471l2.1935-2.1824 2.1935 2.1824v-6.5471h2.9247v17.459h-13.161v-17.459zm-10.237 0h2.9247v17.459h-2.9247z"
-                      fill="var(--text-color-secondary);"
-                      stroke-width=".022791"
-                    />
-                  </svg>
-
                   <div><span>Learn</span></div>
                 </a>
               </li>
               <li>
                 <a href="https://www.scatdao.com/team" target="blank">
-                  <svg
-                    id="about"
-                    width="24px"
-                    height="24px"
-                    version="1.1"
-                    opacity=".1"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="m12.024 3.1942a8.7959 8.7959 0 1 1 0 17.592 8.7959 8.7959 0 0 1 0-17.592zm1.3193 5.4003c0.65337 0 1.1836-0.45359 1.1836-1.1258 0-0.67221-0.53149-1.1258-1.1836-1.1258-0.65336 0-1.1811 0.45359-1.1811 1.1258 0 0.67221 0.52772 1.1258 1.1811 1.1258zm0.22994 7.0702c0-0.13444 0.04649-0.48374 0.02011-0.68226l-1.0328 1.1886c-0.2136 0.22491-0.48123 0.38071-0.60688 0.33925a0.25506 0.25506 0 0 1-0.16208-0.28899l1.7214-5.438c0.14073-0.6898-0.24627-1.3193-1.0667-1.3997-0.86571 0-2.1398 0.87827-2.915 1.9928 0 0.13319-0.025129 0.4649 0.00127 0.66342l1.0316-1.1899c0.2136-0.2224 0.46238-0.37945 0.58803-0.33673a0.25129 0.25129 0 0 1 0.15329 0.31663l-1.7063 5.4116c-0.19727 0.63326 0.17591 1.254 1.0806 1.3947 1.3319 0 2.1184-0.85691 2.8949-1.9714z"
-                      fill="var(--text-color-secondary);"
-                      stroke-width=".019632"
-                    />
-                  </svg>
                   <div><span>About us</span></div>
+                </a>
+              </li>
+
+              <li>
+                <router-link to="/nft-scheme">
+                  <div><span>NFT</span></div>
+                </router-link>
+              </li>
+
+              <li>
+                <router-link to="/dapp-scheme">
+                  <div><span>Dapp</span></div>
+                </router-link>
+              </li>
+
+              <li>
+                <a href="https://audits.dyortool.io">
+                  <div><span>Scan QR</span></div>
                 </a>
               </li>
             </ul>
@@ -127,18 +95,6 @@
               >
             </h1>
           </div>
-          <div class="css-w-m-bmh">
-            <router-link to="/nft-scheme">
-              <button class="css-w-m-xkb" id="css-scanb">NFT</button>
-            </router-link>
-            <router-link to="/dapp-scheme">
-              <button class="css-w-m-xkb" id="css-scanb">Dapp</button>
-            </router-link>
-
-            <button class="css-w-m-bwa" id="css-scanb">
-              <a href="https://audits.dyortool.io">Scan QR</a>
-            </button>
-          </div>
         </div>
         <div class="css-w-m-ses">
           <div class="css-w-m-sss">
@@ -152,7 +108,6 @@
 
 <script>
 import LibraryWrap from "../components/LibraryWrap.vue";
-
 
 export default {
   data() {
@@ -180,6 +135,22 @@ export default {
 </script>
 
 <style scoped>
+*::-webkit-scrollbar {
+  width: 0px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--background-b);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 header {
   width: 100%;
   min-width: 100%;
@@ -382,8 +353,8 @@ header {
 }
 
 .css-w-m-xkb:hover {
-  transition: ease-in 0.3s;
-  background: hsla(0, 0%, 100%, 0.4);
+  transition: var(--transition-a);
+  background: rgba(61, 65, 68, 1);
 }
 
 #css-scanb {
@@ -493,9 +464,9 @@ header {
   }
 }
 
-@keyframes slideTop {
+@keyframes slideRight {
   0% {
-    transform: translateY(-50px);
+    transform: translateX(50px);
     opacity: 0;
   }
   100% {
@@ -514,6 +485,10 @@ header {
     height: 50px;
   }
 
+  .css-w-m-bxs {
+    display: none;
+  }
+
   #mini-qr {
     width: 50px;
     height: 50px;
@@ -522,7 +497,7 @@ header {
 
   .css-w-m-swp {
     width: 1000%;
-    height: 1000%;
+    height: 500px;
     background: transparent;
     position: absolute;
     z-index: -1;
@@ -562,17 +537,17 @@ header {
   }
 
   .css-w-m-hth {
-    background: var(--base-color-white-primary);
+    background: #ffffff;
     width: 200px;
-    height: 150px;
+    height: 300px;
     border-radius: 6px;
     position: absolute;
-    top: 40px;
+    top: 30px;
     display: flex;
     flex-direction: column;
-    right: 0;
+    right: -25px;
     box-sizing: border-box;
-    animation-name: slideTop;
+    animation-name: slideRight;
     animation-duration: 0.5s;
   }
 
@@ -627,7 +602,7 @@ header {
   }
   .css-w-m-sss {
     border: none;
-    background: var(--complementary-color-blue);
+    background: var(--background-d);
     flex-direction: column;
   }
 
@@ -635,10 +610,13 @@ header {
     display: initial;
     position: relative;
   }
-
+  .css-w-m-hhb i {
+    color: inherit;
+  }
   .css-w-m-hhb {
     background: none;
     border: none;
+    color: #ffffff;
     outline: none;
     cursor: pointer;
     cursor: pointer;
