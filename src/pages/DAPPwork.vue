@@ -930,77 +930,38 @@ export default {
     },
     async pushNewReport() {
       this.before_encode = [];
-      this.error_to_send = false;
-      this.report_link = "";
 
-      this.audit_info["audit_opinion"] = this.audit_opinion;
+      this.error_to_send = false;
+
+      this.report_link = "";
 
       this.audit_info["charts"] = {
         tokenomics: {
           labels: this.chart_data.labels,
           values: this.chart_data.datasets[0].data,
-          info: [
-            {
-              name: "Vesting schedule",
-              answer:
-                this.answered[12 - 1].options[this.answered[12 - 1].answer - 1]
-                  .name,
-              value: "a",
-            },
-            {
-              name: "Minting policy Locked",
-              answer:
-                this.answered[13 - 1].options[this.answered[13 - 1].answer - 1]
-                  .name,
-              value: "b",
-            },
-            {
-              name: "Clear use case",
-              answer:
-                this.answered[14 - 1].options[this.answered[14 - 1].answer - 1]
-                  .name,
-              value: "b",
-            },
-            {
-              name: "ISO Fee",
-              answer:
-                this.answered[15 - 1].options[this.answered[15 - 1].answer - 1]
-                  .name,
-              value: "b",
-            },
-          ],
+          ref: [12, 13, 14, 15],
         },
         community: {
           twitter: {
-            name: this.answered[18 - 1].name,
+            id: 17,
             value: this.answered[17 - 1].input,
-            answer:
-              this.answered[18 - 1].options[this.answered[18 - 1].answer - 1]
-                .name,
           },
           reddit: {
-            name: this.answered[20 - 1].name,
+            id: 19,
             value: this.answered[19 - 1].input,
-            answer:
-              this.answered[20 - 1].options[this.answered[20 - 1].answer - 1]
-                .name,
           },
           telegram: {
-            name: this.answered[22 - 1].name,
+            id: 21,
             value: this.answered[21 - 1].input,
-            answer:
-              this.answered[22 - 1].options[this.answered[22 - 1].answer - 1]
-                .name,
           },
           discord: {
-            name: this.answered[24 - 1].name,
+            id: 23,
             value: this.answered[23 - 1].input,
-            answer:
-              this.answered[24 - 1].options[this.answered[24 - 1].answer - 1]
-                .name,
           },
         },
       };
+
+      this.audit_info["audit_opinion"] = this.audit_opinion;
 
       this.audit_info["nid"] = Date.now(); ///crypt
 
@@ -1033,14 +994,19 @@ export default {
 
           website: this.audit_info.website.trim().toLowerCase(),
 
+          repository: this.audit_info.repository.trim().toLowerCase(),
+
+          symbol: this.audit_info.symbol.trim().toLowerCase(),
+
           data: `${data_encoded}`,
         };
 
-        console.log(params);
+        console.log(this.audit_info);
 
         this.send_msg = "Uploading";
 
         document.getElementById("create-report").disabled = true;
+
         await axios({
           method: "post",
           url: "http://192.168.1.3:8000/1.1/report/create-report",
@@ -1054,8 +1020,8 @@ export default {
             this.send_msg = "Create Report";
           })
           .catch((error) => {
-            this.error_to_send = !this.error_to_send;
             console.error(error.response);
+            this.error_to_send = !this.error_to_send;
             this.send_msg = "Create Report";
           });
       } catch (error) {

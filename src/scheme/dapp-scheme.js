@@ -317,7 +317,7 @@ export const dapp_scheme = [
     id: 14,
     tag: "TK5-14",
     category: "Tokenomics",
-    name: "Use Case",
+    name: "Clear Use Case",
     question:
       "Do you clearly understand the use case after reading the whitepaper and reviewing website info?",
     worksteps: [
