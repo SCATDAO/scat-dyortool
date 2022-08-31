@@ -456,7 +456,7 @@ export default {
       if (!__(this.form.website, 50)) this.errors.website = true;
       if (!__(this.form.category, 50)) this.errors.category = true;
       if (!__(this.form.symbol, 30)) this.errors.symbol = true;
-      if (!__(this.form.repository, 50)) this.errors.repository = true;
+      if (!__(this.form.repository, 100)) this.errors.repository = true;
       if (!__(this.form.nickname, 50)) this.errors.nickname = true;
       if (!this.form.project_logo) this.errors.project_logo = true;
 

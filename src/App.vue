@@ -147,6 +147,21 @@ body {
   caret-color: var(--text-a);
 }
 
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--background-b);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 textarea {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";

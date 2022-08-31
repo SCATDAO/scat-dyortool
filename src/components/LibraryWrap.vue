@@ -4,7 +4,7 @@
       <button @click="changeTab('library')">
         <i class="pi pi-folder-open"></i>
       </button>
-      <button @click="changeTab('library')">
+      <button @click="changeTab('info')">
         <i class="pi pi-shield"></i>
       </button>
       <div class="css-312h">
@@ -24,7 +24,7 @@
           <div class="css-637c">
             <table>
               <thead>
-                <tr class="css-trade-history-txz">
+                <tr>
                   <th
                     v-for="key in columns"
                     :key="key"
@@ -41,6 +41,7 @@
                   </th>
                 </tr>
               </thead>
+
               <tbody>
                 <tr
                   v-for="entry in filteredCoins"
@@ -58,7 +59,7 @@
                         >{{ entry[key] }}</span
                       >
                     </template>
-                    <template v-if="key === 'summary'">
+                    <template v-if="key === 'opinion'">
                       <span
                         class="css-843s"
                         :class="{
@@ -67,7 +68,7 @@
                           negative: entry[key] === 'negative',
                         }"
                       >
-                        <i class="pi pi-summary"></i>
+                    
                       </span>
                     </template>
                     <template v-if="key !== 'scheme'">
@@ -78,17 +79,93 @@
                   </td>
                 </tr>
               </tbody>
-            </table>
-            <template v-if="loading_visible">
-              <div class="css-549h">
-                <div class="lds-ring">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
+
+              <template v-if="loading_visible">
+                <div class="css-549h">
+                  <div class="lds-facebook"><div></div><div></div><div></div></div>
                 </div>
-              </div>
-            </template>
+              </template>
+            </table>
+          </div>
+        </template>
+
+        <template v-if="navTab === 'info'">
+          <div class="css-637c c732">
+            <p class="sb62">What is DYOR?</p>
+            <p>
+              Designed to give you the knowledge and resources to holistically
+              assess a project. Useful for all investors who want to
+              methodically research a project and share the results with others.
+              $7.7 billion was stolen in crypto scams in 2021. Do Your Own
+              Research so this doesn’t happen to you. Do your own research is a
+              phrase that gets thrown around a lot in the crypto world. And
+              while it’s a crucial step before making any investment or using
+              any new product, it’s also confusing for a beginner as it is
+              completely lacking in any specific details or instructions. Many
+              people have been told DYOR but are likely unsure of what exactly
+              doing your own research entails. Have you done sufficient research
+              if you review the project website, read the whitepaper, or spent
+              some time on their Telegram? The answer is extremely subjective
+              and will vary from person to person. Wouldn’t it be nice if there
+              was a resource that could guide someone through the research
+              process from start to finish? Look no further.
+            </p>
+            <p class="sb62">What’s Our Solution?</p>
+            <p>
+              We have developed an online tool that walks you through 27
+              different evaluation points and assists with the following: It
+              provides an explanation of why each point matters so that you can
+              understand what you are researching. It gives you clearly written
+              steps to follow to perform the evaluation. It calculates a score
+              based on the information you entered so that you have a
+              standardized basis for comparison across different projects.
+              Lastly, it generates a report that you can share on social media
+              so that others can benefit from the research you have performed.
+            </p>
+            <p class="sb62">Who Can Use it?</p>
+
+            <p>
+              It is designed with the total beginner in mind to properly
+              evaluate a project PRIOR to investing in or using it. So no prior
+              experience or knowledge is required. And while it is designed for
+              a total beginner to use, it is also a useful resource for crypto
+              veterans as well. Even if they do not need to learn how or why to
+              do to research, it provides a platform that assists with
+              documentation and generates reports that will greatly benefit the
+              community.
+            </p>
+
+            <p class="sb62">ISPO Goal</p>
+
+            <p>
+              We are attempting to raise 1.5 Million ADA through the ISPO. With
+              a fully saturated pool from day one, this would run for
+              approximately 6 months. It is unlikely that the pool would be
+              fully saturated from day one, which means it would likely take
+              longer than 6 months. How much longer is difficult to predict
+              without knowing how much interest there will be or how long it
+              would take to become saturated, if at all. If the ISPO is running
+              considerably longer than expected and not raising enough ADA to
+              justify keeping it open, we may close it early before all tokens
+              have been distributed.
+            </p>
+            <p class="sb62">Why we are Raising Funds</p>
+
+            <p>
+              The ADA raised through the ISPO will be used to provide liquidity
+              to DEXs. The fees that are earned from providing liquidity will be
+              used to fund audits that are voted on by our token holders (see
+              how it's funded section of whitepaper for more information). The
+              target of 1.5 million was selected as we expect that to be a
+              sufficient amount of liquidity for the foreseeable future (would
+              put our token in the top 10 on Minswap in terms of liquidity which
+              have seemed sufficient for other tokens listed there). The ADA
+              that is raised in the ISPO will be in a wallet controlled by the
+              Dev team. We are currently unable to have the funds automatically
+              deposited into the multi-sig wallet. The funds will be transferred
+              every epoch from the ISPO wallet to the multi-sig wallet
+              controlled by the DAO.
+            </p>
           </div>
         </template>
       </div>
@@ -104,7 +181,7 @@ const columns = [
   "total_score",
   "total_percentage",
   "author",
-  "summary",
+  "opinion",
   "date",
 ];
 
@@ -146,7 +223,7 @@ export default {
                 total_percentage: e.total_percentage,
                 total_score: e.total_score,
                 author: e.author,
-                summary: "neutral",
+                opinion: "negative",
                 date: new Date(e.date).toISOString().split("T")[0],
               };
             });
@@ -217,6 +294,11 @@ th {
   background: rgba(61, 65, 68, 0.2);
 }
 
+.c732 {
+  padding: 2rem;
+  padding-top: 0rem;
+}
+
 .css-843s.positive {
   color: #00f569;
 }
@@ -251,42 +333,51 @@ th {
 .css-549h {
   display: flex;
   width: 100%;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  align-items: center;
+  background: var(--blue);
   justify-content: center;
 }
 
-.lds-ring {
+.lds-facebook {
   display: inline-block;
   position: relative;
   width: 80px;
   height: 80px;
 }
-.lds-ring div {
-  box-sizing: border-box;
-  display: block;
+.lds-facebook div {
+  display: inline-block;
   position: absolute;
-  width: 34px;
-  height: 34px;
-  margin: 8px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
+  left: 8px;
+  width: 10px;
+  border-radius: 8px;
+  background: #fff;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
-.lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
 }
-.lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
 }
-.lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
 }
-@keyframes lds-ring {
+@keyframes lds-facebook {
   0% {
-    transform: rotate(0deg);
+    top: 8px;
+    height: 64px;
   }
-  100% {
-    transform: rotate(360deg);
+  50%, 100% {
+    top: 24px;
+    height: 32px;
   }
 }
 
@@ -294,14 +385,15 @@ th {
   border: 1px solid #3d4144;
   border-radius: 8px;
   display: flex;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   align-items: center;
   color: #ffffff;
-  margin: 0.5rem;
-
+  margin: 0.4rem 0.5rem;
   margin-left: auto;
 }
 .css-312h input {
+  width: 100%;
+  max-width: 300px;
   padding: 0.5rem;
   outline: none;
   background: transparent;
@@ -325,7 +417,7 @@ th {
   font-weight: 600;
   color: #ffffff;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  transition: var(--transition-a);
 }
 
 .css-h7ek button:hover {
@@ -345,7 +437,7 @@ th {
   width: 100%;
   height: 100%;
   min-height: 500px;
-  max-height: 500px;
+  max-height: 550px;
   border-radius: 16px;
   overflow: hidden;
   display: flex;
@@ -353,7 +445,7 @@ th {
   box-sizing: border-box;
   background: var(--background-d);
   align-items: center;
-  border-bottom: 10px solid transparent;
+  border-bottom: 20px solid transparent;
   box-shadow: 0 5px 40px rgba(0, 0, 0, 0.2);
 }
 
@@ -392,5 +484,17 @@ th {
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+}
+
+@media (max-width: 600px) {
+  .css-312h {
+    margin: 0.5rem;
+  }
+
+  .css-546h {
+    max-height: 600px;
+    box-shadow: initial;
+    border-bottom: 50px solid transparent;
+  }
 }
 </style>

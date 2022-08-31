@@ -1002,7 +1002,7 @@ export default {
         },
       };
 
-      this.audit_info["nid"] = Date.now();
+      this.audit_info["nid"] = Date.now(); ///crypt
 
       this.before_encode.push(this.audit_info);
 
@@ -1015,17 +1015,28 @@ export default {
         });
       });
 
-      const resultEncoder = bestialEncoder.encodeByValue(
+      const data_encoded = bestialEncoder.encodeByValue(
         JSON.stringify(this.before_encode)
       );
-
-      console.log(this.before_encode);
 
       try {
         const params = {
           scheme: "dapp",
-          hex: `${resultEncoder}`,
+
+          author: this.audit_info.nickname.trim().toLowerCase(),
+
+          project_name: this.audit_info.project_name.trim().toLowerCase(),
+
+          category: this.audit_info.category.trim().toLowerCase(),
+
+          description: this.audit_info.description.trim().toLowerCase(),
+
+          website: this.audit_info.website.trim().toLowerCase(),
+
+          data: `${data_encoded}`,
         };
+
+        console.log(params);
 
         this.send_msg = "Uploading";
 
@@ -1491,7 +1502,6 @@ export default {
   letter-spacing: 0.2px;
   opacity: 0.5;
 }
-
 
 .css-wq-fyx {
   display: flex;
@@ -2092,7 +2102,6 @@ export default {
     transform: translateX(0px);
   }
 }
-
 
 .css-w-p-avatar-des {
   display: block;

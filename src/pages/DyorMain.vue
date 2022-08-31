@@ -27,35 +27,45 @@
             <ul>
               <li>
                 <a href="https://www.scatdao.com/contact" target="blank">
-                  <div><span>Contact</span></div>
+                  <div>
+                    <span>Contact<i class="pi pi-external-link"></i></span>
+                  </div>
                 </a>
               </li>
               <li>
                 <a href="https://www.scatdao.com/dyor-tool" target="blank">
-                  <div><span>Learn</span></div>
+                  <div>
+                    <span>Learn<i class="pi pi-external-link"></i> </span>
+                  </div>
                 </a>
               </li>
               <li>
                 <a href="https://www.scatdao.com/team" target="blank">
-                  <div><span>About us</span></div>
+                  <div>
+                    <span>About us<i class="pi pi-external-link"></i></span>
+                  </div>
                 </a>
               </li>
 
               <li>
                 <router-link to="/nft-scheme">
-                  <div><span>NFT</span></div>
+                  <div>
+                    <span>NFT create<i class="pi pi-external-link"></i></span>
+                  </div>
                 </router-link>
               </li>
 
               <li>
                 <router-link to="/dapp-scheme">
-                  <div><span>Dapp</span></div>
+                  <div>
+                    <span>Dapp create<i class="pi pi-external-link"></i></span>
+                  </div>
                 </router-link>
               </li>
 
               <li>
                 <a href="https://audits.dyortool.io">
-                  <div><span>Scan QR</span></div>
+                  <div><span>Scan QR<i class="pi pi-external-link"></i></span></div>
                 </a>
               </li>
             </ul>
@@ -88,10 +98,10 @@
             </div>
             <h1>
               <span>
-                <span class="css-w-m-btx">
+                <span class="css-w-m-btx" style="font-weight: 100">
                   Do Your Own Research is a tool for evaluating
                 </span>
-                Dapps, Tokens, NFT and Blockchain projects</span
+                dapps, tokens, NFT's and blockchain projects</span
               >
             </h1>
           </div>
@@ -306,10 +316,6 @@ header {
   color: #fff;
 }
 
-.css-w-m-btx {
-  font-weight: 100 !important;
-}
-
 .css-w-m-bri div {
   color: #fff;
   padding-left: 1rem;
@@ -324,7 +330,6 @@ header {
   width: 100%;
   max-width: 1300px;
   height: 100%;
-  padding: 0 10%;
 }
 .css-w-m-ses {
   width: 100%;
@@ -348,6 +353,7 @@ header {
   background: var(--button-a);
   color: #ffffff;
   border: none;
+  align-items: center;
   font-weight: 600;
   cursor: pointer;
 }
@@ -480,6 +486,10 @@ header {
     height: 100%;
   }
 
+  .css-w-m-header {
+    padding: 0 2rem;
+  }
+
   #scat-book {
     width: 50px;
     height: 50px;
@@ -537,18 +547,19 @@ header {
   }
 
   .css-w-m-hth {
-    background: #ffffff;
+    background: var(--background-d);
     width: 200px;
     height: 300px;
-    border-radius: 6px;
+    color: inherit;
+    border-radius: 3px;
     position: absolute;
-    top: 30px;
+    top: 0px;
     display: flex;
     flex-direction: column;
     right: -25px;
     box-sizing: border-box;
     animation-name: slideRight;
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
   }
 
   .css-w-m-hth ul {
@@ -575,6 +586,12 @@ header {
 
   .css-w-m-hth span {
     margin-left: 10px;
+    color: #ffffff;
+  }
+
+  .css-w-m-hth i  {
+    margin-left: 10px;
+    color: #ffffff;
   }
 
   .css-w-m-bnt {
@@ -612,6 +629,7 @@ header {
   }
   .css-w-m-hhb i {
     color: inherit;
+    font-size: var(--text-size-third);
   }
   .css-w-m-hhb {
     background: none;
