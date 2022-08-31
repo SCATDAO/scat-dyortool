@@ -367,7 +367,7 @@ export const dapp_scheme = [
     id: 16,
     tag: "TK7-16",
     category: "Tokenomics",
-    name: "Originality",
+    name: "Business Model",
     question:
       "Is the project an already existing business model or the first of its kind?",
     worksteps: [

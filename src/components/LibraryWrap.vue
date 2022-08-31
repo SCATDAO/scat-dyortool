@@ -82,7 +82,7 @@
 
               <template v-if="loading_visible">
                 <div class="css-549h">
-                  <div class="lds-facebook"><div></div><div></div><div></div></div>
+                  <div class="lds-abf"><div></div><div></div><div></div></div>
                 </div>
               </template>
             </table>
@@ -337,40 +337,42 @@ th {
   height: 100%;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 1;
   align-items: center;
   background: var(--blue);
   justify-content: center;
 }
 
-.lds-facebook {
+.lds-abf {
   display: inline-block;
   position: relative;
   width: 80px;
   height: 80px;
 }
-.lds-facebook div {
+.lds-abf div {
   display: inline-block;
   position: absolute;
   left: 8px;
   width: 10px;
   border-radius: 8px;
   background: #fff;
-  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  animation: lds-abf 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
-.lds-facebook div:nth-child(1) {
+.lds-abf div:nth-child(1) {
   left: 8px;
   animation-delay: -0.24s;
 }
-.lds-facebook div:nth-child(2) {
+.lds-abf div:nth-child(2) {
   left: 32px;
   animation-delay: -0.12s;
 }
-.lds-facebook div:nth-child(3) {
+.lds-abf div:nth-child(3) {
   left: 56px;
   animation-delay: 0;
 }
-@keyframes lds-facebook {
+@keyframes lds-abf {
   0% {
     top: 8px;
     height: 64px;
