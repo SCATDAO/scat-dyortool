@@ -7,11 +7,11 @@
       <div class="css-w-m-xks">
         <div class="css-c0923"></div>
 
-        <router-link to="/dapp-scheme">
+        <router-link to="/dapp-setting">
           <button class="css-w-m-xkb">Dapp</button>
         </router-link>
 
-        <router-link to="/nft-scheme">
+        <router-link to="/nft-setting">
           <button class="css-w-m-xkb">NFT</button>
         </router-link>
         <a href="https://audits.dyortool.io" target="_blank">
@@ -48,7 +48,7 @@
               </li>
 
               <li>
-                <router-link to="/nft-scheme">
+                <router-link to="/nft-setting">
                   <div>
                     <span>NFT create<i class="pi pi-external-link"></i></span>
                   </div>
@@ -56,7 +56,7 @@
               </li>
 
               <li>
-                <router-link to="/dapp-scheme">
+                <router-link to="/dapp-setting">
                   <div>
                     <span>Dapp create<i class="pi pi-external-link"></i></span>
                   </div>

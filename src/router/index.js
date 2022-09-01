@@ -10,10 +10,10 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/", component: DyorMain },
-    { path: "/dapp-scheme", component: DAPPsetting },
-    { path: "/nft-scheme", component: NFTsetting },
-    { path: "/dapp", component: DAPPwork },
-    { path: "/nft", component: NFTwork },
+    { path: "/dapp-setting", component: DAPPsetting },
+    { path: "/nft-setting", component: NFTsetting },
+    { path: "/dapp-scheme", component: DAPPwork },
+    { path: "/nft-scheme", component: NFTwork },
     { path: "/:notFound(.*)", redirect: "/" },
   ],
 });
