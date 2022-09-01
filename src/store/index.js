@@ -15,6 +15,7 @@ const store = createStore({
       nft_scheme: {
         project_name: "Name",
         description: "Empty",
+        category: "Empty",
         website: "Website",
         discord: "Empty",
         twitter: "Empty",

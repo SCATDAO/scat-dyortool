@@ -140,7 +140,7 @@
               class="css-cp-nii"
               v-model="form.category"
               type="text"
-              placeholder="Project's Category"
+              placeholder="Project Category"
             />
           </div>
 

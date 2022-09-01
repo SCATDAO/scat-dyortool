@@ -998,10 +998,8 @@ export default {
 
           symbol: this.audit_info.symbol.trim().toLowerCase(),
 
-          data: `${data_encoded}`,
+          data: data_encoded,
         };
-
-        console.log(this.audit_info);
 
         this.send_msg = "Uploading";
 

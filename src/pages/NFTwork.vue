@@ -789,31 +789,27 @@ export default {
     },
     async pushNewReport() {
       this.before_encode = [];
-      this.error_to_send = false;
-      this.report_link = "";
 
-      this.audit_info["audit_opinion"] = this.audit_opinion;
+      this.error_to_send = false;
+
+      this.report_link = "";
 
       this.audit_info["charts"] = {
         community: {
           twitter: {
-            name: this.answered[12 - 1].name,
+            id: 11,
             value: this.answered[11 - 1].input,
-            answer:
-              this.answered[12 - 1].options[this.answered[12 - 1].answer - 1]
-                .name,
           },
           discord: {
-            name: this.answered[14 - 1].name,
+            id: 13,
             value: this.answered[13 - 1].input,
-            answer:
-              this.answered[14 - 1].options[this.answered[14 - 1].answer - 1]
-                .name,
           },
         },
       };
+      
+      this.audit_info["audit_opinion"] = this.audit_opinion;
 
-      this.audit_info["nid"] = Date.now();
+      this.audit_info["nid"] = Date.now(); ///crypt
 
       this.before_encode.push(this.audit_info);
 
@@ -826,21 +822,46 @@ export default {
         });
       });
 
-      const resultEncoder = bestialEncoder.encodeByValue(
+      const data_encoded = bestialEncoder.encodeByValue(
         JSON.stringify(this.before_encode)
       );
 
-      console.log(this.before_encode, resultEncoder);
-
+      console.log(this.audit_info)
       try {
         const params = {
           scheme: "nft",
-          hex: `${resultEncoder}`,
+
+          project_name: this.audit_info.project_name.trim().toLowerCase(),
+
+          description: this.audit_info.description.trim().toLowerCase(),
+
+          category: this.audit_info.category.trim().toLowerCase(),
+
+          website: this.audit_info.website.trim().toLowerCase(),
+
+          discord: this.audit_info.discord.trim().toLowerCase(),
+
+          twitter: this.audit_info.twitter.trim().toLowerCase(),
+
+          number_in_circulation: this.audit_info.number_in_circulation.trim().toLowerCase(),
+
+          whitelist: this.audit_info.whitelist.trim().toLowerCase(),
+
+          number_per_mint: this.audit_info.number_per_mint.trim().toLowerCase(),
+
+          mint_date: this.audit_info.mint_date.trim().toLowerCase(),
+
+          author: this.audit_info.nickname.trim().toLowerCase(),
+
+          data: data_encoded,
         };
+
+        console.log(params)
 
         this.send_msg = "Uploading";
 
         document.getElementById("create-report").disabled = true;
+
         await axios({
           method: "post",
           url: "http://192.168.1.3:8000/1.1/report/create-report",
@@ -854,8 +875,8 @@ export default {
             this.send_msg = "Create Report";
           })
           .catch((error) => {
-            this.error_to_send = !this.error_to_send;
             console.error(error.response);
+            this.error_to_send = !this.error_to_send;
             this.send_msg = "Create Report";
           });
       } catch (error) {

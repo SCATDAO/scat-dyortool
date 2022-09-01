@@ -131,6 +131,21 @@
 
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
+              Category:
+              <span class="css-cp-xsa" :class="{ active: errors.category }"
+                >Must not be empty or greater than 50 length</span
+              >
+            </div>
+            <input
+              class="css-cp-nii"
+              v-model="form.category"
+              type="text"
+              placeholder="E.g Real State, Art"
+            />
+          </div>
+
+          <div class="css-cp-nsi">
+            <div class="css-cp-nst">
               Discord:
               <span class="css-cp-xsa" :class="{ active: errors.discord }"
                 >Must not be empty or greater than 50 length</span
@@ -348,6 +363,7 @@ export default {
         project_name: false,
         description: false,
         website: false,
+        category: false,
         discord: false,
         twitter: false,
         number_in_circulation: false,
@@ -361,6 +377,7 @@ export default {
         project_name: "",
         description: "",
         website: "",
+        category: "",
         discord: "",
         twitter: "",
         number_in_circulation: "",
@@ -501,6 +518,7 @@ export default {
         project_name: false,
         description: false,
         website: false,
+        category: false,
         discord: false,
         twitter: false,
         number_in_circulation: false,
@@ -515,6 +533,7 @@ export default {
       if (!__(this.form.project_name, 50)) this.errors.project_name = true;
       if (!__(this.form.description, 200)) this.errors.description = true;
       if (!__(this.form.website, 50)) this.errors.website = true;
+      if (!__(this.form.category, 50)) this.errors.category = true;
       if (!__(this.form.discord, 50)) this.errors.discord = true;
       if (!__(this.form.twitter, 50)) this.errors.twitter = true;
       if (!__(this.form.number_in_circulation, 50))
@@ -912,7 +931,7 @@ export default {
   width: auto;
   height: 3rem;
   padding: 0 1rem;
-  color: var(--text-color-secondary);
+  color: var(--text-a);
   border: 1px solid var(--border-primary);
   border-radius: 6px;
   margin-top: 0.5rem;
@@ -920,7 +939,7 @@ export default {
 }
 
 .css-cp-nii::placeholder {
-  opacity: 0.4;
+  opacity: 0.5;
   font-size: var(--text-size-secondary);
 }
 

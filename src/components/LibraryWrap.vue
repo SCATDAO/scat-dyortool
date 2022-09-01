@@ -59,18 +59,6 @@
                         >{{ entry[key] }}</span
                       >
                     </template>
-                    <template v-if="key === 'opinion'">
-                      <span
-                        class="css-843s"
-                        :class="{
-                          positive: entry[key] === 'positive',
-                          neutral: entry[key] === 'neutral',
-                          negative: entry[key] === 'negative',
-                        }"
-                      >
-                    
-                      </span>
-                    </template>
                     <template v-if="key !== 'scheme'">
                       {{ entry[key] }}</template
                     >
@@ -181,7 +169,7 @@ const columns = [
   "total_score",
   "total_percentage",
   "author",
-  "opinion",
+
   "date",
 ];
 
@@ -223,7 +211,6 @@ export default {
                 total_percentage: e.total_percentage,
                 total_score: e.total_score,
                 author: e.author,
-                opinion: "negative",
                 date: new Date(e.date).toISOString().split("T")[0],
               };
             });
