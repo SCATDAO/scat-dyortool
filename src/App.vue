@@ -11,16 +11,21 @@ export default {
 </script>
 
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap');
-
-html, body{
-  height: 100%  !important;
+html,
+body {
+  overflow: hidden;
+  height: 100% !important;
 }
 
+@import "styles/theme.css";
+
+@import "primevue/resources/primevue.min.css";
+
+@import "primeicons/primeicons.css";
+
 :root {
-  --text-color-primary: #001737;
-  --text-color-secondary: #727384;
+  --text-color-primary: rgb(15, 20, 25);
+  --text-color-secondary: rgb(83, 100, 113);
 
   --text-size-secondary: 0.8rem;
   --text-size-primary: 1rem;
@@ -39,33 +44,131 @@ html, body{
 
   --complementary-color-green: #7fedca;
   --complementary-color-yellow: #fac292;
-  --complementary-color-blue: #0069f5;
+  --complementary-color-blue: red;
+
+  --blue-a: #0069f5;
 
   --color-soft-blue: rgba(0, 105, 245, 0.1);
 
   --border-primary: #e9f1fc;
 
   --shadow-blue: 0 0 25px rgba(26, 108, 225, 0.1);
+  --blue: linear-gradient(
+    45deg,
+    rgba(0, 105, 245, 1) 0%,
+    rgba(64, 78, 237, 1) 100%
+  );
+
+  --red: rgba(231, 54, 107, 1);
+
+  --transition-a: ease-in 0.2s;
+
+  --text-a: #0f1419;
+  --text-b: #536471;
+  --text-c: #7a7d82;
+  --text-w: #ffffff;
+
+  --background-a: #ffffff;
+  --background-b: #fafafa;
+  --background-c: linear-gradient(
+    45deg,
+    rgba(0, 105, 245, 1) 0%,
+    rgba(64, 78, 237, 1) 100%
+  );
+  --background-d: #23272a;
+
+  --shadow-a: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+  --border-a: #e9f1fc;
+
+  --button-a: #23272a;
+}
+
+.theme-light {
+  --text-a: #0f1419;
+  --text-b: #536471;
+  --text-c: #7a7d82;
+  --text-w: #ffffff;
+
+  --background-a: #ffffff;
+  --background-b: #ffffff;
+  --background-c: linear-gradient(
+    45deg,
+    rgba(0, 105, 245, 1) 0%,
+    rgba(64, 78, 237, 1) 100%
+  );
+
+  --shadow-a: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+  --border-a: #e9f1fc;
+
+  --button-a: #23272a;
+}
+
+.theme-dark {
+  --text-a: #ffffff;
+  --text-b: #b0b3b8;
+  --text-c: #7a7d82;
+  --text-w: #ffffff;
+
+  --background-a: #1a1a1b;
+  --background-b: #272729;
+  --background-c: #1a1a1b;
+
+  --shadow-a: 0 5px 40px rgba(0, 0, 0, 0.3);
+
+  --border-a: #3a3b3c;
+
+  --button-a: #404eed;
+}
+
+.theme-blue {
+  --text-a: #ffffff;
+  --text-b: #b0b3b8;
+  --text-c: #7a7d82;
+  --text-w: #ffffff;
+
+  --background-a: #20242e;
+  --background-b: #272b35;
+  --background-c: #20242e;
+
+  --shadow-a: 0 5px 40px rgba(0, 0, 0, 0.25);
+
+  --border-a: rgba(255, 255, 255, 0.1);
+
+  --button-a: #404eed;
 }
 
 * {
   margin: 0;
   padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  text-rendering: geometricPrecision;
+  caret-color: var(--text-a);
+  outline: none;
 }
 
-header {
-  width: 100%;
-  min-width: 100%;
-  height: 64px;
-  min-height: 64px;
-  max-height: 64px;
-  display: flex;
-  align-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  padding: 0 1.5rem;
-  z-index: 10;
-  padding: 0 10%;
+*::-webkit-scrollbar {
+  width: 5.8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--background-b);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+textarea,
+button,
+input {
+  font-family: Arial;
 }
 
 ol {
@@ -77,26 +180,16 @@ li {
 }
 
 #app {
-  font-family: 'Nunito Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: start;
   color: var(--text-color-secondary);
   text-rendering: geometricPrecision;
   image-rendering: optimizeQuality;
-  width: 100vw;
-  height: 100vh;
-  max-width: 100vw;
-  min-width: 100vw;
-  min-height: 100vh;
-  max-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  -webkit-tap-highlight-color: transparent;
   line-height: 1.5;
   animation-name: deploy;
   animation-duration: 1s;
-  -webkit-tap-highlight-color: transparent;
-
+  overflow: hidden;
 }
 
 @keyframes deploy {
@@ -118,7 +211,7 @@ li {
 }
 
 #css-blue-button {
-  background: rgba(7, 16, 52, 0.1);
+  background: var(--button-a);
 }
 
 .css-main-panel-button.active {
@@ -221,7 +314,6 @@ li {
   opacity: 0;
 }
 
-
 @media (max-width: 1921px) {
   html {
     font-size: 100%;
@@ -230,13 +322,13 @@ li {
 
 @media (max-width: 1441px) {
   html {
-    font-size: 80%;
+    font-size: 90%;
   }
 }
 
 @media (max-width: 1025px) {
   html {
-    font-size: 60%;
+    font-size: 80%;
   }
 }
 
