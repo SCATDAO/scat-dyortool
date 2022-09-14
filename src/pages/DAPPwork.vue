@@ -40,7 +40,13 @@
             @change="handleFileUpload($event)"
             accept=".json"
           />
-          <label class="css-8802" @click="saveDraftReport()"> Save </label>
+          <label
+            class="css-8802"
+            style="display: initial"
+            @click="saveDraftReport()"
+          >
+            Save
+          </label>
         </div>
         <div class="css-identicon-wrp">
           <div class="css-identicon" id="identicon">
@@ -295,18 +301,6 @@
                 <template v-if="remainingQuestion().length === 0">
                   <div class="css-wq-fcc">
                     <div class="css-wq-fsc">
-                      <svg
-                        class="css-w-p-dar"
-                        viewBox="0 0 1024 1024"
-                        data-v-365b8594=""
-                        data-v-51f114e2=""
-                      >
-                        <path
-                          fill="currentColor"
-                          d="M340.864 149.312a30.592 30.592 0 000 42.752L652.736 512 340.864 831.872a30.592 30.592 0 000 42.752 29.12 29.12 0 0041.728 0L714.24 534.336a32 32 0 000-44.672L382.592 149.376a29.12 29.12 0 00-41.728 0z"
-                          data-v-51f114e2=""
-                        ></path>
-                      </svg>
                       <span class="css-wq-koc">
                         What was your overall impression of the project?
                       </span>
@@ -368,6 +362,7 @@
                           >There was a problem with the request, please try
                           again</span
                         >
+                        {{ error_to_send }}
                       </div>
                     </template>
                     <template v-if="!report_created">
@@ -816,7 +811,7 @@ export default {
         this.audit_info = general;
         this.scheme_progress = progress;
         this.chart_data = chart;
-        this.$store.commit("modifyAuditData", general);
+        this.$store.commit("configureDAPP", general);
         this.clickCurrentQuestion(1);
       };
     },
@@ -1007,19 +1002,19 @@ export default {
 
         await axios({
           method: "post",
-          url: "http://192.168.1.3:8000/1.1/report/create-report",
+          url: "https://api.dyortool.io/1.1/report/create-report",
           data: params,
           headers: { "content-type": "application/json" },
         })
           .then((response) => {
             console.log(response.data);
             this.report_created = !this.report_created;
-            this.report_link = `http://192.168.1.3:8081/report/${response.data.id}`;
+            this.report_link = `https://audits.dyortool.io/report/${response.data.id}`;
             this.send_msg = "Create Report";
           })
           .catch((error) => {
             console.error(error.response);
-            this.error_to_send = !this.error_to_send;
+            this.error_to_send = error.response.data.errors;
             this.send_msg = "Create Report";
           });
       } catch (error) {
@@ -1095,7 +1090,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style
+>
+.css-w-p-wpr {
+  position: fixed;
+  z-index: 1000;
+  margin-top: 54px;
+}
+
 .css-a278 {
   margin-top: 1rem;
 }
@@ -1343,9 +1345,11 @@ export default {
   border-top: none;
   height: 300px;
   min-height: 300px;
+  max-height: 300px;
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
+  box-sizing: border-box;
   scroll-behavior: smooth;
   background: var(--background-b);
   display: flex;
@@ -1493,11 +1497,12 @@ export default {
 
 .css-wq-wrap {
   width: 100%;
-  height: 100vh;
+  margin-left: 320px;
   caret-color: transparent;
   padding-bottom: 10%;
+  margin-top: 54px;
   overflow-y: auto;
-  overflow-x: hidden;
+  height: 100vh;
   scroll-behavior: smooth;
   box-sizing: border-box;
   position: relative;
@@ -1553,7 +1558,6 @@ export default {
 }
 
 .css-wq-fpx {
-  border-top: 1px solid var(--border-a);
   color: var(--text-b);
   padding: 0 2rem;
   padding-bottom: 1rem;
@@ -1617,7 +1621,7 @@ export default {
   width: 70%;
   position: absolute;
   z-index: 1;
-  margin-top: 3rem;
+  margin-top: 10%;
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
@@ -1648,7 +1652,7 @@ export default {
 
 .css-wq-top {
   padding: 0 13%;
-  margin-top: 3rem;
+  margin-top: 5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1806,6 +1810,10 @@ export default {
   padding: 0 3rem;
   height: 54px;
   min-height: 54px;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
   max-height: 54px;
   border: none;
   border-bottom: 1px solid var(--border-a);
@@ -1909,6 +1917,7 @@ export default {
   border-radius: 5px;
   color: var(--text-a);
   border: 1px solid var(--border-a);
+  white-space: nowrap;
 }
 
 .css-wq-bpf {
@@ -2089,6 +2098,14 @@ export default {
 }
 
 @media (max-width: 600px) {
+  .css-3489,
+  .css-8801 {
+    display: none;
+  }
+
+  .css-w-p-her {
+    padding: 0 8%;
+  }
   .css-wq-back span {
     opacity: 0;
   }
@@ -2108,7 +2125,10 @@ export default {
   .css-wq-fcc {
     flex-direction: column;
   }
-
+  .css-wq-answer-item,
+  .css-wq-note {
+    background: transparent;
+  }
   .css-wq-note {
     font-size: var(--text-size-primary);
   }
@@ -2165,10 +2185,6 @@ export default {
     padding: 0 10%;
   }
 
-  .css-identicon-wrp {
-    border: 1px solid transparent;
-  }
-
   #logo-blue {
     fill: #fff;
   }
@@ -2185,15 +2201,8 @@ export default {
     display: none;
   }
 
-  .css-w-p-her {
-    background: var(--blue-a);
-    border: none;
-  }
-
   .css-wq-wrap {
     margin-left: 0;
-    border-top-right-radius: 16px;
-    border-top-left-radius: 16px;
     overflow: unset;
     background: var(--base-color-white-primary);
   }

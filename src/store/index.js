@@ -4,14 +4,6 @@ const store = createStore({
   state() {
     return {
       count: 0,
-      newAudit: {
-        an: "Nickname",
-        pn: "Name",
-        pw: "Category",
-        pc: "website",
-        pl: "",
-        pp: "",
-      },
       nft_scheme: {
         project_name: "Name",
         description: "Empty",
@@ -36,26 +28,15 @@ const store = createStore({
         nickname: "Nickname",
         project_logo: "",
       },
-      answeredQuestion: null,
     };
   },
   mutations: {
-    modifyAuditData(state, payload) {
-      state.newAudit = payload;
-    },
-
     configureDAPP(state, payload) {
       state.dapp_scheme = payload;
     },
 
     configureNFT(state, payload) {
       state.nft_scheme = payload;
-    },
-    newQuestData(state, payload) {
-      state.answeredQuestion = payload;
-    },
-    modifyPersonal(state, payload) {
-      state.newAudit.pp = payload;
     },
   },
   getters: {
@@ -64,9 +45,6 @@ const store = createStore({
     },
     getAuditInfoDAPP(state) {
       return state.dapp_scheme;
-    },
-    sendMeAnswered(state) {
-      return state.answeredQuestion;
     },
   },
 });

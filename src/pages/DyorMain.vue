@@ -4,9 +4,26 @@
       <router-link to="/">
         <img id="logo-blue" src="../assets/white-logo.svg" alt="" />
       </router-link>
-      <div class="css-w-m-xks">
-        <div class="css-c0923"></div>
 
+      <div class="css-28c0">
+        <a href="https://dyortool.io/dapp-scheme" target="_blank">
+          <i class="pi pi-folder-open"></i> Dapp resume
+        </a>
+
+        <a href="https://dyortool.io/nft-scheme" target="_blank">
+          <i class="pi pi-folder-open"></i> NFT resume
+        </a>
+        <a href="https://medium.com/@scatdao" target="_blank"> Learn </a>
+        <a
+          href="https://twitter.com/SCATDAO"
+          target="_blank"
+          style="margin-top: 4px"
+        >
+          <i class="pi pi-twitter"></i>
+        </a>
+      </div>
+
+      <div class="css-w-m-xks">
         <router-link to="/dapp-setting">
           <button class="css-w-m-xkb">Dapp</button>
         </router-link>
@@ -65,7 +82,9 @@
 
               <li>
                 <a href="https://audits.dyortool.io">
-                  <div><span>Scan QR<i class="pi pi-external-link"></i></span></div>
+                  <div>
+                    <span>Scan QR<i class="pi pi-external-link"></i></span>
+                  </div>
                 </a>
               </li>
             </ul>
@@ -175,6 +194,27 @@ header {
   padding: 0 10%;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.css-28c0 {
+  color: var(--text-a);
+  padding: 0.75rem;
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  white-space: nowrap;
+  border-radius: 99px;
+  margin-right: auto;
+  margin-left: 2rem;
+}
+
+.css-28c0 a {
+  margin-right: 2rem;
+}
+
 .css-w-m-wrap {
   width: 100%;
   max-width: 100vw;
@@ -203,13 +243,6 @@ header {
   justify-content: space-between;
 }
 
-.css-c0923 {
-  display: flex;
-  height: 30px;
-  background: red;
-  color: white;
-  fill: white;
-}
 .css-w-m-bmh {
   display: none;
 }
@@ -220,30 +253,6 @@ header {
   height: fit-content;
   padding: 1rem;
   box-shadow: 1px 1px 1px 20px var(--shadow-blue);
-}
-
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-  width: 120px;
-  top: 100%;
-  left: 50%;
-  margin-left: -60px;
-  position: absolute;
-  z-index: 1;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
 }
 
 .css-w-m-bxs {
@@ -328,7 +337,8 @@ header {
 }
 .css-436c {
   width: 100%;
-  max-width: 1300px;
+  max-width: 1400px;
+  margin: 0 3%;
   height: 100%;
 }
 .css-w-m-ses {
@@ -350,12 +360,13 @@ header {
   padding: 0.75rem 1rem;
   border-radius: 99px;
   margin-left: 1rem;
-  background: var(--button-a);
+  background: #23272a;
   color: #ffffff;
   border: none;
   align-items: center;
   font-weight: 600;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .css-w-m-xkb:hover {
@@ -428,62 +439,9 @@ header {
   transform: rotateY(180deg);
 }
 
-#slide-left1 {
-  animation-name: slideLeft1;
-  animation-duration: 1s;
-}
-
-#slide-left2 {
-  animation-name: slideLeft2;
-  animation-duration: 1s;
-}
-
-#slide-left3 {
-  animation-name: slideLeft3;
-  animation-duration: 1s;
-}
-
-@keyframes slideLeft1 {
-  0% {
-    transform: translateX(-100px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideLeft2 {
-  0% {
-    transform: translateX(-200px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideLeft3 {
-  0% {
-    transform: translateX(-300px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideRight {
-  0% {
-    transform: translateX(50px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
 @media (max-width: 600px) {
-  #gradient-canvas {
-    height: 100%;
+  .css-28c0 {
+    display: none;
   }
 
   .css-w-m-header {
@@ -589,7 +547,7 @@ header {
     color: #ffffff;
   }
 
-  .css-w-m-hth i  {
+  .css-w-m-hth i {
     margin-left: 10px;
     color: #ffffff;
   }
@@ -614,9 +572,6 @@ header {
     margin-bottom: 0;
   }
 
-  #gradient-canvas {
-    height: 100vh !important;
-  }
   .css-w-m-sss {
     border: none;
     background: var(--background-d);

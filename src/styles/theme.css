@@ -594,10 +594,11 @@
 }
 
 .p-dropdown {
-  background: var(--background-a);
+  background: var(--background-d);
   transition: background-color 0.2s, color 0.2s, border-color 0.2s,
     box-shadow 0.2s;
   border-radius: 6px;
+ 
 }
 
 .p-dropdown.p-dropdown-clearable .p-dropdown-label {
@@ -630,7 +631,7 @@
   border-bottom-right-radius: 6px;
   border-left: 1px solid transparent;
   width: 3rem;
-  padding: 0.75rem 0.75rem;
+  padding:0.75rem;
   font-size: 1rem;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s,
     box-shadow 0.2s;

@@ -725,6 +725,7 @@ export const dapp_scheme = [
     ],
     options: [
       { id: 1, name: "Yes", value: 2.0 },
+      { id: 2, name: "No", value: 0.0 },
       { id: 404, name: "Doesn't apply", value: 0.0 },
     ],
     answer: null,

@@ -13,6 +13,7 @@ export default {
 <style>
 html,
 body {
+  overflow: hidden;
   height: 100% !important;
 }
 
@@ -90,7 +91,7 @@ body {
   --text-w: #ffffff;
 
   --background-a: #ffffff;
-  --background-b: #fafafa;
+  --background-b: #ffffff;
   --background-c: linear-gradient(
     45deg,
     rgba(0, 105, 245, 1) 0%,
@@ -145,10 +146,11 @@ body {
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   text-rendering: geometricPrecision;
   caret-color: var(--text-a);
+  outline: none;
 }
 
 *::-webkit-scrollbar {
-  width: 5px;
+  width: 5.8px;
 }
 
 *::-webkit-scrollbar-track {
@@ -162,9 +164,11 @@ body {
 *::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-textarea {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+textarea,
+button,
+input {
+  font-family: Arial;
 }
 
 ol {
@@ -185,6 +189,7 @@ li {
   line-height: 1.5;
   animation-name: deploy;
   animation-duration: 1s;
+  overflow: hidden;
 }
 
 @keyframes deploy {
@@ -206,7 +211,7 @@ li {
 }
 
 #css-blue-button {
-  background: rgba(7, 16, 52, 0.1);
+  background: var(--button-a);
 }
 
 .css-main-panel-button.active {

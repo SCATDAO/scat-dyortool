@@ -7,6 +7,7 @@ import Chart from "primevue/chart";
 import Chips from "primevue/chips";
 import Sidebar from "primevue/sidebar";
 
+
 const app = createApp(App);
 
 app.use(router);
@@ -18,6 +19,7 @@ app.component("Chart", Chart);
 app.component("Chips", Chips);
 // eslint-disable-next-line
 app.component("Sidebar", Sidebar);
+
 
 router.isReady().then(function () {
   app.mount("#app");

@@ -30,7 +30,7 @@
         <div class="css-cp-faw">
           <div class="css-cp-nsc">
             <div class="css-cp-nst">
-              Project name:
+              Project name
               <span class="css-cp-xsa" :class="{ active: errors.project_name }"
                 >Must not be empty or greater than 50 length</span
               >
@@ -101,7 +101,7 @@
           </div>
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
-              Description:
+              Description
               <span class="css-cp-xsa" :class="{ active: errors.description }"
                 >Must not be empty or greater than 200 length</span
               >
@@ -116,7 +116,7 @@
 
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
-              Website:
+              Website
               <span class="css-cp-xsa" :class="{ active: errors.website }"
                 >Must not be empty or greater than 50 length</span
               >
@@ -131,7 +131,7 @@
 
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
-              Category:
+              Category
               <span class="css-cp-xsa" :class="{ active: errors.category }"
                 >Must not be empty or greater than 50 length</span
               >
@@ -146,7 +146,7 @@
 
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
-              Symbol:
+              Symbol
               <span class="css-cp-xsa" :class="{ active: errors.symbol }"
                 >Must not be empty or greater than 30 length</span
               >
@@ -161,7 +161,7 @@
 
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
-              Repository:
+              Repository
               <span class="css-cp-xsa" :class="{ active: errors.repository }"
                 >Must not be empty or greater than 50 length</span
               >
@@ -175,7 +175,7 @@
           </div>
           <div class="css-cp-nsi">
             <div class="css-cp-nst">
-              Your nickname:
+              Your nickname
               <span class="css-cp-xsa" :class="{ active: errors.nickname }"
                 >Must not be empty or greater than 50 length</span
               >
@@ -417,7 +417,7 @@ export default {
         setTimeout(async () => {
           try {
             const response = await axios.get(
-              `http://192.168.1.3:8000/1.1/logo/report-logo/${element}`
+              `https://api.dyortool.io/1.1/logo/report-logo/${element}`
             );
             this.form.project_logo = response.data.logo;
             this.fetching_image = false;
@@ -466,7 +466,7 @@ export default {
     },
     createNewReport() {
       this.$store.commit("configureDAPP", this.form);
-      this.$router.push("/dapp");
+      this.$router.push("/dapp-scheme");
     },
   },
   computed: {
@@ -504,4 +504,20 @@ export default {
   },
 };
 </script>
-
+<style scoped>
+  *::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: #fafafa;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background: var(--text-b);
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  </style>

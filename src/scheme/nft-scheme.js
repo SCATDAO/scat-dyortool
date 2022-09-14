@@ -575,7 +575,6 @@ export const nft_scheme = [
       "C. For Cardano NFTs, go to CNFT.Tools, type in the project name in the search, and see if the project appears with rarity features listed.",
       "D. If the collection has no rarity features and it is only based on utility, N/A should be chosen.",
     ],
-
     options: [
       { id: 1, name: "Yes", value: 1.0 },
       { id: 2, name: "No", value: 0.0 },

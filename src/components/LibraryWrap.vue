@@ -44,9 +44,9 @@
 
               <tbody>
                 <tr
-                  v-for="entry in filteredCoins"
+                  v-for="entry in filteredProjects"
                   :key="entry"
-                  @click="projectSelected(entry)"
+                  @click="selectProject(entry)"
                 >
                   <td v-for="key in columns" :key="key">
                     <template v-if="key === 'scheme'">
@@ -70,7 +70,11 @@
 
               <template v-if="loading_visible">
                 <div class="css-549h">
-                  <div class="lds-abf"><div></div><div></div><div></div></div>
+                  <div class="lds-abf">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
                 </div>
               </template>
             </table>
@@ -123,26 +127,19 @@
               community.
             </p>
 
-            <p class="sb62">ISPO Goal</p>
+            <p class="sb62">How to use?</p>
 
             <p>
-              We are attempting to raise 1.5 Million ADA through the ISPO. With
-              a fully saturated pool from day one, this would run for
-              approximately 6 months. It is unlikely that the pool would be
-              fully saturated from day one, which means it would likely take
-              longer than 6 months. How much longer is difficult to predict
-              without knowing how much interest there will be or how long it
-              would take to become saturated, if at all. If the ISPO is running
-              considerably longer than expected and not raising enough ADA to
-              justify keeping it open, we may close it early before all tokens
-              have been distributed.
+              1. Select a project you want to research. / 2. Read each explanation
+              to understand what you are assessing. / 3. Perform all steps. / 4.
+              Generate a report and share the results with the crypto community.
             </p>
-            <p class="sb62">Why we are Raising Funds</p>
+            <p class="sb62">About the ISPO - &#9889;</p>
 
             <p>
               The ADA raised through the ISPO will be used to provide liquidity
               to DEXs. The fees that are earned from providing liquidity will be
-              used to fund audits that are voted on by our token holders (see
+              used to fund AUDITS that are voted on by our token holders (see
               how it's funded section of whitepaper for more information). The
               target of 1.5 million was selected as we expect that to be a
               sufficient amount of liquidity for the foreseeable future (would
@@ -163,6 +160,7 @@
 
 <script>
 import axios from "axios";
+
 const columns = [
   "project",
   "scheme",
@@ -191,7 +189,6 @@ export default {
   },
   created() {
     this.updateData();
-    this.sortBy("total_percentage");
   },
   methods: {
     updateData() {
@@ -199,13 +196,12 @@ export default {
         setTimeout(async () => {
           try {
             const response = await axios.get(
-              `http://192.168.1.3:8000/1.1/report/search-all`
+              `https://api.dyortool.io/1.1/report/search-all`
             );
-
-            console.log(response.data);
 
             this.project_data = response.data.map((e) => {
               return {
+                id: e.id,
                 project: e.project,
                 scheme: e.scheme.toUpperCase(),
                 total_percentage: e.total_percentage,
@@ -233,9 +229,12 @@ export default {
       const str_ = str.replace("_", " ");
       return str_.charAt(0).toUpperCase() + str_.slice(1);
     },
+    selectProject(e) {
+      window.open(`https://audits.dyortool.io/report/${e.id}`, "_blank");
+    },
   },
   computed: {
-    filteredCoins() {
+    filteredProjects() {
       const sort_key = this.sort_key;
 
       const filter_key = this.filter_key && this.filter_key.toLowerCase();
@@ -364,7 +363,8 @@ th {
     top: 8px;
     height: 64px;
   }
-  50%, 100% {
+  50%,
+  100% {
     top: 24px;
     height: 32px;
   }
@@ -425,7 +425,7 @@ th {
 .css-546h {
   width: 100%;
   height: 100%;
-  min-height: 500px;
+  min-height: 550px;
   max-height: 550px;
   border-radius: 16px;
   overflow: hidden;
